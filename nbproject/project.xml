@@ -6,11 +6,11 @@
             <name>tlc5940_servo_controller</name>
             <creation-uuid>93ba496c-1a92-474f-9046-86c696f22159</creation-uuid>
             <make-project-type>0</make-project-type>
-            <c-extensions/>
+            <c-extensions>c</c-extensions>
             <cpp-extensions/>
-            <header-extensions/>
-            <make-dep-projects/>
+            <header-extensions>h</header-extensions>
             <sourceEncoding>ISO-8859-1</sourceEncoding>
+            <make-dep-projects/>
         </data>
     </configuration>
 </project>

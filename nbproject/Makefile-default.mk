@@ -41,11 +41,11 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=
-POSSIBLE_DEPFILES=
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1430104892/main.p1 ${OBJECTDIR}/_ext/1430104892/tlc5940.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1430104892/main.p1.d ${OBJECTDIR}/_ext/1430104892/tlc5940.p1.d
 
 # Object Files
-OBJECTFILES=
+OBJECTFILES=${OBJECTDIR}/_ext/1430104892/main.p1 ${OBJECTDIR}/_ext/1430104892/tlc5940.p1
 
 
 CFLAGS=
@@ -68,7 +68,35 @@ MP_PROCESSOR_OPTION=18F4520
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
+${OBJECTDIR}/_ext/1430104892/main.p1: D:/Google\ Drive/Sync/Dropbox/Microchip/Projects/rLamp.X/main.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/_ext/1430104892 
+	@${RM} ${OBJECTDIR}/_ext/1430104892/main.p1.d 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G --asmlist  -D__DEBUG=1 --debugger=icd3  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,-asmfile,+speed,-space,-debug,9 --addrqual=ignore -P -N255 --warn=0 --summary=default,-psect,-class,+mem,-hex,-file --runtime=default,+clear,+init,-keep,-no_startup,+osccal,-resetbits,-download,-stackcall,+config,+clib,+plib "--errformat=%%f:%%l: error: %%s" "--warnformat=%%f:%%l: warning: %%s" "--msgformat=%%f:%%l: advisory: %%s"  -o${OBJECTDIR}/_ext/1430104892/main.p1  "D:/Google Drive/Sync/Dropbox/Microchip/Projects/rLamp.X/main.c" 
+	@-${MV} ${OBJECTDIR}/_ext/1430104892/main.d ${OBJECTDIR}/_ext/1430104892/main.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1430104892/main.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/_ext/1430104892/tlc5940.p1: D:/Google\ Drive/Sync/Dropbox/Microchip/Projects/rLamp.X/tlc5940.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/_ext/1430104892 
+	@${RM} ${OBJECTDIR}/_ext/1430104892/tlc5940.p1.d 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G --asmlist  -D__DEBUG=1 --debugger=icd3  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,-asmfile,+speed,-space,-debug,9 --addrqual=ignore -P -N255 --warn=0 --summary=default,-psect,-class,+mem,-hex,-file --runtime=default,+clear,+init,-keep,-no_startup,+osccal,-resetbits,-download,-stackcall,+config,+clib,+plib "--errformat=%%f:%%l: error: %%s" "--warnformat=%%f:%%l: warning: %%s" "--msgformat=%%f:%%l: advisory: %%s"  -o${OBJECTDIR}/_ext/1430104892/tlc5940.p1  "D:/Google Drive/Sync/Dropbox/Microchip/Projects/rLamp.X/tlc5940.c" 
+	@-${MV} ${OBJECTDIR}/_ext/1430104892/tlc5940.d ${OBJECTDIR}/_ext/1430104892/tlc5940.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1430104892/tlc5940.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 else
+${OBJECTDIR}/_ext/1430104892/main.p1: D:/Google\ Drive/Sync/Dropbox/Microchip/Projects/rLamp.X/main.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/_ext/1430104892 
+	@${RM} ${OBJECTDIR}/_ext/1430104892/main.p1.d 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G --asmlist  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,-asmfile,+speed,-space,-debug,9 --addrqual=ignore -P -N255 --warn=0 --summary=default,-psect,-class,+mem,-hex,-file --runtime=default,+clear,+init,-keep,-no_startup,+osccal,-resetbits,-download,-stackcall,+config,+clib,+plib "--errformat=%%f:%%l: error: %%s" "--warnformat=%%f:%%l: warning: %%s" "--msgformat=%%f:%%l: advisory: %%s"  -o${OBJECTDIR}/_ext/1430104892/main.p1  "D:/Google Drive/Sync/Dropbox/Microchip/Projects/rLamp.X/main.c" 
+	@-${MV} ${OBJECTDIR}/_ext/1430104892/main.d ${OBJECTDIR}/_ext/1430104892/main.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1430104892/main.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/_ext/1430104892/tlc5940.p1: D:/Google\ Drive/Sync/Dropbox/Microchip/Projects/rLamp.X/tlc5940.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/_ext/1430104892 
+	@${RM} ${OBJECTDIR}/_ext/1430104892/tlc5940.p1.d 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G --asmlist  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,-asmfile,+speed,-space,-debug,9 --addrqual=ignore -P -N255 --warn=0 --summary=default,-psect,-class,+mem,-hex,-file --runtime=default,+clear,+init,-keep,-no_startup,+osccal,-resetbits,-download,-stackcall,+config,+clib,+plib "--errformat=%%f:%%l: error: %%s" "--warnformat=%%f:%%l: warning: %%s" "--msgformat=%%f:%%l: advisory: %%s"  -o${OBJECTDIR}/_ext/1430104892/tlc5940.p1  "D:/Google Drive/Sync/Dropbox/Microchip/Projects/rLamp.X/tlc5940.c" 
+	@-${MV} ${OBJECTDIR}/_ext/1430104892/tlc5940.d ${OBJECTDIR}/_ext/1430104892/tlc5940.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1430104892/tlc5940.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 endif
 
 # ------------------------------------------------------------------------------------

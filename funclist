@@ -1,0 +1,12 @@
+_set_channel: CODE, 1332 0 24
+_blank_pulse: CODE, 8 0 1084
+_main: CODE, 1092 0 164
+__initialization: CODE, 1400 0 12
+_init_grayscale: CODE, 28 0 488
+_update_grayscale: CODE, 516 0 212
+_spi_init: CODE, 1378 0 22
+_init_dot_correction: CODE, 728 0 200
+_TMR2_init: CODE, 1304 0 28
+_serial_send_data: CODE, 1356 0 22
+_delay_sec: CODE, 1256 0 48
+Total: 2304
