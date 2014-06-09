@@ -10,14 +10,14 @@ char channel[16];
 void serial_send_data(char data)
 {
     SSPBUF = data; //Loads data into SSPBUF reg
-    __delay_ms(1);
+    tlc_delay_ms(1);
 }
 
 void init_dot_correction()
 {
     tlc_vprg = 1; //Dot correction input mode
     tlc_xlat = 0;
-    __delay_ms(2);
+    tlc_delay_ms(2);
 
     serial_send_data(0b11111111);//Channel 0
     serial_send_data(0b11111111);//Channel 1
@@ -32,15 +32,15 @@ void init_dot_correction()
     serial_send_data(0b11111111);//Channel 10
     serial_send_data(0b11111111);//Channel 11
 
-    __delay_ms(2);
+    tlc_delay_ms(2);
     tlc_xlat = 1;
-    __delay_ms(30);
+    tlc_delay_ms(30);
     tlc_xlat = 0;
 }
 
 void init_grayscale()
 {
-    __delay_ms(2);
+    tlc_delay_ms(2);
 
     T2CONbits.TMR2ON = 0; //Turn off timer
     tlc_vprg = 0; //Grayscale input mode
@@ -90,9 +90,9 @@ void init_grayscale()
     serial_send_data(0b00000000);//Channel 10
     serial_send_data(0b00000000);//Channel 11
     
-    __delay_ms(2);
+    tlc_delay_ms(2);
     tlc_xlat = 1;
-    __delay_ms(30);
+    tlc_delay_ms(30);
     tlc_xlat = 0;
 
     serial_send_data(0b10000000);//one clock pulse for first grayscale
@@ -101,7 +101,7 @@ void init_grayscale()
 
 void update_grayscale()
 {   
-    __delay_ms(2);
+    tlc_delay_ms(2);
 
     T2CONbits.TMR2ON = 0; //Turn off timer
     tlc_vprg = 0; //Grayscale input mode
@@ -117,9 +117,9 @@ void update_grayscale()
         counter++;
     }
 
-    __delay_ms(2);
+    tlc_delay_ms(2);
     tlc_xlat = 1;
-    __delay_ms(30);
+    tlc_delay_ms(30);
     tlc_xlat = 0;
     T2CONbits.TMR2ON = 1; //Turn timer back on
 }

@@ -14,6 +14,11 @@
 #define tlc_vprg LATDbits.LD1
 #define tlc_blank LATDbits.LD2
 
+//Custom delay function name.
+//Change to whatever your delay function name is.
+#define tlc_delay_ms __delay_ms
+#define tlc_delay_us __delay_us
+
 void serial_init();
 void serial_send_data(char data);
 void test_dot_correction();

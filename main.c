@@ -22,7 +22,7 @@ void delay_sec() //actually, half a second
 {
     for(int i = 0; i < 50; i++)
     {
-        __delay_ms(10);
+        tlc_delay_ms(10);
     }
 }
 
@@ -33,7 +33,7 @@ void interrupt blank_pulse(void)
         if(count >= 222) //572 520
         {
             tlc_blank = 1;
-            __delay_us(1);
+            tlc_delay_us(1);
             tlc_blank = 0;
             count = 0; //Reset count
         }
