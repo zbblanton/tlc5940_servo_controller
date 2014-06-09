@@ -206,13 +206,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S335 . . . . . . ]
 "6812
 [v _INTCONbits `VS335 ~T0 @X0 0 e@4082 ]
-"21 D:/Google Drive/Sync/Dropbox/Microchip/Projects/rLamp.X/tlc5940.h
+"26 D:/Google Drive/Sync/Dropbox/Microchip/Projects/rLamp.X/tlc5940.h
 [v _init_dot_correction `(v ~T0 @X0 0 ef ]
-"22
+"27
 [v _init_grayscale `(v ~T0 @X0 0 ef ]
-"24
+"29
 [v _update_grayscale `(v ~T0 @X0 0 ef ]
-"25
+"30
 [v _set_channel `(v ~T0 @X0 0 ef2`uc`uc ]
 [; ;pic18f4520.h: 44: extern volatile unsigned char PORTA @ 0xF80;
 "46 D:\Program Files (x86)\Microchip\xc8\v1.20\include\pic18f4520.h
@@ -3875,15 +3875,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 144: extern void _delay(unsigned long);
 [; ;pic18.h: 146: extern void _delaywdt(unsigned long);
 [; ;pic18.h: 148: extern void _delay3(unsigned char);
-[; ;tlc5940.h: 17: void serial_init();
-[; ;tlc5940.h: 18: void serial_send_data(char data);
-[; ;tlc5940.h: 19: void test_dot_correction();
-[; ;tlc5940.h: 20: void test_grayscale();
-[; ;tlc5940.h: 21: void init_dot_correction();
-[; ;tlc5940.h: 22: void init_grayscale();
-[; ;tlc5940.h: 23: void set_grayscale();
-[; ;tlc5940.h: 24: void update_grayscale();
-[; ;tlc5940.h: 25: void set_channel(char channel_number, char value);
+[; ;tlc5940.h: 22: void serial_init();
+[; ;tlc5940.h: 23: void serial_send_data(char data);
+[; ;tlc5940.h: 24: void test_dot_correction();
+[; ;tlc5940.h: 25: void test_grayscale();
+[; ;tlc5940.h: 26: void init_dot_correction();
+[; ;tlc5940.h: 27: void init_grayscale();
+[; ;tlc5940.h: 28: void set_grayscale();
+[; ;tlc5940.h: 29: void update_grayscale();
+[; ;tlc5940.h: 30: void set_channel(char channel_number, char value);
 "13 D:/Google Drive/Sync/Dropbox/Microchip/Projects/rLamp.X/main.c
 [p x LVP=OFF ]
 "15
