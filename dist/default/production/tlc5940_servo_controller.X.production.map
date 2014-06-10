@@ -5,7 +5,7 @@ Linker command line:
 --edf=E:\Program Files (x86)\Microchip\xc8\v1.32\dat\en_msgs.txt -cs \
   -h+dist/default/production\tlc5940_servo_controller.X.production.sym \
   --cmf=dist/default/production\tlc5940_servo_controller.X.production.cmf \
-  -z -Q18F4520 -oC:\Users\zbbl222\AppData\Local\Temp\s55s.6 \
+  -z -Q18F4520 -oC:\Users\zbbl222\AppData\Local\Temp\s364.6 \
   -Mdist/default/production/tlc5940_servo_controller.X.production.map -E1 \
   -ver=XC8 -ASTACK=080h-05ffh -pstack=STACK -ACODE=00h-07FFFh \
   -ACONST=00h-07FFFh -ASMALLCONST=0600h-06FFhx122 \
@@ -22,7 +22,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE \
-  C:\Users\zbbl222\AppData\Local\Temp\s55s.obj \
+  C:\Users\zbbl222\AppData\Local\Temp\s364.obj \
   dist/default/production\tlc5940_servo_controller.X.production.obj 
 
 Object code version is 3.11
@@ -35,7 +35,7 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\zbbl222\AppData\Local\Temp\s55s.obj
+C:\Users\zbbl222\AppData\Local\Temp\s364.obj
                 end_init                             18       18        4        4       0
                 reset_vec                             0        0        4        0       0
                 idloc                            200000   200000        8   200000       0
@@ -404,7 +404,7 @@ FUNCTION INFORMATION:
  Auto vars:     Size  Location     Type
 		None
  Return value:  Size  Location     Type
-                  2  101[COMRAM] int 
+                  2  104[COMRAM] int 
  Registers used:
 		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
  Tracked objects:
@@ -433,7 +433,7 @@ Total ram usage:        0 bytes
 
  *************** function _update_grayscale *****************
  Defined at:
-		line 102 in file "tlc5940.c"
+		line 188 in file "tlc5940.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -494,7 +494,7 @@ Total ram usage:        0 bytes
 
  *************** function _set_channel *****************
  Defined at:
-		line 127 in file "tlc5940.c"
+		line 213 in file "tlc5940.c"
  Parameters:    Size  Location     Type
   channel_numb    1    wreg     unsigned char 
   value           1   14[COMRAM] unsigned char 
@@ -525,7 +525,7 @@ Total ram usage:        2 bytes
 
  *************** function _init_grayscale *****************
  Defined at:
-		line 41 in file "tlc5940.c"
+		line 127 in file "tlc5940.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -555,7 +555,7 @@ Total ram usage:        1 bytes
 
  *************** function _init_dot_correction *****************
  Defined at:
-		line 16 in file "tlc5940.c"
+		line 102 in file "tlc5940.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -612,6 +612,7 @@ Total ram usage:        2 bytes
 		_init_dot_correction
 		_init_grayscale
 		_update_grayscale
+		_tlc_init
  This function uses a non-reentrant model
 
 

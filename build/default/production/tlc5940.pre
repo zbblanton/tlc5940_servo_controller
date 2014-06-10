@@ -4997,11 +4997,9 @@ extern __nonreentrant void _delay3(unsigned char);
 # 22 "tlc5940.h"
 void serial_init();
 void serial_send_data(char data);
-void test_dot_correction();
-void test_grayscale();
 void init_dot_correction();
 void init_grayscale();
-void set_grayscale();
+void tlc_init();
 void update_grayscale();
 void set_channel(char channel_number, char value);
 
@@ -5102,6 +5100,92 @@ void serial_send_data(char data)
 {
 SSPBUF = data;
 _delay((unsigned long)((1)*(8000000/4000.0)));
+}
+
+void tlc_init()
+{
+
+LATDbits.LD1 = 1;
+LATDbits.LD0 = 0;
+_delay((unsigned long)((2)*(8000000/4000.0)));
+
+serial_send_data(0b11111111);
+serial_send_data(0b11111111);
+serial_send_data(0b11111111);
+serial_send_data(0b11111111);
+serial_send_data(0b11111111);
+serial_send_data(0b11111111);
+serial_send_data(0b11111111);
+serial_send_data(0b11111111);
+serial_send_data(0b11111111);
+serial_send_data(0b11111111);
+serial_send_data(0b11111111);
+serial_send_data(0b11111111);
+
+_delay((unsigned long)((2)*(8000000/4000.0)));
+LATDbits.LD0 = 1;
+_delay((unsigned long)((30)*(8000000/4000.0)));
+LATDbits.LD0 = 0;
+
+
+
+_delay((unsigned long)((2)*(8000000/4000.0)));
+
+T2CONbits.TMR2ON = 0;
+LATDbits.LD1 = 0;
+LATDbits.LD0 = 0;
+LATDbits.LD2 = 0;
+
+channel[0] = 235;
+channel[1] = 0;
+channel[2] = 0;
+channel[3] = 0;
+channel[4] = 0;
+channel[5] = 0;
+channel[6] = 0;
+channel[7] = 0;
+channel[8] = 0;
+channel[9] = 0;
+channel[10] = 0;
+channel[11] = 0;
+channel[12] = 0;
+channel[13] = 0;
+channel[14] = 0;
+channel[15] = 235;
+
+
+serial_send_data(0b00000000);
+serial_send_data(0b00000000);
+serial_send_data(0b00000000);
+serial_send_data(0b00000000);
+serial_send_data(0b00000000);
+serial_send_data(0b00000000);
+serial_send_data(0b00000000);
+serial_send_data(0b00000000);
+serial_send_data(0b00000000);
+serial_send_data(0b00000000);
+serial_send_data(0b00000000);
+serial_send_data(0b00000000);
+serial_send_data(0b00000000);
+serial_send_data(0b00000000);
+serial_send_data(0b00000000);
+serial_send_data(0b00000000);
+serial_send_data(0b00000000);
+serial_send_data(0b00000000);
+serial_send_data(0b00000000);
+serial_send_data(0b00000000);
+serial_send_data(0b00000000);
+serial_send_data(0b00000000);
+serial_send_data(0b00000000);
+serial_send_data(0b00000000);
+
+_delay((unsigned long)((2)*(8000000/4000.0)));
+LATDbits.LD0 = 1;
+_delay((unsigned long)((30)*(8000000/4000.0)));
+LATDbits.LD0 = 0;
+
+serial_send_data(0b10000000);
+
 }
 
 void init_dot_correction()

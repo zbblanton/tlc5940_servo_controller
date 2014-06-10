@@ -207,13 +207,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S357 . . . . . . ]
 "6999
 [v _INTCONbits `VS357 ~T0 @X0 0 e@4082 ]
-"26 tlc5940.h
+"24 tlc5940.h
 [v _init_dot_correction `(v ~T0 @X0 0 ef ]
-"27
+"25
 [v _init_grayscale `(v ~T0 @X0 0 ef ]
-"29
+"27
 [v _update_grayscale `(v ~T0 @X0 0 ef ]
-"30
+"28
 [v _set_channel `(v ~T0 @X0 0 ef2`uc`uc ]
 [; ;htc.h: 21: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 24: extern void __builtin_software_breakpoint(void);
@@ -3971,13 +3971,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 151: extern __nonreentrant void _delay3(unsigned char);
 [; ;tlc5940.h: 22: void serial_init();
 [; ;tlc5940.h: 23: void serial_send_data(char data);
-[; ;tlc5940.h: 24: void test_dot_correction();
-[; ;tlc5940.h: 25: void test_grayscale();
-[; ;tlc5940.h: 26: void init_dot_correction();
-[; ;tlc5940.h: 27: void init_grayscale();
-[; ;tlc5940.h: 28: void set_grayscale();
-[; ;tlc5940.h: 29: void update_grayscale();
-[; ;tlc5940.h: 30: void set_channel(char channel_number, char value);
+[; ;tlc5940.h: 24: void init_dot_correction();
+[; ;tlc5940.h: 25: void init_grayscale();
+[; ;tlc5940.h: 26: void tlc_init();
+[; ;tlc5940.h: 27: void update_grayscale();
+[; ;tlc5940.h: 28: void set_channel(char channel_number, char value);
 "13 main.c
 [p x LVP=OFF ]
 "15
@@ -4028,9 +4026,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "27
 [e :UE 402 ]
 }
-[v F4158 `(v ~T0 @X0 1 tf ]
+[v F4156 `(v ~T0 @X0 1 tf ]
 "29
-[v _blank_pulse `IF4158 ~T0 @X0 1 e ]
+[v _blank_pulse `IF4156 ~T0 @X0 1 e ]
 "30
 {
 [; ;main.c: 29: void interrupt blank_pulse(void)

@@ -21,11 +21,9 @@
 
 void serial_init();
 void serial_send_data(char data);
-void test_dot_correction();
-void test_grayscale();
 void init_dot_correction();
 void init_grayscale();
-void set_grayscale();
+void tlc_init();
 void update_grayscale();
 void set_channel(char channel_number, char value);
 

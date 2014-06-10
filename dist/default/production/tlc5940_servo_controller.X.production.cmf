@@ -11,7 +11,7 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\zbbl222\AppData\Local\Temp\s55s.obj
+$C:\Users\zbbl222\AppData\Local\Temp\s364.obj
 end_init CODE 0 18 18 4 1
 reset_vec CODE 0 0 0 4 1
 idloc IDLOC 0 200000 200000 8 1
@@ -71,77 +71,77 @@ STACK 000080-0005FF 1
 $dist/default/production\tlc5940_servo_controller.X.production.obj
 "E:\documents\mplab projects\tlc5940_servo_controller.X\main.c":29 8 intcode CODE
 "E:\documents\mplab projects\tlc5940_servo_controller.X\main.c":70 8 intcode CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":41 1C text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":43 1C text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":45 2C text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":46 2E text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":47 30 text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":48 32 text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":50 34 text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":51 38 text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":52 3C text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":53 40 text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":54 44 text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":55 48 text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":56 4C text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":57 50 text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":58 54 text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":59 58 text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":60 5C text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":61 60 text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":62 64 text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":63 68 text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":64 6C text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":65 70 text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":68 74 text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":69 7A text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":70 80 text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":71 86 text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":72 8C text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":73 92 text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":74 98 text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":75 9E text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":76 A4 text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":77 AA text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":78 B0 text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":79 B6 text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":80 BC text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":81 C2 text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":82 C8 text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":83 CE text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":84 D4 text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":85 DA text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":86 E0 text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":87 E6 text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":88 EC text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":89 F2 text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":90 F8 text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":91 FE text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":93 104 text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":94 114 text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":95 116 text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":96 126 text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":98 128 text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":100 12E text4 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":102 130 text1 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":104 130 text1 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":106 140 text1 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":107 142 text1 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":108 144 text1 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":109 146 text1 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":111 148 text1 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":112 14C text1 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":114 152 text1 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":115 178 text1 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":116 19E text1 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":117 1C6 text1 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":112 1C8 text1 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":120 1D0 text1 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":121 1E0 text1 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":122 1E2 text1 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":123 1F2 text1 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":124 1F4 text1 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":125 1F6 text1 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":127 1C text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":129 1C text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":131 2C text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":132 2E text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":133 30 text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":134 32 text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":136 34 text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":137 38 text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":138 3C text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":139 40 text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":140 44 text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":141 48 text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":142 4C text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":143 50 text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":144 54 text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":145 58 text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":146 5C text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":147 60 text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":148 64 text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":149 68 text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":150 6C text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":151 70 text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":154 74 text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":155 7A text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":156 80 text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":157 86 text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":158 8C text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":159 92 text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":160 98 text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":161 9E text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":162 A4 text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":163 AA text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":164 B0 text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":165 B6 text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":166 BC text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":167 C2 text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":168 C8 text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":169 CE text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":170 D4 text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":171 DA text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":172 E0 text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":173 E6 text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":174 EC text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":175 F2 text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":176 F8 text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":177 FE text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":179 104 text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":180 114 text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":181 116 text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":182 126 text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":184 128 text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":186 12E text4 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":188 130 text1 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":190 130 text1 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":192 140 text1 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":193 142 text1 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":194 144 text1 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":195 146 text1 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":197 148 text1 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":198 14C text1 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":200 152 text1 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":201 178 text1 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":202 19E text1 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":203 1C6 text1 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":198 1C8 text1 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":206 1D0 text1 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":207 1E0 text1 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":208 1E2 text1 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":209 1F2 text1 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":210 1F4 text1 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":211 1F6 text1 CODE
 "E:\Program Files (x86)\Microchip\xc8\v1.32\include\pic18f4520.h":7259 1F8 intcode_body CODE
 "E:\documents\mplab projects\tlc5940_servo_controller.X\main.c":29 1F8 intcode_body CODE
 "E:\documents\mplab projects\tlc5940_servo_controller.X\main.c":31 226 intcode_body CODE
@@ -189,27 +189,27 @@ $dist/default/production\tlc5940_servo_controller.X.production.obj
 "E:\documents\mplab projects\tlc5940_servo_controller.X\main.c":114 30C text0 CODE
 "E:\documents\mplab projects\tlc5940_servo_controller.X\main.c":115 310 text0 CODE
 "E:\documents\mplab projects\tlc5940_servo_controller.X\main.c":116 314 text0 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":16 31A text5 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":18 31A text5 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":19 31C text5 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":20 31E text5 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":22 32E text5 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":23 334 text5 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":24 33A text5 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":25 340 text5 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":26 346 text5 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":27 34C text5 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":28 352 text5 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":29 358 text5 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":30 35E text5 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":31 364 text5 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":32 36A text5 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":33 370 text5 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":35 376 text5 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":36 386 text5 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":37 388 text5 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":38 398 text5 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":39 39A text5 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":102 31A text5 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":104 31A text5 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":105 31C text5 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":106 31E text5 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":108 32E text5 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":109 334 text5 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":110 33A text5 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":111 340 text5 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":112 346 text5 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":113 34C text5 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":114 352 text5 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":115 358 text5 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":116 35E text5 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":117 364 text5 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":118 36A text5 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":119 370 text5 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":121 376 text5 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":122 386 text5 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":123 388 text5 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":124 398 text5 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":125 39A text5 CODE
 "E:\documents\mplab projects\tlc5940_servo_controller.X\main.c":21 39C text7 CODE
 "E:\documents\mplab projects\tlc5940_servo_controller.X\main.c":23 39C text7 CODE
 "E:\documents\mplab projects\tlc5940_servo_controller.X\main.c":25 3B4 text7 CODE
@@ -224,9 +224,9 @@ $dist/default/production\tlc5940_servo_controller.X.production.obj
 "E:\documents\mplab projects\tlc5940_servo_controller.X\main.c":68 3E0 text8 CODE
 "E:\documents\mplab projects\tlc5940_servo_controller.X\main.c":69 3E4 text8 CODE
 "E:\documents\mplab projects\tlc5940_servo_controller.X\main.c":70 3E6 text8 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":127 3E8 text3 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":129 3EA text3 CODE
-"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":130 400 text3 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":213 3E8 text3 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":215 3EA text3 CODE
+"E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":216 400 text3 CODE
 "E:\documents\mplab projects\tlc5940_servo_controller.X\main.c":45 402 text2 CODE
 "E:\documents\mplab projects\tlc5940_servo_controller.X\main.c":47 402 text2 CODE
 "E:\documents\mplab projects\tlc5940_servo_controller.X\main.c":48 404 text2 CODE
@@ -243,18 +243,18 @@ $dist/default/production\tlc5940_servo_controller.X.production.obj
 "E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":12 41A text6 CODE
 "E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":13 41E text6 CODE
 "E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c":14 42C text6 CODE
-"C:\Users\zbbl222\AppData\Local\Temp\s55s.":789 42E cinit CODE
-"C:\Users\zbbl222\AppData\Local\Temp\s55s.":791 42E cinit CODE
-"C:\Users\zbbl222\AppData\Local\Temp\s55s.":794 42E cinit CODE
-"C:\Users\zbbl222\AppData\Local\Temp\s55s.":808 42E cinit CODE
-"C:\Users\zbbl222\AppData\Local\Temp\s55s.":809 432 cinit CODE
-"C:\Users\zbbl222\AppData\Local\Temp\s55s.":810 434 cinit CODE
-"C:\Users\zbbl222\AppData\Local\Temp\s55s.":811 434 cinit CODE
-"C:\Users\zbbl222\AppData\Local\Temp\s55s.":812 436 cinit CODE
-"C:\Users\zbbl222\AppData\Local\Temp\s55s.":813 438 cinit CODE
-"C:\Users\zbbl222\AppData\Local\Temp\s55s.":819 43A cinit CODE
-"C:\Users\zbbl222\AppData\Local\Temp\s55s.":820 43A cinit CODE
-"C:\Users\zbbl222\AppData\Local\Temp\s55s.":821 43C cinit CODE
+"C:\Users\zbbl222\AppData\Local\Temp\s364.":789 42E cinit CODE
+"C:\Users\zbbl222\AppData\Local\Temp\s364.":791 42E cinit CODE
+"C:\Users\zbbl222\AppData\Local\Temp\s364.":794 42E cinit CODE
+"C:\Users\zbbl222\AppData\Local\Temp\s364.":808 42E cinit CODE
+"C:\Users\zbbl222\AppData\Local\Temp\s364.":809 432 cinit CODE
+"C:\Users\zbbl222\AppData\Local\Temp\s364.":810 434 cinit CODE
+"C:\Users\zbbl222\AppData\Local\Temp\s364.":811 434 cinit CODE
+"C:\Users\zbbl222\AppData\Local\Temp\s364.":812 436 cinit CODE
+"C:\Users\zbbl222\AppData\Local\Temp\s364.":813 438 cinit CODE
+"C:\Users\zbbl222\AppData\Local\Temp\s364.":819 43A cinit CODE
+"C:\Users\zbbl222\AppData\Local\Temp\s364.":820 43A cinit CODE
+"C:\Users\zbbl222\AppData\Local\Temp\s364.":821 43C cinit CODE
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -276,8 +276,8 @@ __CFG_PWRT$OFF 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.pr
 __Lintentry 0 0 ABS 0 intentry dist/default/production\tlc5940_servo_controller.X.production.obj
 delay_sec@i 10 0 COMRAM 1 cstackCOMRAM dist/default/production\tlc5940_servo_controller.X.production.obj
 _main 28A 0 CODE 0 text0 dist/default/production\tlc5940_servo_controller.X.production.obj
-___sp 0 0 STACK 2 stack C:\Users\zbbl222\AppData\Local\Temp\s55s.obj
-start 18 0 CODE 0 init C:\Users\zbbl222\AppData\Local\Temp\s55s.obj
+___sp 0 0 STACK 2 stack C:\Users\zbbl222\AppData\Local\Temp\s364.obj
+start 18 0 CODE 0 init C:\Users\zbbl222\AppData\Local\Temp\s364.obj
 set_channel@channel_number 10 0 COMRAM 1 cstackCOMRAM dist/default/production\tlc5940_servo_controller.X.production.obj
 _TRISA F92 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
 _TRISB F93 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
@@ -354,10 +354,10 @@ __LnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production\tlc5940_servo_controll
 __end_of_blank_pulse 28A 0 CODE 0 intcode_body dist/default/production\tlc5940_servo_controller.X.production.obj
 __Hdata 0 0 ABS 0 data dist/default/production\tlc5940_servo_controller.X.production.obj
 __Ldata 0 0 ABS 0 data dist/default/production\tlc5940_servo_controller.X.production.obj
-stackhi 5FF 0 ABS 0 - C:\Users\zbbl222\AppData\Local\Temp\s55s.obj
+stackhi 5FF 0 ABS 0 - C:\Users\zbbl222\AppData\Local\Temp\s364.obj
 __Htemp 0 0 COMRAM 1 temp dist/default/production\tlc5940_servo_controller.X.production.obj
 __Ltemp 0 0 COMRAM 1 temp dist/default/production\tlc5940_servo_controller.X.production.obj
-stacklo 80 0 ABS 0 - C:\Users\zbbl222\AppData\Local\Temp\s55s.obj
+stacklo 80 0 ABS 0 - C:\Users\zbbl222\AppData\Local\Temp\s364.obj
 __Hrbit 0 0 COMRAM 1 rbit dist/default/production\tlc5940_servo_controller.X.production.obj
 __Lrbit 0 0 COMRAM 1 rbit dist/default/production\tlc5940_servo_controller.X.production.obj
 __Hinit 18 0 CODE 0 init dist/default/production\tlc5940_servo_controller.X.production.obj
@@ -468,8 +468,8 @@ __Hcinit 0 0 ABS 0 cinit dist/default/production\tlc5940_servo_controller.X.prod
 __Lcinit 0 0 ABS 0 cinit dist/default/production\tlc5940_servo_controller.X.production.obj
 __end_of_TMR2_init 3E8 0 CODE 0 text8 dist/default/production\tlc5940_servo_controller.X.production.obj
 __pcinit 42E 0 CODE 0 cinit dist/default/production\tlc5940_servo_controller.X.production.obj
-__ramtop 600 0 RAM 0 ramtop C:\Users\zbbl222\AppData\Local\Temp\s55s.obj
-__mediumconst 0 0 MEDIUMCONST 0 mediumconst C:\Users\zbbl222\AppData\Local\Temp\s55s.obj
+__ramtop 600 0 RAM 0 ramtop C:\Users\zbbl222\AppData\Local\Temp\s364.obj
+__mediumconst 0 0 MEDIUMCONST 0 mediumconst C:\Users\zbbl222\AppData\Local\Temp\s364.obj
 __size_of_delay_sec 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
 __size_of_spi_init 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
 __size_of_main 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
@@ -477,14 +477,14 @@ __Hconst 0 0 CODE 0 const dist/default/production\tlc5940_servo_controller.X.pro
 __Lconst 0 0 CODE 0 const dist/default/production\tlc5940_servo_controller.X.production.obj
 __size_of_serial_send_data 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
 __end_of_serial_send_data 42E 0 CODE 0 text6 dist/default/production\tlc5940_servo_controller.X.production.obj
-___inthi_sp 0 0 STACK 2 stack C:\Users\zbbl222\AppData\Local\Temp\s55s.obj
+___inthi_sp 0 0 STACK 2 stack C:\Users\zbbl222\AppData\Local\Temp\s364.obj
 __CFG_BOREN$OFF 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
-___intlo_sp 0 0 STACK 2 stack C:\Users\zbbl222\AppData\Local\Temp\s55s.obj
+___intlo_sp 0 0 STACK 2 stack C:\Users\zbbl222\AppData\Local\Temp\s364.obj
 _INTCONbits FF2 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
 __Hend_init 1C 0 CODE 0 end_init dist/default/production\tlc5940_servo_controller.X.production.obj
 __Lend_init 18 0 CODE 0 end_init dist/default/production\tlc5940_servo_controller.X.production.obj
 __CFG_CP0$OFF 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
-__smallconst 0 0 SMALLCONST 0 smallconst C:\Users\zbbl222\AppData\Local\Temp\s55s.obj
+__smallconst 0 0 SMALLCONST 0 smallconst C:\Users\zbbl222\AppData\Local\Temp\s364.obj
 set_channel@value F 0 COMRAM 1 cstackCOMRAM dist/default/production\tlc5940_servo_controller.X.production.obj
 _init_grayscale 1C 0 CODE 0 text4 dist/default/production\tlc5940_servo_controller.X.production.obj
 __CFG_CP1$OFF 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
@@ -492,15 +492,15 @@ __Hreset_vec 4 0 CODE 0 reset_vec dist/default/production\tlc5940_servo_controll
 __Lreset_vec 0 0 CODE 0 reset_vec dist/default/production\tlc5940_servo_controller.X.production.obj
 __CFG_CP2$OFF 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
 __CFG_CP3$OFF 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
-__accesstop 80 0 ABS 0 - C:\Users\zbbl222\AppData\Local\Temp\s55s.obj
+__accesstop 80 0 ABS 0 - C:\Users\zbbl222\AppData\Local\Temp\s364.obj
 __Hintcode_body 0 0 ABS 0 intcode_body dist/default/production\tlc5940_servo_controller.X.production.obj
 __Lintcode_body 0 0 ABS 0 intcode_body dist/default/production\tlc5940_servo_controller.X.production.obj
 __pintcode_body 1F8 0 CODE 0 intcode_body dist/default/production\tlc5940_servo_controller.X.production.obj
-intlevel0 0 0 CODE 0 text C:\Users\zbbl222\AppData\Local\Temp\s55s.obj
-intlevel1 0 0 CODE 0 text C:\Users\zbbl222\AppData\Local\Temp\s55s.obj
+intlevel0 0 0 CODE 0 text C:\Users\zbbl222\AppData\Local\Temp\s364.obj
+intlevel1 0 0 CODE 0 text C:\Users\zbbl222\AppData\Local\Temp\s364.obj
 __size_of_TMR2_init 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
-intlevel2 0 0 CODE 0 text C:\Users\zbbl222\AppData\Local\Temp\s55s.obj
-intlevel3 0 0 CODE 0 text C:\Users\zbbl222\AppData\Local\Temp\s55s.obj
+intlevel2 0 0 CODE 0 text C:\Users\zbbl222\AppData\Local\Temp\s364.obj
+intlevel3 0 0 CODE 0 text C:\Users\zbbl222\AppData\Local\Temp\s364.obj
 start_initialization 42E 0 CODE 0 cinit dist/default/production\tlc5940_servo_controller.X.production.obj
 __end_of_delay_sec 3CC 0 CODE 0 text7 dist/default/production\tlc5940_servo_controller.X.production.obj
 __CFG_MCLRE$ON 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
