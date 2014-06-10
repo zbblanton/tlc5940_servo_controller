@@ -2,163 +2,160 @@
 [d version 1.1 ]
 [d edition pro ]
 [d chip 18F4520 ]
-"22 D:/Google Drive/Sync/Dropbox/Microchip/Projects/rLamp.X/main.c
-[v _delay_sec delay_sec `(v  1 e 0 0 ]
-"30
-[v _blank_pulse blank_pulse `II(v  1 e 0 0 ]
-"46
-[v _spi_init spi_init `(v  1 e 0 0 ]
-"61
-[v _TMR2_init TMR2_init `(v  1 e 0 0 ]
-"73
-[v _main main `(i  1 e 2 0 ]
-"11 D:/Google Drive/Sync/Dropbox/Microchip/Projects/rLamp.X/tlc5940.c
-[v _serial_send_data serial_send_data `(v  1 e 0 0 ]
-"17
-[v _init_dot_correction init_dot_correction `(v  1 e 0 0 ]
-"42
-[v _init_grayscale init_grayscale `(v  1 e 0 0 ]
-"103
-[v _update_grayscale update_grayscale `(v  1 e 0 0 ]
-"128
-[v _set_channel set_channel `(v  1 e 0 0 ]
-"5 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\abdiv.c
+[d frameptr 4065 ]
+"4 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\abdiv.c
 [v ___abdiv __abdiv `(c  1 e 1 0 ]
-"5 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\abmod.c
+"4 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\abmod.c
 [v ___abmod __abmod `(c  1 e 1 0 ]
-"32 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\abtofl.c
+"31 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\abtofl.c
 [v ___abtofl __abtofl `(d  1 e 3 0 ]
-"34 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\abtoft.c
+"33 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\abtoft.c
 [v ___abtoft __abtoft `(f  1 e 3 0 ]
-"10 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\aldiv.c
+"8 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\aldiv.c
 [v ___aldiv __aldiv `(l  1 e 4 0 ]
-"10 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\almod.c
+"8 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\almod.c
 [v ___almod __almod `(l  1 e 4 0 ]
-"37 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\altofl.c
+"36 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\altofl.c
 [v ___altofl __altofl `(d  1 e 3 0 ]
-"43 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\altoft.c
+"42 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\altoft.c
 [v ___altoft __altoft `(f  1 e 3 0 ]
-"10 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\atdiv.c
+"8 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\atdiv.c
 [v ___atdiv __atdiv `(m  1 e 3 0 ]
-"10 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\atmod.c
+"8 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\atmod.c
 [v ___atmod __atmod `(m  1 e 3 0 ]
-"38 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\attofl.c
+"37 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\attofl.c
 [v ___attofl __attofl `(d  1 e 3 0 ]
-"38 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\attoft.c
+"37 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\attoft.c
 [v ___attoft __attoft `(f  1 e 3 0 ]
-"10 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\awdiv.c
+"8 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
-"10 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\awmod.c
+"8 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]
-"32 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\awtofl.c
+"31 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\awtofl.c
 [v ___awtofl __awtofl `(d  1 e 3 0 ]
-"33 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\awtoft.c
+"32 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\awtoft.c
 [v ___awtoft __awtoft `(f  1 e 3 0 ]
-"3 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\bmul.c
-[v ___bmul __bmul `(uc  1 e 1 0 ]
-"64 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\double.c
+"63 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\double.c
 [v ___flpack __flpack `(d  1 e 3 0 ]
-"89 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\fladd.c
+"88 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\fladd.c
 [v ___fladd __fladd `(d  1 e 3 0 ]
-"50 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\fldiv.c
+"49 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\fldiv.c
 [v ___fldiv __fldiv `(d  1 e 3 0 ]
-"5 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\flge.c
+"4 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\flge.c
 [v ___flge __flge `(b  1 e 0 0 ]
-"51 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\flmul.c
+"62 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\flmul.c
 [v ___flmul __flmul `(d  1 e 3 0 ]
-"16 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\flneg.c
+"15 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\flneg.c
 [v ___flneg __flneg `(d  1 e 3 0 ]
-"63 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\float.c
+"62 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\float.c
 [v ___ftpack __ftpack `(f  1 e 3 0 ]
-"22 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\flsub.c
+"20 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\flsub.c
 [v ___flsub __flsub `(d  1 e 3 0 ]
-"44 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\fltol.c
+"43 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\fltol.c
 [v ___fltol __fltol `(l  1 e 4 0 ]
-"87 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\ftadd.c
+"86 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\ftadd.c
 [v ___ftadd __ftadd `(f  1 e 3 0 ]
-"50 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\ftdiv.c
+"49 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\ftdiv.c
 [v ___ftdiv __ftdiv `(f  1 e 3 0 ]
-"5 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\ftge.c
+"4 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\ftge.c
 [v ___ftge __ftge `(b  1 e 0 0 ]
-"52 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\ftmul.c
+"62 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\ftmul.c
 [v ___ftmul __ftmul `(f  1 e 3 0 ]
-"16 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\ftneg.c
+"15 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\ftneg.c
 [v ___ftneg __ftneg `(f  1 e 3 0 ]
-"22 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\ftsub.c
+"20 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\ftsub.c
 [v ___ftsub __ftsub `(f  1 e 3 0 ]
-"45 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\fttol.c
+"44 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\fttol.c
 [v ___fttol __fttol `(l  1 e 4 0 ]
-"5 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\lbdiv.c
+"4 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\lbdiv.c
 [v ___lbdiv __lbdiv `(uc  1 e 1 0 ]
-"5 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\lbmod.c
+"4 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\lbmod.c
 [v ___lbmod __lbmod `(uc  1 e 1 0 ]
-"28 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\lbtofl.c
+"27 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\lbtofl.c
 [v ___lbtofl __lbtofl `(d  1 e 3 0 ]
-"28 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\lbtoft.c
+"27 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\lbtoft.c
 [v ___lbtoft __lbtoft `(f  1 e 3 0 ]
-"10 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\lldiv.c
+"8 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\lldiv.c
 [v ___lldiv __lldiv `(ul  1 e 4 0 ]
-"10 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\llmod.c
+"8 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\llmod.c
 [v ___llmod __llmod `(ul  1 e 4 0 ]
-"31 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\lltofl.c
+"30 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\lltofl.c
 [v ___lltofl __lltofl `(d  1 e 3 0 ]
-"36 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\lltoft.c
+"35 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\lltoft.c
 [v ___lltoft __lltoft `(f  1 e 3 0 ]
-"3 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\lmul.c
-[v ___lmul __lmul `(ul  1 e 4 0 ]
-"10 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\ltdiv.c
+"8 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\ltdiv.c
 [v ___ltdiv __ltdiv `(um  1 e 3 0 ]
-"10 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\ltmod.c
+"8 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\ltmod.c
 [v ___ltmod __ltmod `(um  1 e 3 0 ]
-"31 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\lttofl.c
+"30 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\lttofl.c
 [v ___lttofl __lttofl `(d  1 e 3 0 ]
-"31 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\lttoft.c
+"30 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\lttoft.c
 [v ___lttoft __lttoft `(f  1 e 3 0 ]
-"10 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\lwdiv.c
+"8 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\lwdiv.c
 [v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
-"10 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\lwmod.c
+"8 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\lwmod.c
 [v ___lwmod __lwmod `(ui  1 e 2 0 ]
-"29 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\lwtofl.c
+"28 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\lwtofl.c
 [v ___lwtofl __lwtofl `(d  1 e 3 0 ]
-"29 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\lwtoft.c
+"28 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\lwtoft.c
 [v ___lwtoft __lwtoft `(f  1 e 3 0 ]
-"3 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\tmul.c
-[v ___tmul __tmul `(um  1 e 3 0 ]
-"5 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\common\wmul.c
+"15 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
-"5 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\pic18\asfladd.c
+"15 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\Umul24.c
+[v ___tmul __tmul `(um  1 e 3 0 ]
+"15 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"4 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+"6 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\pic18\asfladd.c
 [v ___asfladd __asfladd `(d  1 e 3 0 ]
-"5 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\pic18\asfldiv.c
+"6 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\pic18\asfldiv.c
 [v ___asfldiv __asfldiv `(d  1 e 3 0 ]
-"5 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\pic18\asflmul.c
+"6 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\pic18\asflmul.c
 [v ___asflmul __asflmul `(d  1 e 3 0 ]
-"5 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\pic18\asflsub.c
+"6 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\pic18\asflsub.c
 [v ___asflsub __asflsub `(d  1 e 3 0 ]
-"5 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\pic18\asftadd.c
+"6 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\pic18\asftadd.c
 [v ___asftadd __asftadd `(f  1 e 3 0 ]
-"5 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\pic18\asftdiv.c
+"6 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\pic18\asftdiv.c
 [v ___asftdiv __asftdiv `(f  1 e 3 0 ]
-"5 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\pic18\asftmul.c
+"6 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\pic18\asftmul.c
 [v ___asftmul __asftmul `(f  1 e 3 0 ]
-"5 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\pic18\asftsub.c
+"6 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\pic18\asftsub.c
 [v ___asftsub __asftsub `(f  1 e 3 0 ]
-"5 D:\Program Files (x86)\Microchip\xc8\v1.20\sources\pic18\aslmul.c
+"6 E:\Program Files (x86)\Microchip\xc8\v1.32\sources\pic18\aslmul.c
 [v ___aslmul __aslmul `(ul  1 e 4 0 ]
-"19 D:/Google Drive/Sync/Dropbox/Microchip/Projects/rLamp.X/main.c
-[v _count count `VEi  1 e 2 0 ]
-"8 D:/Google Drive/Sync/Dropbox/Microchip/Projects/rLamp.X/tlc5940.c
-[v _channel channel `[16]uc  1 e 16 0 ]
-"44 D:\Program Files (x86)\Microchip\xc8\v1.20\include\pic18f4520.h
+"21 E:\documents\mplab projects\tlc5940_servo_controller.X\main.c
+[v _delay_sec delay_sec `(v  1 e 0 0 ]
+"29
+[v _blank_pulse blank_pulse `II(v  1 e 0 0 ]
+"45
+[v _spi_init spi_init `(v  1 e 0 0 ]
+"60
+[v _TMR2_init TMR2_init `(v  1 e 0 0 ]
+"72
+[v _main main `(i  1 e 2 0 ]
+"10 E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c
+[v _serial_send_data serial_send_data `(v  1 e 0 0 ]
+"16
+[v _init_dot_correction init_dot_correction `(v  1 e 0 0 ]
+"41
+[v _init_grayscale init_grayscale `(v  1 e 0 0 ]
+"102
+[v _update_grayscale update_grayscale `(v  1 e 0 0 ]
+"127
+[v _set_channel set_channel `(v  1 e 0 0 ]
+"47 E:\Program Files (x86)\Microchip\xc8\v1.32\include\pic18f4520.h
 [v _PORTA PORTA `VEuc  1 e 1 @3968 ]
-"264
+"267
 [v _PORTB PORTB `VEuc  1 e 1 @3969 ]
-"442
+"445
 [v _PORTC PORTC `VEuc  1 e 1 @3970 ]
-"626
+"629
 [v _PORTD PORTD `VEuc  1 e 1 @3971 ]
-"767
+"770
 [v _PORTE PORTE `VEuc  1 e 1 @3972 ]
-[s S96 . 1 `uc 1 LATD0 1 0 :1:0 
+[s S28 . 1 `uc 1 LATD0 1 0 :1:0 
 `uc 1 LATD1 1 0 :1:1 
 `uc 1 LATD2 1 0 :1:2 
 `uc 1 LATD3 1 0 :1:3 
@@ -167,39 +164,39 @@
 `uc 1 LATD6 1 0 :1:6 
 `uc 1 LATD7 1 0 :1:7 
 ]
-"1539
-[s S105 . 1 `uc 1 LD0 1 0 :1:0 
+"1542
+[s S37 . 1 `uc 1 LD0 1 0 :1:0 
 ]
-[s S107 . 1 `uc 1 . 1 0 :1:0 
+[s S39 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 LD1 1 0 :1:1 
 ]
-[s S110 . 1 `uc 1 . 1 0 :2:0 
+[s S42 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 LD2 1 0 :1:2 
 ]
-[s S113 . 1 `uc 1 . 1 0 :3:0 
+[s S45 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 LD3 1 0 :1:3 
 ]
-[s S116 . 1 `uc 1 . 1 0 :4:0 
+[s S48 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 LD4 1 0 :1:4 
 ]
-[s S119 . 1 `uc 1 . 1 0 :5:0 
+[s S51 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 LD5 1 0 :1:5 
 ]
-[s S122 . 1 `uc 1 . 1 0 :6:0 
+[s S54 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 LD6 1 0 :1:6 
 ]
-[s S125 . 1 `uc 1 . 1 0 :7:0 
+[s S57 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 LD7 1 0 :1:7 
 ]
-[u S128 . 1 `S96 1 . 1 0 `S105 1 . 1 0 `S107 1 . 1 0 `S110 1 . 1 0 `S113 1 . 1 0 `S116 1 . 1 0 `S119 1 . 1 0 `S122 1 . 1 0 `S125 1 . 1 0 ]
-[v _LATDbits LATDbits `VES128  1 e 1 @3980 ]
-"1725
+[u S60 . 1 `S28 1 . 1 0 `S37 1 . 1 0 `S39 1 . 1 0 `S42 1 . 1 0 `S45 1 . 1 0 `S48 1 . 1 0 `S51 1 . 1 0 `S54 1 . 1 0 `S57 1 . 1 0 ]
+[v _LATDbits LATDbits `VES60  1 e 1 @3980 ]
+"1728
 [v _TRISA TRISA `VEuc  1 e 1 @3986 ]
-"1946
+"1949
 [v _TRISB TRISB `VEuc  1 e 1 @3987 ]
-"2167
+"2170
 [v _TRISC TRISC `VEuc  1 e 1 @3988 ]
-[s S357 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S465 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -208,8 +205,8 @@
 `uc 1 TRISC6 1 0 :1:6 
 `uc 1 TRISC7 1 0 :1:7 
 ]
-"2199
-[s S366 . 1 `uc 1 RC0 1 0 :1:0 
+"2202
+[s S474 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -218,13 +215,13 @@
 `uc 1 RC6 1 0 :1:6 
 `uc 1 RC7 1 0 :1:7 
 ]
-[u S375 . 1 `S357 1 . 1 0 `S366 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES375  1 e 1 @3988 ]
-"2388
+[u S483 . 1 `S465 1 . 1 0 `S474 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES483  1 e 1 @3988 ]
+"2391
 [v _TRISD TRISD `VEuc  1 e 1 @3989 ]
-"2609
+"2612
 [v _TRISE TRISE `VEuc  1 e 1 @3990 ]
-[s S26 . 1 `uc 1 TMR1IE 1 0 :1:0 
+[s S166 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 CCP1IE 1 0 :1:2 
 `uc 1 SSPIE 1 0 :1:3 
@@ -233,43 +230,43 @@
 `uc 1 ADIE 1 0 :1:6 
 `uc 1 PSPIE 1 0 :1:7 
 ]
-"2861
-[s S35 . 1 `uc 1 . 1 0 :5:0 
+"2864
+[s S175 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 RC1IE 1 0 :1:5 
 ]
-[s S38 . 1 `uc 1 . 1 0 :4:0 
+[s S178 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 TX1IE 1 0 :1:4 
 ]
-[u S41 . 1 `S26 1 . 1 0 `S35 1 . 1 0 `S38 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES41  1 e 1 @3997 ]
-"2940
-[v _PIR1bits PIR1bits `VES41  1 e 1 @3998 ]
-"4687
+[u S181 . 1 `S166 1 . 1 0 `S175 1 . 1 0 `S178 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES181  1 e 1 @3997 ]
+"2943
+[v _PIR1bits PIR1bits `VES181  1 e 1 @3998 ]
+"4776
 [v _CCP1CON CCP1CON `VEuc  1 e 1 @4029 ]
-"4789
+"4878
 [v _CCPR1L CCPR1L `VEuc  1 e 1 @4030 ]
-[s S331 . 1 `uc 1 SSPM 1 0 :4:0 
+[s S439 . 1 `uc 1 SSPM 1 0 :4:0 
 `uc 1 CKP 1 0 :1:4 
 `uc 1 SSPEN 1 0 :1:5 
 `uc 1 SSPOV 1 0 :1:6 
 `uc 1 WCOL 1 0 :1:7 
 ]
-"5215
-[s S337 . 1 `uc 1 SSPM0 1 0 :1:0 
+"5304
+[s S445 . 1 `uc 1 SSPM0 1 0 :1:0 
 `uc 1 SSPM1 1 0 :1:1 
 `uc 1 SSPM2 1 0 :1:2 
 `uc 1 SSPM3 1 0 :1:3 
 ]
-[u S342 . 1 `S331 1 . 1 0 `S337 1 . 1 0 ]
-[v _SSPCON1bits SSPCON1bits `VES342  1 e 1 @4038 ]
-[s S171 . 1 `uc 1 . 1 0 :2:0 
+[u S450 . 1 `S439 1 . 1 0 `S445 1 . 1 0 ]
+[v _SSPCON1bits SSPCON1bits `VES450  1 e 1 @4038 ]
+[s S279 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_NOT_W 1 0 :1:2 
 ]
-"5359
-[s S174 . 1 `uc 1 . 1 0 :5:0 
+"5448
+[s S282 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 D_NOT_A 1 0 :1:5 
 ]
-[s S177 . 1 `uc 1 BF 1 0 :1:0 
+[s S285 . 1 `uc 1 BF 1 0 :1:0 
 `uc 1 UA 1 0 :1:1 
 `uc 1 R_nW 1 0 :1:2 
 `uc 1 S 1 0 :1:3 
@@ -278,67 +275,67 @@
 `uc 1 CKE 1 0 :1:6 
 `uc 1 SMP 1 0 :1:7 
 ]
-[s S192 . 1 `uc 1 . 1 0 :2:0 
+[s S300 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D 1 0 :1:5 
 ]
-[s S197 . 1 `uc 1 . 1 0 :2:0 
+[s S305 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 A 1 0 :1:5 
 ]
-[s S202 . 1 `uc 1 . 1 0 :2:0 
+[s S310 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA 1 0 :1:5 
 ]
-[s S207 . 1 `uc 1 . 1 0 :2:0 
+[s S315 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A 1 0 :1:5 
 ]
-[s S212 . 1 `uc 1 . 1 0 :2:0 
+[s S320 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_WRITE 1 0 :1:2 
 ]
-[s S215 . 1 `uc 1 . 1 0 :5:0 
+[s S323 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 NOT_ADDRESS 1 0 :1:5 
 ]
-[s S218 . 1 `uc 1 . 1 0 :2:0 
+[s S326 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS 1 0 :1:5 
 ]
-[s S223 . 1 `uc 1 . 1 0 :5:0 
+[s S331 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 DA 1 0 :1:5 
 ]
-[s S226 . 1 `uc 1 . 1 0 :2:0 
+[s S334 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 RW 1 0 :1:2 
 ]
-[s S229 . 1 `uc 1 . 1 0 :3:0 
+[s S337 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 START 1 0 :1:3 
 ]
-[s S232 . 1 `uc 1 . 1 0 :4:0 
+[s S340 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 STOP 1 0 :1:4 
 ]
-[s S235 . 1 `uc 1 . 1 0 :2:0 
+[s S343 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_W 1 0 :1:2 
 ]
-[s S238 . 1 `uc 1 . 1 0 :5:0 
+[s S346 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 NOT_A 1 0 :1:5 
 ]
-[u S241 . 1 `S171 1 . 1 0 `S174 1 . 1 0 `S177 1 . 1 0 `S171 1 . 1 0 `S174 1 . 1 0 `S192 1 . 1 0 `S197 1 . 1 0 `S202 1 . 1 0 `S207 1 . 1 0 `S212 1 . 1 0 `S215 1 . 1 0 `S218 1 . 1 0 `S223 1 . 1 0 `S226 1 . 1 0 `S229 1 . 1 0 `S232 1 . 1 0 `S235 1 . 1 0 `S238 1 . 1 0 ]
-[v _SSPSTATbits SSPSTATbits `VES241  1 e 1 @4039 ]
-"5509
+[u S349 . 1 `S279 1 . 1 0 `S282 1 . 1 0 `S285 1 . 1 0 `S279 1 . 1 0 `S282 1 . 1 0 `S300 1 . 1 0 `S305 1 . 1 0 `S310 1 . 1 0 `S315 1 . 1 0 `S320 1 . 1 0 `S323 1 . 1 0 `S326 1 . 1 0 `S331 1 . 1 0 `S334 1 . 1 0 `S337 1 . 1 0 `S340 1 . 1 0 `S343 1 . 1 0 `S346 1 . 1 0 ]
+[v _SSPSTATbits SSPSTATbits `VES349  1 e 1 @4039 ]
+"5598
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @4041 ]
-"5515
+"5604
 [v _T2CON T2CON `VEuc  1 e 1 @4042 ]
-[s S403 . 1 `uc 1 T2CKPS 1 0 :2:0 
+[s S103 . 1 `uc 1 T2CKPS 1 0 :2:0 
 `uc 1 TMR2ON 1 0 :1:2 
 `uc 1 T2OUTPS 1 0 :4:3 
 ]
-"5543
-[s S407 . 1 `uc 1 T2CKPS0 1 0 :1:0 
+"5632
+[s S107 . 1 `uc 1 T2CKPS0 1 0 :1:0 
 `uc 1 T2CKPS1 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 T2OUTPS0 1 0 :1:3 
@@ -346,17 +343,17 @@
 `uc 1 T2OUTPS2 1 0 :1:5 
 `uc 1 T2OUTPS3 1 0 :1:6 
 ]
-[s S415 . 1 `uc 1 . 1 0 :3:0 
+[s S115 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 TOUTPS0 1 0 :1:3 
 `uc 1 TOUTPS1 1 0 :1:4 
 `uc 1 TOUTPS2 1 0 :1:5 
 `uc 1 TOUTPS3 1 0 :1:6 
 ]
-[u S421 . 1 `S403 1 . 1 0 `S407 1 . 1 0 `S415 1 . 1 0 ]
-[v _T2CONbits T2CONbits `VES421  1 e 1 @4042 ]
-"5612
+[u S121 . 1 `S103 1 . 1 0 `S107 1 . 1 0 `S115 1 . 1 0 ]
+[v _T2CONbits T2CONbits `VES121  1 e 1 @4042 ]
+"5701
 [v _PR2 PR2 `VEuc  1 e 1 @4043 ]
-[s S452 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S542 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -365,8 +362,8 @@
 `uc 1 PEIE_GIEL 1 0 :1:6 
 `uc 1 GIE_GIEH 1 0 :1:7 
 ]
-"6812
-[s S461 . 1 `uc 1 RBIF 1 0 :1:0 
+"6999
+[s S551 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -375,7 +372,7 @@
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S470 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S560 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -384,7 +381,7 @@
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[s S479 . 1 `uc 1 . 1 0 :1:0 
+[s S569 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 INT0F 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -393,25 +390,22 @@
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S488 . 1 `uc 1 . 1 0 :6:0 
+[s S578 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[u S492 . 1 `S452 1 . 1 0 `S461 1 . 1 0 `S470 1 . 1 0 `S479 1 . 1 0 `S488 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES492  1 e 1 @4082 ]
-"73 D:/Google Drive/Sync/Dropbox/Microchip/Projects/rLamp.X/main.c
+[u S582 . 1 `S542 1 . 1 0 `S551 1 . 1 0 `S560 1 . 1 0 `S569 1 . 1 0 `S578 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES582  1 e 1 @4082 ]
+"19 E:\documents\mplab projects\tlc5940_servo_controller.X\main.c
+[v _count count `VEi  1 e 2 0 ]
+"8 E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c
+[v _channel channel `[16]uc  1 e 16 0 ]
+"72 E:\documents\mplab projects\tlc5940_servo_controller.X\main.c
 [v _main main `(i  1 e 2 0 ]
 {
 "118
 } 0
-"128 D:/Google Drive/Sync/Dropbox/Microchip/Projects/rLamp.X/tlc5940.c
-[v _set_channel set_channel `(v  1 e 0 0 ]
-{
-[v set_channel@channel_number channel_number `uc  1 p 1 14 ]
-[v set_channel@value value `uc  1 p 1 15 ]
-"130
-} 0
-"103
+"102 E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c
 [v _update_grayscale update_grayscale `(v  1 e 0 0 ]
 {
 "112
@@ -420,40 +414,53 @@
 [v update_grayscale@counter counter `uc  1 a 1 19 ]
 "125
 } 0
-"42
-[v _init_grayscale init_grayscale `(v  1 e 0 0 ]
-{
-"100
-} 0
-"17
-[v _init_dot_correction init_dot_correction `(v  1 e 0 0 ]
-{
-"39
-} 0
-"11
-[v _serial_send_data serial_send_data `(v  1 e 0 0 ]
-{
-[v serial_send_data@data data `uc  1 p 1 14 ]
-"14
-} 0
-"61 D:/Google Drive/Sync/Dropbox/Microchip/Projects/rLamp.X/main.c
-[v _TMR2_init TMR2_init `(v  1 e 0 0 ]
-{
-"70
-} 0
-"46
+"45 E:\documents\mplab projects\tlc5940_servo_controller.X\main.c
 [v _spi_init spi_init `(v  1 e 0 0 ]
 {
 "58
 } 0
-"22
+"127 E:\documents\mplab projects\tlc5940_servo_controller.X\tlc5940.c
+[v _set_channel set_channel `(v  1 e 0 0 ]
+{
+[v set_channel@channel_number channel_number `uc  1 a 1 wreg ]
+[v set_channel@channel_number channel_number `uc  1 a 1 wreg ]
+[v set_channel@value value `uc  1 p 1 14 ]
+"129
+[v set_channel@channel_number channel_number `uc  1 a 1 15 ]
+"130
+} 0
+"41
+[v _init_grayscale init_grayscale `(v  1 e 0 0 ]
+{
+"100
+} 0
+"16
+[v _init_dot_correction init_dot_correction `(v  1 e 0 0 ]
+{
+"39
+} 0
+"10
+[v _serial_send_data serial_send_data `(v  1 e 0 0 ]
+{
+[v serial_send_data@data data `uc  1 a 1 wreg ]
+[v serial_send_data@data data `uc  1 a 1 wreg ]
+"12
+[v serial_send_data@data data `uc  1 a 1 15 ]
+"14
+} 0
+"21 E:\documents\mplab projects\tlc5940_servo_controller.X\main.c
 [v _delay_sec delay_sec `(v  1 e 0 0 ]
 {
 "23
 [v delay_sec@i i `i  1 a 2 15 ]
 "27
 } 0
-"30
+"60
+[v _TMR2_init TMR2_init `(v  1 e 0 0 ]
+{
+"70
+} 0
+"29
 [v _blank_pulse blank_pulse `II(v  1 e 0 0 ]
 {
 "43
