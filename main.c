@@ -1,6 +1,6 @@
 //Microcontroller: PIC18F4520
 //8MHz internal clock
-//Complier: xc8 v1.20
+//Complier: xc8 v1.32
 #include <xc.h>
 #include "tlc5940.h"
 
