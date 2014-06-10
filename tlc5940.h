@@ -24,8 +24,12 @@ void serial_send_data(char data);
 void init_dot_correction();
 void init_grayscale();
 void tlc_init();
-void update_grayscale();
-void set_channel(char channel_number, char value);
+void tlc_update();
+void tlc_set(char channel_number, char value);
+void tlc_write(char channel_number, char value);
+
+//Future functions
+//void tlc_sweep(char channel_number, char sweep_type, int num_of_increment);
 
 #endif	/* TLC5940_H */
 

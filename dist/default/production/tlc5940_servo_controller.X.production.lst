@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC18 LITE Macro Assembler V1.32 build 58300 
-                                                                                               Tue Jun 10 12:12:58 2014
+                                                                                               Tue Jun 10 15:49:34 2014
 
 Microchip Technology Omniscient Code Generator (Lite mode) build 58300
      1                           	processor	18F4520
@@ -20,1584 +20,1517 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
     14                           	psect	text5,global,reloc=2,class=CODE,delta=1
     15                           	psect	text6,global,reloc=2,class=CODE,delta=1
     16                           	psect	text7,global,reloc=2,class=CODE,delta=1
-    17                           	psect	text8,global,reloc=2,class=CODE,delta=1
-    18                           	psect	intcode,global,reloc=2,class=CODE,delta=1
-    19                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1
-    20                           	psect	rparam,global,class=COMRAM,space=1,delta=1
-    21  0000                     _CCP1CON	set	4029
-    22  0000                     _CCPR1L	set	4030
-    23  0000                     _INTCONbits	set	4082
-    24  0000                     _LATDbits	set	3980
-    25  0000                     _PIE1bits	set	3997
-    26  0000                     _PIR1bits	set	3998
-    27  0000                     _PORTA	set	3968
-    28  0000                     _PORTB	set	3969
-    29  0000                     _PORTC	set	3970
-    30  0000                     _PORTD	set	3971
-    31  0000                     _PORTE	set	3972
-    32  0000                     _PR2	set	4043
-    33  0000                     _SSPBUF	set	4041
-    34  0000                     _SSPCON1bits	set	4038
-    35  0000                     _SSPSTATbits	set	4039
-    36  0000                     _T2CON	set	4042
-    37  0000                     _T2CONbits	set	4042
-    38  0000                     _TRISA	set	3986
-    39  0000                     _TRISB	set	3987
-    40  0000                     _TRISC	set	3988
-    41  0000                     _TRISCbits	set	3988
-    42  0000                     _TRISD	set	3989
-    43  0000                     _TRISE	set	3990
-    44                           
-    45                           	psect	intcode_body
-    46  0001F8                     __pintcode_body:
-    47                           	opt stack 0
-    48                           
-    49                           ; #config settings
-    50  0001F8                     int_func:
-    51                           	opt stack 28
-    52  0001F8  0006               	pop		; remove dummy address from shadow register refresh
-    53  0001FA  CFEA F004          	movff	fsr0h,??_blank_pulse+3
-    54  0001FE  CFE1 F005          	movff	fsr1l,??_blank_pulse+4
-    55  000202  CFE2 F006          	movff	fsr1h,??_blank_pulse+5
-    56  000206  CFD9 F007          	movff	fsr2l,??_blank_pulse+6
-    57  00020A  CFDA F008          	movff	fsr2h,??_blank_pulse+7
-    58  00020E  CFF3 F009          	movff	prodl,??_blank_pulse+8
-    59  000212  CFF4 F00A          	movff	prodh,??_blank_pulse+9
-    60  000216  CFF6 F00B          	movff	tblptrl,??_blank_pulse+10
-    61  00021A  CFF7 F00C          	movff	tblptrh,??_blank_pulse+11
-    62  00021E  CFF8 F00D          	movff	tblptru,??_blank_pulse+12
-    63  000222  CFF5 F00E          	movff	tablat,??_blank_pulse+13
-    64                           
-    65                           ;main.c: 31: if(PIE1bits.TMR2IE && PIR1bits.TMR2IF)
-    66  000226  B29D               	btfsc	3997,1,c	;volatile
-    67  000228  A29E               	btfss	3998,1,c	;volatile
-    68  00022A  D012               	goto	i2l96
-    69                           
-    70                           ;main.c: 32: {
-    71                           ;main.c: 33: if(count >= 222)
-    72  00022C  5027               	movf	_count+1,w,c	;volatile
-    73  00022E  0A80               	xorlw	128
-    74  000230  0F80               	addlw	-128
-    75  000232  0EDE               	movlw	222
-    76  000234  B4D8               	btfsc	status,2,c
-    77  000236  5C26               	subwf	_count,w,c	;volatile
-    78  000238  A0D8               	btfss	status,0,c
-    79  00023A  D007               	goto	i2l1002
-    80                           
-    81                           ;main.c: 34: {
-    82                           ;main.c: 35: LATDbits.LD2 = 1;
-    83  00023C  848C               	bsf	3980,2,c	;volatile
-    84                           
-    85                           ;main.c: 36: _delay((unsigned long)((1)*(8000000/4000000.0)));
-    86  00023E  D000               	nop2		;2 cycle nop
-    87                           
-    88                           ;main.c: 37: LATDbits.LD2 = 0;
-    89  000240  948C               	bcf	3980,2,c	;volatile
-    90                           
-    91                           ;main.c: 38: count = 0;
-    92  000242  0E00               	movlw	0
-    93  000244  6E27               	movwf	_count+1,c	;volatile
-    94  000246  0E00               	movlw	0
-    95  000248  6E26               	movwf	_count,c	;volatile
-    96  00024A                     i2l1002:
-    97                           
-    98                           ;main.c: 39: }
-    99                           ;main.c: 40: count++;
-   100  00024A  4A26               	infsnz	_count,f,c	;volatile
-   101  00024C  2A27               	incf	_count+1,f,c	;volatile
-   102                           
-   103                           ;main.c: 41: PIR1bits.TMR2IF = 0;
-   104  00024E  929E               	bcf	3998,1,c	;volatile
-   105  000250                     i2l96:
-   106  000250  C00E  FFF5         	movff	??_blank_pulse+13,tablat
-   107  000254  C00D  FFF8         	movff	??_blank_pulse+12,tblptru
-   108  000258  C00C  FFF7         	movff	??_blank_pulse+11,tblptrh
-   109  00025C  C00B  FFF6         	movff	??_blank_pulse+10,tblptrl
-   110  000260  C00A  FFF4         	movff	??_blank_pulse+9,prodh
-   111  000264  C009  FFF3         	movff	??_blank_pulse+8,prodl
-   112  000268  C008  FFDA         	movff	??_blank_pulse+7,fsr2h
-   113  00026C  C007  FFD9         	movff	??_blank_pulse+6,fsr2l
-   114  000270  C006  FFE2         	movff	??_blank_pulse+5,fsr1h
-   115  000274  C005  FFE1         	movff	??_blank_pulse+4,fsr1l
-   116  000278  C004  FFEA         	movff	??_blank_pulse+3,fsr0h
-   117  00027C  C003  FFE9         	movff	??_blank_pulse+2,fsr0l
-   118  000280  C002  FFFB         	movff	??_blank_pulse+1,pclatu
-   119  000284  C001  FFFA         	movff	??_blank_pulse,pclath
-   120  000288  0011               	retfie		f
-   121  00028A                     __end_of_blank_pulse:
-   122                           	opt stack 0
-   123  0000                     pclatu	equ	0xFFB
-   124                           pclath	equ	0xFFA
-   125                           tblptru	equ	0xFF8
-   126                           tblptrh	equ	0xFF7
-   127                           tblptrl	equ	0xFF6
-   128                           tablat	equ	0xFF5
-   129                           prodh	equ	0xFF4
-   130                           prodl	equ	0xFF3
-   131                           fsr0h	equ	0xFEA
-   132                           fsr0l	equ	0xFE9
-   133                           fsr1h	equ	0xFE2
-   134                           fsr1l	equ	0xFE1
-   135                           fsr2h	equ	0xFDA
-   136                           fsr2l	equ	0xFD9
-   137                           status	equ	0xFD8
-   138                           
-   139                           	psect	cinit
-   140  00042E                     __pcinit:
-   141                           	opt stack 0
-   142  00042E                     start_initialization:
-   143                           	opt stack 0
-   144  00042E                     __initialization:
-   145                           	opt stack 0
-   146                           
-   147                           ; Clear objects allocated to COMRAM (18 bytes)
-   148  00042E  EE00  F016         	lfsr	0,__pbssCOMRAM
-   149  000432  0E12               	movlw	18
-   150  000434                     clear_0:
-   151  000434  6AEE               	clrf	postinc0,c
-   152  000436  06E8               	decf	wreg,f,c
-   153  000438  E1FD               	bnz	clear_0
-   154  00043A                     end_of_initialization:
-   155                           	opt stack 0
-   156  00043A                     __end_of__initialization:
-   157                           	opt stack 0
-   158  00043A  0100               	movlb	0
-   159  00043C  EF45  F001         	goto	_main	;jump to C main() function
-   160                           pclatu	equ	0xFFB
-   161                           pclath	equ	0xFFA
-   162                           tblptru	equ	0xFF8
-   163                           tblptrh	equ	0xFF7
-   164                           tblptrl	equ	0xFF6
-   165                           tablat	equ	0xFF5
-   166                           prodh	equ	0xFF4
-   167                           prodl	equ	0xFF3
-   168                           postinc0	equ	0xFEE
-   169                           fsr0h	equ	0xFEA
-   170                           fsr0l	equ	0xFE9
-   171                           wreg	equ	0xFE8
-   172                           fsr1h	equ	0xFE2
-   173                           fsr1l	equ	0xFE1
-   174                           fsr2h	equ	0xFDA
-   175                           fsr2l	equ	0xFD9
-   176                           status	equ	0xFD8
-   177                           
-   178                           	psect	bssCOMRAM
-   179  000016                     __pbssCOMRAM:
-   180                           	opt stack 0
-   181  000016                     _channel:
-   182                           	opt stack 0
-   183  000016                     	ds	16
-   184  000026                     _count:
-   185                           	opt stack 0
-   186  000026                     	ds	2
-   187                           pclatu	equ	0xFFB
-   188                           pclath	equ	0xFFA
-   189                           tblptru	equ	0xFF8
-   190                           tblptrh	equ	0xFF7
-   191                           tblptrl	equ	0xFF6
-   192                           tablat	equ	0xFF5
-   193                           prodh	equ	0xFF4
-   194                           prodl	equ	0xFF3
-   195                           postinc0	equ	0xFEE
-   196                           fsr0h	equ	0xFEA
-   197                           fsr0l	equ	0xFE9
-   198                           wreg	equ	0xFE8
-   199                           fsr1h	equ	0xFE2
-   200                           fsr1l	equ	0xFE1
-   201                           fsr2h	equ	0xFDA
-   202                           fsr2l	equ	0xFD9
-   203                           status	equ	0xFD8
-   204                           
-   205                           	psect	cstackCOMRAM
-   206  000001                     __pcstackCOMRAM:
-   207                           	opt stack 0
-   208  000001                     ??_blank_pulse:
-   209  000001                     
-   210                           ; 2 bytes @ 0x0
-   211  000001                     	ds	14
-   212  00000F                     ??_serial_send_data:
-   213  00000F                     ??_delay_sec:
-   214  00000F                     set_channel@value:
-   215                           	opt stack 0
-   216                           
-   217                           ; 1 bytes @ 0xE
-   218  00000F                     	ds	1
-   219  000010                     serial_send_data@data:
-   220                           	opt stack 0
-   221  000010                     set_channel@channel_number:
-   222                           	opt stack 0
-   223  000010                     delay_sec@i:
-   224                           	opt stack 0
-   225                           
-   226                           ; 2 bytes @ 0xF
-   227  000010                     	ds	1
-   228  000011                     ??_init_dot_correction:
-   229  000011                     ??_init_grayscale:
-   230  000011                     ??_update_grayscale:
-   231                           
-   232                           ; 0 bytes @ 0x10
-   233  000011                     	ds	3
-   234  000014                     update_grayscale@counter:
-   235                           	opt stack 0
-   236                           
-   237                           ; 1 bytes @ 0x13
-   238  000014                     	ds	1
-   239  000015                     update_grayscale@i:
-   240                           	opt stack 0
-   241                           
-   242                           ; 1 bytes @ 0x14
-   243  000015                     	ds	1
-   244  000016                     pclatu	equ	0xFFB
-   245                           pclath	equ	0xFFA
-   246                           tblptru	equ	0xFF8
-   247                           tblptrh	equ	0xFF7
-   248                           tblptrl	equ	0xFF6
-   249                           tablat	equ	0xFF5
-   250                           prodh	equ	0xFF4
-   251                           prodl	equ	0xFF3
-   252                           postinc0	equ	0xFEE
-   253                           fsr0h	equ	0xFEA
-   254                           fsr0l	equ	0xFE9
-   255                           wreg	equ	0xFE8
-   256                           fsr1h	equ	0xFE2
-   257                           fsr1l	equ	0xFE1
-   258                           fsr2h	equ	0xFDA
-   259                           fsr2l	equ	0xFD9
-   260                           status	equ	0xFD8
-   261                           
-   262                           ; 0 bytes @ 0x15
+    17                           	psect	intcode,global,reloc=2,class=CODE,delta=1
+    18                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1
+    19                           	psect	rparam,global,class=COMRAM,space=1,delta=1
+    20  0000                     _CCP1CON	set	4029
+    21  0000                     _CCPR1L	set	4030
+    22  0000                     _INTCONbits	set	4082
+    23  0000                     _LATDbits	set	3980
+    24  0000                     _PIE1bits	set	3997
+    25  0000                     _PIR1bits	set	3998
+    26  0000                     _PORTA	set	3968
+    27  0000                     _PORTB	set	3969
+    28  0000                     _PORTC	set	3970
+    29  0000                     _PORTD	set	3971
+    30  0000                     _PORTE	set	3972
+    31  0000                     _PR2	set	4043
+    32  0000                     _SSPBUF	set	4041
+    33  0000                     _SSPCON1bits	set	4038
+    34  0000                     _SSPSTATbits	set	4039
+    35  0000                     _T2CON	set	4042
+    36  0000                     _T2CONbits	set	4042
+    37  0000                     _TRISA	set	3986
+    38  0000                     _TRISB	set	3987
+    39  0000                     _TRISC	set	3988
+    40  0000                     _TRISCbits	set	3988
+    41  0000                     _TRISD	set	3989
+    42  0000                     _TRISE	set	3990
+    43                           
+    44                           	psect	intcode_body
+    45  000278                     __pintcode_body:
+    46                           	opt stack 0
+    47                           
+    48                           ; #config settings
+    49  000278                     int_func:
+    50                           	opt stack 28
+    51  000278  0006               	pop		; remove dummy address from shadow register refresh
+    52  00027A  CFEA F004          	movff	fsr0h,??_blank_pulse+3
+    53  00027E  CFE1 F005          	movff	fsr1l,??_blank_pulse+4
+    54  000282  CFE2 F006          	movff	fsr1h,??_blank_pulse+5
+    55  000286  CFD9 F007          	movff	fsr2l,??_blank_pulse+6
+    56  00028A  CFDA F008          	movff	fsr2h,??_blank_pulse+7
+    57  00028E  CFF3 F009          	movff	prodl,??_blank_pulse+8
+    58  000292  CFF4 F00A          	movff	prodh,??_blank_pulse+9
+    59  000296  CFF6 F00B          	movff	tblptrl,??_blank_pulse+10
+    60  00029A  CFF7 F00C          	movff	tblptrh,??_blank_pulse+11
+    61  00029E  CFF8 F00D          	movff	tblptru,??_blank_pulse+12
+    62  0002A2  CFF5 F00E          	movff	tablat,??_blank_pulse+13
+    63                           
+    64                           ;main.c: 31: if(PIE1bits.TMR2IE && PIR1bits.TMR2IF)
+    65  0002A6  B29D               	btfsc	3997,1,c	;volatile
+    66  0002A8  A29E               	btfss	3998,1,c	;volatile
+    67  0002AA  D012               	goto	i2l93
+    68                           
+    69                           ;main.c: 32: {
+    70                           ;main.c: 33: if(count >= 222)
+    71  0002AC  5027               	movf	_count+1,w,c	;volatile
+    72  0002AE  0A80               	xorlw	128
+    73  0002B0  0F80               	addlw	-128
+    74  0002B2  0EDE               	movlw	222
+    75  0002B4  B4D8               	btfsc	status,2,c
+    76  0002B6  5C26               	subwf	_count,w,c	;volatile
+    77  0002B8  A0D8               	btfss	status,0,c
+    78  0002BA  D007               	goto	i2l907
+    79                           
+    80                           ;main.c: 34: {
+    81                           ;main.c: 35: LATDbits.LD2 = 1;
+    82  0002BC  848C               	bsf	3980,2,c	;volatile
+    83                           
+    84                           ;main.c: 36: _delay((unsigned long)((1)*(8000000/4000000.0)));
+    85  0002BE  D000               	nop2		;2 cycle nop
+    86                           
+    87                           ;main.c: 37: LATDbits.LD2 = 0;
+    88  0002C0  948C               	bcf	3980,2,c	;volatile
+    89                           
+    90                           ;main.c: 38: count = 0;
+    91  0002C2  0E00               	movlw	0
+    92  0002C4  6E27               	movwf	_count+1,c	;volatile
+    93  0002C6  0E00               	movlw	0
+    94  0002C8  6E26               	movwf	_count,c	;volatile
+    95  0002CA                     i2l907:
+    96                           
+    97                           ;main.c: 39: }
+    98                           ;main.c: 40: count++;
+    99  0002CA  4A26               	infsnz	_count,f,c	;volatile
+   100  0002CC  2A27               	incf	_count+1,f,c	;volatile
+   101                           
+   102                           ;main.c: 41: PIR1bits.TMR2IF = 0;
+   103  0002CE  929E               	bcf	3998,1,c	;volatile
+   104  0002D0                     i2l93:
+   105  0002D0  C00E  FFF5         	movff	??_blank_pulse+13,tablat
+   106  0002D4  C00D  FFF8         	movff	??_blank_pulse+12,tblptru
+   107  0002D8  C00C  FFF7         	movff	??_blank_pulse+11,tblptrh
+   108  0002DC  C00B  FFF6         	movff	??_blank_pulse+10,tblptrl
+   109  0002E0  C00A  FFF4         	movff	??_blank_pulse+9,prodh
+   110  0002E4  C009  FFF3         	movff	??_blank_pulse+8,prodl
+   111  0002E8  C008  FFDA         	movff	??_blank_pulse+7,fsr2h
+   112  0002EC  C007  FFD9         	movff	??_blank_pulse+6,fsr2l
+   113  0002F0  C006  FFE2         	movff	??_blank_pulse+5,fsr1h
+   114  0002F4  C005  FFE1         	movff	??_blank_pulse+4,fsr1l
+   115  0002F8  C004  FFEA         	movff	??_blank_pulse+3,fsr0h
+   116  0002FC  C003  FFE9         	movff	??_blank_pulse+2,fsr0l
+   117  000300  C002  FFFB         	movff	??_blank_pulse+1,pclatu
+   118  000304  C001  FFFA         	movff	??_blank_pulse,pclath
+   119  000308  0011               	retfie		f
+   120  00030A                     __end_of_blank_pulse:
+   121                           	opt stack 0
+   122  0000                     pclatu	equ	0xFFB
+   123                           pclath	equ	0xFFA
+   124                           tblptru	equ	0xFF8
+   125                           tblptrh	equ	0xFF7
+   126                           tblptrl	equ	0xFF6
+   127                           tablat	equ	0xFF5
+   128                           prodh	equ	0xFF4
+   129                           prodl	equ	0xFF3
+   130                           fsr0h	equ	0xFEA
+   131                           fsr0l	equ	0xFE9
+   132                           fsr1h	equ	0xFE2
+   133                           fsr1l	equ	0xFE1
+   134                           fsr2h	equ	0xFDA
+   135                           fsr2l	equ	0xFD9
+   136                           status	equ	0xFD8
+   137                           
+   138                           	psect	cinit
+   139  000428                     __pcinit:
+   140                           	opt stack 0
+   141  000428                     start_initialization:
+   142                           	opt stack 0
+   143  000428                     __initialization:
+   144                           	opt stack 0
+   145                           
+   146                           ; Clear objects allocated to COMRAM (18 bytes)
+   147  000428  EE00  F016         	lfsr	0,__pbssCOMRAM
+   148  00042C  0E12               	movlw	18
+   149  00042E                     clear_0:
+   150  00042E  6AEE               	clrf	postinc0,c
+   151  000430  06E8               	decf	wreg,f,c
+   152  000432  E1FD               	bnz	clear_0
+   153  000434                     end_of_initialization:
+   154                           	opt stack 0
+   155  000434                     __end_of__initialization:
+   156                           	opt stack 0
+   157  000434  0100               	movlb	0
+   158  000436  EF85  F001         	goto	_main	;jump to C main() function
+   159                           pclatu	equ	0xFFB
+   160                           pclath	equ	0xFFA
+   161                           tblptru	equ	0xFF8
+   162                           tblptrh	equ	0xFF7
+   163                           tblptrl	equ	0xFF6
+   164                           tablat	equ	0xFF5
+   165                           prodh	equ	0xFF4
+   166                           prodl	equ	0xFF3
+   167                           postinc0	equ	0xFEE
+   168                           fsr0h	equ	0xFEA
+   169                           fsr0l	equ	0xFE9
+   170                           wreg	equ	0xFE8
+   171                           fsr1h	equ	0xFE2
+   172                           fsr1l	equ	0xFE1
+   173                           fsr2h	equ	0xFDA
+   174                           fsr2l	equ	0xFD9
+   175                           status	equ	0xFD8
+   176                           
+   177                           	psect	bssCOMRAM
+   178  000016                     __pbssCOMRAM:
+   179                           	opt stack 0
+   180  000016                     _tlc_servo:
+   181                           	opt stack 0
+   182  000016                     	ds	16
+   183  000026                     _count:
+   184                           	opt stack 0
+   185  000026                     	ds	2
+   186                           pclatu	equ	0xFFB
+   187                           pclath	equ	0xFFA
+   188                           tblptru	equ	0xFF8
+   189                           tblptrh	equ	0xFF7
+   190                           tblptrl	equ	0xFF6
+   191                           tablat	equ	0xFF5
+   192                           prodh	equ	0xFF4
+   193                           prodl	equ	0xFF3
+   194                           postinc0	equ	0xFEE
+   195                           fsr0h	equ	0xFEA
+   196                           fsr0l	equ	0xFE9
+   197                           wreg	equ	0xFE8
+   198                           fsr1h	equ	0xFE2
+   199                           fsr1l	equ	0xFE1
+   200                           fsr2h	equ	0xFDA
+   201                           fsr2l	equ	0xFD9
+   202                           status	equ	0xFD8
+   203                           
+   204                           	psect	cstackCOMRAM
+   205  000001                     __pcstackCOMRAM:
+   206                           	opt stack 0
+   207  000001                     ??_blank_pulse:
+   208  000001                     
+   209                           ; 2 bytes @ 0x0
+   210  000001                     	ds	14
+   211  00000F                     ??_serial_send_data:
+   212  00000F                     ??_delay_sec:
+   213  00000F                     tlc_set@value:
+   214                           	opt stack 0
+   215                           
+   216                           ; 1 bytes @ 0xE
+   217  00000F                     	ds	1
+   218  000010                     serial_send_data@data:
+   219                           	opt stack 0
+   220  000010                     tlc_set@tlc_servo_number:
+   221                           	opt stack 0
+   222  000010                     delay_sec@i:
+   223                           	opt stack 0
+   224                           
+   225                           ; 2 bytes @ 0xF
+   226  000010                     	ds	1
+   227  000011                     ??_tlc_init:
+   228  000011                     ??_tlc_update:
+   229                           
+   230                           ; 0 bytes @ 0x10
+   231  000011                     	ds	3
+   232  000014                     tlc_update@counter:
+   233                           	opt stack 0
+   234                           
+   235                           ; 1 bytes @ 0x13
+   236  000014                     	ds	1
+   237  000015                     tlc_update@i:
+   238                           	opt stack 0
+   239                           
+   240                           ; 1 bytes @ 0x14
+   241  000015                     	ds	1
+   242  000016                     pclatu	equ	0xFFB
+   243                           pclath	equ	0xFFA
+   244                           tblptru	equ	0xFF8
+   245                           tblptrh	equ	0xFF7
+   246                           tblptrl	equ	0xFF6
+   247                           tablat	equ	0xFF5
+   248                           prodh	equ	0xFF4
+   249                           prodl	equ	0xFF3
+   250                           postinc0	equ	0xFEE
+   251                           fsr0h	equ	0xFEA
+   252                           fsr0l	equ	0xFE9
+   253                           wreg	equ	0xFE8
+   254                           fsr1h	equ	0xFE2
+   255                           fsr1l	equ	0xFE1
+   256                           fsr2h	equ	0xFDA
+   257                           fsr2l	equ	0xFD9
+   258                           status	equ	0xFD8
+   259                           
+   260                           ; 0 bytes @ 0x15
+   261 ;;
+   262 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
    263 ;;
-   264 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
-   265 ;;
-   266 ;; *************** function _main *****************
-   267 ;; Defined at:
-   268 ;;		line 72 in file "main.c"
-   269 ;; Parameters:    Size  Location     Type
+   264 ;; *************** function _main *****************
+   265 ;; Defined at:
+   266 ;;		line 72 in file "main.c"
+   267 ;; Parameters:    Size  Location     Type
+   268 ;;		None
+   269 ;; Auto vars:     Size  Location     Type
    270 ;;		None
-   271 ;; Auto vars:     Size  Location     Type
-   272 ;;		None
-   273 ;; Return value:  Size  Location     Type
-   274 ;;                  2  104[COMRAM] int 
-   275 ;; Registers used:
-   276 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
-   277 ;; Tracked objects:
-   278 ;;		On entry : 0/0
-   279 ;;		On exit  : 0/0
-   280 ;;		Unchanged: 0/0
-   281 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-   282 ;;      Params:         0       0       0       0       0       0       0
-   283 ;;      Locals:         0       0       0       0       0       0       0
-   284 ;;      Temps:          0       0       0       0       0       0       0
-   285 ;;      Totals:         0       0       0       0       0       0       0
-   286 ;;Total ram usage:        0 bytes
-   287 ;; Hardware stack levels required when called:    3
-   288 ;; This function calls:
-   289 ;;		_TMR2_init
-   290 ;;		_delay_sec
-   291 ;;		_init_dot_correction
-   292 ;;		_init_grayscale
-   293 ;;		_set_channel
-   294 ;;		_spi_init
-   295 ;;		_update_grayscale
-   296 ;; This function is called by:
-   297 ;;		Startup code after reset
-   298 ;; This function uses a non-reentrant model
-   299 ;;
-   300                           
-   301                           	psect	text0
-   302  00028A                     __ptext0:
-   303                           	opt stack 0
-   304  00028A                     _main:
-   305                           	opt stack 28
-   306                           
-   307                           ;main.c: 75: TRISD = 0b00000000;
-   308                           
-   309                           ;incstack = 0
-   310  00028A  0E00               	movlw	0
-   311  00028C  6E95               	movwf	3989,c	;volatile
-   312                           
-   313                           ;main.c: 76: PORTD = 0b00000000;
-   314  00028E  0E00               	movlw	0
-   315  000290  6E83               	movwf	3971,c	;volatile
-   316                           
-   317                           ;main.c: 77: TRISB = 0b00100000;
-   318  000292  0E20               	movlw	32
-   319  000294  6E93               	movwf	3987,c	;volatile
-   320                           
-   321                           ;main.c: 78: PORTB = 0b00000000;
-   322  000296  0E00               	movlw	0
-   323  000298  6E81               	movwf	3969,c	;volatile
-   324                           
-   325                           ;main.c: 79: TRISA = 0b00001111;
-   326  00029A  0E0F               	movlw	15
-   327  00029C  6E92               	movwf	3986,c	;volatile
-   328                           
-   329                           ;main.c: 80: PORTA = 0b00001111;
-   330  00029E  0E0F               	movlw	15
-   331  0002A0  6E80               	movwf	3968,c	;volatile
-   332                           
-   333                           ;main.c: 81: TRISE = 0b00001000;
-   334  0002A2  0E08               	movlw	8
-   335  0002A4  6E96               	movwf	3990,c	;volatile
-   336                           
-   337                           ;main.c: 82: PORTE = 0b00000000;
-   338  0002A6  0E00               	movlw	0
-   339  0002A8  6E84               	movwf	3972,c	;volatile
+   271 ;; Return value:  Size  Location     Type
+   272 ;;                  2  101[COMRAM] int 
+   273 ;; Registers used:
+   274 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+   275 ;; Tracked objects:
+   276 ;;		On entry : 0/0
+   277 ;;		On exit  : 0/0
+   278 ;;		Unchanged: 0/0
+   279 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   280 ;;      Params:         0       0       0       0       0       0       0
+   281 ;;      Locals:         0       0       0       0       0       0       0
+   282 ;;      Temps:          0       0       0       0       0       0       0
+   283 ;;      Totals:         0       0       0       0       0       0       0
+   284 ;;Total ram usage:        0 bytes
+   285 ;; Hardware stack levels required when called:    3
+   286 ;; This function calls:
+   287 ;;		_TMR2_init
+   288 ;;		_delay_sec
+   289 ;;		_spi_init
+   290 ;;		_tlc_init
+   291 ;;		_tlc_set
+   292 ;;		_tlc_update
+   293 ;; This function is called by:
+   294 ;;		Startup code after reset
+   295 ;; This function uses a non-reentrant model
+   296 ;;
+   297                           
+   298                           	psect	text0
+   299  00030A                     __ptext0:
+   300                           	opt stack 0
+   301  00030A                     _main:
+   302                           	opt stack 28
+   303                           
+   304                           ;main.c: 75: TRISD = 0b00000000;
+   305                           
+   306                           ;incstack = 0
+   307  00030A  0E00               	movlw	0
+   308  00030C  6E95               	movwf	3989,c	;volatile
+   309                           
+   310                           ;main.c: 76: PORTD = 0b00000000;
+   311  00030E  0E00               	movlw	0
+   312  000310  6E83               	movwf	3971,c	;volatile
+   313                           
+   314                           ;main.c: 77: TRISB = 0b00100000;
+   315  000312  0E20               	movlw	32
+   316  000314  6E93               	movwf	3987,c	;volatile
+   317                           
+   318                           ;main.c: 78: PORTB = 0b00000000;
+   319  000316  0E00               	movlw	0
+   320  000318  6E81               	movwf	3969,c	;volatile
+   321                           
+   322                           ;main.c: 79: TRISA = 0b00001111;
+   323  00031A  0E0F               	movlw	15
+   324  00031C  6E92               	movwf	3986,c	;volatile
+   325                           
+   326                           ;main.c: 80: PORTA = 0b00001111;
+   327  00031E  0E0F               	movlw	15
+   328  000320  6E80               	movwf	3968,c	;volatile
+   329                           
+   330                           ;main.c: 81: TRISE = 0b00001000;
+   331  000322  0E08               	movlw	8
+   332  000324  6E96               	movwf	3990,c	;volatile
+   333                           
+   334                           ;main.c: 82: PORTE = 0b00000000;
+   335  000326  0E00               	movlw	0
+   336  000328  6E84               	movwf	3972,c	;volatile
+   337                           
+   338                           ;main.c: 84: TMR2_init();
+   339  00032A  ECE3  F001         	call	_TMR2_init	;wreg free
    340                           
-   341                           ;main.c: 84: TMR2_init();
-   342  0002AA  ECE6  F001         	call	_TMR2_init	;wreg free
-   343                           
-   344                           ;main.c: 85: count = 0;
-   345  0002AE  0E00               	movlw	0
-   346  0002B0  6E27               	movwf	_count+1,c	;volatile
-   347  0002B2  0E00               	movlw	0
-   348  0002B4  6E26               	movwf	_count,c	;volatile
+   341                           ;main.c: 85: count = 0;
+   342  00032E  0E00               	movlw	0
+   343  000330  6E27               	movwf	_count+1,c	;volatile
+   344  000332  0E00               	movlw	0
+   345  000334  6E26               	movwf	_count,c	;volatile
+   346                           
+   347                           ;main.c: 87: PIE1bits.TMR2IE = 1;
+   348  000336  829D               	bsf	3997,1,c	;volatile
    349                           
-   350                           ;main.c: 87: PIE1bits.TMR2IE = 1;
-   351  0002B6  829D               	bsf	3997,1,c	;volatile
+   350                           ;main.c: 88: INTCONbits.PEIE = 1;
+   351  000338  8CF2               	bsf	intcon,6,c	;volatile
    352                           
-   353                           ;main.c: 88: INTCONbits.PEIE = 1;
-   354  0002B8  8CF2               	bsf	intcon,6,c	;volatile
+   353                           ;main.c: 89: INTCONbits.GIE = 1;
+   354  00033A  8EF2               	bsf	intcon,7,c	;volatile
    355                           
-   356                           ;main.c: 89: INTCONbits.GIE = 1;
-   357  0002BA  8EF2               	bsf	intcon,7,c	;volatile
+   356                           ;main.c: 90: T2CONbits.TMR2ON = 0;
+   357  00033C  94CA               	bcf	4042,2,c	;volatile
    358                           
-   359                           ;main.c: 90: T2CONbits.TMR2ON = 0;
-   360  0002BC  94CA               	bcf	4042,2,c	;volatile
+   359                           ;main.c: 92: spi_init();
+   360  00033E  EC09  F002         	call	_spi_init	;wreg free
    361                           
-   362                           ;main.c: 92: spi_init();
-   363  0002BE  EC01  F002         	call	_spi_init	;wreg free
+   362                           ;main.c: 95: tlc_init();
+   363  000342  EC0E  F000         	call	_tlc_init	;wreg free
    364                           
-   365                           ;main.c: 93: init_dot_correction();
-   366  0002C2  EC8D  F001         	call	_init_dot_correction	;wreg free
+   365                           ;main.c: 96: tlc_update();
+   366  000346  ECD8  F000         	call	_tlc_update	;wreg free
    367                           
-   368                           ;main.c: 94: init_grayscale();
-   369  0002C6  EC0E  F000         	call	_init_grayscale	;wreg free
-   370                           
-   371                           ;main.c: 95: update_grayscale();
-   372  0002CA  EC98  F000         	call	_update_grayscale	;wreg free
-   373                           
-   374                           ;main.c: 97: T2CONbits.TMR2ON = 1;
-   375  0002CE  84CA               	bsf	4042,2,c	;volatile
-   376  0002D0                     l1030:
-   377                           
-   378                           ;main.c: 99: {
-   379                           ;main.c: 100: LATDbits.LD3 = 1;
-   380  0002D0  868C               	bsf	3980,3,c	;volatile
+   368                           ;main.c: 98: T2CONbits.TMR2ON = 1;
+   369  00034A  84CA               	bsf	4042,2,c	;volatile
+   370  00034C                     l933:
+   371                           
+   372                           ;main.c: 100: {
+   373                           ;main.c: 101: LATDbits.LD3 = 1;
+   374  00034C  868C               	bsf	3980,3,c	;volatile
+   375                           
+   376                           ;main.c: 102: delay_sec();
+   377  00034E  ECCB  F001         	call	_delay_sec	;wreg free
+   378                           
+   379                           ;main.c: 103: LATDbits.LD3 = 0;
+   380  000352  968C               	bcf	3980,3,c	;volatile
    381                           
-   382                           ;main.c: 101: delay_sec();
-   383  0002D2  ECCE  F001         	call	_delay_sec	;wreg free
+   382                           ;main.c: 104: delay_sec();
+   383  000354  ECCB  F001         	call	_delay_sec	;wreg free
    384                           
-   385                           ;main.c: 102: LATDbits.LD3 = 0;
-   386  0002D6  968C               	bcf	3980,3,c	;volatile
-   387                           
-   388                           ;main.c: 103: delay_sec();
-   389  0002D8  ECCE  F001         	call	_delay_sec	;wreg free
+   385                           ;main.c: 105: tlc_set(0, 0);
+   386  000358  0E00               	movlw	0
+   387  00035A  6E0F               	movwf	tlc_set@value,c
+   388  00035C  0E00               	movlw	0
+   389  00035E  ECF1  F001         	call	_tlc_set
    390                           
-   391                           ;main.c: 104: set_channel(0, 0);
-   392  0002DC  0E00               	movlw	0
-   393  0002DE  6E0F               	movwf	set_channel@value,c
-   394  0002E0  0E00               	movlw	0
-   395  0002E2  ECF4  F001         	call	_set_channel
+   391                           ;main.c: 106: tlc_update();
+   392  000362  ECD8  F000         	call	_tlc_update	;wreg free
+   393                           
+   394                           ;main.c: 107: delay_sec();
+   395  000366  ECCB  F001         	call	_delay_sec	;wreg free
    396                           
-   397                           ;main.c: 105: update_grayscale();
-   398  0002E6  EC98  F000         	call	_update_grayscale	;wreg free
+   397                           ;main.c: 108: delay_sec();
+   398  00036A  ECCB  F001         	call	_delay_sec	;wreg free
    399                           
-   400                           ;main.c: 106: delay_sec();
-   401  0002EA  ECCE  F001         	call	_delay_sec	;wreg free
+   400                           ;main.c: 109: delay_sec();
+   401  00036E  ECCB  F001         	call	_delay_sec	;wreg free
    402                           
-   403                           ;main.c: 107: delay_sec();
-   404  0002EE  ECCE  F001         	call	_delay_sec	;wreg free
+   403                           ;main.c: 110: delay_sec();
+   404  000372  ECCB  F001         	call	_delay_sec	;wreg free
    405                           
-   406                           ;main.c: 108: delay_sec();
-   407  0002F2  ECCE  F001         	call	_delay_sec	;wreg free
-   408                           
-   409                           ;main.c: 109: delay_sec();
-   410  0002F6  ECCE  F001         	call	_delay_sec	;wreg free
+   406                           ;main.c: 112: tlc_set(0, 180);
+   407  000376  0EB4               	movlw	180
+   408  000378  6E0F               	movwf	tlc_set@value,c
+   409  00037A  0E00               	movlw	0
+   410  00037C  ECF1  F001         	call	_tlc_set
    411                           
-   412                           ;main.c: 111: set_channel(0, 180);
-   413  0002FA  0EB4               	movlw	180
-   414  0002FC  6E0F               	movwf	set_channel@value,c
-   415  0002FE  0E00               	movlw	0
-   416  000300  ECF4  F001         	call	_set_channel
+   412                           ;main.c: 113: tlc_update();
+   413  000380  ECD8  F000         	call	_tlc_update	;wreg free
+   414                           
+   415                           ;main.c: 114: delay_sec();
+   416  000384  ECCB  F001         	call	_delay_sec	;wreg free
    417                           
-   418                           ;main.c: 112: update_grayscale();
-   419  000304  EC98  F000         	call	_update_grayscale	;wreg free
+   418                           ;main.c: 115: delay_sec();
+   419  000388  ECCB  F001         	call	_delay_sec	;wreg free
    420                           
-   421                           ;main.c: 113: delay_sec();
-   422  000308  ECCE  F001         	call	_delay_sec	;wreg free
+   421                           ;main.c: 116: delay_sec();
+   422  00038C  ECCB  F001         	call	_delay_sec	;wreg free
    423                           
-   424                           ;main.c: 114: delay_sec();
-   425  00030C  ECCE  F001         	call	_delay_sec	;wreg free
-   426                           
-   427                           ;main.c: 115: delay_sec();
-   428  000310  ECCE  F001         	call	_delay_sec	;wreg free
-   429                           
-   430                           ;main.c: 116: delay_sec();
-   431  000314  ECCE  F001         	call	_delay_sec	;wreg free
-   432  000318  D7DB               	goto	l1030
-   433  00031A                     __end_of_main:
-   434                           	opt stack 0
-   435                           pclatu	equ	0xFFB
-   436                           pclath	equ	0xFFA
-   437                           tblptru	equ	0xFF8
-   438                           tblptrh	equ	0xFF7
-   439                           tblptrl	equ	0xFF6
-   440                           tablat	equ	0xFF5
-   441                           prodh	equ	0xFF4
-   442                           prodl	equ	0xFF3
-   443                           intcon	equ	0xFF2
-   444                           postinc0	equ	0xFEE
-   445                           fsr0h	equ	0xFEA
-   446                           fsr0l	equ	0xFE9
-   447                           wreg	equ	0xFE8
-   448                           fsr1h	equ	0xFE2
-   449                           fsr1l	equ	0xFE1
-   450                           fsr2h	equ	0xFDA
-   451                           fsr2l	equ	0xFD9
-   452                           status	equ	0xFD8
-   453                           
-   454 ;; *************** function _update_grayscale *****************
-   455 ;; Defined at:
-   456 ;;		line 188 in file "tlc5940.c"
-   457 ;; Parameters:    Size  Location     Type
-   458 ;;		None
-   459 ;; Auto vars:     Size  Location     Type
-   460 ;;  i               1   20[COMRAM] unsigned char 
-   461 ;;  counter         1   19[COMRAM] unsigned char 
-   462 ;; Return value:  Size  Location     Type
-   463 ;;		None               void
-   464 ;; Registers used:
-   465 ;;		wreg, fsr2l, fsr2h, status,2, status,0, cstack
-   466 ;; Tracked objects:
-   467 ;;		On entry : 0/0
-   468 ;;		On exit  : 0/0
-   469 ;;		Unchanged: 0/0
-   470 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-   471 ;;      Params:         0       0       0       0       0       0       0
-   472 ;;      Locals:         2       0       0       0       0       0       0
-   473 ;;      Temps:          3       0       0       0       0       0       0
-   474 ;;      Totals:         5       0       0       0       0       0       0
-   475 ;;Total ram usage:        5 bytes
-   476 ;; Hardware stack levels used:    1
-   477 ;; Hardware stack levels required when called:    2
-   478 ;; This function calls:
-   479 ;;		_serial_send_data
-   480 ;; This function is called by:
-   481 ;;		_main
-   482 ;; This function uses a non-reentrant model
-   483 ;;
+   424                           ;main.c: 117: delay_sec();
+   425  000390  ECCB  F001         	call	_delay_sec	;wreg free
+   426  000394  D7DB               	goto	l933
+   427  000396                     __end_of_main:
+   428                           	opt stack 0
+   429                           pclatu	equ	0xFFB
+   430                           pclath	equ	0xFFA
+   431                           tblptru	equ	0xFF8
+   432                           tblptrh	equ	0xFF7
+   433                           tblptrl	equ	0xFF6
+   434                           tablat	equ	0xFF5
+   435                           prodh	equ	0xFF4
+   436                           prodl	equ	0xFF3
+   437                           intcon	equ	0xFF2
+   438                           postinc0	equ	0xFEE
+   439                           fsr0h	equ	0xFEA
+   440                           fsr0l	equ	0xFE9
+   441                           wreg	equ	0xFE8
+   442                           fsr1h	equ	0xFE2
+   443                           fsr1l	equ	0xFE1
+   444                           fsr2h	equ	0xFDA
+   445                           fsr2l	equ	0xFD9
+   446                           status	equ	0xFD8
+   447                           
+   448 ;; *************** function _tlc_update *****************
+   449 ;; Defined at:
+   450 ;;		line 103 in file "tlc5940.c"
+   451 ;; Parameters:    Size  Location     Type
+   452 ;;		None
+   453 ;; Auto vars:     Size  Location     Type
+   454 ;;  i               1   20[COMRAM] unsigned char 
+   455 ;;  counter         1   19[COMRAM] unsigned char 
+   456 ;; Return value:  Size  Location     Type
+   457 ;;		None               void
+   458 ;; Registers used:
+   459 ;;		wreg, fsr2l, fsr2h, status,2, status,0, cstack
+   460 ;; Tracked objects:
+   461 ;;		On entry : 0/0
+   462 ;;		On exit  : 0/0
+   463 ;;		Unchanged: 0/0
+   464 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   465 ;;      Params:         0       0       0       0       0       0       0
+   466 ;;      Locals:         2       0       0       0       0       0       0
+   467 ;;      Temps:          3       0       0       0       0       0       0
+   468 ;;      Totals:         5       0       0       0       0       0       0
+   469 ;;Total ram usage:        5 bytes
+   470 ;; Hardware stack levels used:    1
+   471 ;; Hardware stack levels required when called:    2
+   472 ;; This function calls:
+   473 ;;		_serial_send_data
+   474 ;; This function is called by:
+   475 ;;		_main
+   476 ;; This function uses a non-reentrant model
+   477 ;;
+   478                           
+   479                           	psect	text1
+   480  0001B0                     __ptext1:
+   481                           	opt stack 0
+   482  0001B0                     _tlc_update:
+   483                           	opt stack 28
    484                           
-   485                           	psect	text1
-   486  000130                     __ptext1:
-   487                           	opt stack 0
-   488  000130                     _update_grayscale:
-   489                           	opt stack 28
-   490                           
-   491                           ;tlc5940.c: 190: _delay((unsigned long)((2)*(8000000/4000.0)));
-   492                           
-   493                           ;incstack = 0
-   494  000130  0E06               	movlw	6
-   495  000132  6E11               	movwf	??_update_grayscale& (0+255),c
-   496  000134  0E30               	movlw	48
-   497  000136                     u87:
-   498  000136  2EE8               	decfsz	wreg,f,c
-   499  000138  D7FE               	goto	u87
-   500  00013A  2E11               	decfsz	??_update_grayscale& (0+255),f,c
-   501  00013C  D7FC               	goto	u87
-   502  00013E  D000               	nop2	
+   485                           ;tlc5940.c: 105: _delay((unsigned long)((2)*(8000000/4000.0)));
+   486                           
+   487                           ;incstack = 0
+   488  0001B0  0E06               	movlw	6
+   489  0001B2  6E11               	movwf	??_tlc_update& (0+255),c
+   490  0001B4  0E30               	movlw	48
+   491  0001B6                     u107:
+   492  0001B6  2EE8               	decfsz	wreg,f,c
+   493  0001B8  D7FE               	goto	u107
+   494  0001BA  2E11               	decfsz	??_tlc_update& (0+255),f,c
+   495  0001BC  D7FC               	goto	u107
+   496  0001BE  D000               	nop2	
+   497                           
+   498                           ;tlc5940.c: 107: T2CONbits.TMR2ON = 0;
+   499  0001C0  94CA               	bcf	4042,2,c	;volatile
+   500                           
+   501                           ;tlc5940.c: 108: LATDbits.LD1 = 0;
+   502  0001C2  928C               	bcf	3980,1,c	;volatile
    503                           
-   504                           ;tlc5940.c: 192: T2CONbits.TMR2ON = 0;
-   505  000140  94CA               	bcf	4042,2,c	;volatile
+   504                           ;tlc5940.c: 109: LATDbits.LD0 = 0;
+   505  0001C4  908C               	bcf	3980,0,c	;volatile
    506                           
-   507                           ;tlc5940.c: 193: LATDbits.LD1 = 0;
-   508  000142  928C               	bcf	3980,1,c	;volatile
+   507                           ;tlc5940.c: 110: LATDbits.LD2 = 0;
+   508  0001C6  948C               	bcf	3980,2,c	;volatile
    509                           
-   510                           ;tlc5940.c: 194: LATDbits.LD0 = 0;
-   511  000144  908C               	bcf	3980,0,c	;volatile
-   512                           
-   513                           ;tlc5940.c: 195: LATDbits.LD2 = 0;
-   514  000146  948C               	bcf	3980,2,c	;volatile
-   515                           
-   516                           ;tlc5940.c: 197: char counter = 0;
-   517  000148  0E00               	movlw	0
-   518  00014A  6E14               	movwf	update_grayscale@counter,c
+   510                           ;tlc5940.c: 112: char counter = 0;
+   511  0001C8  0E00               	movlw	0
+   512  0001CA  6E14               	movwf	tlc_update@counter,c
+   513                           
+   514                           ;tlc5940.c: 113: for(char i = 0; i < 8; i++)
+   515  0001CC  0E00               	movlw	0
+   516  0001CE  6E15               	movwf	tlc_update@i,c
+   517  0001D0  D03C               	goto	L1
+   518  0001D2                     l827:
    519                           
-   520                           ;tlc5940.c: 198: for(char i = 0; i < 8; i++)
-   521  00014C  0E00               	movlw	0
-   522  00014E  6E15               	movwf	update_grayscale@i,c
-   523  000150  D03C               	goto	L1
-   524  000152                     l832:
-   525                           
-   526                           ;tlc5940.c: 199: {
-   527                           ;tlc5940.c: 200: serial_send_data(channel[i + counter]>>4);
-   528  000152  5014               	movf	update_grayscale@counter,w,c
-   529  000154  C015  F011         	movff	update_grayscale@i,??_update_grayscale
-   530  000158  6A12               	clrf	(??_update_grayscale+1)& (0+255),c
-   531  00015A  2611               	addwf	??_update_grayscale,f,c
-   532  00015C  0E00               	movlw	0
-   533  00015E  2212               	addwfc	??_update_grayscale+1,f,c
-   534  000160  0E16               	movlw	low _channel
-   535  000162  2411               	addwf	??_update_grayscale,w,c
-   536  000164  6ED9               	movwf	fsr2l,c
-   537  000166  0E00               	movlw	high _channel
-   538  000168  2012               	addwfc	??_update_grayscale+1,w,c
-   539  00016A  6EDA               	movwf	fsr2h,c
-   540  00016C  50DF               	movf	indf2,w,c
-   541  00016E  6E13               	movwf	(??_update_grayscale+2)& (0+255),c
-   542  000170  3813               	swapf	??_update_grayscale+2,w,c
-   543  000172  0B0F               	andlw	15
-   544  000174  EC0C  F002         	call	_serial_send_data
-   545                           
-   546                           ;tlc5940.c: 201: serial_send_data(channel[i + counter]<<4);
-   547  000178  5014               	movf	update_grayscale@counter,w,c
-   548  00017A  C015  F011         	movff	update_grayscale@i,??_update_grayscale
-   549  00017E  6A12               	clrf	(??_update_grayscale+1)& (0+255),c
-   550  000180  2611               	addwf	??_update_grayscale,f,c
-   551  000182  0E00               	movlw	0
-   552  000184  2212               	addwfc	??_update_grayscale+1,f,c
-   553  000186  0E16               	movlw	low _channel
-   554  000188  2411               	addwf	??_update_grayscale,w,c
-   555  00018A  6ED9               	movwf	fsr2l,c
-   556  00018C  0E00               	movlw	high _channel
-   557  00018E  2012               	addwfc	??_update_grayscale+1,w,c
-   558  000190  6EDA               	movwf	fsr2h,c
-   559  000192  50DF               	movf	indf2,w,c
-   560  000194  6E13               	movwf	(??_update_grayscale+2)& (0+255),c
-   561  000196  3813               	swapf	??_update_grayscale+2,w,c
-   562  000198  0BF0               	andlw	240
-   563  00019A  EC0C  F002         	call	_serial_send_data
-   564                           
-   565                           ;tlc5940.c: 202: serial_send_data(channel[i + (counter + 1)]);
-   566  00019E  5015               	movf	update_grayscale@i,w,c
-   567  0001A0  C014  F011         	movff	update_grayscale@counter,??_update_grayscale
-   568  0001A4  6A12               	clrf	(??_update_grayscale+1)& (0+255),c
-   569  0001A6  2611               	addwf	??_update_grayscale,f,c
-   570  0001A8  0E00               	movlw	0
-   571  0001AA  2212               	addwfc	??_update_grayscale+1,f,c
-   572  0001AC  0E01               	movlw	1
-   573  0001AE  2611               	addwf	??_update_grayscale,f,c
-   574  0001B0  0E00               	movlw	0
-   575  0001B2  2212               	addwfc	??_update_grayscale+1,f,c
-   576  0001B4  0E16               	movlw	low _channel
-   577  0001B6  2411               	addwf	??_update_grayscale,w,c
-   578  0001B8  6ED9               	movwf	fsr2l,c
-   579  0001BA  0E00               	movlw	high _channel
-   580  0001BC  2012               	addwfc	??_update_grayscale+1,w,c
-   581  0001BE  6EDA               	movwf	fsr2h,c
-   582  0001C0  50DF               	movf	indf2,w,c
-   583  0001C2  EC0C  F002         	call	_serial_send_data
-   584                           
-   585                           ;tlc5940.c: 203: counter++;
-   586  0001C6  2A14               	incf	update_grayscale@counter,f,c
-   587  0001C8  2A15               	incf	update_grayscale@i,f,c
-   588  0001CA                     L1:
-   589  0001CA  0E07               	movlw	7
-   590  0001CC  6415               	cpfsgt	update_grayscale@i,c
-   591  0001CE  D7C1               	goto	l832
-   592                           
-   593                           ;tlc5940.c: 204: }
-   594                           ;tlc5940.c: 206: _delay((unsigned long)((2)*(8000000/4000.0)));
-   595  0001D0  0E06               	movlw	6
-   596  0001D2  6E11               	movwf	??_update_grayscale& (0+255),c
-   597  0001D4  0E30               	movlw	48
-   598  0001D6                     u97:
-   599  0001D6  2EE8               	decfsz	wreg,f,c
-   600  0001D8  D7FE               	goto	u97
-   601  0001DA  2E11               	decfsz	??_update_grayscale& (0+255),f,c
-   602  0001DC  D7FC               	goto	u97
-   603  0001DE  D000               	nop2	
-   604                           
-   605                           ;tlc5940.c: 207: LATDbits.LD0 = 1;
-   606  0001E0  808C               	bsf	3980,0,c	;volatile
-   607                           
-   608                           ;tlc5940.c: 208: _delay((unsigned long)((30)*(8000000/4000.0)));
-   609  0001E2  0E4E               	movlw	78
-   610  0001E4  6E11               	movwf	??_update_grayscale& (0+255),c
-   611  0001E6  0EEB               	movlw	235
-   612  0001E8                     u107:
-   613  0001E8  2EE8               	decfsz	wreg,f,c
-   614  0001EA  D7FE               	goto	u107
-   615  0001EC  2E11               	decfsz	??_update_grayscale& (0+255),f,c
-   616  0001EE  D7FC               	goto	u107
-   617  0001F0  F000               	nop	
-   618                           
-   619                           ;tlc5940.c: 209: LATDbits.LD0 = 0;
-   620  0001F2  908C               	bcf	3980,0,c	;volatile
-   621                           
-   622                           ;tlc5940.c: 210: T2CONbits.TMR2ON = 1;
-   623  0001F4  84CA               	bsf	4042,2,c	;volatile
-   624  0001F6  0012               	return	
-   625  0001F8                     __end_of_update_grayscale:
-   626                           	opt stack 0
-   627                           pclatu	equ	0xFFB
-   628                           pclath	equ	0xFFA
-   629                           tblptru	equ	0xFF8
-   630                           tblptrh	equ	0xFF7
-   631                           tblptrl	equ	0xFF6
-   632                           tablat	equ	0xFF5
-   633                           prodh	equ	0xFF4
-   634                           prodl	equ	0xFF3
-   635                           intcon	equ	0xFF2
-   636                           postinc0	equ	0xFEE
-   637                           fsr0h	equ	0xFEA
-   638                           fsr0l	equ	0xFE9
-   639                           wreg	equ	0xFE8
-   640                           fsr1h	equ	0xFE2
-   641                           fsr1l	equ	0xFE1
-   642                           indf2	equ	0xFDF
-   643                           fsr2h	equ	0xFDA
-   644                           fsr2l	equ	0xFD9
-   645                           status	equ	0xFD8
-   646                           
-   647 ;; *************** function _spi_init *****************
-   648 ;; Defined at:
-   649 ;;		line 45 in file "main.c"
-   650 ;; Parameters:    Size  Location     Type
-   651 ;;		None
-   652 ;; Auto vars:     Size  Location     Type
-   653 ;;		None
-   654 ;; Return value:  Size  Location     Type
-   655 ;;		None               void
-   656 ;; Registers used:
-   657 ;;		None
-   658 ;; Tracked objects:
-   659 ;;		On entry : 0/0
-   660 ;;		On exit  : 0/0
-   661 ;;		Unchanged: 0/0
-   662 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-   663 ;;      Params:         0       0       0       0       0       0       0
-   664 ;;      Locals:         0       0       0       0       0       0       0
-   665 ;;      Temps:          0       0       0       0       0       0       0
-   666 ;;      Totals:         0       0       0       0       0       0       0
-   667 ;;Total ram usage:        0 bytes
-   668 ;; Hardware stack levels used:    1
-   669 ;; Hardware stack levels required when called:    1
-   670 ;; This function calls:
-   671 ;;		Nothing
-   672 ;; This function is called by:
-   673 ;;		_main
-   674 ;; This function uses a non-reentrant model
-   675 ;;
-   676                           
-   677                           	psect	text2
-   678  000402                     __ptext2:
-   679                           	opt stack 0
-   680  000402                     _spi_init:
-   681                           	opt stack 29
-   682                           
-   683                           ;main.c: 47: SSPSTATbits.SMP = 0;
-   684                           
-   685                           ;incstack = 0
-   686  000402  9EC7               	bcf	4039,7,c	;volatile
-   687                           
-   688                           ;main.c: 48: SSPSTATbits.CKE = 1;
-   689  000404  8CC7               	bsf	4039,6,c	;volatile
-   690                           
-   691                           ;main.c: 49: SSPCON1bits.CKP = 0;
-   692  000406  98C6               	bcf	4038,4,c	;volatile
-   693                           
-   694                           ;main.c: 50: SSPCON1bits.SSPM0 = 0;
-   695  000408  90C6               	bcf	4038,0,c	;volatile
-   696                           
-   697                           ;main.c: 51: SSPCON1bits.SSPM1 = 0;
-   698  00040A  92C6               	bcf	4038,1,c	;volatile
-   699                           
-   700                           ;main.c: 52: SSPCON1bits.SSPM2 = 0;
-   701  00040C  94C6               	bcf	4038,2,c	;volatile
-   702                           
-   703                           ;main.c: 53: SSPCON1bits.SSPM3 = 0;
-   704  00040E  96C6               	bcf	4038,3,c	;volatile
-   705                           
-   706                           ;main.c: 54: SSPCON1bits.SSPEN = 1;
-   707  000410  8AC6               	bsf	4038,5,c	;volatile
-   708                           
-   709                           ;main.c: 56: TRISCbits.RC5 = 0;
-   710  000412  9A94               	bcf	3988,5,c	;volatile
-   711                           
-   712                           ;main.c: 57: TRISCbits.RC3 = 0;
-   713  000414  9694               	bcf	3988,3,c	;volatile
-   714  000416  0012               	return	
-   715  000418                     __end_of_spi_init:
-   716                           	opt stack 0
-   717                           pclatu	equ	0xFFB
-   718                           pclath	equ	0xFFA
-   719                           tblptru	equ	0xFF8
-   720                           tblptrh	equ	0xFF7
-   721                           tblptrl	equ	0xFF6
-   722                           tablat	equ	0xFF5
-   723                           prodh	equ	0xFF4
-   724                           prodl	equ	0xFF3
-   725                           intcon	equ	0xFF2
-   726                           postinc0	equ	0xFEE
-   727                           fsr0h	equ	0xFEA
-   728                           fsr0l	equ	0xFE9
-   729                           wreg	equ	0xFE8
-   730                           fsr1h	equ	0xFE2
-   731                           fsr1l	equ	0xFE1
-   732                           indf2	equ	0xFDF
-   733                           fsr2h	equ	0xFDA
-   734                           fsr2l	equ	0xFD9
-   735                           status	equ	0xFD8
-   736                           
-   737 ;; *************** function _set_channel *****************
-   738 ;; Defined at:
-   739 ;;		line 213 in file "tlc5940.c"
-   740 ;; Parameters:    Size  Location     Type
-   741 ;;  channel_numb    1    wreg     unsigned char 
-   742 ;;  value           1   14[COMRAM] unsigned char 
-   743 ;; Auto vars:     Size  Location     Type
-   744 ;;  channel_numb    1   15[COMRAM] unsigned char 
-   745 ;; Return value:  Size  Location     Type
-   746 ;;		None               void
-   747 ;; Registers used:
-   748 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh
-   749 ;; Tracked objects:
-   750 ;;		On entry : 0/0
-   751 ;;		On exit  : 0/0
-   752 ;;		Unchanged: 0/0
-   753 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-   754 ;;      Params:         1       0       0       0       0       0       0
-   755 ;;      Locals:         1       0       0       0       0       0       0
-   756 ;;      Temps:          0       0       0       0       0       0       0
-   757 ;;      Totals:         2       0       0       0       0       0       0
-   758 ;;Total ram usage:        2 bytes
-   759 ;; Hardware stack levels used:    1
-   760 ;; Hardware stack levels required when called:    1
-   761 ;; This function calls:
-   762 ;;		Nothing
-   763 ;; This function is called by:
-   764 ;;		_main
-   765 ;; This function uses a non-reentrant model
-   766 ;;
-   767                           
-   768                           	psect	text3
-   769  0003E8                     __ptext3:
-   770                           	opt stack 0
-   771  0003E8                     _set_channel:
-   772                           	opt stack 29
-   773                           
-   774                           ;incstack = 0
-   775                           ;set_channel@channel_number stored from wreg
-   776  0003E8  6E10               	movwf	set_channel@channel_number,c
-   777                           
-   778                           ;tlc5940.c: 215: channel[channel_number] = value + 55;
-   779  0003EA  5010               	movf	set_channel@channel_number,w,c
-   780  0003EC  0D01               	mullw	1
-   781  0003EE  0E16               	movlw	low _channel
-   782  0003F0  24F3               	addwf	prodl,w,c
-   783  0003F2  6ED9               	movwf	fsr2l,c
-   784  0003F4  0E00               	movlw	high _channel
-   785  0003F6  20F4               	addwfc	prodh,w,c
-   786  0003F8  6EDA               	movwf	fsr2h,c
-   787  0003FA  500F               	movf	set_channel@value,w,c
-   788  0003FC  0F37               	addlw	55
-   789  0003FE  6EDF               	movwf	indf2,c
-   790  000400  0012               	return	
-   791  000402                     __end_of_set_channel:
-   792                           	opt stack 0
-   793                           pclatu	equ	0xFFB
-   794                           pclath	equ	0xFFA
-   795                           tblptru	equ	0xFF8
-   796                           tblptrh	equ	0xFF7
-   797                           tblptrl	equ	0xFF6
-   798                           tablat	equ	0xFF5
-   799                           prodh	equ	0xFF4
-   800                           prodl	equ	0xFF3
-   801                           intcon	equ	0xFF2
-   802                           postinc0	equ	0xFEE
-   803                           fsr0h	equ	0xFEA
-   804                           fsr0l	equ	0xFE9
-   805                           wreg	equ	0xFE8
-   806                           fsr1h	equ	0xFE2
-   807                           fsr1l	equ	0xFE1
-   808                           indf2	equ	0xFDF
-   809                           fsr2h	equ	0xFDA
-   810                           fsr2l	equ	0xFD9
-   811                           status	equ	0xFD8
-   812                           
-   813 ;; *************** function _init_grayscale *****************
-   814 ;; Defined at:
-   815 ;;		line 127 in file "tlc5940.c"
-   816 ;; Parameters:    Size  Location     Type
-   817 ;;		None
-   818 ;; Auto vars:     Size  Location     Type
-   819 ;;		None
-   820 ;; Return value:  Size  Location     Type
-   821 ;;		None               void
-   822 ;; Registers used:
-   823 ;;		wreg, status,2, cstack
-   824 ;; Tracked objects:
-   825 ;;		On entry : 0/0
-   826 ;;		On exit  : 0/0
-   827 ;;		Unchanged: 0/0
-   828 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-   829 ;;      Params:         0       0       0       0       0       0       0
-   830 ;;      Locals:         0       0       0       0       0       0       0
-   831 ;;      Temps:          1       0       0       0       0       0       0
-   832 ;;      Totals:         1       0       0       0       0       0       0
-   833 ;;Total ram usage:        1 bytes
-   834 ;; Hardware stack levels used:    1
-   835 ;; Hardware stack levels required when called:    2
-   836 ;; This function calls:
-   837 ;;		_serial_send_data
-   838 ;; This function is called by:
-   839 ;;		_main
-   840 ;; This function uses a non-reentrant model
-   841 ;;
-   842                           
-   843                           	psect	text4
-   844  00001C                     __ptext4:
-   845                           	opt stack 0
-   846  00001C                     _init_grayscale:
-   847                           	opt stack 28
-   848                           
-   849                           ;tlc5940.c: 129: _delay((unsigned long)((2)*(8000000/4000.0)));
-   850                           
-   851                           ;incstack = 0
-   852  00001C  0E06               	movlw	6
-   853  00001E  6E11               	movwf	??_init_grayscale& (0+255),c
-   854  000020  0E30               	movlw	48
-   855  000022                     u117:
-   856  000022  2EE8               	decfsz	wreg,f,c
-   857  000024  D7FE               	goto	u117
-   858  000026  2E11               	decfsz	??_init_grayscale& (0+255),f,c
-   859  000028  D7FC               	goto	u117
-   860  00002A  D000               	nop2	
+   520                           ;tlc5940.c: 114: {
+   521                           ;tlc5940.c: 115: serial_send_data(tlc_servo[i + counter]>>4);
+   522  0001D2  5014               	movf	tlc_update@counter,w,c
+   523  0001D4  C015  F011         	movff	tlc_update@i,??_tlc_update
+   524  0001D8  6A12               	clrf	(??_tlc_update+1)& (0+255),c
+   525  0001DA  2611               	addwf	??_tlc_update,f,c
+   526  0001DC  0E00               	movlw	0
+   527  0001DE  2212               	addwfc	??_tlc_update+1,f,c
+   528  0001E0  0E16               	movlw	low _tlc_servo
+   529  0001E2  2411               	addwf	??_tlc_update,w,c
+   530  0001E4  6ED9               	movwf	fsr2l,c
+   531  0001E6  0E00               	movlw	high _tlc_servo
+   532  0001E8  2012               	addwfc	??_tlc_update+1,w,c
+   533  0001EA  6EDA               	movwf	fsr2h,c
+   534  0001EC  50DF               	movf	indf2,w,c
+   535  0001EE  6E13               	movwf	(??_tlc_update+2)& (0+255),c
+   536  0001F0  3813               	swapf	??_tlc_update+2,w,c
+   537  0001F2  0B0F               	andlw	15
+   538  0001F4  ECFE  F001         	call	_serial_send_data
+   539                           
+   540                           ;tlc5940.c: 116: serial_send_data(tlc_servo[i + counter]<<4);
+   541  0001F8  5014               	movf	tlc_update@counter,w,c
+   542  0001FA  C015  F011         	movff	tlc_update@i,??_tlc_update
+   543  0001FE  6A12               	clrf	(??_tlc_update+1)& (0+255),c
+   544  000200  2611               	addwf	??_tlc_update,f,c
+   545  000202  0E00               	movlw	0
+   546  000204  2212               	addwfc	??_tlc_update+1,f,c
+   547  000206  0E16               	movlw	low _tlc_servo
+   548  000208  2411               	addwf	??_tlc_update,w,c
+   549  00020A  6ED9               	movwf	fsr2l,c
+   550  00020C  0E00               	movlw	high _tlc_servo
+   551  00020E  2012               	addwfc	??_tlc_update+1,w,c
+   552  000210  6EDA               	movwf	fsr2h,c
+   553  000212  50DF               	movf	indf2,w,c
+   554  000214  6E13               	movwf	(??_tlc_update+2)& (0+255),c
+   555  000216  3813               	swapf	??_tlc_update+2,w,c
+   556  000218  0BF0               	andlw	240
+   557  00021A  ECFE  F001         	call	_serial_send_data
+   558                           
+   559                           ;tlc5940.c: 117: serial_send_data(tlc_servo[i + (counter + 1)]);
+   560  00021E  5015               	movf	tlc_update@i,w,c
+   561  000220  C014  F011         	movff	tlc_update@counter,??_tlc_update
+   562  000224  6A12               	clrf	(??_tlc_update+1)& (0+255),c
+   563  000226  2611               	addwf	??_tlc_update,f,c
+   564  000228  0E00               	movlw	0
+   565  00022A  2212               	addwfc	??_tlc_update+1,f,c
+   566  00022C  0E01               	movlw	1
+   567  00022E  2611               	addwf	??_tlc_update,f,c
+   568  000230  0E00               	movlw	0
+   569  000232  2212               	addwfc	??_tlc_update+1,f,c
+   570  000234  0E16               	movlw	low _tlc_servo
+   571  000236  2411               	addwf	??_tlc_update,w,c
+   572  000238  6ED9               	movwf	fsr2l,c
+   573  00023A  0E00               	movlw	high _tlc_servo
+   574  00023C  2012               	addwfc	??_tlc_update+1,w,c
+   575  00023E  6EDA               	movwf	fsr2h,c
+   576  000240  50DF               	movf	indf2,w,c
+   577  000242  ECFE  F001         	call	_serial_send_data
+   578                           
+   579                           ;tlc5940.c: 118: counter++;
+   580  000246  2A14               	incf	tlc_update@counter,f,c
+   581  000248  2A15               	incf	tlc_update@i,f,c
+   582  00024A                     L1:
+   583  00024A  0E07               	movlw	7
+   584  00024C  6415               	cpfsgt	tlc_update@i,c
+   585  00024E  D7C1               	goto	l827
+   586                           
+   587                           ;tlc5940.c: 119: }
+   588                           ;tlc5940.c: 121: _delay((unsigned long)((2)*(8000000/4000.0)));
+   589  000250  0E06               	movlw	6
+   590  000252  6E11               	movwf	??_tlc_update& (0+255),c
+   591  000254  0E30               	movlw	48
+   592  000256                     u117:
+   593  000256  2EE8               	decfsz	wreg,f,c
+   594  000258  D7FE               	goto	u117
+   595  00025A  2E11               	decfsz	??_tlc_update& (0+255),f,c
+   596  00025C  D7FC               	goto	u117
+   597  00025E  D000               	nop2	
+   598                           
+   599                           ;tlc5940.c: 122: LATDbits.LD0 = 1;
+   600  000260  808C               	bsf	3980,0,c	;volatile
+   601                           
+   602                           ;tlc5940.c: 123: _delay((unsigned long)((30)*(8000000/4000.0)));
+   603  000262  0E4E               	movlw	78
+   604  000264  6E11               	movwf	??_tlc_update& (0+255),c
+   605  000266  0EEB               	movlw	235
+   606  000268                     u127:
+   607  000268  2EE8               	decfsz	wreg,f,c
+   608  00026A  D7FE               	goto	u127
+   609  00026C  2E11               	decfsz	??_tlc_update& (0+255),f,c
+   610  00026E  D7FC               	goto	u127
+   611  000270  F000               	nop	
+   612                           
+   613                           ;tlc5940.c: 124: LATDbits.LD0 = 0;
+   614  000272  908C               	bcf	3980,0,c	;volatile
+   615                           
+   616                           ;tlc5940.c: 125: T2CONbits.TMR2ON = 1;
+   617  000274  84CA               	bsf	4042,2,c	;volatile
+   618  000276  0012               	return	
+   619  000278                     __end_of_tlc_update:
+   620                           	opt stack 0
+   621                           pclatu	equ	0xFFB
+   622                           pclath	equ	0xFFA
+   623                           tblptru	equ	0xFF8
+   624                           tblptrh	equ	0xFF7
+   625                           tblptrl	equ	0xFF6
+   626                           tablat	equ	0xFF5
+   627                           prodh	equ	0xFF4
+   628                           prodl	equ	0xFF3
+   629                           intcon	equ	0xFF2
+   630                           postinc0	equ	0xFEE
+   631                           fsr0h	equ	0xFEA
+   632                           fsr0l	equ	0xFE9
+   633                           wreg	equ	0xFE8
+   634                           fsr1h	equ	0xFE2
+   635                           fsr1l	equ	0xFE1
+   636                           indf2	equ	0xFDF
+   637                           fsr2h	equ	0xFDA
+   638                           fsr2l	equ	0xFD9
+   639                           status	equ	0xFD8
+   640                           
+   641 ;; *************** function _tlc_set *****************
+   642 ;; Defined at:
+   643 ;;		line 138 in file "tlc5940.c"
+   644 ;; Parameters:    Size  Location     Type
+   645 ;;  tlc_servo_nu    1    wreg     unsigned char 
+   646 ;;  value           1   14[COMRAM] unsigned char 
+   647 ;; Auto vars:     Size  Location     Type
+   648 ;;  tlc_servo_nu    1   15[COMRAM] unsigned char 
+   649 ;; Return value:  Size  Location     Type
+   650 ;;		None               void
+   651 ;; Registers used:
+   652 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh
+   653 ;; Tracked objects:
+   654 ;;		On entry : 0/0
+   655 ;;		On exit  : 0/0
+   656 ;;		Unchanged: 0/0
+   657 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   658 ;;      Params:         1       0       0       0       0       0       0
+   659 ;;      Locals:         1       0       0       0       0       0       0
+   660 ;;      Temps:          0       0       0       0       0       0       0
+   661 ;;      Totals:         2       0       0       0       0       0       0
+   662 ;;Total ram usage:        2 bytes
+   663 ;; Hardware stack levels used:    1
+   664 ;; Hardware stack levels required when called:    1
+   665 ;; This function calls:
+   666 ;;		Nothing
+   667 ;; This function is called by:
+   668 ;;		_main
+   669 ;; This function uses a non-reentrant model
+   670 ;;
+   671                           
+   672                           	psect	text2
+   673  0003E2                     __ptext2:
+   674                           	opt stack 0
+   675  0003E2                     _tlc_set:
+   676                           	opt stack 29
+   677                           
+   678                           ;incstack = 0
+   679                           ;tlc_set@tlc_servo_number stored from wreg
+   680  0003E2  6E10               	movwf	tlc_set@tlc_servo_number,c
+   681                           
+   682                           ;tlc5940.c: 140: tlc_servo[tlc_servo_number] = value + 55;
+   683  0003E4  5010               	movf	tlc_set@tlc_servo_number,w,c
+   684  0003E6  0D01               	mullw	1
+   685  0003E8  0E16               	movlw	low _tlc_servo
+   686  0003EA  24F3               	addwf	prodl,w,c
+   687  0003EC  6ED9               	movwf	fsr2l,c
+   688  0003EE  0E00               	movlw	high _tlc_servo
+   689  0003F0  20F4               	addwfc	prodh,w,c
+   690  0003F2  6EDA               	movwf	fsr2h,c
+   691  0003F4  500F               	movf	tlc_set@value,w,c
+   692  0003F6  0F37               	addlw	55
+   693  0003F8  6EDF               	movwf	indf2,c
+   694  0003FA  0012               	return	
+   695  0003FC                     __end_of_tlc_set:
+   696                           	opt stack 0
+   697                           pclatu	equ	0xFFB
+   698                           pclath	equ	0xFFA
+   699                           tblptru	equ	0xFF8
+   700                           tblptrh	equ	0xFF7
+   701                           tblptrl	equ	0xFF6
+   702                           tablat	equ	0xFF5
+   703                           prodh	equ	0xFF4
+   704                           prodl	equ	0xFF3
+   705                           intcon	equ	0xFF2
+   706                           postinc0	equ	0xFEE
+   707                           fsr0h	equ	0xFEA
+   708                           fsr0l	equ	0xFE9
+   709                           wreg	equ	0xFE8
+   710                           fsr1h	equ	0xFE2
+   711                           fsr1l	equ	0xFE1
+   712                           indf2	equ	0xFDF
+   713                           fsr2h	equ	0xFDA
+   714                           fsr2l	equ	0xFD9
+   715                           status	equ	0xFD8
+   716                           
+   717 ;; *************** function _tlc_init *****************
+   718 ;; Defined at:
+   719 ;;		line 16 in file "tlc5940.c"
+   720 ;; Parameters:    Size  Location     Type
+   721 ;;		None
+   722 ;; Auto vars:     Size  Location     Type
+   723 ;;		None
+   724 ;; Return value:  Size  Location     Type
+   725 ;;		None               void
+   726 ;; Registers used:
+   727 ;;		wreg, status,2, cstack
+   728 ;; Tracked objects:
+   729 ;;		On entry : 0/0
+   730 ;;		On exit  : 0/0
+   731 ;;		Unchanged: 0/0
+   732 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   733 ;;      Params:         0       0       0       0       0       0       0
+   734 ;;      Locals:         0       0       0       0       0       0       0
+   735 ;;      Temps:          1       0       0       0       0       0       0
+   736 ;;      Totals:         1       0       0       0       0       0       0
+   737 ;;Total ram usage:        1 bytes
+   738 ;; Hardware stack levels used:    1
+   739 ;; Hardware stack levels required when called:    2
+   740 ;; This function calls:
+   741 ;;		_serial_send_data
+   742 ;; This function is called by:
+   743 ;;		_main
+   744 ;; This function uses a non-reentrant model
+   745 ;;
+   746                           
+   747                           	psect	text3
+   748  00001C                     __ptext3:
+   749                           	opt stack 0
+   750  00001C                     _tlc_init:
+   751                           	opt stack 28
+   752                           
+   753                           ;tlc5940.c: 19: LATDbits.LD1 = 1;
+   754                           
+   755                           ;incstack = 0
+   756  00001C  828C               	bsf	3980,1,c	;volatile
+   757                           
+   758                           ;tlc5940.c: 20: LATDbits.LD0 = 0;
+   759  00001E  908C               	bcf	3980,0,c	;volatile
+   760                           
+   761                           ;tlc5940.c: 21: _delay((unsigned long)((2)*(8000000/4000.0)));
+   762  000020  0E06               	movlw	6
+   763  000022  6E11               	movwf	??_tlc_init& (0+255),c
+   764  000024  0E30               	movlw	48
+   765  000026                     u137:
+   766  000026  2EE8               	decfsz	wreg,f,c
+   767  000028  D7FE               	goto	u137
+   768  00002A  2E11               	decfsz	??_tlc_init& (0+255),f,c
+   769  00002C  D7FC               	goto	u137
+   770  00002E  D000               	nop2	
+   771                           
+   772                           ;tlc5940.c: 23: serial_send_data(0b11111111);
+   773  000030  0EFF               	movlw	255
+   774  000032  ECFE  F001         	call	_serial_send_data
+   775                           
+   776                           ;tlc5940.c: 24: serial_send_data(0b11111111);
+   777  000036  0EFF               	movlw	255
+   778  000038  ECFE  F001         	call	_serial_send_data
+   779                           
+   780                           ;tlc5940.c: 25: serial_send_data(0b11111111);
+   781  00003C  0EFF               	movlw	255
+   782  00003E  ECFE  F001         	call	_serial_send_data
+   783                           
+   784                           ;tlc5940.c: 26: serial_send_data(0b11111111);
+   785  000042  0EFF               	movlw	255
+   786  000044  ECFE  F001         	call	_serial_send_data
+   787                           
+   788                           ;tlc5940.c: 27: serial_send_data(0b11111111);
+   789  000048  0EFF               	movlw	255
+   790  00004A  ECFE  F001         	call	_serial_send_data
+   791                           
+   792                           ;tlc5940.c: 28: serial_send_data(0b11111111);
+   793  00004E  0EFF               	movlw	255
+   794  000050  ECFE  F001         	call	_serial_send_data
+   795                           
+   796                           ;tlc5940.c: 29: serial_send_data(0b11111111);
+   797  000054  0EFF               	movlw	255
+   798  000056  ECFE  F001         	call	_serial_send_data
+   799                           
+   800                           ;tlc5940.c: 30: serial_send_data(0b11111111);
+   801  00005A  0EFF               	movlw	255
+   802  00005C  ECFE  F001         	call	_serial_send_data
+   803                           
+   804                           ;tlc5940.c: 31: serial_send_data(0b11111111);
+   805  000060  0EFF               	movlw	255
+   806  000062  ECFE  F001         	call	_serial_send_data
+   807                           
+   808                           ;tlc5940.c: 32: serial_send_data(0b11111111);
+   809  000066  0EFF               	movlw	255
+   810  000068  ECFE  F001         	call	_serial_send_data
+   811                           
+   812                           ;tlc5940.c: 33: serial_send_data(0b11111111);
+   813  00006C  0EFF               	movlw	255
+   814  00006E  ECFE  F001         	call	_serial_send_data
+   815                           
+   816                           ;tlc5940.c: 34: serial_send_data(0b11111111);
+   817  000072  0EFF               	movlw	255
+   818  000074  ECFE  F001         	call	_serial_send_data
+   819                           
+   820                           ;tlc5940.c: 36: _delay((unsigned long)((2)*(8000000/4000.0)));
+   821  000078  0E06               	movlw	6
+   822  00007A  6E11               	movwf	??_tlc_init& (0+255),c
+   823  00007C  0E30               	movlw	48
+   824  00007E                     u147:
+   825  00007E  2EE8               	decfsz	wreg,f,c
+   826  000080  D7FE               	goto	u147
+   827  000082  2E11               	decfsz	??_tlc_init& (0+255),f,c
+   828  000084  D7FC               	goto	u147
+   829  000086  D000               	nop2	
+   830                           
+   831                           ;tlc5940.c: 37: LATDbits.LD0 = 1;
+   832  000088  808C               	bsf	3980,0,c	;volatile
+   833                           
+   834                           ;tlc5940.c: 38: _delay((unsigned long)((30)*(8000000/4000.0)));
+   835  00008A  0E4E               	movlw	78
+   836  00008C  6E11               	movwf	??_tlc_init& (0+255),c
+   837  00008E  0EEB               	movlw	235
+   838  000090                     u157:
+   839  000090  2EE8               	decfsz	wreg,f,c
+   840  000092  D7FE               	goto	u157
+   841  000094  2E11               	decfsz	??_tlc_init& (0+255),f,c
+   842  000096  D7FC               	goto	u157
+   843  000098  F000               	nop	
+   844                           
+   845                           ;tlc5940.c: 39: LATDbits.LD0 = 0;
+   846  00009A  908C               	bcf	3980,0,c	;volatile
+   847                           
+   848                           ;tlc5940.c: 43: _delay((unsigned long)((2)*(8000000/4000.0)));
+   849  00009C  0E06               	movlw	6
+   850  00009E  6E11               	movwf	??_tlc_init& (0+255),c
+   851  0000A0  0E30               	movlw	48
+   852  0000A2                     u167:
+   853  0000A2  2EE8               	decfsz	wreg,f,c
+   854  0000A4  D7FE               	goto	u167
+   855  0000A6  2E11               	decfsz	??_tlc_init& (0+255),f,c
+   856  0000A8  D7FC               	goto	u167
+   857  0000AA  D000               	nop2	
+   858                           
+   859                           ;tlc5940.c: 45: T2CONbits.TMR2ON = 0;
+   860  0000AC  94CA               	bcf	4042,2,c	;volatile
    861                           
-   862                           ;tlc5940.c: 131: T2CONbits.TMR2ON = 0;
-   863  00002C  94CA               	bcf	4042,2,c	;volatile
+   862                           ;tlc5940.c: 46: LATDbits.LD1 = 0;
+   863  0000AE  928C               	bcf	3980,1,c	;volatile
    864                           
-   865                           ;tlc5940.c: 132: LATDbits.LD1 = 0;
-   866  00002E  928C               	bcf	3980,1,c	;volatile
+   865                           ;tlc5940.c: 47: LATDbits.LD0 = 0;
+   866  0000B0  908C               	bcf	3980,0,c	;volatile
    867                           
-   868                           ;tlc5940.c: 133: LATDbits.LD0 = 0;
-   869  000030  908C               	bcf	3980,0,c	;volatile
+   868                           ;tlc5940.c: 48: LATDbits.LD2 = 0;
+   869  0000B2  948C               	bcf	3980,2,c	;volatile
    870                           
-   871                           ;tlc5940.c: 134: LATDbits.LD2 = 0;
-   872  000032  948C               	bcf	3980,2,c	;volatile
-   873                           
-   874                           ;tlc5940.c: 136: channel[0] = 235;
-   875  000034  0EEB               	movlw	235
-   876  000036  6E16               	movwf	_channel,c
-   877                           
-   878                           ;tlc5940.c: 137: channel[1] = 0;
-   879  000038  0E00               	movlw	0
-   880  00003A  6E17               	movwf	_channel+1,c
-   881                           
-   882                           ;tlc5940.c: 138: channel[2] = 0;
-   883  00003C  0E00               	movlw	0
-   884  00003E  6E18               	movwf	_channel+2,c
-   885                           
-   886                           ;tlc5940.c: 139: channel[3] = 0;
-   887  000040  0E00               	movlw	0
-   888  000042  6E19               	movwf	_channel+3,c
-   889                           
-   890                           ;tlc5940.c: 140: channel[4] = 0;
-   891  000044  0E00               	movlw	0
-   892  000046  6E1A               	movwf	_channel+4,c
-   893                           
-   894                           ;tlc5940.c: 141: channel[5] = 0;
-   895  000048  0E00               	movlw	0
-   896  00004A  6E1B               	movwf	_channel+5,c
-   897                           
-   898                           ;tlc5940.c: 142: channel[6] = 0;
-   899  00004C  0E00               	movlw	0
-   900  00004E  6E1C               	movwf	_channel+6,c
-   901                           
-   902                           ;tlc5940.c: 143: channel[7] = 0;
-   903  000050  0E00               	movlw	0
-   904  000052  6E1D               	movwf	_channel+7,c
-   905                           
-   906                           ;tlc5940.c: 144: channel[8] = 0;
-   907  000054  0E00               	movlw	0
-   908  000056  6E1E               	movwf	_channel+8,c
-   909                           
-   910                           ;tlc5940.c: 145: channel[9] = 0;
-   911  000058  0E00               	movlw	0
-   912  00005A  6E1F               	movwf	_channel+9,c
-   913                           
-   914                           ;tlc5940.c: 146: channel[10] = 0;
-   915  00005C  0E00               	movlw	0
-   916  00005E  6E20               	movwf	_channel+10,c
-   917                           
-   918                           ;tlc5940.c: 147: channel[11] = 0;
-   919  000060  0E00               	movlw	0
-   920  000062  6E21               	movwf	_channel+11,c
-   921                           
-   922                           ;tlc5940.c: 148: channel[12] = 0;
-   923  000064  0E00               	movlw	0
-   924  000066  6E22               	movwf	_channel+12,c
-   925                           
-   926                           ;tlc5940.c: 149: channel[13] = 0;
-   927  000068  0E00               	movlw	0
-   928  00006A  6E23               	movwf	_channel+13,c
-   929                           
-   930                           ;tlc5940.c: 150: channel[14] = 0;
-   931  00006C  0E00               	movlw	0
-   932  00006E  6E24               	movwf	_channel+14,c
-   933                           
-   934                           ;tlc5940.c: 151: channel[15] = 235;
-   935  000070  0EEB               	movlw	235
-   936  000072  6E25               	movwf	_channel+15,c
-   937                           
-   938                           ;tlc5940.c: 154: serial_send_data(0b00000000);
-   939  000074  0E00               	movlw	0
-   940  000076  EC0C  F002         	call	_serial_send_data
-   941                           
-   942                           ;tlc5940.c: 155: serial_send_data(0b00000000);
-   943  00007A  0E00               	movlw	0
-   944  00007C  EC0C  F002         	call	_serial_send_data
-   945                           
-   946                           ;tlc5940.c: 156: serial_send_data(0b00000000);
-   947  000080  0E00               	movlw	0
-   948  000082  EC0C  F002         	call	_serial_send_data
-   949                           
-   950                           ;tlc5940.c: 157: serial_send_data(0b00000000);
-   951  000086  0E00               	movlw	0
-   952  000088  EC0C  F002         	call	_serial_send_data
-   953                           
-   954                           ;tlc5940.c: 158: serial_send_data(0b00000000);
-   955  00008C  0E00               	movlw	0
-   956  00008E  EC0C  F002         	call	_serial_send_data
-   957                           
-   958                           ;tlc5940.c: 159: serial_send_data(0b00000000);
-   959  000092  0E00               	movlw	0
-   960  000094  EC0C  F002         	call	_serial_send_data
-   961                           
-   962                           ;tlc5940.c: 160: serial_send_data(0b00000000);
-   963  000098  0E00               	movlw	0
-   964  00009A  EC0C  F002         	call	_serial_send_data
-   965                           
-   966                           ;tlc5940.c: 161: serial_send_data(0b00000000);
-   967  00009E  0E00               	movlw	0
-   968  0000A0  EC0C  F002         	call	_serial_send_data
-   969                           
-   970                           ;tlc5940.c: 162: serial_send_data(0b00000000);
-   971  0000A4  0E00               	movlw	0
-   972  0000A6  EC0C  F002         	call	_serial_send_data
-   973                           
-   974                           ;tlc5940.c: 163: serial_send_data(0b00000000);
-   975  0000AA  0E00               	movlw	0
-   976  0000AC  EC0C  F002         	call	_serial_send_data
-   977                           
-   978                           ;tlc5940.c: 164: serial_send_data(0b00000000);
-   979  0000B0  0E00               	movlw	0
-   980  0000B2  EC0C  F002         	call	_serial_send_data
-   981                           
-   982                           ;tlc5940.c: 165: serial_send_data(0b00000000);
-   983  0000B6  0E00               	movlw	0
-   984  0000B8  EC0C  F002         	call	_serial_send_data
-   985                           
-   986                           ;tlc5940.c: 166: serial_send_data(0b00000000);
-   987  0000BC  0E00               	movlw	0
-   988  0000BE  EC0C  F002         	call	_serial_send_data
-   989                           
-   990                           ;tlc5940.c: 167: serial_send_data(0b00000000);
-   991  0000C2  0E00               	movlw	0
-   992  0000C4  EC0C  F002         	call	_serial_send_data
-   993                           
-   994                           ;tlc5940.c: 168: serial_send_data(0b00000000);
-   995  0000C8  0E00               	movlw	0
-   996  0000CA  EC0C  F002         	call	_serial_send_data
-   997                           
-   998                           ;tlc5940.c: 169: serial_send_data(0b00000000);
-   999  0000CE  0E00               	movlw	0
-  1000  0000D0  EC0C  F002         	call	_serial_send_data
-  1001                           
-  1002                           ;tlc5940.c: 170: serial_send_data(0b00000000);
-  1003  0000D4  0E00               	movlw	0
-  1004  0000D6  EC0C  F002         	call	_serial_send_data
-  1005                           
-  1006                           ;tlc5940.c: 171: serial_send_data(0b00000000);
-  1007  0000DA  0E00               	movlw	0
-  1008  0000DC  EC0C  F002         	call	_serial_send_data
-  1009                           
-  1010                           ;tlc5940.c: 172: serial_send_data(0b00000000);
-  1011  0000E0  0E00               	movlw	0
-  1012  0000E2  EC0C  F002         	call	_serial_send_data
-  1013                           
-  1014                           ;tlc5940.c: 173: serial_send_data(0b00000000);
-  1015  0000E6  0E00               	movlw	0
-  1016  0000E8  EC0C  F002         	call	_serial_send_data
-  1017                           
-  1018                           ;tlc5940.c: 174: serial_send_data(0b00000000);
-  1019  0000EC  0E00               	movlw	0
-  1020  0000EE  EC0C  F002         	call	_serial_send_data
-  1021                           
-  1022                           ;tlc5940.c: 175: serial_send_data(0b00000000);
-  1023  0000F2  0E00               	movlw	0
-  1024  0000F4  EC0C  F002         	call	_serial_send_data
-  1025                           
-  1026                           ;tlc5940.c: 176: serial_send_data(0b00000000);
-  1027  0000F8  0E00               	movlw	0
-  1028  0000FA  EC0C  F002         	call	_serial_send_data
-  1029                           
-  1030                           ;tlc5940.c: 177: serial_send_data(0b00000000);
-  1031  0000FE  0E00               	movlw	0
-  1032  000100  EC0C  F002         	call	_serial_send_data
-  1033                           
-  1034                           ;tlc5940.c: 179: _delay((unsigned long)((2)*(8000000/4000.0)));
-  1035  000104  0E06               	movlw	6
-  1036  000106  6E11               	movwf	??_init_grayscale& (0+255),c
-  1037  000108  0E30               	movlw	48
-  1038  00010A                     u127:
-  1039  00010A  2EE8               	decfsz	wreg,f,c
-  1040  00010C  D7FE               	goto	u127
-  1041  00010E  2E11               	decfsz	??_init_grayscale& (0+255),f,c
-  1042  000110  D7FC               	goto	u127
-  1043  000112  D000               	nop2	
+   871                           ;tlc5940.c: 52: tlc_servo[0] = 235;
+   872  0000B4  0EEB               	movlw	235
+   873  0000B6  6E16               	movwf	_tlc_servo,c
+   874                           
+   875                           ;tlc5940.c: 53: tlc_servo[1] = 0;
+   876  0000B8  0E00               	movlw	0
+   877  0000BA  6E17               	movwf	_tlc_servo+1,c
+   878                           
+   879                           ;tlc5940.c: 54: tlc_servo[2] = 0;
+   880  0000BC  0E00               	movlw	0
+   881  0000BE  6E18               	movwf	_tlc_servo+2,c
+   882                           
+   883                           ;tlc5940.c: 55: tlc_servo[3] = 0;
+   884  0000C0  0E00               	movlw	0
+   885  0000C2  6E19               	movwf	_tlc_servo+3,c
+   886                           
+   887                           ;tlc5940.c: 56: tlc_servo[4] = 0;
+   888  0000C4  0E00               	movlw	0
+   889  0000C6  6E1A               	movwf	_tlc_servo+4,c
+   890                           
+   891                           ;tlc5940.c: 57: tlc_servo[5] = 0;
+   892  0000C8  0E00               	movlw	0
+   893  0000CA  6E1B               	movwf	_tlc_servo+5,c
+   894                           
+   895                           ;tlc5940.c: 58: tlc_servo[6] = 0;
+   896  0000CC  0E00               	movlw	0
+   897  0000CE  6E1C               	movwf	_tlc_servo+6,c
+   898                           
+   899                           ;tlc5940.c: 59: tlc_servo[7] = 0;
+   900  0000D0  0E00               	movlw	0
+   901  0000D2  6E1D               	movwf	_tlc_servo+7,c
+   902                           
+   903                           ;tlc5940.c: 60: tlc_servo[8] = 0;
+   904  0000D4  0E00               	movlw	0
+   905  0000D6  6E1E               	movwf	_tlc_servo+8,c
+   906                           
+   907                           ;tlc5940.c: 61: tlc_servo[9] = 0;
+   908  0000D8  0E00               	movlw	0
+   909  0000DA  6E1F               	movwf	_tlc_servo+9,c
+   910                           
+   911                           ;tlc5940.c: 62: tlc_servo[10] = 0;
+   912  0000DC  0E00               	movlw	0
+   913  0000DE  6E20               	movwf	_tlc_servo+10,c
+   914                           
+   915                           ;tlc5940.c: 63: tlc_servo[11] = 0;
+   916  0000E0  0E00               	movlw	0
+   917  0000E2  6E21               	movwf	_tlc_servo+11,c
+   918                           
+   919                           ;tlc5940.c: 64: tlc_servo[12] = 0;
+   920  0000E4  0E00               	movlw	0
+   921  0000E6  6E22               	movwf	_tlc_servo+12,c
+   922                           
+   923                           ;tlc5940.c: 65: tlc_servo[13] = 0;
+   924  0000E8  0E00               	movlw	0
+   925  0000EA  6E23               	movwf	_tlc_servo+13,c
+   926                           
+   927                           ;tlc5940.c: 66: tlc_servo[14] = 0;
+   928  0000EC  0E00               	movlw	0
+   929  0000EE  6E24               	movwf	_tlc_servo+14,c
+   930                           
+   931                           ;tlc5940.c: 67: tlc_servo[15] = 235;
+   932  0000F0  0EEB               	movlw	235
+   933  0000F2  6E25               	movwf	_tlc_servo+15,c
+   934                           
+   935                           ;tlc5940.c: 69: serial_send_data(0b00000000);
+   936  0000F4  0E00               	movlw	0
+   937  0000F6  ECFE  F001         	call	_serial_send_data
+   938                           
+   939                           ;tlc5940.c: 70: serial_send_data(0b00000000);
+   940  0000FA  0E00               	movlw	0
+   941  0000FC  ECFE  F001         	call	_serial_send_data
+   942                           
+   943                           ;tlc5940.c: 71: serial_send_data(0b00000000);
+   944  000100  0E00               	movlw	0
+   945  000102  ECFE  F001         	call	_serial_send_data
+   946                           
+   947                           ;tlc5940.c: 72: serial_send_data(0b00000000);
+   948  000106  0E00               	movlw	0
+   949  000108  ECFE  F001         	call	_serial_send_data
+   950                           
+   951                           ;tlc5940.c: 73: serial_send_data(0b00000000);
+   952  00010C  0E00               	movlw	0
+   953  00010E  ECFE  F001         	call	_serial_send_data
+   954                           
+   955                           ;tlc5940.c: 74: serial_send_data(0b00000000);
+   956  000112  0E00               	movlw	0
+   957  000114  ECFE  F001         	call	_serial_send_data
+   958                           
+   959                           ;tlc5940.c: 75: serial_send_data(0b00000000);
+   960  000118  0E00               	movlw	0
+   961  00011A  ECFE  F001         	call	_serial_send_data
+   962                           
+   963                           ;tlc5940.c: 76: serial_send_data(0b00000000);
+   964  00011E  0E00               	movlw	0
+   965  000120  ECFE  F001         	call	_serial_send_data
+   966                           
+   967                           ;tlc5940.c: 77: serial_send_data(0b00000000);
+   968  000124  0E00               	movlw	0
+   969  000126  ECFE  F001         	call	_serial_send_data
+   970                           
+   971                           ;tlc5940.c: 78: serial_send_data(0b00000000);
+   972  00012A  0E00               	movlw	0
+   973  00012C  ECFE  F001         	call	_serial_send_data
+   974                           
+   975                           ;tlc5940.c: 79: serial_send_data(0b00000000);
+   976  000130  0E00               	movlw	0
+   977  000132  ECFE  F001         	call	_serial_send_data
+   978                           
+   979                           ;tlc5940.c: 80: serial_send_data(0b00000000);
+   980  000136  0E00               	movlw	0
+   981  000138  ECFE  F001         	call	_serial_send_data
+   982                           
+   983                           ;tlc5940.c: 81: serial_send_data(0b00000000);
+   984  00013C  0E00               	movlw	0
+   985  00013E  ECFE  F001         	call	_serial_send_data
+   986                           
+   987                           ;tlc5940.c: 82: serial_send_data(0b00000000);
+   988  000142  0E00               	movlw	0
+   989  000144  ECFE  F001         	call	_serial_send_data
+   990                           
+   991                           ;tlc5940.c: 83: serial_send_data(0b00000000);
+   992  000148  0E00               	movlw	0
+   993  00014A  ECFE  F001         	call	_serial_send_data
+   994                           
+   995                           ;tlc5940.c: 84: serial_send_data(0b00000000);
+   996  00014E  0E00               	movlw	0
+   997  000150  ECFE  F001         	call	_serial_send_data
+   998                           
+   999                           ;tlc5940.c: 85: serial_send_data(0b00000000);
+  1000  000154  0E00               	movlw	0
+  1001  000156  ECFE  F001         	call	_serial_send_data
+  1002                           
+  1003                           ;tlc5940.c: 86: serial_send_data(0b00000000);
+  1004  00015A  0E00               	movlw	0
+  1005  00015C  ECFE  F001         	call	_serial_send_data
+  1006                           
+  1007                           ;tlc5940.c: 87: serial_send_data(0b00000000);
+  1008  000160  0E00               	movlw	0
+  1009  000162  ECFE  F001         	call	_serial_send_data
+  1010                           
+  1011                           ;tlc5940.c: 88: serial_send_data(0b00000000);
+  1012  000166  0E00               	movlw	0
+  1013  000168  ECFE  F001         	call	_serial_send_data
+  1014                           
+  1015                           ;tlc5940.c: 89: serial_send_data(0b00000000);
+  1016  00016C  0E00               	movlw	0
+  1017  00016E  ECFE  F001         	call	_serial_send_data
+  1018                           
+  1019                           ;tlc5940.c: 90: serial_send_data(0b00000000);
+  1020  000172  0E00               	movlw	0
+  1021  000174  ECFE  F001         	call	_serial_send_data
+  1022                           
+  1023                           ;tlc5940.c: 91: serial_send_data(0b00000000);
+  1024  000178  0E00               	movlw	0
+  1025  00017A  ECFE  F001         	call	_serial_send_data
+  1026                           
+  1027                           ;tlc5940.c: 92: serial_send_data(0b00000000);
+  1028  00017E  0E00               	movlw	0
+  1029  000180  ECFE  F001         	call	_serial_send_data
+  1030                           
+  1031                           ;tlc5940.c: 94: _delay((unsigned long)((2)*(8000000/4000.0)));
+  1032  000184  0E06               	movlw	6
+  1033  000186  6E11               	movwf	??_tlc_init& (0+255),c
+  1034  000188  0E30               	movlw	48
+  1035  00018A                     u177:
+  1036  00018A  2EE8               	decfsz	wreg,f,c
+  1037  00018C  D7FE               	goto	u177
+  1038  00018E  2E11               	decfsz	??_tlc_init& (0+255),f,c
+  1039  000190  D7FC               	goto	u177
+  1040  000192  D000               	nop2	
+  1041                           
+  1042                           ;tlc5940.c: 95: LATDbits.LD0 = 1;
+  1043  000194  808C               	bsf	3980,0,c	;volatile
   1044                           
-  1045                           ;tlc5940.c: 180: LATDbits.LD0 = 1;
-  1046  000114  808C               	bsf	3980,0,c	;volatile
-  1047                           
-  1048                           ;tlc5940.c: 181: _delay((unsigned long)((30)*(8000000/4000.0)));
-  1049  000116  0E4E               	movlw	78
-  1050  000118  6E11               	movwf	??_init_grayscale& (0+255),c
-  1051  00011A  0EEB               	movlw	235
-  1052  00011C                     u137:
-  1053  00011C  2EE8               	decfsz	wreg,f,c
-  1054  00011E  D7FE               	goto	u137
-  1055  000120  2E11               	decfsz	??_init_grayscale& (0+255),f,c
-  1056  000122  D7FC               	goto	u137
-  1057  000124  F000               	nop	
+  1045                           ;tlc5940.c: 96: _delay((unsigned long)((30)*(8000000/4000.0)));
+  1046  000196  0E4E               	movlw	78
+  1047  000198  6E11               	movwf	??_tlc_init& (0+255),c
+  1048  00019A  0EEB               	movlw	235
+  1049  00019C                     u187:
+  1050  00019C  2EE8               	decfsz	wreg,f,c
+  1051  00019E  D7FE               	goto	u187
+  1052  0001A0  2E11               	decfsz	??_tlc_init& (0+255),f,c
+  1053  0001A2  D7FC               	goto	u187
+  1054  0001A4  F000               	nop	
+  1055                           
+  1056                           ;tlc5940.c: 97: LATDbits.LD0 = 0;
+  1057  0001A6  908C               	bcf	3980,0,c	;volatile
   1058                           
-  1059                           ;tlc5940.c: 182: LATDbits.LD0 = 0;
-  1060  000126  908C               	bcf	3980,0,c	;volatile
-  1061                           
-  1062                           ;tlc5940.c: 184: serial_send_data(0b10000000);
-  1063  000128  0E80               	movlw	128
-  1064  00012A  EC0C  F002         	call	_serial_send_data
-  1065  00012E  0012               	return	
-  1066  000130                     __end_of_init_grayscale:
-  1067                           	opt stack 0
-  1068                           pclatu	equ	0xFFB
-  1069                           pclath	equ	0xFFA
-  1070                           tblptru	equ	0xFF8
-  1071                           tblptrh	equ	0xFF7
-  1072                           tblptrl	equ	0xFF6
-  1073                           tablat	equ	0xFF5
-  1074                           prodh	equ	0xFF4
-  1075                           prodl	equ	0xFF3
-  1076                           intcon	equ	0xFF2
-  1077                           postinc0	equ	0xFEE
-  1078                           fsr0h	equ	0xFEA
-  1079                           fsr0l	equ	0xFE9
-  1080                           wreg	equ	0xFE8
-  1081                           fsr1h	equ	0xFE2
-  1082                           fsr1l	equ	0xFE1
-  1083                           indf2	equ	0xFDF
-  1084                           fsr2h	equ	0xFDA
-  1085                           fsr2l	equ	0xFD9
-  1086                           status	equ	0xFD8
-  1087                           
-  1088 ;; *************** function _init_dot_correction *****************
-  1089 ;; Defined at:
-  1090 ;;		line 102 in file "tlc5940.c"
-  1091 ;; Parameters:    Size  Location     Type
-  1092 ;;		None
-  1093 ;; Auto vars:     Size  Location     Type
-  1094 ;;		None
-  1095 ;; Return value:  Size  Location     Type
-  1096 ;;		None               void
-  1097 ;; Registers used:
-  1098 ;;		wreg, status,2, cstack
-  1099 ;; Tracked objects:
-  1100 ;;		On entry : 0/0
-  1101 ;;		On exit  : 0/0
-  1102 ;;		Unchanged: 0/0
-  1103 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-  1104 ;;      Params:         0       0       0       0       0       0       0
-  1105 ;;      Locals:         0       0       0       0       0       0       0
-  1106 ;;      Temps:          1       0       0       0       0       0       0
-  1107 ;;      Totals:         1       0       0       0       0       0       0
-  1108 ;;Total ram usage:        1 bytes
-  1109 ;; Hardware stack levels used:    1
-  1110 ;; Hardware stack levels required when called:    2
-  1111 ;; This function calls:
-  1112 ;;		_serial_send_data
-  1113 ;; This function is called by:
-  1114 ;;		_main
-  1115 ;; This function uses a non-reentrant model
-  1116 ;;
-  1117                           
-  1118                           	psect	text5
-  1119  00031A                     __ptext5:
-  1120                           	opt stack 0
-  1121  00031A                     _init_dot_correction:
-  1122                           	opt stack 28
-  1123                           
-  1124                           ;tlc5940.c: 104: LATDbits.LD1 = 1;
-  1125                           
-  1126                           ;incstack = 0
-  1127  00031A  828C               	bsf	3980,1,c	;volatile
-  1128                           
-  1129                           ;tlc5940.c: 105: LATDbits.LD0 = 0;
-  1130  00031C  908C               	bcf	3980,0,c	;volatile
-  1131                           
-  1132                           ;tlc5940.c: 106: _delay((unsigned long)((2)*(8000000/4000.0)));
-  1133  00031E  0E06               	movlw	6
-  1134  000320  6E11               	movwf	??_init_dot_correction& (0+255),c
-  1135  000322  0E30               	movlw	48
-  1136  000324                     u147:
-  1137  000324  2EE8               	decfsz	wreg,f,c
-  1138  000326  D7FE               	goto	u147
-  1139  000328  2E11               	decfsz	??_init_dot_correction& (0+255),f,c
-  1140  00032A  D7FC               	goto	u147
-  1141  00032C  D000               	nop2	
-  1142                           
-  1143                           ;tlc5940.c: 108: serial_send_data(0b11111111);
-  1144  00032E  0EFF               	movlw	255
-  1145  000330  EC0C  F002         	call	_serial_send_data
-  1146                           
-  1147                           ;tlc5940.c: 109: serial_send_data(0b11111111);
-  1148  000334  0EFF               	movlw	255
-  1149  000336  EC0C  F002         	call	_serial_send_data
-  1150                           
-  1151                           ;tlc5940.c: 110: serial_send_data(0b11111111);
-  1152  00033A  0EFF               	movlw	255
-  1153  00033C  EC0C  F002         	call	_serial_send_data
-  1154                           
-  1155                           ;tlc5940.c: 111: serial_send_data(0b11111111);
-  1156  000340  0EFF               	movlw	255
-  1157  000342  EC0C  F002         	call	_serial_send_data
-  1158                           
-  1159                           ;tlc5940.c: 112: serial_send_data(0b11111111);
-  1160  000346  0EFF               	movlw	255
-  1161  000348  EC0C  F002         	call	_serial_send_data
-  1162                           
-  1163                           ;tlc5940.c: 113: serial_send_data(0b11111111);
-  1164  00034C  0EFF               	movlw	255
-  1165  00034E  EC0C  F002         	call	_serial_send_data
-  1166                           
-  1167                           ;tlc5940.c: 114: serial_send_data(0b11111111);
-  1168  000352  0EFF               	movlw	255
-  1169  000354  EC0C  F002         	call	_serial_send_data
-  1170                           
-  1171                           ;tlc5940.c: 115: serial_send_data(0b11111111);
-  1172  000358  0EFF               	movlw	255
-  1173  00035A  EC0C  F002         	call	_serial_send_data
-  1174                           
-  1175                           ;tlc5940.c: 116: serial_send_data(0b11111111);
-  1176  00035E  0EFF               	movlw	255
-  1177  000360  EC0C  F002         	call	_serial_send_data
-  1178                           
-  1179                           ;tlc5940.c: 117: serial_send_data(0b11111111);
-  1180  000364  0EFF               	movlw	255
-  1181  000366  EC0C  F002         	call	_serial_send_data
-  1182                           
-  1183                           ;tlc5940.c: 118: serial_send_data(0b11111111);
-  1184  00036A  0EFF               	movlw	255
-  1185  00036C  EC0C  F002         	call	_serial_send_data
-  1186                           
-  1187                           ;tlc5940.c: 119: serial_send_data(0b11111111);
-  1188  000370  0EFF               	movlw	255
-  1189  000372  EC0C  F002         	call	_serial_send_data
-  1190                           
-  1191                           ;tlc5940.c: 121: _delay((unsigned long)((2)*(8000000/4000.0)));
-  1192  000376  0E06               	movlw	6
-  1193  000378  6E11               	movwf	??_init_dot_correction& (0+255),c
-  1194  00037A  0E30               	movlw	48
-  1195  00037C                     u157:
-  1196  00037C  2EE8               	decfsz	wreg,f,c
-  1197  00037E  D7FE               	goto	u157
-  1198  000380  2E11               	decfsz	??_init_dot_correction& (0+255),f,c
-  1199  000382  D7FC               	goto	u157
-  1200  000384  D000               	nop2	
-  1201                           
-  1202                           ;tlc5940.c: 122: LATDbits.LD0 = 1;
-  1203  000386  808C               	bsf	3980,0,c	;volatile
-  1204                           
-  1205                           ;tlc5940.c: 123: _delay((unsigned long)((30)*(8000000/4000.0)));
-  1206  000388  0E4E               	movlw	78
-  1207  00038A  6E11               	movwf	??_init_dot_correction& (0+255),c
-  1208  00038C  0EEB               	movlw	235
-  1209  00038E                     u167:
-  1210  00038E  2EE8               	decfsz	wreg,f,c
-  1211  000390  D7FE               	goto	u167
-  1212  000392  2E11               	decfsz	??_init_dot_correction& (0+255),f,c
-  1213  000394  D7FC               	goto	u167
-  1214  000396  F000               	nop	
-  1215                           
-  1216                           ;tlc5940.c: 124: LATDbits.LD0 = 0;
-  1217  000398  908C               	bcf	3980,0,c	;volatile
-  1218  00039A  0012               	return	
-  1219  00039C                     __end_of_init_dot_correction:
-  1220                           	opt stack 0
-  1221                           pclatu	equ	0xFFB
-  1222                           pclath	equ	0xFFA
-  1223                           tblptru	equ	0xFF8
-  1224                           tblptrh	equ	0xFF7
-  1225                           tblptrl	equ	0xFF6
-  1226                           tablat	equ	0xFF5
-  1227                           prodh	equ	0xFF4
-  1228                           prodl	equ	0xFF3
-  1229                           intcon	equ	0xFF2
-  1230                           postinc0	equ	0xFEE
-  1231                           fsr0h	equ	0xFEA
-  1232                           fsr0l	equ	0xFE9
-  1233                           wreg	equ	0xFE8
-  1234                           fsr1h	equ	0xFE2
-  1235                           fsr1l	equ	0xFE1
-  1236                           indf2	equ	0xFDF
-  1237                           fsr2h	equ	0xFDA
-  1238                           fsr2l	equ	0xFD9
-  1239                           status	equ	0xFD8
-  1240                           
-  1241 ;; *************** function _serial_send_data *****************
-  1242 ;; Defined at:
-  1243 ;;		line 10 in file "tlc5940.c"
-  1244 ;; Parameters:    Size  Location     Type
-  1245 ;;  data            1    wreg     unsigned char 
-  1246 ;; Auto vars:     Size  Location     Type
-  1247 ;;  data            1   15[COMRAM] unsigned char 
-  1248 ;; Return value:  Size  Location     Type
-  1249 ;;		None               void
-  1250 ;; Registers used:
-  1251 ;;		wreg, status,2, cstack
-  1252 ;; Tracked objects:
-  1253 ;;		On entry : 0/0
-  1254 ;;		On exit  : 0/0
-  1255 ;;		Unchanged: 0/0
-  1256 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-  1257 ;;      Params:         0       0       0       0       0       0       0
-  1258 ;;      Locals:         1       0       0       0       0       0       0
-  1259 ;;      Temps:          1       0       0       0       0       0       0
-  1260 ;;      Totals:         2       0       0       0       0       0       0
-  1261 ;;Total ram usage:        2 bytes
-  1262 ;; Hardware stack levels used:    1
-  1263 ;; Hardware stack levels required when called:    1
-  1264 ;; This function calls:
-  1265 ;;		Nothing
-  1266 ;; This function is called by:
-  1267 ;;		_init_dot_correction
-  1268 ;;		_init_grayscale
-  1269 ;;		_update_grayscale
-  1270 ;;		_tlc_init
-  1271 ;; This function uses a non-reentrant model
-  1272 ;;
-  1273                           
-  1274                           	psect	text6
-  1275  000418                     __ptext6:
-  1276                           	opt stack 0
-  1277  000418                     _serial_send_data:
-  1278                           	opt stack 28
-  1279                           
-  1280                           ;incstack = 0
-  1281                           ;serial_send_data@data stored from wreg
-  1282  000418  6E10               	movwf	serial_send_data@data,c
-  1283                           
-  1284                           ;tlc5940.c: 12: SSPBUF = data;
-  1285  00041A  C010  FFC9         	movff	serial_send_data@data,4041	;volatile
-  1286                           
-  1287                           ;tlc5940.c: 13: _delay((unsigned long)((1)*(8000000/4000.0)));
-  1288  00041E  0E03               	movlw	3
-  1289  000420  6E0F               	movwf	??_serial_send_data& (0+255),c
-  1290  000422  0E98               	movlw	152
-  1291  000424                     u177:
-  1292  000424  2EE8               	decfsz	wreg,f,c
-  1293  000426  D7FE               	goto	u177
-  1294  000428  2E0F               	decfsz	??_serial_send_data& (0+255),f,c
-  1295  00042A  D7FC               	goto	u177
-  1296  00042C  0012               	return	
-  1297  00042E                     __end_of_serial_send_data:
-  1298                           	opt stack 0
-  1299                           pclatu	equ	0xFFB
-  1300                           pclath	equ	0xFFA
-  1301                           tblptru	equ	0xFF8
-  1302                           tblptrh	equ	0xFF7
-  1303                           tblptrl	equ	0xFF6
-  1304                           tablat	equ	0xFF5
-  1305                           prodh	equ	0xFF4
-  1306                           prodl	equ	0xFF3
-  1307                           intcon	equ	0xFF2
-  1308                           postinc0	equ	0xFEE
-  1309                           fsr0h	equ	0xFEA
-  1310                           fsr0l	equ	0xFE9
-  1311                           wreg	equ	0xFE8
-  1312                           fsr1h	equ	0xFE2
-  1313                           fsr1l	equ	0xFE1
-  1314                           indf2	equ	0xFDF
-  1315                           fsr2h	equ	0xFDA
-  1316                           fsr2l	equ	0xFD9
-  1317                           status	equ	0xFD8
-  1318                           
-  1319 ;; *************** function _delay_sec *****************
-  1320 ;; Defined at:
-  1321 ;;		line 21 in file "main.c"
-  1322 ;; Parameters:    Size  Location     Type
-  1323 ;;		None
-  1324 ;; Auto vars:     Size  Location     Type
-  1325 ;;  i               2   15[COMRAM] int 
-  1326 ;; Return value:  Size  Location     Type
-  1327 ;;		None               void
-  1328 ;; Registers used:
-  1329 ;;		wreg, status,2, status,0
-  1330 ;; Tracked objects:
-  1331 ;;		On entry : 0/0
-  1332 ;;		On exit  : 0/0
-  1333 ;;		Unchanged: 0/0
-  1334 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-  1335 ;;      Params:         0       0       0       0       0       0       0
-  1336 ;;      Locals:         2       0       0       0       0       0       0
-  1337 ;;      Temps:          1       0       0       0       0       0       0
-  1338 ;;      Totals:         3       0       0       0       0       0       0
-  1339 ;;Total ram usage:        3 bytes
-  1340 ;; Hardware stack levels used:    1
-  1341 ;; Hardware stack levels required when called:    1
-  1342 ;; This function calls:
-  1343 ;;		Nothing
-  1344 ;; This function is called by:
-  1345 ;;		_main
-  1346 ;; This function uses a non-reentrant model
-  1347 ;;
-  1348                           
-  1349                           	psect	text7
-  1350  00039C                     __ptext7:
-  1351                           	opt stack 0
-  1352  00039C                     _delay_sec:
-  1353                           	opt stack 29
-  1354                           
-  1355                           ;main.c: 23: for(int i = 0; i < 50; i++)
-  1356                           
-  1357                           ;incstack = 0
-  1358  00039C  0E00               	movlw	0
-  1359  00039E  6E11               	movwf	delay_sec@i+1,c
-  1360  0003A0  0E00               	movlw	0
-  1361  0003A2  6E10               	movwf	delay_sec@i,c
-  1362  0003A4  5011               	movf	delay_sec@i+1,w,c
-  1363  0003A6  0A80               	xorlw	128
-  1364  0003A8  0F80               	addlw	-128
-  1365  0003AA  0E32               	movlw	50
-  1366  0003AC  B4D8               	btfsc	status,2,c
-  1367  0003AE  5C10               	subwf	delay_sec@i,w,c
-  1368  0003B0  B0D8               	btfsc	status,0,c
-  1369  0003B2  D00B               	goto	l91
-  1370                           
-  1371                           ;main.c: 24: {
-  1372                           ;main.c: 25: _delay((unsigned long)((10)*(8000000/4000.0)));
-  1373  0003B4  0E1A               	movlw	26
-  1374  0003B6  6E0F               	movwf	??_delay_sec& (0+255),c
-  1375  0003B8  0EF8               	movlw	248
-  1376  0003BA                     u187:
-  1377  0003BA  2EE8               	decfsz	wreg,f,c
-  1378  0003BC  D7FE               	goto	u187
-  1379  0003BE  2E0F               	decfsz	??_delay_sec& (0+255),f,c
-  1380  0003C0  D7FC               	goto	u187
-  1381  0003C2  D000               	nop2	
-  1382  0003C4  4A10               	infsnz	delay_sec@i,f,c
-  1383  0003C6  2A11               	incf	delay_sec@i+1,f,c
-  1384  0003C8  D7ED               	goto	L2
-  1385  0003CA                     l91:
-  1386  0003CA  0012               	return	
-  1387  0003CC                     __end_of_delay_sec:
-  1388                           	opt stack 0
-  1389                           pclatu	equ	0xFFB
-  1390                           pclath	equ	0xFFA
-  1391                           tblptru	equ	0xFF8
-  1392                           tblptrh	equ	0xFF7
-  1393                           tblptrl	equ	0xFF6
-  1394                           tablat	equ	0xFF5
-  1395                           prodh	equ	0xFF4
-  1396                           prodl	equ	0xFF3
-  1397                           intcon	equ	0xFF2
-  1398                           postinc0	equ	0xFEE
-  1399                           fsr0h	equ	0xFEA
-  1400                           fsr0l	equ	0xFE9
-  1401                           wreg	equ	0xFE8
-  1402                           fsr1h	equ	0xFE2
-  1403                           fsr1l	equ	0xFE1
-  1404                           indf2	equ	0xFDF
-  1405                           fsr2h	equ	0xFDA
-  1406                           fsr2l	equ	0xFD9
-  1407                           status	equ	0xFD8
-  1408                           
-  1409 ;; *************** function _TMR2_init *****************
-  1410 ;; Defined at:
-  1411 ;;		line 60 in file "main.c"
-  1412 ;; Parameters:    Size  Location     Type
-  1413 ;;		None
-  1414 ;; Auto vars:     Size  Location     Type
-  1415 ;;		None
-  1416 ;; Return value:  Size  Location     Type
-  1417 ;;		None               void
-  1418 ;; Registers used:
-  1419 ;;		wreg, status,2
-  1420 ;; Tracked objects:
-  1421 ;;		On entry : 0/0
-  1422 ;;		On exit  : 0/0
-  1423 ;;		Unchanged: 0/0
-  1424 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-  1425 ;;      Params:         0       0       0       0       0       0       0
-  1426 ;;      Locals:         0       0       0       0       0       0       0
-  1427 ;;      Temps:          0       0       0       0       0       0       0
-  1428 ;;      Totals:         0       0       0       0       0       0       0
-  1429 ;;Total ram usage:        0 bytes
-  1430 ;; Hardware stack levels used:    1
-  1431 ;; Hardware stack levels required when called:    1
-  1432 ;; This function calls:
-  1433 ;;		Nothing
-  1434 ;; This function is called by:
-  1435 ;;		_main
-  1436 ;; This function uses a non-reentrant model
-  1437 ;;
-  1438                           
-  1439                           	psect	text8
-  1440  0003CC                     __ptext8:
-  1441                           	opt stack 0
-  1442  0003CC                     _TMR2_init:
-  1443                           	opt stack 29
-  1444                           
-  1445                           ;main.c: 63: PR2 = 0b00000100 ;
-  1446                           
-  1447                           ;incstack = 0
-  1448  0003CC  0E04               	movlw	4
-  1449  0003CE  6ECB               	movwf	4043,c	;volatile
-  1450                           
-  1451                           ;main.c: 64: T2CON = 0b01000101 ;
-  1452  0003D0  0E45               	movlw	69
-  1453  0003D2  6ECA               	movwf	4042,c	;volatile
-  1454                           
-  1455                           ;main.c: 65: CCPR1L = 0b00000010 ;
-  1456  0003D4  0E02               	movlw	2
-  1457  0003D6  6EBE               	movwf	4030,c	;volatile
-  1458                           
-  1459                           ;main.c: 66: CCP1CON = 0b00101100 ;
-  1460  0003D8  0E2C               	movlw	44
-  1461  0003DA  6EBD               	movwf	4029,c	;volatile
-  1462                           
-  1463                           ;main.c: 67: TRISC = 0b00000000;
-  1464  0003DC  0E00               	movlw	0
-  1465  0003DE  6E94               	movwf	3988,c	;volatile
-  1466                           
-  1467                           ;main.c: 68: PORTC = 0b00000000;
-  1468  0003E0  0E00               	movlw	0
-  1469  0003E2  6E82               	movwf	3970,c	;volatile
-  1470                           
-  1471                           ;main.c: 69: T2CONbits.TMR2ON = 0;
-  1472  0003E4  94CA               	bcf	4042,2,c	;volatile
-  1473  0003E6  0012               	return	
-  1474  0003E8                     __end_of_TMR2_init:
-  1475                           	opt stack 0
-  1476                           pclatu	equ	0xFFB
-  1477                           pclath	equ	0xFFA
-  1478                           tblptru	equ	0xFF8
-  1479                           tblptrh	equ	0xFF7
-  1480                           tblptrl	equ	0xFF6
-  1481                           tablat	equ	0xFF5
-  1482                           prodh	equ	0xFF4
-  1483                           prodl	equ	0xFF3
-  1484                           intcon	equ	0xFF2
-  1485                           postinc0	equ	0xFEE
-  1486                           fsr0h	equ	0xFEA
-  1487                           fsr0l	equ	0xFE9
-  1488                           wreg	equ	0xFE8
-  1489                           fsr1h	equ	0xFE2
-  1490                           fsr1l	equ	0xFE1
-  1491                           indf2	equ	0xFDF
-  1492                           fsr2h	equ	0xFDA
-  1493                           fsr2l	equ	0xFD9
-  1494                           status	equ	0xFD8
-  1495                           
-  1496 ;; *************** function _blank_pulse *****************
-  1497 ;; Defined at:
-  1498 ;;		line 29 in file "main.c"
-  1499 ;; Parameters:    Size  Location     Type
-  1500 ;;		None
-  1501 ;; Auto vars:     Size  Location     Type
-  1502 ;;		None
-  1503 ;; Return value:  Size  Location     Type
-  1504 ;;		None               void
-  1505 ;; Registers used:
-  1506 ;;		wreg, status,2, status,0
-  1507 ;; Tracked objects:
-  1508 ;;		On entry : 0/0
-  1509 ;;		On exit  : 0/0
-  1510 ;;		Unchanged: 0/0
-  1511 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-  1512 ;;      Params:         0       0       0       0       0       0       0
-  1513 ;;      Locals:         0       0       0       0       0       0       0
-  1514 ;;      Temps:         14       0       0       0       0       0       0
-  1515 ;;      Totals:        14       0       0       0       0       0       0
-  1516 ;;Total ram usage:       14 bytes
-  1517 ;; Hardware stack levels used:    1
-  1518 ;; This function calls:
-  1519 ;;		Nothing
-  1520 ;; This function is called by:
-  1521 ;;		Interrupt level 2
-  1522 ;; This function uses a non-reentrant model
-  1523 ;;
-  1524                           
-  1525                           	psect	intcode
-  1526  000008                     __pintcode:
-  1527                           	opt stack 0
-  1528  000008                     _blank_pulse:
-  1529                           	opt stack 28
-  1530                           
-  1531                           ;incstack = 0
-  1532  000008  CFFA F001          	movff	pclath,??_blank_pulse
-  1533  00000C  CFFB F002          	movff	pclatu,??_blank_pulse+1
-  1534  000010  CFE9 F003          	movff	fsr0l,??_blank_pulse+2
-  1535  000014  EDFC  F000         	call	int_func,f	;refresh shadow registers
-  1536                           pclatu	equ	0xFFB
-  1537                           pclath	equ	0xFFA
-  1538                           tblptru	equ	0xFF8
-  1539                           tblptrh	equ	0xFF7
-  1540                           tblptrl	equ	0xFF6
-  1541                           tablat	equ	0xFF5
-  1542                           prodh	equ	0xFF4
-  1543                           prodl	equ	0xFF3
-  1544                           intcon	equ	0xFF2
-  1545                           postinc0	equ	0xFEE
-  1546                           fsr0h	equ	0xFEA
-  1547                           fsr0l	equ	0xFE9
-  1548                           wreg	equ	0xFE8
-  1549                           fsr1h	equ	0xFE2
-  1550                           fsr1l	equ	0xFE1
-  1551                           indf2	equ	0xFDF
-  1552                           fsr2h	equ	0xFDA
-  1553                           fsr2l	equ	0xFD9
-  1554                           status	equ	0xFD8
-  1555                           pclatu	equ	0xFFB
-  1556                           pclath	equ	0xFFA
-  1557                           tblptru	equ	0xFF8
-  1558                           tblptrh	equ	0xFF7
-  1559                           tblptrl	equ	0xFF6
-  1560                           tablat	equ	0xFF5
-  1561                           prodh	equ	0xFF4
-  1562                           prodl	equ	0xFF3
-  1563                           intcon	equ	0xFF2
-  1564                           postinc0	equ	0xFEE
-  1565                           fsr0h	equ	0xFEA
-  1566                           fsr0l	equ	0xFE9
-  1567                           wreg	equ	0xFE8
-  1568                           fsr1h	equ	0xFE2
-  1569                           fsr1l	equ	0xFE1
-  1570                           indf2	equ	0xFDF
-  1571                           fsr2h	equ	0xFDA
-  1572                           fsr2l	equ	0xFD9
-  1573                           status	equ	0xFD8
-  1574                           
-  1575                           	psect	rparam
-  1576  0000                     pclatu	equ	0xFFB
-  1577                           pclath	equ	0xFFA
-  1578                           tblptru	equ	0xFF8
-  1579                           tblptrh	equ	0xFF7
-  1580                           tblptrl	equ	0xFF6
-  1581                           tablat	equ	0xFF5
-  1582                           prodh	equ	0xFF4
-  1583                           prodl	equ	0xFF3
-  1584                           intcon	equ	0xFF2
-  1585                           postinc0	equ	0xFEE
-  1586                           fsr0h	equ	0xFEA
-  1587                           fsr0l	equ	0xFE9
-  1588                           wreg	equ	0xFE8
-  1589                           fsr1h	equ	0xFE2
-  1590                           fsr1l	equ	0xFE1
-  1591                           indf2	equ	0xFDF
-  1592                           fsr2h	equ	0xFDA
-  1593                           fsr2l	equ	0xFD9
-  1594                           status	equ	0xFD8
+  1059                           ;tlc5940.c: 99: serial_send_data(0b10000000);
+  1060  0001A8  0E80               	movlw	128
+  1061  0001AA  ECFE  F001         	call	_serial_send_data
+  1062  0001AE  0012               	return	
+  1063  0001B0                     __end_of_tlc_init:
+  1064                           	opt stack 0
+  1065                           pclatu	equ	0xFFB
+  1066                           pclath	equ	0xFFA
+  1067                           tblptru	equ	0xFF8
+  1068                           tblptrh	equ	0xFF7
+  1069                           tblptrl	equ	0xFF6
+  1070                           tablat	equ	0xFF5
+  1071                           prodh	equ	0xFF4
+  1072                           prodl	equ	0xFF3
+  1073                           intcon	equ	0xFF2
+  1074                           postinc0	equ	0xFEE
+  1075                           fsr0h	equ	0xFEA
+  1076                           fsr0l	equ	0xFE9
+  1077                           wreg	equ	0xFE8
+  1078                           fsr1h	equ	0xFE2
+  1079                           fsr1l	equ	0xFE1
+  1080                           indf2	equ	0xFDF
+  1081                           fsr2h	equ	0xFDA
+  1082                           fsr2l	equ	0xFD9
+  1083                           status	equ	0xFD8
+  1084                           
+  1085 ;; *************** function _serial_send_data *****************
+  1086 ;; Defined at:
+  1087 ;;		line 10 in file "tlc5940.c"
+  1088 ;; Parameters:    Size  Location     Type
+  1089 ;;  data            1    wreg     unsigned char 
+  1090 ;; Auto vars:     Size  Location     Type
+  1091 ;;  data            1   15[COMRAM] unsigned char 
+  1092 ;; Return value:  Size  Location     Type
+  1093 ;;		None               void
+  1094 ;; Registers used:
+  1095 ;;		wreg, status,2, cstack
+  1096 ;; Tracked objects:
+  1097 ;;		On entry : 0/0
+  1098 ;;		On exit  : 0/0
+  1099 ;;		Unchanged: 0/0
+  1100 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1101 ;;      Params:         0       0       0       0       0       0       0
+  1102 ;;      Locals:         1       0       0       0       0       0       0
+  1103 ;;      Temps:          1       0       0       0       0       0       0
+  1104 ;;      Totals:         2       0       0       0       0       0       0
+  1105 ;;Total ram usage:        2 bytes
+  1106 ;; Hardware stack levels used:    1
+  1107 ;; Hardware stack levels required when called:    1
+  1108 ;; This function calls:
+  1109 ;;		Nothing
+  1110 ;; This function is called by:
+  1111 ;;		_tlc_init
+  1112 ;;		_tlc_update
+  1113 ;;		_tlc_write
+  1114 ;; This function uses a non-reentrant model
+  1115 ;;
+  1116                           
+  1117                           	psect	text4
+  1118  0003FC                     __ptext4:
+  1119                           	opt stack 0
+  1120  0003FC                     _serial_send_data:
+  1121                           	opt stack 28
+  1122                           
+  1123                           ;incstack = 0
+  1124                           ;serial_send_data@data stored from wreg
+  1125  0003FC  6E10               	movwf	serial_send_data@data,c
+  1126                           
+  1127                           ;tlc5940.c: 12: SSPBUF = data;
+  1128  0003FE  C010  FFC9         	movff	serial_send_data@data,4041	;volatile
+  1129                           
+  1130                           ;tlc5940.c: 13: _delay((unsigned long)((1)*(8000000/4000.0)));
+  1131  000402  0E03               	movlw	3
+  1132  000404  6E0F               	movwf	??_serial_send_data& (0+255),c
+  1133  000406  0E98               	movlw	152
+  1134  000408                     u197:
+  1135  000408  2EE8               	decfsz	wreg,f,c
+  1136  00040A  D7FE               	goto	u197
+  1137  00040C  2E0F               	decfsz	??_serial_send_data& (0+255),f,c
+  1138  00040E  D7FC               	goto	u197
+  1139  000410  0012               	return	
+  1140  000412                     __end_of_serial_send_data:
+  1141                           	opt stack 0
+  1142                           pclatu	equ	0xFFB
+  1143                           pclath	equ	0xFFA
+  1144                           tblptru	equ	0xFF8
+  1145                           tblptrh	equ	0xFF7
+  1146                           tblptrl	equ	0xFF6
+  1147                           tablat	equ	0xFF5
+  1148                           prodh	equ	0xFF4
+  1149                           prodl	equ	0xFF3
+  1150                           intcon	equ	0xFF2
+  1151                           postinc0	equ	0xFEE
+  1152                           fsr0h	equ	0xFEA
+  1153                           fsr0l	equ	0xFE9
+  1154                           wreg	equ	0xFE8
+  1155                           fsr1h	equ	0xFE2
+  1156                           fsr1l	equ	0xFE1
+  1157                           indf2	equ	0xFDF
+  1158                           fsr2h	equ	0xFDA
+  1159                           fsr2l	equ	0xFD9
+  1160                           status	equ	0xFD8
+  1161                           
+  1162 ;; *************** function _spi_init *****************
+  1163 ;; Defined at:
+  1164 ;;		line 45 in file "main.c"
+  1165 ;; Parameters:    Size  Location     Type
+  1166 ;;		None
+  1167 ;; Auto vars:     Size  Location     Type
+  1168 ;;		None
+  1169 ;; Return value:  Size  Location     Type
+  1170 ;;		None               void
+  1171 ;; Registers used:
+  1172 ;;		None
+  1173 ;; Tracked objects:
+  1174 ;;		On entry : 0/0
+  1175 ;;		On exit  : 0/0
+  1176 ;;		Unchanged: 0/0
+  1177 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1178 ;;      Params:         0       0       0       0       0       0       0
+  1179 ;;      Locals:         0       0       0       0       0       0       0
+  1180 ;;      Temps:          0       0       0       0       0       0       0
+  1181 ;;      Totals:         0       0       0       0       0       0       0
+  1182 ;;Total ram usage:        0 bytes
+  1183 ;; Hardware stack levels used:    1
+  1184 ;; Hardware stack levels required when called:    1
+  1185 ;; This function calls:
+  1186 ;;		Nothing
+  1187 ;; This function is called by:
+  1188 ;;		_main
+  1189 ;; This function uses a non-reentrant model
+  1190 ;;
+  1191                           
+  1192                           	psect	text5
+  1193  000412                     __ptext5:
+  1194                           	opt stack 0
+  1195  000412                     _spi_init:
+  1196                           	opt stack 29
+  1197                           
+  1198                           ;main.c: 47: SSPSTATbits.SMP = 0;
+  1199                           
+  1200                           ;incstack = 0
+  1201  000412  9EC7               	bcf	4039,7,c	;volatile
+  1202                           
+  1203                           ;main.c: 48: SSPSTATbits.CKE = 1;
+  1204  000414  8CC7               	bsf	4039,6,c	;volatile
+  1205                           
+  1206                           ;main.c: 49: SSPCON1bits.CKP = 0;
+  1207  000416  98C6               	bcf	4038,4,c	;volatile
+  1208                           
+  1209                           ;main.c: 50: SSPCON1bits.SSPM0 = 0;
+  1210  000418  90C6               	bcf	4038,0,c	;volatile
+  1211                           
+  1212                           ;main.c: 51: SSPCON1bits.SSPM1 = 0;
+  1213  00041A  92C6               	bcf	4038,1,c	;volatile
+  1214                           
+  1215                           ;main.c: 52: SSPCON1bits.SSPM2 = 0;
+  1216  00041C  94C6               	bcf	4038,2,c	;volatile
+  1217                           
+  1218                           ;main.c: 53: SSPCON1bits.SSPM3 = 0;
+  1219  00041E  96C6               	bcf	4038,3,c	;volatile
+  1220                           
+  1221                           ;main.c: 54: SSPCON1bits.SSPEN = 1;
+  1222  000420  8AC6               	bsf	4038,5,c	;volatile
+  1223                           
+  1224                           ;main.c: 56: TRISCbits.RC5 = 0;
+  1225  000422  9A94               	bcf	3988,5,c	;volatile
+  1226                           
+  1227                           ;main.c: 57: TRISCbits.RC3 = 0;
+  1228  000424  9694               	bcf	3988,3,c	;volatile
+  1229  000426  0012               	return	
+  1230  000428                     __end_of_spi_init:
+  1231                           	opt stack 0
+  1232                           pclatu	equ	0xFFB
+  1233                           pclath	equ	0xFFA
+  1234                           tblptru	equ	0xFF8
+  1235                           tblptrh	equ	0xFF7
+  1236                           tblptrl	equ	0xFF6
+  1237                           tablat	equ	0xFF5
+  1238                           prodh	equ	0xFF4
+  1239                           prodl	equ	0xFF3
+  1240                           intcon	equ	0xFF2
+  1241                           postinc0	equ	0xFEE
+  1242                           fsr0h	equ	0xFEA
+  1243                           fsr0l	equ	0xFE9
+  1244                           wreg	equ	0xFE8
+  1245                           fsr1h	equ	0xFE2
+  1246                           fsr1l	equ	0xFE1
+  1247                           indf2	equ	0xFDF
+  1248                           fsr2h	equ	0xFDA
+  1249                           fsr2l	equ	0xFD9
+  1250                           status	equ	0xFD8
+  1251                           
+  1252 ;; *************** function _delay_sec *****************
+  1253 ;; Defined at:
+  1254 ;;		line 21 in file "main.c"
+  1255 ;; Parameters:    Size  Location     Type
+  1256 ;;		None
+  1257 ;; Auto vars:     Size  Location     Type
+  1258 ;;  i               2   15[COMRAM] int 
+  1259 ;; Return value:  Size  Location     Type
+  1260 ;;		None               void
+  1261 ;; Registers used:
+  1262 ;;		wreg, status,2, status,0
+  1263 ;; Tracked objects:
+  1264 ;;		On entry : 0/0
+  1265 ;;		On exit  : 0/0
+  1266 ;;		Unchanged: 0/0
+  1267 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1268 ;;      Params:         0       0       0       0       0       0       0
+  1269 ;;      Locals:         2       0       0       0       0       0       0
+  1270 ;;      Temps:          1       0       0       0       0       0       0
+  1271 ;;      Totals:         3       0       0       0       0       0       0
+  1272 ;;Total ram usage:        3 bytes
+  1273 ;; Hardware stack levels used:    1
+  1274 ;; Hardware stack levels required when called:    1
+  1275 ;; This function calls:
+  1276 ;;		Nothing
+  1277 ;; This function is called by:
+  1278 ;;		_main
+  1279 ;; This function uses a non-reentrant model
+  1280 ;;
+  1281                           
+  1282                           	psect	text6
+  1283  000396                     __ptext6:
+  1284                           	opt stack 0
+  1285  000396                     _delay_sec:
+  1286                           	opt stack 29
+  1287                           
+  1288                           ;main.c: 23: for(int i = 0; i < 50; i++)
+  1289                           
+  1290                           ;incstack = 0
+  1291  000396  0E00               	movlw	0
+  1292  000398  6E11               	movwf	delay_sec@i+1,c
+  1293  00039A  0E00               	movlw	0
+  1294  00039C  6E10               	movwf	delay_sec@i,c
+  1295  00039E  5011               	movf	delay_sec@i+1,w,c
+  1296  0003A0  0A80               	xorlw	128
+  1297  0003A2  0F80               	addlw	-128
+  1298  0003A4  0E32               	movlw	50
+  1299  0003A6  B4D8               	btfsc	status,2,c
+  1300  0003A8  5C10               	subwf	delay_sec@i,w,c
+  1301  0003AA  B0D8               	btfsc	status,0,c
+  1302  0003AC  D00B               	goto	l88
+  1303                           
+  1304                           ;main.c: 24: {
+  1305                           ;main.c: 25: _delay((unsigned long)((10)*(8000000/4000.0)));
+  1306  0003AE  0E1A               	movlw	26
+  1307  0003B0  6E0F               	movwf	??_delay_sec& (0+255),c
+  1308  0003B2  0EF8               	movlw	248
+  1309  0003B4                     u207:
+  1310  0003B4  2EE8               	decfsz	wreg,f,c
+  1311  0003B6  D7FE               	goto	u207
+  1312  0003B8  2E0F               	decfsz	??_delay_sec& (0+255),f,c
+  1313  0003BA  D7FC               	goto	u207
+  1314  0003BC  D000               	nop2	
+  1315  0003BE  4A10               	infsnz	delay_sec@i,f,c
+  1316  0003C0  2A11               	incf	delay_sec@i+1,f,c
+  1317  0003C2  D7ED               	goto	L2
+  1318  0003C4                     l88:
+  1319  0003C4  0012               	return	
+  1320  0003C6                     __end_of_delay_sec:
+  1321                           	opt stack 0
+  1322                           pclatu	equ	0xFFB
+  1323                           pclath	equ	0xFFA
+  1324                           tblptru	equ	0xFF8
+  1325                           tblptrh	equ	0xFF7
+  1326                           tblptrl	equ	0xFF6
+  1327                           tablat	equ	0xFF5
+  1328                           prodh	equ	0xFF4
+  1329                           prodl	equ	0xFF3
+  1330                           intcon	equ	0xFF2
+  1331                           postinc0	equ	0xFEE
+  1332                           fsr0h	equ	0xFEA
+  1333                           fsr0l	equ	0xFE9
+  1334                           wreg	equ	0xFE8
+  1335                           fsr1h	equ	0xFE2
+  1336                           fsr1l	equ	0xFE1
+  1337                           indf2	equ	0xFDF
+  1338                           fsr2h	equ	0xFDA
+  1339                           fsr2l	equ	0xFD9
+  1340                           status	equ	0xFD8
+  1341                           
+  1342 ;; *************** function _TMR2_init *****************
+  1343 ;; Defined at:
+  1344 ;;		line 60 in file "main.c"
+  1345 ;; Parameters:    Size  Location     Type
+  1346 ;;		None
+  1347 ;; Auto vars:     Size  Location     Type
+  1348 ;;		None
+  1349 ;; Return value:  Size  Location     Type
+  1350 ;;		None               void
+  1351 ;; Registers used:
+  1352 ;;		wreg, status,2
+  1353 ;; Tracked objects:
+  1354 ;;		On entry : 0/0
+  1355 ;;		On exit  : 0/0
+  1356 ;;		Unchanged: 0/0
+  1357 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1358 ;;      Params:         0       0       0       0       0       0       0
+  1359 ;;      Locals:         0       0       0       0       0       0       0
+  1360 ;;      Temps:          0       0       0       0       0       0       0
+  1361 ;;      Totals:         0       0       0       0       0       0       0
+  1362 ;;Total ram usage:        0 bytes
+  1363 ;; Hardware stack levels used:    1
+  1364 ;; Hardware stack levels required when called:    1
+  1365 ;; This function calls:
+  1366 ;;		Nothing
+  1367 ;; This function is called by:
+  1368 ;;		_main
+  1369 ;; This function uses a non-reentrant model
+  1370 ;;
+  1371                           
+  1372                           	psect	text7
+  1373  0003C6                     __ptext7:
+  1374                           	opt stack 0
+  1375  0003C6                     _TMR2_init:
+  1376                           	opt stack 29
+  1377                           
+  1378                           ;main.c: 63: PR2 = 0b00000100 ;
+  1379                           
+  1380                           ;incstack = 0
+  1381  0003C6  0E04               	movlw	4
+  1382  0003C8  6ECB               	movwf	4043,c	;volatile
+  1383                           
+  1384                           ;main.c: 64: T2CON = 0b01000101 ;
+  1385  0003CA  0E45               	movlw	69
+  1386  0003CC  6ECA               	movwf	4042,c	;volatile
+  1387                           
+  1388                           ;main.c: 65: CCPR1L = 0b00000010 ;
+  1389  0003CE  0E02               	movlw	2
+  1390  0003D0  6EBE               	movwf	4030,c	;volatile
+  1391                           
+  1392                           ;main.c: 66: CCP1CON = 0b00101100 ;
+  1393  0003D2  0E2C               	movlw	44
+  1394  0003D4  6EBD               	movwf	4029,c	;volatile
+  1395                           
+  1396                           ;main.c: 67: TRISC = 0b00000000;
+  1397  0003D6  0E00               	movlw	0
+  1398  0003D8  6E94               	movwf	3988,c	;volatile
+  1399                           
+  1400                           ;main.c: 68: PORTC = 0b00000000;
+  1401  0003DA  0E00               	movlw	0
+  1402  0003DC  6E82               	movwf	3970,c	;volatile
+  1403                           
+  1404                           ;main.c: 69: T2CONbits.TMR2ON = 0;
+  1405  0003DE  94CA               	bcf	4042,2,c	;volatile
+  1406  0003E0  0012               	return	
+  1407  0003E2                     __end_of_TMR2_init:
+  1408                           	opt stack 0
+  1409                           pclatu	equ	0xFFB
+  1410                           pclath	equ	0xFFA
+  1411                           tblptru	equ	0xFF8
+  1412                           tblptrh	equ	0xFF7
+  1413                           tblptrl	equ	0xFF6
+  1414                           tablat	equ	0xFF5
+  1415                           prodh	equ	0xFF4
+  1416                           prodl	equ	0xFF3
+  1417                           intcon	equ	0xFF2
+  1418                           postinc0	equ	0xFEE
+  1419                           fsr0h	equ	0xFEA
+  1420                           fsr0l	equ	0xFE9
+  1421                           wreg	equ	0xFE8
+  1422                           fsr1h	equ	0xFE2
+  1423                           fsr1l	equ	0xFE1
+  1424                           indf2	equ	0xFDF
+  1425                           fsr2h	equ	0xFDA
+  1426                           fsr2l	equ	0xFD9
+  1427                           status	equ	0xFD8
+  1428                           
+  1429 ;; *************** function _blank_pulse *****************
+  1430 ;; Defined at:
+  1431 ;;		line 29 in file "main.c"
+  1432 ;; Parameters:    Size  Location     Type
+  1433 ;;		None
+  1434 ;; Auto vars:     Size  Location     Type
+  1435 ;;		None
+  1436 ;; Return value:  Size  Location     Type
+  1437 ;;		None               void
+  1438 ;; Registers used:
+  1439 ;;		wreg, status,2, status,0
+  1440 ;; Tracked objects:
+  1441 ;;		On entry : 0/0
+  1442 ;;		On exit  : 0/0
+  1443 ;;		Unchanged: 0/0
+  1444 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1445 ;;      Params:         0       0       0       0       0       0       0
+  1446 ;;      Locals:         0       0       0       0       0       0       0
+  1447 ;;      Temps:         14       0       0       0       0       0       0
+  1448 ;;      Totals:        14       0       0       0       0       0       0
+  1449 ;;Total ram usage:       14 bytes
+  1450 ;; Hardware stack levels used:    1
+  1451 ;; This function calls:
+  1452 ;;		Nothing
+  1453 ;; This function is called by:
+  1454 ;;		Interrupt level 2
+  1455 ;; This function uses a non-reentrant model
+  1456 ;;
+  1457                           
+  1458                           	psect	intcode
+  1459  000008                     __pintcode:
+  1460                           	opt stack 0
+  1461  000008                     _blank_pulse:
+  1462                           	opt stack 28
+  1463                           
+  1464                           ;incstack = 0
+  1465  000008  CFFA F001          	movff	pclath,??_blank_pulse
+  1466  00000C  CFFB F002          	movff	pclatu,??_blank_pulse+1
+  1467  000010  CFE9 F003          	movff	fsr0l,??_blank_pulse+2
+  1468  000014  ED3C  F001         	call	int_func,f	;refresh shadow registers
+  1469                           pclatu	equ	0xFFB
+  1470                           pclath	equ	0xFFA
+  1471                           tblptru	equ	0xFF8
+  1472                           tblptrh	equ	0xFF7
+  1473                           tblptrl	equ	0xFF6
+  1474                           tablat	equ	0xFF5
+  1475                           prodh	equ	0xFF4
+  1476                           prodl	equ	0xFF3
+  1477                           intcon	equ	0xFF2
+  1478                           postinc0	equ	0xFEE
+  1479                           fsr0h	equ	0xFEA
+  1480                           fsr0l	equ	0xFE9
+  1481                           wreg	equ	0xFE8
+  1482                           fsr1h	equ	0xFE2
+  1483                           fsr1l	equ	0xFE1
+  1484                           indf2	equ	0xFDF
+  1485                           fsr2h	equ	0xFDA
+  1486                           fsr2l	equ	0xFD9
+  1487                           status	equ	0xFD8
+  1488                           pclatu	equ	0xFFB
+  1489                           pclath	equ	0xFFA
+  1490                           tblptru	equ	0xFF8
+  1491                           tblptrh	equ	0xFF7
+  1492                           tblptrl	equ	0xFF6
+  1493                           tablat	equ	0xFF5
+  1494                           prodh	equ	0xFF4
+  1495                           prodl	equ	0xFF3
+  1496                           intcon	equ	0xFF2
+  1497                           postinc0	equ	0xFEE
+  1498                           fsr0h	equ	0xFEA
+  1499                           fsr0l	equ	0xFE9
+  1500                           wreg	equ	0xFE8
+  1501                           fsr1h	equ	0xFE2
+  1502                           fsr1l	equ	0xFE1
+  1503                           indf2	equ	0xFDF
+  1504                           fsr2h	equ	0xFDA
+  1505                           fsr2l	equ	0xFD9
+  1506                           status	equ	0xFD8
+  1507                           
+  1508                           	psect	rparam
+  1509  0000                     pclatu	equ	0xFFB
+  1510                           pclath	equ	0xFFA
+  1511                           tblptru	equ	0xFF8
+  1512                           tblptrh	equ	0xFF7
+  1513                           tblptrl	equ	0xFF6
+  1514                           tablat	equ	0xFF5
+  1515                           prodh	equ	0xFF4
+  1516                           prodl	equ	0xFF3
+  1517                           intcon	equ	0xFF2
+  1518                           postinc0	equ	0xFEE
+  1519                           fsr0h	equ	0xFEA
+  1520                           fsr0l	equ	0xFE9
+  1521                           wreg	equ	0xFE8
+  1522                           fsr1h	equ	0xFE2
+  1523                           fsr1l	equ	0xFE1
+  1524                           indf2	equ	0xFDF
+  1525                           fsr2h	equ	0xFDA
+  1526                           fsr2l	equ	0xFD9
+  1527                           status	equ	0xFD8
 
 
 Data Sizes:
@@ -1624,10 +1557,9 @@ Pointer List with Targets:
 
 Critical Paths under _main in COMRAM
 
-    _main->_update_grayscale
-    _update_grayscale->_serial_send_data
-    _init_grayscale->_serial_send_data
-    _init_dot_correction->_serial_send_data
+    _main->_tlc_update
+    _tlc_update->_serial_send_data
+    _tlc_init->_serial_send_data
 
 Critical Paths under _blank_pulse in COMRAM
 
@@ -1686,34 +1618,29 @@ Call Graph Tables:
  ---------------------------------------------------------------------------------
  (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
  ---------------------------------------------------------------------------------
- (0) _main                                                 0     0      0     293
+ (0) _main                                                 0     0      0     278
                           _TMR2_init
                           _delay_sec
-                _init_dot_correction
-                     _init_grayscale
-                        _set_channel
                            _spi_init
-                   _update_grayscale
+                           _tlc_init
+                            _tlc_set
+                         _tlc_update
  ---------------------------------------------------------------------------------
- (1) _update_grayscale                                     5     5      0     135
+ (1) _tlc_update                                           5     5      0     135
                                              16 COMRAM     5     5      0
                    _serial_send_data
  ---------------------------------------------------------------------------------
- (1) _spi_init                                             0     0      0       0
- ---------------------------------------------------------------------------------
- (1) _set_channel                                          2     1      1      98
+ (1) _tlc_set                                              2     1      1      98
                                              14 COMRAM     2     1      1
  ---------------------------------------------------------------------------------
- (1) _init_grayscale                                       1     1      0      15
-                                             16 COMRAM     1     1      0
-                   _serial_send_data
- ---------------------------------------------------------------------------------
- (1) _init_dot_correction                                  1     1      0      15
+ (1) _tlc_init                                             1     1      0      15
                                              16 COMRAM     1     1      0
                    _serial_send_data
  ---------------------------------------------------------------------------------
  (2) _serial_send_data                                     2     2      0      15
                                              14 COMRAM     2     2      0
+ ---------------------------------------------------------------------------------
+ (1) _spi_init                                             0     0      0       0
  ---------------------------------------------------------------------------------
  (1) _delay_sec                                            3     3      0      30
                                              14 COMRAM     3     3      0
@@ -1735,13 +1662,11 @@ Call Graph Tables:
  _main (ROOT)
    _TMR2_init
    _delay_sec
-   _init_dot_correction
-     _serial_send_data
-   _init_grayscale
-     _serial_send_data
-   _set_channel
    _spi_init
-   _update_grayscale
+   _tlc_init
+     _serial_send_data
+   _tlc_set
+   _tlc_update
      _serial_send_data
 
  _blank_pulse (ROOT)
@@ -1774,57 +1699,55 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V1.32 build 58300 
-Symbol Table                                                                                   Tue Jun 10 12:12:58 2014
+Symbol Table                                                                                   Tue Jun 10 15:49:34 2014
 
-                 _SSPSTATbits 000FC7                            l91 03CA                            u87 0136  
-                          u97 01D6                  __CFG_CP0$OFF 000000                  __CFG_CP1$OFF 000000  
-                __CFG_CP2$OFF 000000                  __CFG_CP3$OFF 000000                   __CFG_OSC$HS 000000  
-                         l832 0152                           u107 01E8                           u117 0022  
-                         u127 010A                           u137 011C                           u147 0324  
-                         u157 037C                           _PR2 000FCB                           u167 038E  
-                         u177 0424                           u187 03BA                           prod 000FF3  
-                         wreg 000FE8                  __CFG_LVP$OFF 000000                  __CFG_WDT$OFF 000000  
-                        l1030 02D0                          i2l96 0250                          _main 028A  
-                        fsr0h 000FEA                          fsr1h 000FE2                          fsr0l 000FE9  
-                        fsr2h 000FDA                          fsr1l 000FE1                          indf2 000FDF  
-                        fsr2l 000FD9                          pclat 000FFA                          prodh 000FF4  
-                        prodl 000FF3                          start 0018                 __CFG_MCLRE$ON 000000  
-        serial_send_data@data 0010              _update_grayscale 0130                         ?_main 0001  
-                       _T2CON 000FCA                         _PORTA 000F80                         _PORTB 000F81  
-                       _PORTC 000F82                         _PORTD 000F83                         _PORTE 000F84  
-                       _TRISA 000F92                         _TRISB 000F93                         _TRISC 000F94  
-                       _TRISD 000F95                         _TRISE 000F96                 __CFG_PWRT$OFF 000000  
-                       _count 0026            __size_of_TMR2_init 001C                __CFG_BOREN$OFF 000000  
-                       tablat 000FF5                         status 000FD8          __size_of_blank_pulse 0282  
-             __initialization 042E                  __end_of_main 031A                        ??_main 0016  
-               __activetblptr 000000  __size_of_init_dot_correction 0082                        _CCPR1L 000FBE  
-                      i2l1002 024A                        _SSPBUF 000FC9      __end_of_serial_send_data 042E  
-                ?_set_channel 000F             __end_of_TMR2_init 03E8                        clear_0 0434  
-                      tblptrh 000FF7                        tblptrl 000FF6                        tblptru 000FF8  
-            __end_of_spi_init 0418                    __accesstop 0080       __end_of__initialization 043A  
-            set_channel@value 000F                __pcstackCOMRAM 0001            __size_of_delay_sec 0030  
-    __end_of_update_grayscale 01F8                       _CCP1CON 000FBD             __end_of_delay_sec 03CC  
-                     __Hparam 0000                       __Lparam 0000          __size_of_set_channel 001A  
-         _init_dot_correction 031A                     ?_spi_init 0001                       _channel 0016  
-                     __pcinit 042E                       __ramtop 0600                       __ptext0 028A  
-                     __ptext1 0130                       __ptext2 0402                       __ptext3 03E8  
-                     __ptext4 001C                       __ptext5 031A                       __ptext6 0418  
-                     __ptext7 039C                       __ptext8 03CC       __size_of_init_grayscale 0114  
-                   _T2CONbits 000FCA          ?_init_dot_correction 0001                __pintcode_body 01F8  
-        end_of_initialization 043A                    delay_sec@i 0010                 ??_blank_pulse 0001  
-                     int_func 01F8             ?_serial_send_data 0001     set_channel@channel_number 0010  
-          ??_serial_send_data 000F                    ??_spi_init 000F                       postinc0 000FEE  
-                   _TMR2_init 03CC         ??_init_dot_correction 0011                     _TRISCbits 000F94  
-         __end_of_blank_pulse 028A       update_grayscale@counter 0014                    ?_TMR2_init 0001  
-         start_initialization 042E             ?_update_grayscale 0001            ??_update_grayscale 0011  
-              _init_grayscale 001C                   __pbssCOMRAM 0016             update_grayscale@i 0015  
-                 _blank_pulse 0008                     _delay_sec 039C                     __pintcode 0008  
-      __end_of_init_grayscale 0130             __size_of_spi_init 0016                   ??_TMR2_init 000F  
-               ??_set_channel 0010                      _LATDbits 000F8C                      _PIE1bits 000F9D  
-                  ?_delay_sec 0001                      _PIR1bits 000F9E               ?_init_grayscale 0001  
-   __size_of_serial_send_data 0016                      __Hrparam 0000                      __Lrparam 0000  
-         __end_of_set_channel 0402   __end_of_init_dot_correction 039C                 __size_of_main 0090  
-                 ??_delay_sec 000F                      _spi_init 0402     __size_of_update_grayscale 00C8  
-                  _INTCONbits 000FF2                      intlevel2 0000                  ?_blank_pulse 0001  
-                 _set_channel 03E8              _serial_send_data 0418                   _SSPCON1bits 000FC6  
-            ??_init_grayscale 0011  
+              _SSPSTATbits 000FC7                         l88 03C4               __CFG_CP0$OFF 000000  
+             __CFG_CP1$OFF 000000               __CFG_CP2$OFF 000000               __CFG_CP3$OFF 000000  
+              __CFG_OSC$HS 000000                        l827 01D2                        l933 034C  
+                      u107 01B6                        u117 0256                        u207 03B4  
+                      u127 0268                        u137 0026                        u147 007E  
+                      u157 0090                        _PR2 000FCB                        u167 00A2  
+                      u177 018A                        u187 019C                        u197 0408  
+                      prod 000FF3                        wreg 000FE8               __CFG_LVP$OFF 000000  
+             __CFG_WDT$OFF 000000                       i2l93 02D0                       _main 030A  
+                     fsr0h 000FEA                       fsr1h 000FE2                       fsr0l 000FE9  
+                     fsr2h 000FDA                       fsr1l 000FE1                       indf2 000FDF  
+                     fsr2l 000FD9                       pclat 000FFA                       prodh 000FF4  
+                     prodl 000FF3                       start 0018              __CFG_MCLRE$ON 000000  
+     serial_send_data@data 0010                      ?_main 0001                      _T2CON 000FCA  
+                    i2l907 02CA                      _PORTA 000F80                      _PORTB 000F81  
+                    _PORTC 000F82                      _PORTD 000F83                      _PORTE 000F84  
+                    _TRISA 000F92                      _TRISB 000F93                      _TRISC 000F94  
+                    _TRISD 000F95                      _TRISE 000F96              __CFG_PWRT$OFF 000000  
+                    _count 0026         __size_of_TMR2_init 001C             __CFG_BOREN$OFF 000000  
+                    tablat 000FF5            __end_of_tlc_set 03FC                      status 000FD8  
+     __size_of_blank_pulse 0302            __initialization 0428               __end_of_main 0396  
+                   ??_main 0016              __activetblptr 000000                     _CCPR1L 000FBE  
+                   _SSPBUF 000FC9   __end_of_serial_send_data 0412          __end_of_TMR2_init 03E2  
+                   clear_0 042E           __end_of_tlc_init 01B0                     tblptrh 000FF7  
+                   tblptrl 000FF6                     tblptru 000FF8           __end_of_spi_init 0428  
+                ??_tlc_set 0010                 __accesstop 0080    __end_of__initialization 0434  
+           __pcstackCOMRAM 0001         __size_of_delay_sec 0030    tlc_set@tlc_servo_number 0010  
+                  _CCP1CON 000FBD          __end_of_delay_sec 03C6                    __Hparam 0000  
+                  __Lparam 0000                  ?_tlc_init 0001                  ?_spi_init 0001  
+                  __pcinit 0428                    __ramtop 0600                    __ptext0 030A  
+                  __ptext1 01B0                    __ptext2 03E2                    __ptext3 001C  
+                  __ptext4 03FC                    __ptext5 0412                    __ptext6 0396  
+                  __ptext7 03C6                  _T2CONbits 000FCA                    _tlc_set 03E2  
+           __pintcode_body 0278       end_of_initialization 0434                 delay_sec@i 0010  
+            ??_blank_pulse 0001                    int_func 0278          ?_serial_send_data 0001  
+       ??_serial_send_data 000F                 ??_tlc_init 0011                tlc_update@i 0015  
+               ??_spi_init 000F                    postinc0 000FEE                 _tlc_update 01B0  
+                _TMR2_init 03C6                  _TRISCbits 000F94        __end_of_blank_pulse 030A  
+               ?_TMR2_init 0001        start_initialization 0428                ?_tlc_update 0001  
+              __pbssCOMRAM 0016                _blank_pulse 0008                  _delay_sec 0396  
+                __pintcode 0008          __size_of_tlc_init 0194          __size_of_spi_init 0016  
+              ??_TMR2_init 000F                   ?_tlc_set 000F        __size_of_tlc_update 00C8  
+                 _LATDbits 000F8C                   _PIE1bits 000F9D                 ?_delay_sec 0001  
+                 _PIR1bits 000F9E                  _tlc_servo 0016  __size_of_serial_send_data 0016  
+                 __Hrparam 0000                   __Lrparam 0000           __size_of_tlc_set 001A  
+            __size_of_main 008C                ??_delay_sec 000F                   _tlc_init 001C  
+                 _spi_init 0412               ??_tlc_update 0011                 _INTCONbits 000FF2  
+             tlc_set@value 000F                   intlevel2 0000         __end_of_tlc_update 0278  
+             ?_blank_pulse 0001          tlc_update@counter 0014           _serial_send_data 03FC  
+              _SSPCON1bits 000FC6  

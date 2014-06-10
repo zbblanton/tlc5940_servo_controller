@@ -90,9 +90,10 @@ int main()
     T2CONbits.TMR2ON = 0; //Turn Timer on
 
     spi_init();
-    init_dot_correction();
-    init_grayscale();
-    update_grayscale();
+    //init_dot_correction();
+    //init_grayscale();
+    tlc_init();
+    tlc_update();
 
     T2CONbits.TMR2ON = 1; //Turn Timer on
     while(1)
@@ -101,15 +102,15 @@ int main()
         delay_sec();
         LATDbits.LD3 = 0;
         delay_sec();
-        set_channel(0, 0);
-        update_grayscale();
+        tlc_set(0, 0);
+        tlc_update();
         delay_sec();
         delay_sec();
         delay_sec();
         delay_sec();
 
-        set_channel(0, 180);
-        update_grayscale();
+        tlc_set(0, 180);
+        tlc_update();
         delay_sec();
         delay_sec();
         delay_sec();

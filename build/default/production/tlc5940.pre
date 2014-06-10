@@ -5000,8 +5000,9 @@ void serial_send_data(char data);
 void init_dot_correction();
 void init_grayscale();
 void tlc_init();
-void update_grayscale();
-void set_channel(char channel_number, char value);
+void tlc_update();
+void tlc_set(char channel_number, char value);
+void tlc_write(char channel_number, char value);
 
 # 13 "E:\Program Files (x86)\Microchip\xc8\v1.32\include\stdint.h"
 typedef signed char int8_t;
@@ -5094,7 +5095,7 @@ typedef int16_t intptr_t;
 typedef uint16_t uintptr_t;
 
 # 8 "tlc5940.c"
-char channel[16];
+char tlc_servo[16];
 
 void serial_send_data(char data)
 {
@@ -5136,109 +5137,24 @@ LATDbits.LD1 = 0;
 LATDbits.LD0 = 0;
 LATDbits.LD2 = 0;
 
-channel[0] = 235;
-channel[1] = 0;
-channel[2] = 0;
-channel[3] = 0;
-channel[4] = 0;
-channel[5] = 0;
-channel[6] = 0;
-channel[7] = 0;
-channel[8] = 0;
-channel[9] = 0;
-channel[10] = 0;
-channel[11] = 0;
-channel[12] = 0;
-channel[13] = 0;
-channel[14] = 0;
-channel[15] = 235;
 
 
-serial_send_data(0b00000000);
-serial_send_data(0b00000000);
-serial_send_data(0b00000000);
-serial_send_data(0b00000000);
-serial_send_data(0b00000000);
-serial_send_data(0b00000000);
-serial_send_data(0b00000000);
-serial_send_data(0b00000000);
-serial_send_data(0b00000000);
-serial_send_data(0b00000000);
-serial_send_data(0b00000000);
-serial_send_data(0b00000000);
-serial_send_data(0b00000000);
-serial_send_data(0b00000000);
-serial_send_data(0b00000000);
-serial_send_data(0b00000000);
-serial_send_data(0b00000000);
-serial_send_data(0b00000000);
-serial_send_data(0b00000000);
-serial_send_data(0b00000000);
-serial_send_data(0b00000000);
-serial_send_data(0b00000000);
-serial_send_data(0b00000000);
-serial_send_data(0b00000000);
-
-_delay((unsigned long)((2)*(8000000/4000.0)));
-LATDbits.LD0 = 1;
-_delay((unsigned long)((30)*(8000000/4000.0)));
-LATDbits.LD0 = 0;
-
-serial_send_data(0b10000000);
-
-}
-
-void init_dot_correction()
-{
-LATDbits.LD1 = 1;
-LATDbits.LD0 = 0;
-_delay((unsigned long)((2)*(8000000/4000.0)));
-
-serial_send_data(0b11111111);
-serial_send_data(0b11111111);
-serial_send_data(0b11111111);
-serial_send_data(0b11111111);
-serial_send_data(0b11111111);
-serial_send_data(0b11111111);
-serial_send_data(0b11111111);
-serial_send_data(0b11111111);
-serial_send_data(0b11111111);
-serial_send_data(0b11111111);
-serial_send_data(0b11111111);
-serial_send_data(0b11111111);
-
-_delay((unsigned long)((2)*(8000000/4000.0)));
-LATDbits.LD0 = 1;
-_delay((unsigned long)((30)*(8000000/4000.0)));
-LATDbits.LD0 = 0;
-}
-
-void init_grayscale()
-{
-_delay((unsigned long)((2)*(8000000/4000.0)));
-
-T2CONbits.TMR2ON = 0;
-LATDbits.LD1 = 0;
-LATDbits.LD0 = 0;
-LATDbits.LD2 = 0;
-
-channel[0] = 235;
-channel[1] = 0;
-channel[2] = 0;
-channel[3] = 0;
-channel[4] = 0;
-channel[5] = 0;
-channel[6] = 0;
-channel[7] = 0;
-channel[8] = 0;
-channel[9] = 0;
-channel[10] = 0;
-channel[11] = 0;
-channel[12] = 0;
-channel[13] = 0;
-channel[14] = 0;
-channel[15] = 235;
-
+tlc_servo[0] = 235;
+tlc_servo[1] = 0;
+tlc_servo[2] = 0;
+tlc_servo[3] = 0;
+tlc_servo[4] = 0;
+tlc_servo[5] = 0;
+tlc_servo[6] = 0;
+tlc_servo[7] = 0;
+tlc_servo[8] = 0;
+tlc_servo[9] = 0;
+tlc_servo[10] = 0;
+tlc_servo[11] = 0;
+tlc_servo[12] = 0;
+tlc_servo[13] = 0;
+tlc_servo[14] = 0;
+tlc_servo[15] = 235;
 
 serial_send_data(0b00000000);
 serial_send_data(0b00000000);
@@ -5274,7 +5190,7 @@ serial_send_data(0b10000000);
 
 }
 
-void update_grayscale()
+void tlc_update()
 {
 _delay((unsigned long)((2)*(8000000/4000.0)));
 
@@ -5286,9 +5202,9 @@ LATDbits.LD2 = 0;
 char counter = 0;
 for(char i = 0; i < 8; i++)
 {
-serial_send_data(channel[i + counter]>>4);
-serial_send_data(channel[i + counter]<<4);
-serial_send_data(channel[i + (counter + 1)]);
+serial_send_data(tlc_servo[i + counter]>>4);
+serial_send_data(tlc_servo[i + counter]<<4);
+serial_send_data(tlc_servo[i + (counter + 1)]);
 counter++;
 }
 
@@ -5299,7 +5215,38 @@ LATDbits.LD0 = 0;
 T2CONbits.TMR2ON = 1;
 }
 
-void set_channel(char channel_number, char value)
+# 138
+void tlc_set(char tlc_servo_number, char value)
 {
-channel[channel_number] = value + 55;
+tlc_servo[tlc_servo_number] = value + 55;
+}
+
+# 153
+void tlc_write(char tlc_servo_number, char value)
+{
+tlc_servo[tlc_servo_number] = value + 55;
+
+
+_delay((unsigned long)((2)*(8000000/4000.0)));
+
+T2CONbits.TMR2ON = 0;
+LATDbits.LD1 = 0;
+LATDbits.LD0 = 0;
+LATDbits.LD2 = 0;
+
+char counter = 0;
+for(char i = 0; i < 8; i++)
+{
+serial_send_data(tlc_servo[i + counter]>>4);
+serial_send_data(tlc_servo[i + counter]<<4);
+serial_send_data(tlc_servo[i + (counter + 1)]);
+counter++;
+}
+
+_delay((unsigned long)((2)*(8000000/4000.0)));
+LATDbits.LD0 = 1;
+_delay((unsigned long)((30)*(8000000/4000.0)));
+LATDbits.LD0 = 0;
+T2CONbits.TMR2ON = 1;
+
 }

@@ -3810,8 +3810,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tlc5940.h: 24: void init_dot_correction();
 [; ;tlc5940.h: 25: void init_grayscale();
 [; ;tlc5940.h: 26: void tlc_init();
-[; ;tlc5940.h: 27: void update_grayscale();
-[; ;tlc5940.h: 28: void set_channel(char channel_number, char value);
+[; ;tlc5940.h: 27: void tlc_update();
+[; ;tlc5940.h: 28: void tlc_set(char channel_number, char value);
+[; ;tlc5940.h: 29: void tlc_write(char channel_number, char value);
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -3841,8 +3842,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 210: typedef int16_t intptr_t;
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
 "8 tlc5940.c
-[v _channel `uc ~T0 @X0 -> 16 `i e ]
-[; ;tlc5940.c: 8: char channel[16];
+[v _tlc_servo `uc ~T0 @X0 -> 16 `i e ]
+[; ;tlc5940.c: 8: char tlc_servo[16];
 "10
 [v _serial_send_data `(v ~T0 @X0 1 ef1`uc ]
 "11
@@ -3944,57 +3945,54 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tlc5940.c: 48: LATDbits.LD2 = 0;
 "48
 [e = . . _LATDbits 3 1 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 50: channel[0] = 235;
-"50
-[e = *U + &U _channel * -> -> -> 0 `i `ui `ux -> -> # *U &U _channel `ui `ux -> -> 235 `i `uc ]
-[; ;tlc5940.c: 51: channel[1] = 0;
-"51
-[e = *U + &U _channel * -> -> -> 1 `i `ui `ux -> -> # *U &U _channel `ui `ux -> -> 0 `i `uc ]
-[; ;tlc5940.c: 52: channel[2] = 0;
+[; ;tlc5940.c: 52: tlc_servo[0] = 235;
 "52
-[e = *U + &U _channel * -> -> -> 2 `i `ui `ux -> -> # *U &U _channel `ui `ux -> -> 0 `i `uc ]
-[; ;tlc5940.c: 53: channel[3] = 0;
+[e = *U + &U _tlc_servo * -> -> -> 0 `i `ui `ux -> -> # *U &U _tlc_servo `ui `ux -> -> 235 `i `uc ]
+[; ;tlc5940.c: 53: tlc_servo[1] = 0;
 "53
-[e = *U + &U _channel * -> -> -> 3 `i `ui `ux -> -> # *U &U _channel `ui `ux -> -> 0 `i `uc ]
-[; ;tlc5940.c: 54: channel[4] = 0;
+[e = *U + &U _tlc_servo * -> -> -> 1 `i `ui `ux -> -> # *U &U _tlc_servo `ui `ux -> -> 0 `i `uc ]
+[; ;tlc5940.c: 54: tlc_servo[2] = 0;
 "54
-[e = *U + &U _channel * -> -> -> 4 `i `ui `ux -> -> # *U &U _channel `ui `ux -> -> 0 `i `uc ]
-[; ;tlc5940.c: 55: channel[5] = 0;
+[e = *U + &U _tlc_servo * -> -> -> 2 `i `ui `ux -> -> # *U &U _tlc_servo `ui `ux -> -> 0 `i `uc ]
+[; ;tlc5940.c: 55: tlc_servo[3] = 0;
 "55
-[e = *U + &U _channel * -> -> -> 5 `i `ui `ux -> -> # *U &U _channel `ui `ux -> -> 0 `i `uc ]
-[; ;tlc5940.c: 56: channel[6] = 0;
+[e = *U + &U _tlc_servo * -> -> -> 3 `i `ui `ux -> -> # *U &U _tlc_servo `ui `ux -> -> 0 `i `uc ]
+[; ;tlc5940.c: 56: tlc_servo[4] = 0;
 "56
-[e = *U + &U _channel * -> -> -> 6 `i `ui `ux -> -> # *U &U _channel `ui `ux -> -> 0 `i `uc ]
-[; ;tlc5940.c: 57: channel[7] = 0;
+[e = *U + &U _tlc_servo * -> -> -> 4 `i `ui `ux -> -> # *U &U _tlc_servo `ui `ux -> -> 0 `i `uc ]
+[; ;tlc5940.c: 57: tlc_servo[5] = 0;
 "57
-[e = *U + &U _channel * -> -> -> 7 `i `ui `ux -> -> # *U &U _channel `ui `ux -> -> 0 `i `uc ]
-[; ;tlc5940.c: 58: channel[8] = 0;
+[e = *U + &U _tlc_servo * -> -> -> 5 `i `ui `ux -> -> # *U &U _tlc_servo `ui `ux -> -> 0 `i `uc ]
+[; ;tlc5940.c: 58: tlc_servo[6] = 0;
 "58
-[e = *U + &U _channel * -> -> -> 8 `i `ui `ux -> -> # *U &U _channel `ui `ux -> -> 0 `i `uc ]
-[; ;tlc5940.c: 59: channel[9] = 0;
+[e = *U + &U _tlc_servo * -> -> -> 6 `i `ui `ux -> -> # *U &U _tlc_servo `ui `ux -> -> 0 `i `uc ]
+[; ;tlc5940.c: 59: tlc_servo[7] = 0;
 "59
-[e = *U + &U _channel * -> -> -> 9 `i `ui `ux -> -> # *U &U _channel `ui `ux -> -> 0 `i `uc ]
-[; ;tlc5940.c: 60: channel[10] = 0;
+[e = *U + &U _tlc_servo * -> -> -> 7 `i `ui `ux -> -> # *U &U _tlc_servo `ui `ux -> -> 0 `i `uc ]
+[; ;tlc5940.c: 60: tlc_servo[8] = 0;
 "60
-[e = *U + &U _channel * -> -> -> 10 `i `ui `ux -> -> # *U &U _channel `ui `ux -> -> 0 `i `uc ]
-[; ;tlc5940.c: 61: channel[11] = 0;
+[e = *U + &U _tlc_servo * -> -> -> 8 `i `ui `ux -> -> # *U &U _tlc_servo `ui `ux -> -> 0 `i `uc ]
+[; ;tlc5940.c: 61: tlc_servo[9] = 0;
 "61
-[e = *U + &U _channel * -> -> -> 11 `i `ui `ux -> -> # *U &U _channel `ui `ux -> -> 0 `i `uc ]
-[; ;tlc5940.c: 62: channel[12] = 0;
+[e = *U + &U _tlc_servo * -> -> -> 9 `i `ui `ux -> -> # *U &U _tlc_servo `ui `ux -> -> 0 `i `uc ]
+[; ;tlc5940.c: 62: tlc_servo[10] = 0;
 "62
-[e = *U + &U _channel * -> -> -> 12 `i `ui `ux -> -> # *U &U _channel `ui `ux -> -> 0 `i `uc ]
-[; ;tlc5940.c: 63: channel[13] = 0;
+[e = *U + &U _tlc_servo * -> -> -> 10 `i `ui `ux -> -> # *U &U _tlc_servo `ui `ux -> -> 0 `i `uc ]
+[; ;tlc5940.c: 63: tlc_servo[11] = 0;
 "63
-[e = *U + &U _channel * -> -> -> 13 `i `ui `ux -> -> # *U &U _channel `ui `ux -> -> 0 `i `uc ]
-[; ;tlc5940.c: 64: channel[14] = 0;
+[e = *U + &U _tlc_servo * -> -> -> 11 `i `ui `ux -> -> # *U &U _tlc_servo `ui `ux -> -> 0 `i `uc ]
+[; ;tlc5940.c: 64: tlc_servo[12] = 0;
 "64
-[e = *U + &U _channel * -> -> -> 14 `i `ui `ux -> -> # *U &U _channel `ui `ux -> -> 0 `i `uc ]
-[; ;tlc5940.c: 65: channel[15] = 235;
+[e = *U + &U _tlc_servo * -> -> -> 12 `i `ui `ux -> -> # *U &U _tlc_servo `ui `ux -> -> 0 `i `uc ]
+[; ;tlc5940.c: 65: tlc_servo[13] = 0;
 "65
-[e = *U + &U _channel * -> -> -> 15 `i `ui `ux -> -> # *U &U _channel `ui `ux -> -> 235 `i `uc ]
-[; ;tlc5940.c: 68: serial_send_data(0b00000000);
-"68
-[e ( _serial_send_data (1 -> -> 0 `i `uc ]
+[e = *U + &U _tlc_servo * -> -> -> 13 `i `ui `ux -> -> # *U &U _tlc_servo `ui `ux -> -> 0 `i `uc ]
+[; ;tlc5940.c: 66: tlc_servo[14] = 0;
+"66
+[e = *U + &U _tlc_servo * -> -> -> 14 `i `ui `ux -> -> # *U &U _tlc_servo `ui `ux -> -> 0 `i `uc ]
+[; ;tlc5940.c: 67: tlc_servo[15] = 235;
+"67
+[e = *U + &U _tlc_servo * -> -> -> 15 `i `ui `ux -> -> # *U &U _tlc_servo `ui `ux -> -> 235 `i `uc ]
 [; ;tlc5940.c: 69: serial_send_data(0b00000000);
 "69
 [e ( _serial_send_data (1 -> -> 0 `i `uc ]
@@ -4064,78 +4062,87 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tlc5940.c: 91: serial_send_data(0b00000000);
 "91
 [e ( _serial_send_data (1 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 93: _delay((unsigned long)((2)*(8000000/4000.0)));
-"93
-[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;tlc5940.c: 94: LATDbits.LD0 = 1;
+[; ;tlc5940.c: 92: serial_send_data(0b00000000);
+"92
+[e ( _serial_send_data (1 -> -> 0 `i `uc ]
+[; ;tlc5940.c: 94: _delay((unsigned long)((2)*(8000000/4000.0)));
 "94
-[e = . . _LATDbits 1 0 -> -> 1 `i `uc ]
-[; ;tlc5940.c: 95: _delay((unsigned long)((30)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;tlc5940.c: 95: LATDbits.LD0 = 1;
 "95
-[e ( __delay (1 -> * -> -> 30 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;tlc5940.c: 96: LATDbits.LD0 = 0;
+[e = . . _LATDbits 1 0 -> -> 1 `i `uc ]
+[; ;tlc5940.c: 96: _delay((unsigned long)((30)*(8000000/4000.0)));
 "96
+[e ( __delay (1 -> * -> -> 30 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;tlc5940.c: 97: LATDbits.LD0 = 0;
+"97
 [e = . . _LATDbits 1 0 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 98: serial_send_data(0b10000000);
-"98
+[; ;tlc5940.c: 99: serial_send_data(0b10000000);
+"99
 [e ( _serial_send_data (1 -> -> 128 `i `uc ]
-[; ;tlc5940.c: 100: }
-"100
+[; ;tlc5940.c: 101: }
+"101
 [e :UE 403 ]
 }
-"102
-[v _init_dot_correction `(v ~T0 @X0 1 ef ]
 "103
-{
-[; ;tlc5940.c: 102: void init_dot_correction()
-[; ;tlc5940.c: 103: {
-[e :U _init_dot_correction ]
-[f ]
-[; ;tlc5940.c: 104: LATDbits.LD1 = 1;
+[v _tlc_update `(v ~T0 @X0 1 ef ]
 "104
-[e = . . _LATDbits 2 1 -> -> 1 `i `uc ]
-[; ;tlc5940.c: 105: LATDbits.LD0 = 0;
+{
+[; ;tlc5940.c: 103: void tlc_update()
+[; ;tlc5940.c: 104: {
+[e :U _tlc_update ]
+[f ]
+[; ;tlc5940.c: 105: _delay((unsigned long)((2)*(8000000/4000.0)));
 "105
-[e = . . _LATDbits 1 0 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 106: _delay((unsigned long)((2)*(8000000/4000.0)));
-"106
 [e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;tlc5940.c: 108: serial_send_data(0b11111111);
+[; ;tlc5940.c: 107: T2CONbits.TMR2ON = 0;
+"107
+[e = . . _T2CONbits 0 1 -> -> 0 `i `uc ]
+[; ;tlc5940.c: 108: LATDbits.LD1 = 0;
 "108
-[e ( _serial_send_data (1 -> -> 255 `i `uc ]
-[; ;tlc5940.c: 109: serial_send_data(0b11111111);
+[e = . . _LATDbits 2 1 -> -> 0 `i `uc ]
+[; ;tlc5940.c: 109: LATDbits.LD0 = 0;
 "109
-[e ( _serial_send_data (1 -> -> 255 `i `uc ]
-[; ;tlc5940.c: 110: serial_send_data(0b11111111);
+[e = . . _LATDbits 1 0 -> -> 0 `i `uc ]
+[; ;tlc5940.c: 110: LATDbits.LD2 = 0;
 "110
-[e ( _serial_send_data (1 -> -> 255 `i `uc ]
-[; ;tlc5940.c: 111: serial_send_data(0b11111111);
-"111
-[e ( _serial_send_data (1 -> -> 255 `i `uc ]
-[; ;tlc5940.c: 112: serial_send_data(0b11111111);
+[e = . . _LATDbits 3 1 -> -> 0 `i `uc ]
 "112
-[e ( _serial_send_data (1 -> -> 255 `i `uc ]
-[; ;tlc5940.c: 113: serial_send_data(0b11111111);
+[v _counter `uc ~T0 @X0 1 a ]
+[; ;tlc5940.c: 112: char counter = 0;
+[e = _counter -> -> 0 `i `uc ]
+[; ;tlc5940.c: 113: for(char i = 0; i < 8; i++)
 "113
-[e ( _serial_send_data (1 -> -> 255 `i `uc ]
-[; ;tlc5940.c: 114: serial_send_data(0b11111111);
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 8 `i 405  ]
+[e $U 406  ]
 "114
-[e ( _serial_send_data (1 -> -> 255 `i `uc ]
-[; ;tlc5940.c: 115: serial_send_data(0b11111111);
+[e :U 405 ]
+[; ;tlc5940.c: 114: {
+{
+[; ;tlc5940.c: 115: serial_send_data(tlc_servo[i + counter]>>4);
 "115
-[e ( _serial_send_data (1 -> -> 255 `i `uc ]
-[; ;tlc5940.c: 116: serial_send_data(0b11111111);
+[e ( _serial_send_data (1 -> >> -> *U + &U _tlc_servo * -> -> + -> _i `i -> _counter `i `ui `ux -> -> # *U &U _tlc_servo `ui `ux `i -> 4 `i `uc ]
+[; ;tlc5940.c: 116: serial_send_data(tlc_servo[i + counter]<<4);
 "116
-[e ( _serial_send_data (1 -> -> 255 `i `uc ]
-[; ;tlc5940.c: 117: serial_send_data(0b11111111);
+[e ( _serial_send_data (1 -> << -> *U + &U _tlc_servo * -> -> + -> _i `i -> _counter `i `ui `ux -> -> # *U &U _tlc_servo `ui `ux `i -> 4 `i `uc ]
+[; ;tlc5940.c: 117: serial_send_data(tlc_servo[i + (counter + 1)]);
 "117
-[e ( _serial_send_data (1 -> -> 255 `i `uc ]
-[; ;tlc5940.c: 118: serial_send_data(0b11111111);
+[e ( _serial_send_data (1 *U + &U _tlc_servo * -> -> + -> _i `i + -> _counter `i -> 1 `i `ui `ux -> -> # *U &U _tlc_servo `ui `ux ]
+[; ;tlc5940.c: 118: counter++;
 "118
-[e ( _serial_send_data (1 -> -> 255 `i `uc ]
-[; ;tlc5940.c: 119: serial_send_data(0b11111111);
+[e ++ _counter -> -> 1 `i `uc ]
 "119
-[e ( _serial_send_data (1 -> -> 255 `i `uc ]
+}
+"113
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 8 `i 405  ]
+[e :U 406 ]
+"119
+}
+[; ;tlc5940.c: 119: }
 [; ;tlc5940.c: 121: _delay((unsigned long)((2)*(8000000/4000.0)));
 "121
 [e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
@@ -4148,266 +4155,114 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tlc5940.c: 124: LATDbits.LD0 = 0;
 "124
 [e = . . _LATDbits 1 0 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 125: }
+[; ;tlc5940.c: 125: T2CONbits.TMR2ON = 1;
 "125
+[e = . . _T2CONbits 0 1 -> -> 1 `i `uc ]
+[; ;tlc5940.c: 126: }
+"126
 [e :UE 404 ]
 }
-"127
-[v _init_grayscale `(v ~T0 @X0 1 ef ]
-"128
-{
-[; ;tlc5940.c: 127: void init_grayscale()
-[; ;tlc5940.c: 128: {
-[e :U _init_grayscale ]
-[f ]
-[; ;tlc5940.c: 129: _delay((unsigned long)((2)*(8000000/4000.0)));
-"129
-[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;tlc5940.c: 131: T2CONbits.TMR2ON = 0;
-"131
-[e = . . _T2CONbits 0 1 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 132: LATDbits.LD1 = 0;
-"132
-[e = . . _LATDbits 2 1 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 133: LATDbits.LD0 = 0;
-"133
-[e = . . _LATDbits 1 0 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 134: LATDbits.LD2 = 0;
-"134
-[e = . . _LATDbits 3 1 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 136: channel[0] = 235;
-"136
-[e = *U + &U _channel * -> -> -> 0 `i `ui `ux -> -> # *U &U _channel `ui `ux -> -> 235 `i `uc ]
-[; ;tlc5940.c: 137: channel[1] = 0;
-"137
-[e = *U + &U _channel * -> -> -> 1 `i `ui `ux -> -> # *U &U _channel `ui `ux -> -> 0 `i `uc ]
-[; ;tlc5940.c: 138: channel[2] = 0;
 "138
-[e = *U + &U _channel * -> -> -> 2 `i `ui `ux -> -> # *U &U _channel `ui `ux -> -> 0 `i `uc ]
-[; ;tlc5940.c: 139: channel[3] = 0;
+[v _tlc_set `(v ~T0 @X0 1 ef2`uc`uc ]
 "139
-[e = *U + &U _channel * -> -> -> 3 `i `ui `ux -> -> # *U &U _channel `ui `ux -> -> 0 `i `uc ]
-[; ;tlc5940.c: 140: channel[4] = 0;
-"140
-[e = *U + &U _channel * -> -> -> 4 `i `ui `ux -> -> # *U &U _channel `ui `ux -> -> 0 `i `uc ]
-[; ;tlc5940.c: 141: channel[5] = 0;
-"141
-[e = *U + &U _channel * -> -> -> 5 `i `ui `ux -> -> # *U &U _channel `ui `ux -> -> 0 `i `uc ]
-[; ;tlc5940.c: 142: channel[6] = 0;
-"142
-[e = *U + &U _channel * -> -> -> 6 `i `ui `ux -> -> # *U &U _channel `ui `ux -> -> 0 `i `uc ]
-[; ;tlc5940.c: 143: channel[7] = 0;
-"143
-[e = *U + &U _channel * -> -> -> 7 `i `ui `ux -> -> # *U &U _channel `ui `ux -> -> 0 `i `uc ]
-[; ;tlc5940.c: 144: channel[8] = 0;
-"144
-[e = *U + &U _channel * -> -> -> 8 `i `ui `ux -> -> # *U &U _channel `ui `ux -> -> 0 `i `uc ]
-[; ;tlc5940.c: 145: channel[9] = 0;
-"145
-[e = *U + &U _channel * -> -> -> 9 `i `ui `ux -> -> # *U &U _channel `ui `ux -> -> 0 `i `uc ]
-[; ;tlc5940.c: 146: channel[10] = 0;
-"146
-[e = *U + &U _channel * -> -> -> 10 `i `ui `ux -> -> # *U &U _channel `ui `ux -> -> 0 `i `uc ]
-[; ;tlc5940.c: 147: channel[11] = 0;
-"147
-[e = *U + &U _channel * -> -> -> 11 `i `ui `ux -> -> # *U &U _channel `ui `ux -> -> 0 `i `uc ]
-[; ;tlc5940.c: 148: channel[12] = 0;
-"148
-[e = *U + &U _channel * -> -> -> 12 `i `ui `ux -> -> # *U &U _channel `ui `ux -> -> 0 `i `uc ]
-[; ;tlc5940.c: 149: channel[13] = 0;
-"149
-[e = *U + &U _channel * -> -> -> 13 `i `ui `ux -> -> # *U &U _channel `ui `ux -> -> 0 `i `uc ]
-[; ;tlc5940.c: 150: channel[14] = 0;
-"150
-[e = *U + &U _channel * -> -> -> 14 `i `ui `ux -> -> # *U &U _channel `ui `ux -> -> 0 `i `uc ]
-[; ;tlc5940.c: 151: channel[15] = 235;
-"151
-[e = *U + &U _channel * -> -> -> 15 `i `ui `ux -> -> # *U &U _channel `ui `ux -> -> 235 `i `uc ]
-[; ;tlc5940.c: 154: serial_send_data(0b00000000);
-"154
-[e ( _serial_send_data (1 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 155: serial_send_data(0b00000000);
-"155
-[e ( _serial_send_data (1 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 156: serial_send_data(0b00000000);
-"156
-[e ( _serial_send_data (1 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 157: serial_send_data(0b00000000);
-"157
-[e ( _serial_send_data (1 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 158: serial_send_data(0b00000000);
-"158
-[e ( _serial_send_data (1 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 159: serial_send_data(0b00000000);
-"159
-[e ( _serial_send_data (1 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 160: serial_send_data(0b00000000);
-"160
-[e ( _serial_send_data (1 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 161: serial_send_data(0b00000000);
-"161
-[e ( _serial_send_data (1 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 162: serial_send_data(0b00000000);
-"162
-[e ( _serial_send_data (1 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 163: serial_send_data(0b00000000);
-"163
-[e ( _serial_send_data (1 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 164: serial_send_data(0b00000000);
-"164
-[e ( _serial_send_data (1 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 165: serial_send_data(0b00000000);
-"165
-[e ( _serial_send_data (1 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 166: serial_send_data(0b00000000);
-"166
-[e ( _serial_send_data (1 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 167: serial_send_data(0b00000000);
-"167
-[e ( _serial_send_data (1 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 168: serial_send_data(0b00000000);
-"168
-[e ( _serial_send_data (1 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 169: serial_send_data(0b00000000);
-"169
-[e ( _serial_send_data (1 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 170: serial_send_data(0b00000000);
-"170
-[e ( _serial_send_data (1 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 171: serial_send_data(0b00000000);
-"171
-[e ( _serial_send_data (1 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 172: serial_send_data(0b00000000);
-"172
-[e ( _serial_send_data (1 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 173: serial_send_data(0b00000000);
-"173
-[e ( _serial_send_data (1 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 174: serial_send_data(0b00000000);
-"174
-[e ( _serial_send_data (1 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 175: serial_send_data(0b00000000);
-"175
-[e ( _serial_send_data (1 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 176: serial_send_data(0b00000000);
-"176
-[e ( _serial_send_data (1 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 177: serial_send_data(0b00000000);
-"177
-[e ( _serial_send_data (1 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 179: _delay((unsigned long)((2)*(8000000/4000.0)));
-"179
-[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;tlc5940.c: 180: LATDbits.LD0 = 1;
-"180
-[e = . . _LATDbits 1 0 -> -> 1 `i `uc ]
-[; ;tlc5940.c: 181: _delay((unsigned long)((30)*(8000000/4000.0)));
-"181
-[e ( __delay (1 -> * -> -> 30 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;tlc5940.c: 182: LATDbits.LD0 = 0;
-"182
-[e = . . _LATDbits 1 0 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 184: serial_send_data(0b10000000);
-"184
-[e ( _serial_send_data (1 -> -> 128 `i `uc ]
-[; ;tlc5940.c: 186: }
-"186
-[e :UE 405 ]
-}
-"188
-[v _update_grayscale `(v ~T0 @X0 1 ef ]
-"189
 {
-[; ;tlc5940.c: 188: void update_grayscale()
-[; ;tlc5940.c: 189: {
-[e :U _update_grayscale ]
+[; ;tlc5940.c: 138: void tlc_set(char tlc_servo_number, char value)
+[; ;tlc5940.c: 139: {
+[e :U _tlc_set ]
+"138
+[v _tlc_servo_number `uc ~T0 @X0 1 r1 ]
+[v _value `uc ~T0 @X0 1 r2 ]
+"139
 [f ]
-[; ;tlc5940.c: 190: _delay((unsigned long)((2)*(8000000/4000.0)));
-"190
+[; ;tlc5940.c: 140: tlc_servo[tlc_servo_number] = value + 55;
+"140
+[e = *U + &U _tlc_servo * -> _tlc_servo_number `ux -> -> # *U &U _tlc_servo `ui `ux -> + -> _value `i -> 55 `i `uc ]
+[; ;tlc5940.c: 141: }
+"141
+[e :UE 408 ]
+}
+"153
+[v _tlc_write `(v ~T0 @X0 1 ef2`uc`uc ]
+"154
+{
+[; ;tlc5940.c: 153: void tlc_write(char tlc_servo_number, char value)
+[; ;tlc5940.c: 154: {
+[e :U _tlc_write ]
+"153
+[v _tlc_servo_number `uc ~T0 @X0 1 r1 ]
+[v _value `uc ~T0 @X0 1 r2 ]
+"154
+[f ]
+[; ;tlc5940.c: 155: tlc_servo[tlc_servo_number] = value + 55;
+"155
+[e = *U + &U _tlc_servo * -> _tlc_servo_number `ux -> -> # *U &U _tlc_servo `ui `ux -> + -> _value `i -> 55 `i `uc ]
+[; ;tlc5940.c: 158: _delay((unsigned long)((2)*(8000000/4000.0)));
+"158
 [e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;tlc5940.c: 192: T2CONbits.TMR2ON = 0;
-"192
+[; ;tlc5940.c: 160: T2CONbits.TMR2ON = 0;
+"160
 [e = . . _T2CONbits 0 1 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 193: LATDbits.LD1 = 0;
-"193
+[; ;tlc5940.c: 161: LATDbits.LD1 = 0;
+"161
 [e = . . _LATDbits 2 1 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 194: LATDbits.LD0 = 0;
-"194
+[; ;tlc5940.c: 162: LATDbits.LD0 = 0;
+"162
 [e = . . _LATDbits 1 0 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 195: LATDbits.LD2 = 0;
-"195
+[; ;tlc5940.c: 163: LATDbits.LD2 = 0;
+"163
 [e = . . _LATDbits 3 1 -> -> 0 `i `uc ]
-"197
+"165
 [v _counter `uc ~T0 @X0 1 a ]
-[; ;tlc5940.c: 197: char counter = 0;
+[; ;tlc5940.c: 165: char counter = 0;
 [e = _counter -> -> 0 `i `uc ]
-[; ;tlc5940.c: 198: for(char i = 0; i < 8; i++)
-"198
+[; ;tlc5940.c: 166: for(char i = 0; i < 8; i++)
+"166
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 8 `i 407  ]
-[e $U 408  ]
-"199
-[e :U 407 ]
-[; ;tlc5940.c: 199: {
+[e $ < -> _i `i -> 8 `i 410  ]
+[e $U 411  ]
+"167
+[e :U 410 ]
+[; ;tlc5940.c: 167: {
 {
-[; ;tlc5940.c: 200: serial_send_data(channel[i + counter]>>4);
-"200
-[e ( _serial_send_data (1 -> >> -> *U + &U _channel * -> -> + -> _i `i -> _counter `i `ui `ux -> -> # *U &U _channel `ui `ux `i -> 4 `i `uc ]
-[; ;tlc5940.c: 201: serial_send_data(channel[i + counter]<<4);
-"201
-[e ( _serial_send_data (1 -> << -> *U + &U _channel * -> -> + -> _i `i -> _counter `i `ui `ux -> -> # *U &U _channel `ui `ux `i -> 4 `i `uc ]
-[; ;tlc5940.c: 202: serial_send_data(channel[i + (counter + 1)]);
-"202
-[e ( _serial_send_data (1 *U + &U _channel * -> -> + -> _i `i + -> _counter `i -> 1 `i `ui `ux -> -> # *U &U _channel `ui `ux ]
-[; ;tlc5940.c: 203: counter++;
-"203
+[; ;tlc5940.c: 168: serial_send_data(tlc_servo[i + counter]>>4);
+"168
+[e ( _serial_send_data (1 -> >> -> *U + &U _tlc_servo * -> -> + -> _i `i -> _counter `i `ui `ux -> -> # *U &U _tlc_servo `ui `ux `i -> 4 `i `uc ]
+[; ;tlc5940.c: 169: serial_send_data(tlc_servo[i + counter]<<4);
+"169
+[e ( _serial_send_data (1 -> << -> *U + &U _tlc_servo * -> -> + -> _i `i -> _counter `i `ui `ux -> -> # *U &U _tlc_servo `ui `ux `i -> 4 `i `uc ]
+[; ;tlc5940.c: 170: serial_send_data(tlc_servo[i + (counter + 1)]);
+"170
+[e ( _serial_send_data (1 *U + &U _tlc_servo * -> -> + -> _i `i + -> _counter `i -> 1 `i `ui `ux -> -> # *U &U _tlc_servo `ui `ux ]
+[; ;tlc5940.c: 171: counter++;
+"171
 [e ++ _counter -> -> 1 `i `uc ]
-"204
+"172
 }
-"198
+"166
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 8 `i 407  ]
-[e :U 408 ]
-"204
+[e $ < -> _i `i -> 8 `i 410  ]
+[e :U 411 ]
+"172
 }
-[; ;tlc5940.c: 204: }
-[; ;tlc5940.c: 206: _delay((unsigned long)((2)*(8000000/4000.0)));
-"206
+[; ;tlc5940.c: 172: }
+[; ;tlc5940.c: 174: _delay((unsigned long)((2)*(8000000/4000.0)));
+"174
 [e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;tlc5940.c: 207: LATDbits.LD0 = 1;
-"207
+[; ;tlc5940.c: 175: LATDbits.LD0 = 1;
+"175
 [e = . . _LATDbits 1 0 -> -> 1 `i `uc ]
-[; ;tlc5940.c: 208: _delay((unsigned long)((30)*(8000000/4000.0)));
-"208
+[; ;tlc5940.c: 176: _delay((unsigned long)((30)*(8000000/4000.0)));
+"176
 [e ( __delay (1 -> * -> -> 30 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;tlc5940.c: 209: LATDbits.LD0 = 0;
-"209
+[; ;tlc5940.c: 177: LATDbits.LD0 = 0;
+"177
 [e = . . _LATDbits 1 0 -> -> 0 `i `uc ]
-[; ;tlc5940.c: 210: T2CONbits.TMR2ON = 1;
-"210
+[; ;tlc5940.c: 178: T2CONbits.TMR2ON = 1;
+"178
 [e = . . _T2CONbits 0 1 -> -> 1 `i `uc ]
-[; ;tlc5940.c: 211: }
-"211
-[e :UE 406 ]
-}
-"213
-[v _set_channel `(v ~T0 @X0 1 ef2`uc`uc ]
-"214
-{
-[; ;tlc5940.c: 213: void set_channel(char channel_number, char value)
-[; ;tlc5940.c: 214: {
-[e :U _set_channel ]
-"213
-[v _channel_number `uc ~T0 @X0 1 r1 ]
-[v _value `uc ~T0 @X0 1 r2 ]
-"214
-[f ]
-[; ;tlc5940.c: 215: channel[channel_number] = value + 55;
-"215
-[e = *U + &U _channel * -> _channel_number `ux -> -> # *U &U _channel `ui `ux -> + -> _value `i -> 55 `i `uc ]
-[; ;tlc5940.c: 216: }
-"216
-[e :UE 410 ]
+[; ;tlc5940.c: 180: }
+"180
+[e :UE 409 ]
 }

@@ -207,14 +207,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S357 . . . . . . ]
 "6999
 [v _INTCONbits `VS357 ~T0 @X0 0 e@4082 ]
-"24 tlc5940.h
-[v _init_dot_correction `(v ~T0 @X0 0 ef ]
-"25
-[v _init_grayscale `(v ~T0 @X0 0 ef ]
+"26 tlc5940.h
+[v _tlc_init `(v ~T0 @X0 0 ef ]
 "27
-[v _update_grayscale `(v ~T0 @X0 0 ef ]
+[v _tlc_update `(v ~T0 @X0 0 ef ]
 "28
-[v _set_channel `(v ~T0 @X0 0 ef2`uc`uc ]
+[v _tlc_set `(v ~T0 @X0 0 ef2`uc`uc ]
 [; ;htc.h: 21: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 24: extern void __builtin_software_breakpoint(void);
 [; ;pic18f4520.h: 47: extern volatile unsigned char PORTA @ 0xF80;
@@ -3974,8 +3972,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tlc5940.h: 24: void init_dot_correction();
 [; ;tlc5940.h: 25: void init_grayscale();
 [; ;tlc5940.h: 26: void tlc_init();
-[; ;tlc5940.h: 27: void update_grayscale();
-[; ;tlc5940.h: 28: void set_channel(char channel_number, char value);
+[; ;tlc5940.h: 27: void tlc_update();
+[; ;tlc5940.h: 28: void tlc_set(char channel_number, char value);
+[; ;tlc5940.h: 29: void tlc_write(char channel_number, char value);
 "13 main.c
 [p x LVP=OFF ]
 "15
@@ -4026,9 +4025,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "27
 [e :UE 402 ]
 }
-[v F4156 `(v ~T0 @X0 1 tf ]
+[v F4159 `(v ~T0 @X0 1 tf ]
 "29
-[v _blank_pulse `IF4156 ~T0 @X0 1 e ]
+[v _blank_pulse `IF4159 ~T0 @X0 1 e ]
 "30
 {
 [; ;main.c: 29: void interrupt blank_pulse(void)
@@ -4205,45 +4204,39 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 92: spi_init();
 "92
 [e ( _spi_init ..  ]
-[; ;main.c: 93: init_dot_correction();
-"93
-[e ( _init_dot_correction ..  ]
-[; ;main.c: 94: init_grayscale();
-"94
-[e ( _init_grayscale ..  ]
-[; ;main.c: 95: update_grayscale();
+[; ;main.c: 95: tlc_init();
 "95
-[e ( _update_grayscale ..  ]
-[; ;main.c: 97: T2CONbits.TMR2ON = 1;
-"97
-[e = . . _T2CONbits 0 1 -> -> 1 `i `uc ]
-[; ;main.c: 98: while(1)
+[e ( _tlc_init ..  ]
+[; ;main.c: 96: tlc_update();
+"96
+[e ( _tlc_update ..  ]
+[; ;main.c: 98: T2CONbits.TMR2ON = 1;
 "98
-[e :U 413 ]
-[; ;main.c: 99: {
+[e = . . _T2CONbits 0 1 -> -> 1 `i `uc ]
+[; ;main.c: 99: while(1)
 "99
-{
-[; ;main.c: 100: LATDbits.LD3 = 1;
+[e :U 413 ]
+[; ;main.c: 100: {
 "100
-[e = . . _LATDbits 4 1 -> -> 1 `i `uc ]
-[; ;main.c: 101: delay_sec();
+{
+[; ;main.c: 101: LATDbits.LD3 = 1;
 "101
-[e ( _delay_sec ..  ]
-[; ;main.c: 102: LATDbits.LD3 = 0;
+[e = . . _LATDbits 4 1 -> -> 1 `i `uc ]
+[; ;main.c: 102: delay_sec();
 "102
-[e = . . _LATDbits 4 1 -> -> 0 `i `uc ]
-[; ;main.c: 103: delay_sec();
+[e ( _delay_sec ..  ]
+[; ;main.c: 103: LATDbits.LD3 = 0;
 "103
-[e ( _delay_sec ..  ]
-[; ;main.c: 104: set_channel(0, 0);
+[e = . . _LATDbits 4 1 -> -> 0 `i `uc ]
+[; ;main.c: 104: delay_sec();
 "104
-[e ( _set_channel (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
-[; ;main.c: 105: update_grayscale();
-"105
-[e ( _update_grayscale ..  ]
-[; ;main.c: 106: delay_sec();
-"106
 [e ( _delay_sec ..  ]
+[; ;main.c: 105: tlc_set(0, 0);
+"105
+[e ( _tlc_set (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
+[; ;main.c: 106: tlc_update();
+"106
+[e ( _tlc_update ..  ]
 [; ;main.c: 107: delay_sec();
 "107
 [e ( _delay_sec ..  ]
@@ -4253,15 +4246,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 109: delay_sec();
 "109
 [e ( _delay_sec ..  ]
-[; ;main.c: 111: set_channel(0, 180);
-"111
-[e ( _set_channel (2 , -> -> 0 `i `uc -> -> 180 `i `uc ]
-[; ;main.c: 112: update_grayscale();
-"112
-[e ( _update_grayscale ..  ]
-[; ;main.c: 113: delay_sec();
-"113
+[; ;main.c: 110: delay_sec();
+"110
 [e ( _delay_sec ..  ]
+[; ;main.c: 112: tlc_set(0, 180);
+"112
+[e ( _tlc_set (2 , -> -> 0 `i `uc -> -> 180 `i `uc ]
+[; ;main.c: 113: tlc_update();
+"113
+[e ( _tlc_update ..  ]
 [; ;main.c: 114: delay_sec();
 "114
 [e ( _delay_sec ..  ]
@@ -4271,14 +4264,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 116: delay_sec();
 "116
 [e ( _delay_sec ..  ]
+[; ;main.c: 117: delay_sec();
 "117
+[e ( _delay_sec ..  ]
+"118
 }
 [e :U 412 ]
-"98
+"99
 [e $U 413  ]
 [e :U 414 ]
-[; ;main.c: 117: }
 [; ;main.c: 118: }
-"118
+[; ;main.c: 119: }
+"119
 [e :UE 411 ]
 }

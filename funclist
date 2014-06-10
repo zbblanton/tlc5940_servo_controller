@@ -1,12 +1,11 @@
-_set_channel: CODE, 1000 0 26
-_blank_pulse: CODE, 8 0 642
-_main: CODE, 650 0 144
-__initialization: CODE, 1070 0 12
-_init_grayscale: CODE, 28 0 276
-_update_grayscale: CODE, 304 0 200
-_spi_init: CODE, 1026 0 22
-_init_dot_correction: CODE, 794 0 130
-_TMR2_init: CODE, 972 0 28
-_serial_send_data: CODE, 1048 0 22
-_delay_sec: CODE, 924 0 48
-Total: 1550
+_tlc_init: CODE, 28 0 404
+_blank_pulse: CODE, 8 0 770
+_main: CODE, 778 0 140
+_tlc_set: CODE, 994 0 26
+__initialization: CODE, 1064 0 12
+_tlc_update: CODE, 432 0 200
+_spi_init: CODE, 1042 0 22
+_TMR2_init: CODE, 966 0 28
+_serial_send_data: CODE, 1020 0 22
+_delay_sec: CODE, 918 0 48
+Total: 1672
