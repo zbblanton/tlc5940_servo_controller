@@ -1,9 +1,9 @@
 Version 3.2 HI-TECH Software Intermediate Code
 [v F4133 `(v ~T0 @X0 1 tf1`ul ]
-"147 E:\Program Files (x86)\Microchip\xc8\v1.32\include\pic18.h
+"147 D:\Program Files (x86)\Microchip\xc8\v1.32\include\pic18.h
 [v __delay `JF4133 ~T0 @X0 0 e ]
 [p i __delay ]
-"2845 E:\Program Files (x86)\Microchip\xc8\v1.32\include\pic18f4520.h
+"2845 D:\Program Files (x86)\Microchip\xc8\v1.32\include\pic18f4520.h
 [s S143 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S143 . TMR1IE TMR2IE CCP1IE SSPIE TXIE RCIE ADIE PSPIE ]
 "2855
@@ -216,7 +216,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;htc.h: 21: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 24: extern void __builtin_software_breakpoint(void);
 [; ;pic18f4520.h: 47: extern volatile unsigned char PORTA @ 0xF80;
-"49 E:\Program Files (x86)\Microchip\xc8\v1.32\include\pic18f4520.h
+"49 D:\Program Files (x86)\Microchip\xc8\v1.32\include\pic18f4520.h
 [; ;pic18f4520.h: 49: asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
 [; ;pic18f4520.h: 52: typedef union {

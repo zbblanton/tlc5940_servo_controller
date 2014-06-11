@@ -242,8 +242,8 @@ idloc 200000 200007 IDLOC 200000 0
 cstackCOMRAM 1 27 COMRAM 1 1
 %locals
 dist/default/production\tlc5940_servo_controller.X.production.obj
-E:\Program Files (x86)\Microchip\xc8\v1.32\include\pic18f4520.h
-E:\Program Files (x86)\Microchip\xc8\v1.32\include\pic18f4520.h
+D:\Program Files (x86)\Microchip\xc8\v1.32\include\pic18f4520.h
+D:\Program Files (x86)\Microchip\xc8\v1.32\include\pic18f4520.h
 7259 278 0 CODE 0
 main.c
 29 278 0 CODE 0
@@ -256,7 +256,7 @@ main.c
 40 2CA 0 CODE 0
 41 2CE 0 CODE 0
 43 2D0 0 CODE 0
-C:\Users\zbbl222\AppData\Local\Temp\s3i4.
+D:\temp_folders\temp\s43g.
 787 428 0 CODE 0
 789 428 0 CODE 0
 792 428 0 CODE 0

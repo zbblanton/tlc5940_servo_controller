@@ -133,7 +133,7 @@ Description : Sets the position on the selected servo.
 Arguments   : char tlc_servo_number, char value
 
 Remarks     : This function ONLY updates the selected servo position variable,
- it does NOT update the tlc.
+ it does NOT update the tlc5940.
 ***************************************************************************/
 void tlc_set(char tlc_servo_number, char value) //Value between 0 and 180
 {
