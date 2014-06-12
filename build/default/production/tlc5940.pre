@@ -4994,11 +4994,9 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 22 "tlc5940.h"
+# 29 "tlc5940.h"
 void serial_init();
 void serial_send_data(char data);
-void init_dot_correction();
-void init_grayscale();
 void tlc_init();
 void tlc_update();
 void tlc_set(char channel_number, char value);
@@ -5094,7 +5092,7 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 
-# 8 "tlc5940.c"
+# 15 "tlc5940.c"
 char tlc_servo[16];
 
 void serial_send_data(char data)
@@ -5215,13 +5213,13 @@ LATDbits.LD0 = 0;
 T2CONbits.TMR2ON = 1;
 }
 
-# 138
+# 145
 void tlc_set(char tlc_servo_number, char value)
 {
 tlc_servo[tlc_servo_number] = value + 55;
 }
 
-# 153
+# 160
 void tlc_write(char tlc_servo_number, char value)
 {
 tlc_servo[tlc_servo_number] = value + 55;

@@ -4994,18 +4994,16 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 22 "tlc5940.h"
+# 29 "tlc5940.h"
 void serial_init();
 void serial_send_data(char data);
-void init_dot_correction();
-void init_grayscale();
 void tlc_init();
 void tlc_update();
 void tlc_set(char channel_number, char value);
 void tlc_write(char channel_number, char value);
 
 
-# 13 "main.c"
+# 20 "main.c"
 #pragma config LVP = OFF
 
 #pragma config OSC = HS, WDT=OFF, PWRT=OFF, BOREN=OFF, CP0=OFF,CP1=OFF,CP2=OFF,CP3=OFF, MCLRE=ON

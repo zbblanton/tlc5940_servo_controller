@@ -125,25 +125,25 @@
 [v ___asftsub __asftsub `(f  1 e 3 0 ]
 "6 D:\Program Files (x86)\Microchip\xc8\v1.32\sources\pic18\aslmul.c
 [v ___aslmul __aslmul `(ul  1 e 4 0 ]
-"21 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c
+"28 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c
 [v _delay_sec delay_sec `(v  1 e 0 0 ]
-"29
+"36
 [v _blank_pulse blank_pulse `II(v  1 e 0 0 ]
-"45
+"52
 [v _spi_init spi_init `(v  1 e 0 0 ]
-"60
+"67
 [v _TMR2_init TMR2_init `(v  1 e 0 0 ]
-"72
+"79
 [v _main main `(i  1 e 2 0 ]
-"10 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c
+"17 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c
 [v _serial_send_data serial_send_data `(v  1 e 0 0 ]
-"16
+"23
 [v _tlc_init tlc_init `(v  1 e 0 0 ]
-"103
+"110
 [v _tlc_update tlc_update `(v  1 e 0 0 ]
-"138
+"145
 [v _tlc_set tlc_set `(v  1 e 0 0 ]
-"153
+"160
 [v _tlc_write tlc_write `(v  1 e 0 0 ]
 "47 D:\Program Files (x86)\Microchip\xc8\v1.32\include\pic18f4520.h
 [v _PORTA PORTA `VEuc  1 e 1 @3968 ]
@@ -396,67 +396,67 @@
 ]
 [u S586 . 1 `S546 1 . 1 0 `S555 1 . 1 0 `S564 1 . 1 0 `S573 1 . 1 0 `S582 1 . 1 0 ]
 [v _INTCONbits INTCONbits `VES586  1 e 1 @4082 ]
-"19 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c
+"26 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c
 [v _count count `VEi  1 e 2 0 ]
-"8 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c
+"15 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c
 [v _tlc_servo tlc_servo `[16]uc  1 e 16 0 ]
-"72 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c
+"79 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c
 [v _main main `(i  1 e 2 0 ]
 {
-"119
-} 0
-"103 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c
-[v _tlc_update tlc_update `(v  1 e 0 0 ]
-{
-"113
-[v tlc_update@i i `uc  1 a 1 20 ]
-"112
-[v tlc_update@counter counter `uc  1 a 1 19 ]
 "126
 } 0
-"138
+"110 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c
+[v _tlc_update tlc_update `(v  1 e 0 0 ]
+{
+"120
+[v tlc_update@i i `uc  1 a 1 20 ]
+"119
+[v tlc_update@counter counter `uc  1 a 1 19 ]
+"133
+} 0
+"145
 [v _tlc_set tlc_set `(v  1 e 0 0 ]
 {
 [v tlc_set@tlc_servo_number tlc_servo_number `uc  1 a 1 wreg ]
 [v tlc_set@tlc_servo_number tlc_servo_number `uc  1 a 1 wreg ]
 [v tlc_set@value value `uc  1 p 1 14 ]
-"140
+"147
 [v tlc_set@tlc_servo_number tlc_servo_number `uc  1 a 1 15 ]
-"141
+"148
 } 0
-"16
+"23
 [v _tlc_init tlc_init `(v  1 e 0 0 ]
 {
-"101
+"108
 } 0
-"10
+"17
 [v _serial_send_data serial_send_data `(v  1 e 0 0 ]
 {
 [v serial_send_data@data data `uc  1 a 1 wreg ]
 [v serial_send_data@data data `uc  1 a 1 wreg ]
-"12
+"19
 [v serial_send_data@data data `uc  1 a 1 15 ]
-"14
+"21
 } 0
-"45 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c
+"52 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c
 [v _spi_init spi_init `(v  1 e 0 0 ]
 {
-"58
+"65
 } 0
-"21
+"28
 [v _delay_sec delay_sec `(v  1 e 0 0 ]
 {
-"23
+"30
 [v delay_sec@i i `i  1 a 2 15 ]
-"27
+"34
 } 0
-"60
+"67
 [v _TMR2_init TMR2_init `(v  1 e 0 0 ]
 {
-"70
+"77
 } 0
-"29
+"36
 [v _blank_pulse blank_pulse `II(v  1 e 0 0 ]
 {
-"43
+"50
 } 0

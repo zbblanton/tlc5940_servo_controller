@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC18 LITE Macro Assembler V1.32 build 58300 
-                                                                                               Tue Jun 10 21:10:27 2014
+                                                                                               Thu Jun 12 02:31:37 2014
 
 Microchip Technology Omniscient Code Generator (Lite mode) build 58300
      1                           	processor	18F4520
@@ -67,13 +67,13 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
     61  00029E  CFF8 F00D          	movff	tblptru,??_blank_pulse+12
     62  0002A2  CFF5 F00E          	movff	tablat,??_blank_pulse+13
     63                           
-    64                           ;main.c: 31: if(PIE1bits.TMR2IE && PIR1bits.TMR2IF)
+    64                           ;main.c: 38: if(PIE1bits.TMR2IE && PIR1bits.TMR2IF)
     65  0002A6  B29D               	btfsc	3997,1,c	;volatile
     66  0002A8  A29E               	btfss	3998,1,c	;volatile
     67  0002AA  D012               	goto	i2l93
     68                           
-    69                           ;main.c: 32: {
-    70                           ;main.c: 33: if(count >= 222)
+    69                           ;main.c: 39: {
+    70                           ;main.c: 40: if(count >= 222)
     71  0002AC  5027               	movf	_count+1,w,c	;volatile
     72  0002AE  0A80               	xorlw	128
     73  0002B0  0F80               	addlw	-128
@@ -83,29 +83,29 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
     77  0002B8  A0D8               	btfss	status,0,c
     78  0002BA  D007               	goto	i2l907
     79                           
-    80                           ;main.c: 34: {
-    81                           ;main.c: 35: LATDbits.LD2 = 1;
+    80                           ;main.c: 41: {
+    81                           ;main.c: 42: LATDbits.LD2 = 1;
     82  0002BC  848C               	bsf	3980,2,c	;volatile
     83                           
-    84                           ;main.c: 36: _delay((unsigned long)((1)*(8000000/4000000.0)));
+    84                           ;main.c: 43: _delay((unsigned long)((1)*(8000000/4000000.0)));
     85  0002BE  D000               	nop2		;2 cycle nop
     86                           
-    87                           ;main.c: 37: LATDbits.LD2 = 0;
+    87                           ;main.c: 44: LATDbits.LD2 = 0;
     88  0002C0  948C               	bcf	3980,2,c	;volatile
     89                           
-    90                           ;main.c: 38: count = 0;
+    90                           ;main.c: 45: count = 0;
     91  0002C2  0E00               	movlw	0
     92  0002C4  6E27               	movwf	_count+1,c	;volatile
     93  0002C6  0E00               	movlw	0
     94  0002C8  6E26               	movwf	_count,c	;volatile
     95  0002CA                     i2l907:
     96                           
-    97                           ;main.c: 39: }
-    98                           ;main.c: 40: count++;
+    97                           ;main.c: 46: }
+    98                           ;main.c: 47: count++;
     99  0002CA  4A26               	infsnz	_count,f,c	;volatile
    100  0002CC  2A27               	incf	_count+1,f,c	;volatile
    101                           
-   102                           ;main.c: 41: PIR1bits.TMR2IF = 0;
+   102                           ;main.c: 48: PIR1bits.TMR2IF = 0;
    103  0002CE  929E               	bcf	3998,1,c	;volatile
    104  0002D0                     i2l93:
    105  0002D0  C00E  FFF5         	movff	??_blank_pulse+13,tablat
@@ -269,7 +269,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
    263 ;;
    264 ;; *************** function _main *****************
    265 ;; Defined at:
-   266 ;;		line 72 in file "main.c"
+   266 ;;		line 79 in file "main.c"
    267 ;; Parameters:    Size  Location     Type
    268 ;;		None
    269 ;; Auto vars:     Size  Location     Type
@@ -307,127 +307,127 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
    301  00030A                     _main:
    302                           	opt stack 28
    303                           
-   304                           ;main.c: 75: TRISD = 0b00000000;
+   304                           ;main.c: 82: TRISD = 0b00000000;
    305                           
    306                           ;incstack = 0
    307  00030A  0E00               	movlw	0
    308  00030C  6E95               	movwf	3989,c	;volatile
    309                           
-   310                           ;main.c: 76: PORTD = 0b00000000;
+   310                           ;main.c: 83: PORTD = 0b00000000;
    311  00030E  0E00               	movlw	0
    312  000310  6E83               	movwf	3971,c	;volatile
    313                           
-   314                           ;main.c: 77: TRISB = 0b00100000;
+   314                           ;main.c: 84: TRISB = 0b00100000;
    315  000312  0E20               	movlw	32
    316  000314  6E93               	movwf	3987,c	;volatile
    317                           
-   318                           ;main.c: 78: PORTB = 0b00000000;
+   318                           ;main.c: 85: PORTB = 0b00000000;
    319  000316  0E00               	movlw	0
    320  000318  6E81               	movwf	3969,c	;volatile
    321                           
-   322                           ;main.c: 79: TRISA = 0b00001111;
+   322                           ;main.c: 86: TRISA = 0b00001111;
    323  00031A  0E0F               	movlw	15
    324  00031C  6E92               	movwf	3986,c	;volatile
    325                           
-   326                           ;main.c: 80: PORTA = 0b00001111;
+   326                           ;main.c: 87: PORTA = 0b00001111;
    327  00031E  0E0F               	movlw	15
    328  000320  6E80               	movwf	3968,c	;volatile
    329                           
-   330                           ;main.c: 81: TRISE = 0b00001000;
+   330                           ;main.c: 88: TRISE = 0b00001000;
    331  000322  0E08               	movlw	8
    332  000324  6E96               	movwf	3990,c	;volatile
    333                           
-   334                           ;main.c: 82: PORTE = 0b00000000;
+   334                           ;main.c: 89: PORTE = 0b00000000;
    335  000326  0E00               	movlw	0
    336  000328  6E84               	movwf	3972,c	;volatile
    337                           
-   338                           ;main.c: 84: TMR2_init();
+   338                           ;main.c: 91: TMR2_init();
    339  00032A  ECE3  F001         	call	_TMR2_init	;wreg free
    340                           
-   341                           ;main.c: 85: count = 0;
+   341                           ;main.c: 92: count = 0;
    342  00032E  0E00               	movlw	0
    343  000330  6E27               	movwf	_count+1,c	;volatile
    344  000332  0E00               	movlw	0
    345  000334  6E26               	movwf	_count,c	;volatile
    346                           
-   347                           ;main.c: 87: PIE1bits.TMR2IE = 1;
+   347                           ;main.c: 94: PIE1bits.TMR2IE = 1;
    348  000336  829D               	bsf	3997,1,c	;volatile
    349                           
-   350                           ;main.c: 88: INTCONbits.PEIE = 1;
+   350                           ;main.c: 95: INTCONbits.PEIE = 1;
    351  000338  8CF2               	bsf	intcon,6,c	;volatile
    352                           
-   353                           ;main.c: 89: INTCONbits.GIE = 1;
+   353                           ;main.c: 96: INTCONbits.GIE = 1;
    354  00033A  8EF2               	bsf	intcon,7,c	;volatile
    355                           
-   356                           ;main.c: 90: T2CONbits.TMR2ON = 0;
+   356                           ;main.c: 97: T2CONbits.TMR2ON = 0;
    357  00033C  94CA               	bcf	4042,2,c	;volatile
    358                           
-   359                           ;main.c: 92: spi_init();
+   359                           ;main.c: 99: spi_init();
    360  00033E  EC09  F002         	call	_spi_init	;wreg free
    361                           
-   362                           ;main.c: 95: tlc_init();
+   362                           ;main.c: 102: tlc_init();
    363  000342  EC0E  F000         	call	_tlc_init	;wreg free
    364                           
-   365                           ;main.c: 96: tlc_update();
+   365                           ;main.c: 103: tlc_update();
    366  000346  ECD8  F000         	call	_tlc_update	;wreg free
    367                           
-   368                           ;main.c: 98: T2CONbits.TMR2ON = 1;
+   368                           ;main.c: 105: T2CONbits.TMR2ON = 1;
    369  00034A  84CA               	bsf	4042,2,c	;volatile
    370  00034C                     l933:
    371                           
-   372                           ;main.c: 100: {
-   373                           ;main.c: 101: LATDbits.LD3 = 1;
+   372                           ;main.c: 107: {
+   373                           ;main.c: 108: LATDbits.LD3 = 1;
    374  00034C  868C               	bsf	3980,3,c	;volatile
    375                           
-   376                           ;main.c: 102: delay_sec();
+   376                           ;main.c: 109: delay_sec();
    377  00034E  ECCB  F001         	call	_delay_sec	;wreg free
    378                           
-   379                           ;main.c: 103: LATDbits.LD3 = 0;
+   379                           ;main.c: 110: LATDbits.LD3 = 0;
    380  000352  968C               	bcf	3980,3,c	;volatile
    381                           
-   382                           ;main.c: 104: delay_sec();
+   382                           ;main.c: 111: delay_sec();
    383  000354  ECCB  F001         	call	_delay_sec	;wreg free
    384                           
-   385                           ;main.c: 105: tlc_set(0, 0);
+   385                           ;main.c: 112: tlc_set(0, 0);
    386  000358  0E00               	movlw	0
    387  00035A  6E0F               	movwf	tlc_set@value,c
    388  00035C  0E00               	movlw	0
    389  00035E  ECF1  F001         	call	_tlc_set
    390                           
-   391                           ;main.c: 106: tlc_update();
+   391                           ;main.c: 113: tlc_update();
    392  000362  ECD8  F000         	call	_tlc_update	;wreg free
    393                           
-   394                           ;main.c: 107: delay_sec();
+   394                           ;main.c: 114: delay_sec();
    395  000366  ECCB  F001         	call	_delay_sec	;wreg free
    396                           
-   397                           ;main.c: 108: delay_sec();
+   397                           ;main.c: 115: delay_sec();
    398  00036A  ECCB  F001         	call	_delay_sec	;wreg free
    399                           
-   400                           ;main.c: 109: delay_sec();
+   400                           ;main.c: 116: delay_sec();
    401  00036E  ECCB  F001         	call	_delay_sec	;wreg free
    402                           
-   403                           ;main.c: 110: delay_sec();
+   403                           ;main.c: 117: delay_sec();
    404  000372  ECCB  F001         	call	_delay_sec	;wreg free
    405                           
-   406                           ;main.c: 112: tlc_set(0, 180);
+   406                           ;main.c: 119: tlc_set(0, 180);
    407  000376  0EB4               	movlw	180
    408  000378  6E0F               	movwf	tlc_set@value,c
    409  00037A  0E00               	movlw	0
    410  00037C  ECF1  F001         	call	_tlc_set
    411                           
-   412                           ;main.c: 113: tlc_update();
+   412                           ;main.c: 120: tlc_update();
    413  000380  ECD8  F000         	call	_tlc_update	;wreg free
    414                           
-   415                           ;main.c: 114: delay_sec();
+   415                           ;main.c: 121: delay_sec();
    416  000384  ECCB  F001         	call	_delay_sec	;wreg free
    417                           
-   418                           ;main.c: 115: delay_sec();
+   418                           ;main.c: 122: delay_sec();
    419  000388  ECCB  F001         	call	_delay_sec	;wreg free
    420                           
-   421                           ;main.c: 116: delay_sec();
+   421                           ;main.c: 123: delay_sec();
    422  00038C  ECCB  F001         	call	_delay_sec	;wreg free
    423                           
-   424                           ;main.c: 117: delay_sec();
+   424                           ;main.c: 124: delay_sec();
    425  000390  ECCB  F001         	call	_delay_sec	;wreg free
    426  000394  D7DB               	goto	l933
    427  000396                     __end_of_main:
@@ -453,7 +453,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
    447                           
    448 ;; *************** function _tlc_update *****************
    449 ;; Defined at:
-   450 ;;		line 103 in file "tlc5940.c"
+   450 ;;		line 110 in file "tlc5940.c"
    451 ;; Parameters:    Size  Location     Type
    452 ;;		None
    453 ;; Auto vars:     Size  Location     Type
@@ -488,7 +488,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
    482  0001B0                     _tlc_update:
    483                           	opt stack 28
    484                           
-   485                           ;tlc5940.c: 105: _delay((unsigned long)((2)*(8000000/4000.0)));
+   485                           ;tlc5940.c: 112: _delay((unsigned long)((2)*(8000000/4000.0)));
    486                           
    487                           ;incstack = 0
    488  0001B0  0E06               	movlw	6
@@ -501,30 +501,30 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
    495  0001BC  D7FC               	goto	u107
    496  0001BE  D000               	nop2	
    497                           
-   498                           ;tlc5940.c: 107: T2CONbits.TMR2ON = 0;
+   498                           ;tlc5940.c: 114: T2CONbits.TMR2ON = 0;
    499  0001C0  94CA               	bcf	4042,2,c	;volatile
    500                           
-   501                           ;tlc5940.c: 108: LATDbits.LD1 = 0;
+   501                           ;tlc5940.c: 115: LATDbits.LD1 = 0;
    502  0001C2  928C               	bcf	3980,1,c	;volatile
    503                           
-   504                           ;tlc5940.c: 109: LATDbits.LD0 = 0;
+   504                           ;tlc5940.c: 116: LATDbits.LD0 = 0;
    505  0001C4  908C               	bcf	3980,0,c	;volatile
    506                           
-   507                           ;tlc5940.c: 110: LATDbits.LD2 = 0;
+   507                           ;tlc5940.c: 117: LATDbits.LD2 = 0;
    508  0001C6  948C               	bcf	3980,2,c	;volatile
    509                           
-   510                           ;tlc5940.c: 112: char counter = 0;
+   510                           ;tlc5940.c: 119: char counter = 0;
    511  0001C8  0E00               	movlw	0
    512  0001CA  6E14               	movwf	tlc_update@counter,c
    513                           
-   514                           ;tlc5940.c: 113: for(char i = 0; i < 8; i++)
+   514                           ;tlc5940.c: 120: for(char i = 0; i < 8; i++)
    515  0001CC  0E00               	movlw	0
    516  0001CE  6E15               	movwf	tlc_update@i,c
    517  0001D0  D03C               	goto	L1
    518  0001D2                     l827:
    519                           
-   520                           ;tlc5940.c: 114: {
-   521                           ;tlc5940.c: 115: serial_send_data(tlc_servo[i + counter]>>4);
+   520                           ;tlc5940.c: 121: {
+   521                           ;tlc5940.c: 122: serial_send_data(tlc_servo[i + counter]>>4);
    522  0001D2  5014               	movf	tlc_update@counter,w,c
    523  0001D4  C015  F011         	movff	tlc_update@i,??_tlc_update
    524  0001D8  6A12               	clrf	(??_tlc_update+1)& (0+255),c
@@ -543,7 +543,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
    537  0001F2  0B0F               	andlw	15
    538  0001F4  ECFE  F001         	call	_serial_send_data
    539                           
-   540                           ;tlc5940.c: 116: serial_send_data(tlc_servo[i + counter]<<4);
+   540                           ;tlc5940.c: 123: serial_send_data(tlc_servo[i + counter]<<4);
    541  0001F8  5014               	movf	tlc_update@counter,w,c
    542  0001FA  C015  F011         	movff	tlc_update@i,??_tlc_update
    543  0001FE  6A12               	clrf	(??_tlc_update+1)& (0+255),c
@@ -562,7 +562,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
    556  000218  0BF0               	andlw	240
    557  00021A  ECFE  F001         	call	_serial_send_data
    558                           
-   559                           ;tlc5940.c: 117: serial_send_data(tlc_servo[i + (counter + 1)]);
+   559                           ;tlc5940.c: 124: serial_send_data(tlc_servo[i + (counter + 1)]);
    560  00021E  5015               	movf	tlc_update@i,w,c
    561  000220  C014  F011         	movff	tlc_update@counter,??_tlc_update
    562  000224  6A12               	clrf	(??_tlc_update+1)& (0+255),c
@@ -582,7 +582,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
    576  000240  50DF               	movf	indf2,w,c
    577  000242  ECFE  F001         	call	_serial_send_data
    578                           
-   579                           ;tlc5940.c: 118: counter++;
+   579                           ;tlc5940.c: 125: counter++;
    580  000246  2A14               	incf	tlc_update@counter,f,c
    581  000248  2A15               	incf	tlc_update@i,f,c
    582  00024A                     L1:
@@ -590,8 +590,8 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
    584  00024C  6415               	cpfsgt	tlc_update@i,c
    585  00024E  D7C1               	goto	l827
    586                           
-   587                           ;tlc5940.c: 119: }
-   588                           ;tlc5940.c: 121: _delay((unsigned long)((2)*(8000000/4000.0)));
+   587                           ;tlc5940.c: 126: }
+   588                           ;tlc5940.c: 128: _delay((unsigned long)((2)*(8000000/4000.0)));
    589  000250  0E06               	movlw	6
    590  000252  6E11               	movwf	??_tlc_update& (0+255),c
    591  000254  0E30               	movlw	48
@@ -602,10 +602,10 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
    596  00025C  D7FC               	goto	u117
    597  00025E  D000               	nop2	
    598                           
-   599                           ;tlc5940.c: 122: LATDbits.LD0 = 1;
+   599                           ;tlc5940.c: 129: LATDbits.LD0 = 1;
    600  000260  808C               	bsf	3980,0,c	;volatile
    601                           
-   602                           ;tlc5940.c: 123: _delay((unsigned long)((30)*(8000000/4000.0)));
+   602                           ;tlc5940.c: 130: _delay((unsigned long)((30)*(8000000/4000.0)));
    603  000262  0E4E               	movlw	78
    604  000264  6E11               	movwf	??_tlc_update& (0+255),c
    605  000266  0EEB               	movlw	235
@@ -616,10 +616,10 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
    610  00026E  D7FC               	goto	u127
    611  000270  F000               	nop	
    612                           
-   613                           ;tlc5940.c: 124: LATDbits.LD0 = 0;
+   613                           ;tlc5940.c: 131: LATDbits.LD0 = 0;
    614  000272  908C               	bcf	3980,0,c	;volatile
    615                           
-   616                           ;tlc5940.c: 125: T2CONbits.TMR2ON = 1;
+   616                           ;tlc5940.c: 132: T2CONbits.TMR2ON = 1;
    617  000274  84CA               	bsf	4042,2,c	;volatile
    618  000276  0012               	return	
    619  000278                     __end_of_tlc_update:
@@ -646,7 +646,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
    640                           
    641 ;; *************** function _tlc_set *****************
    642 ;; Defined at:
-   643 ;;		line 138 in file "tlc5940.c"
+   643 ;;		line 145 in file "tlc5940.c"
    644 ;; Parameters:    Size  Location     Type
    645 ;;  tlc_servo_nu    1    wreg     unsigned char 
    646 ;;  value           1   14[COMRAM] unsigned char 
@@ -685,7 +685,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
    679                           ;tlc_set@tlc_servo_number stored from wreg
    680  0003E2  6E10               	movwf	tlc_set@tlc_servo_number,c
    681                           
-   682                           ;tlc5940.c: 140: tlc_servo[tlc_servo_number] = value + 55;
+   682                           ;tlc5940.c: 147: tlc_servo[tlc_servo_number] = value + 55;
    683  0003E4  5010               	movf	tlc_set@tlc_servo_number,w,c
    684  0003E6  0D01               	mullw	1
    685  0003E8  0E16               	movlw	low _tlc_servo
@@ -722,7 +722,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
    716                           
    717 ;; *************** function _tlc_init *****************
    718 ;; Defined at:
-   719 ;;		line 16 in file "tlc5940.c"
+   719 ;;		line 23 in file "tlc5940.c"
    720 ;; Parameters:    Size  Location     Type
    721 ;;		None
    722 ;; Auto vars:     Size  Location     Type
@@ -756,15 +756,15 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
    750  00001C                     _tlc_init:
    751                           	opt stack 28
    752                           
-   753                           ;tlc5940.c: 19: LATDbits.LD1 = 1;
+   753                           ;tlc5940.c: 26: LATDbits.LD1 = 1;
    754                           
    755                           ;incstack = 0
    756  00001C  828C               	bsf	3980,1,c	;volatile
    757                           
-   758                           ;tlc5940.c: 20: LATDbits.LD0 = 0;
+   758                           ;tlc5940.c: 27: LATDbits.LD0 = 0;
    759  00001E  908C               	bcf	3980,0,c	;volatile
    760                           
-   761                           ;tlc5940.c: 21: _delay((unsigned long)((2)*(8000000/4000.0)));
+   761                           ;tlc5940.c: 28: _delay((unsigned long)((2)*(8000000/4000.0)));
    762  000020  0E06               	movlw	6
    763  000022  6E11               	movwf	??_tlc_init& (0+255),c
    764  000024  0E30               	movlw	48
@@ -775,55 +775,55 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
    769  00002C  D7FC               	goto	u137
    770  00002E  D000               	nop2	
    771                           
-   772                           ;tlc5940.c: 23: serial_send_data(0b11111111);
+   772                           ;tlc5940.c: 30: serial_send_data(0b11111111);
    773  000030  0EFF               	movlw	255
    774  000032  ECFE  F001         	call	_serial_send_data
    775                           
-   776                           ;tlc5940.c: 24: serial_send_data(0b11111111);
+   776                           ;tlc5940.c: 31: serial_send_data(0b11111111);
    777  000036  0EFF               	movlw	255
    778  000038  ECFE  F001         	call	_serial_send_data
    779                           
-   780                           ;tlc5940.c: 25: serial_send_data(0b11111111);
+   780                           ;tlc5940.c: 32: serial_send_data(0b11111111);
    781  00003C  0EFF               	movlw	255
    782  00003E  ECFE  F001         	call	_serial_send_data
    783                           
-   784                           ;tlc5940.c: 26: serial_send_data(0b11111111);
+   784                           ;tlc5940.c: 33: serial_send_data(0b11111111);
    785  000042  0EFF               	movlw	255
    786  000044  ECFE  F001         	call	_serial_send_data
    787                           
-   788                           ;tlc5940.c: 27: serial_send_data(0b11111111);
+   788                           ;tlc5940.c: 34: serial_send_data(0b11111111);
    789  000048  0EFF               	movlw	255
    790  00004A  ECFE  F001         	call	_serial_send_data
    791                           
-   792                           ;tlc5940.c: 28: serial_send_data(0b11111111);
+   792                           ;tlc5940.c: 35: serial_send_data(0b11111111);
    793  00004E  0EFF               	movlw	255
    794  000050  ECFE  F001         	call	_serial_send_data
    795                           
-   796                           ;tlc5940.c: 29: serial_send_data(0b11111111);
+   796                           ;tlc5940.c: 36: serial_send_data(0b11111111);
    797  000054  0EFF               	movlw	255
    798  000056  ECFE  F001         	call	_serial_send_data
    799                           
-   800                           ;tlc5940.c: 30: serial_send_data(0b11111111);
+   800                           ;tlc5940.c: 37: serial_send_data(0b11111111);
    801  00005A  0EFF               	movlw	255
    802  00005C  ECFE  F001         	call	_serial_send_data
    803                           
-   804                           ;tlc5940.c: 31: serial_send_data(0b11111111);
+   804                           ;tlc5940.c: 38: serial_send_data(0b11111111);
    805  000060  0EFF               	movlw	255
    806  000062  ECFE  F001         	call	_serial_send_data
    807                           
-   808                           ;tlc5940.c: 32: serial_send_data(0b11111111);
+   808                           ;tlc5940.c: 39: serial_send_data(0b11111111);
    809  000066  0EFF               	movlw	255
    810  000068  ECFE  F001         	call	_serial_send_data
    811                           
-   812                           ;tlc5940.c: 33: serial_send_data(0b11111111);
+   812                           ;tlc5940.c: 40: serial_send_data(0b11111111);
    813  00006C  0EFF               	movlw	255
    814  00006E  ECFE  F001         	call	_serial_send_data
    815                           
-   816                           ;tlc5940.c: 34: serial_send_data(0b11111111);
+   816                           ;tlc5940.c: 41: serial_send_data(0b11111111);
    817  000072  0EFF               	movlw	255
    818  000074  ECFE  F001         	call	_serial_send_data
    819                           
-   820                           ;tlc5940.c: 36: _delay((unsigned long)((2)*(8000000/4000.0)));
+   820                           ;tlc5940.c: 43: _delay((unsigned long)((2)*(8000000/4000.0)));
    821  000078  0E06               	movlw	6
    822  00007A  6E11               	movwf	??_tlc_init& (0+255),c
    823  00007C  0E30               	movlw	48
@@ -834,10 +834,10 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
    828  000084  D7FC               	goto	u147
    829  000086  D000               	nop2	
    830                           
-   831                           ;tlc5940.c: 37: LATDbits.LD0 = 1;
+   831                           ;tlc5940.c: 44: LATDbits.LD0 = 1;
    832  000088  808C               	bsf	3980,0,c	;volatile
    833                           
-   834                           ;tlc5940.c: 38: _delay((unsigned long)((30)*(8000000/4000.0)));
+   834                           ;tlc5940.c: 45: _delay((unsigned long)((30)*(8000000/4000.0)));
    835  00008A  0E4E               	movlw	78
    836  00008C  6E11               	movwf	??_tlc_init& (0+255),c
    837  00008E  0EEB               	movlw	235
@@ -848,10 +848,10 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
    842  000096  D7FC               	goto	u157
    843  000098  F000               	nop	
    844                           
-   845                           ;tlc5940.c: 39: LATDbits.LD0 = 0;
+   845                           ;tlc5940.c: 46: LATDbits.LD0 = 0;
    846  00009A  908C               	bcf	3980,0,c	;volatile
    847                           
-   848                           ;tlc5940.c: 43: _delay((unsigned long)((2)*(8000000/4000.0)));
+   848                           ;tlc5940.c: 50: _delay((unsigned long)((2)*(8000000/4000.0)));
    849  00009C  0E06               	movlw	6
    850  00009E  6E11               	movwf	??_tlc_init& (0+255),c
    851  0000A0  0E30               	movlw	48
@@ -862,179 +862,179 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
    856  0000A8  D7FC               	goto	u167
    857  0000AA  D000               	nop2	
    858                           
-   859                           ;tlc5940.c: 45: T2CONbits.TMR2ON = 0;
+   859                           ;tlc5940.c: 52: T2CONbits.TMR2ON = 0;
    860  0000AC  94CA               	bcf	4042,2,c	;volatile
    861                           
-   862                           ;tlc5940.c: 46: LATDbits.LD1 = 0;
+   862                           ;tlc5940.c: 53: LATDbits.LD1 = 0;
    863  0000AE  928C               	bcf	3980,1,c	;volatile
    864                           
-   865                           ;tlc5940.c: 47: LATDbits.LD0 = 0;
+   865                           ;tlc5940.c: 54: LATDbits.LD0 = 0;
    866  0000B0  908C               	bcf	3980,0,c	;volatile
    867                           
-   868                           ;tlc5940.c: 48: LATDbits.LD2 = 0;
+   868                           ;tlc5940.c: 55: LATDbits.LD2 = 0;
    869  0000B2  948C               	bcf	3980,2,c	;volatile
    870                           
-   871                           ;tlc5940.c: 52: tlc_servo[0] = 235;
+   871                           ;tlc5940.c: 59: tlc_servo[0] = 235;
    872  0000B4  0EEB               	movlw	235
    873  0000B6  6E16               	movwf	_tlc_servo,c
    874                           
-   875                           ;tlc5940.c: 53: tlc_servo[1] = 0;
+   875                           ;tlc5940.c: 60: tlc_servo[1] = 0;
    876  0000B8  0E00               	movlw	0
    877  0000BA  6E17               	movwf	_tlc_servo+1,c
    878                           
-   879                           ;tlc5940.c: 54: tlc_servo[2] = 0;
+   879                           ;tlc5940.c: 61: tlc_servo[2] = 0;
    880  0000BC  0E00               	movlw	0
    881  0000BE  6E18               	movwf	_tlc_servo+2,c
    882                           
-   883                           ;tlc5940.c: 55: tlc_servo[3] = 0;
+   883                           ;tlc5940.c: 62: tlc_servo[3] = 0;
    884  0000C0  0E00               	movlw	0
    885  0000C2  6E19               	movwf	_tlc_servo+3,c
    886                           
-   887                           ;tlc5940.c: 56: tlc_servo[4] = 0;
+   887                           ;tlc5940.c: 63: tlc_servo[4] = 0;
    888  0000C4  0E00               	movlw	0
    889  0000C6  6E1A               	movwf	_tlc_servo+4,c
    890                           
-   891                           ;tlc5940.c: 57: tlc_servo[5] = 0;
+   891                           ;tlc5940.c: 64: tlc_servo[5] = 0;
    892  0000C8  0E00               	movlw	0
    893  0000CA  6E1B               	movwf	_tlc_servo+5,c
    894                           
-   895                           ;tlc5940.c: 58: tlc_servo[6] = 0;
+   895                           ;tlc5940.c: 65: tlc_servo[6] = 0;
    896  0000CC  0E00               	movlw	0
    897  0000CE  6E1C               	movwf	_tlc_servo+6,c
    898                           
-   899                           ;tlc5940.c: 59: tlc_servo[7] = 0;
+   899                           ;tlc5940.c: 66: tlc_servo[7] = 0;
    900  0000D0  0E00               	movlw	0
    901  0000D2  6E1D               	movwf	_tlc_servo+7,c
    902                           
-   903                           ;tlc5940.c: 60: tlc_servo[8] = 0;
+   903                           ;tlc5940.c: 67: tlc_servo[8] = 0;
    904  0000D4  0E00               	movlw	0
    905  0000D6  6E1E               	movwf	_tlc_servo+8,c
    906                           
-   907                           ;tlc5940.c: 61: tlc_servo[9] = 0;
+   907                           ;tlc5940.c: 68: tlc_servo[9] = 0;
    908  0000D8  0E00               	movlw	0
    909  0000DA  6E1F               	movwf	_tlc_servo+9,c
    910                           
-   911                           ;tlc5940.c: 62: tlc_servo[10] = 0;
+   911                           ;tlc5940.c: 69: tlc_servo[10] = 0;
    912  0000DC  0E00               	movlw	0
    913  0000DE  6E20               	movwf	_tlc_servo+10,c
    914                           
-   915                           ;tlc5940.c: 63: tlc_servo[11] = 0;
+   915                           ;tlc5940.c: 70: tlc_servo[11] = 0;
    916  0000E0  0E00               	movlw	0
    917  0000E2  6E21               	movwf	_tlc_servo+11,c
    918                           
-   919                           ;tlc5940.c: 64: tlc_servo[12] = 0;
+   919                           ;tlc5940.c: 71: tlc_servo[12] = 0;
    920  0000E4  0E00               	movlw	0
    921  0000E6  6E22               	movwf	_tlc_servo+12,c
    922                           
-   923                           ;tlc5940.c: 65: tlc_servo[13] = 0;
+   923                           ;tlc5940.c: 72: tlc_servo[13] = 0;
    924  0000E8  0E00               	movlw	0
    925  0000EA  6E23               	movwf	_tlc_servo+13,c
    926                           
-   927                           ;tlc5940.c: 66: tlc_servo[14] = 0;
+   927                           ;tlc5940.c: 73: tlc_servo[14] = 0;
    928  0000EC  0E00               	movlw	0
    929  0000EE  6E24               	movwf	_tlc_servo+14,c
    930                           
-   931                           ;tlc5940.c: 67: tlc_servo[15] = 235;
+   931                           ;tlc5940.c: 74: tlc_servo[15] = 235;
    932  0000F0  0EEB               	movlw	235
    933  0000F2  6E25               	movwf	_tlc_servo+15,c
    934                           
-   935                           ;tlc5940.c: 69: serial_send_data(0b00000000);
+   935                           ;tlc5940.c: 76: serial_send_data(0b00000000);
    936  0000F4  0E00               	movlw	0
    937  0000F6  ECFE  F001         	call	_serial_send_data
    938                           
-   939                           ;tlc5940.c: 70: serial_send_data(0b00000000);
+   939                           ;tlc5940.c: 77: serial_send_data(0b00000000);
    940  0000FA  0E00               	movlw	0
    941  0000FC  ECFE  F001         	call	_serial_send_data
    942                           
-   943                           ;tlc5940.c: 71: serial_send_data(0b00000000);
+   943                           ;tlc5940.c: 78: serial_send_data(0b00000000);
    944  000100  0E00               	movlw	0
    945  000102  ECFE  F001         	call	_serial_send_data
    946                           
-   947                           ;tlc5940.c: 72: serial_send_data(0b00000000);
+   947                           ;tlc5940.c: 79: serial_send_data(0b00000000);
    948  000106  0E00               	movlw	0
    949  000108  ECFE  F001         	call	_serial_send_data
    950                           
-   951                           ;tlc5940.c: 73: serial_send_data(0b00000000);
+   951                           ;tlc5940.c: 80: serial_send_data(0b00000000);
    952  00010C  0E00               	movlw	0
    953  00010E  ECFE  F001         	call	_serial_send_data
    954                           
-   955                           ;tlc5940.c: 74: serial_send_data(0b00000000);
+   955                           ;tlc5940.c: 81: serial_send_data(0b00000000);
    956  000112  0E00               	movlw	0
    957  000114  ECFE  F001         	call	_serial_send_data
    958                           
-   959                           ;tlc5940.c: 75: serial_send_data(0b00000000);
+   959                           ;tlc5940.c: 82: serial_send_data(0b00000000);
    960  000118  0E00               	movlw	0
    961  00011A  ECFE  F001         	call	_serial_send_data
    962                           
-   963                           ;tlc5940.c: 76: serial_send_data(0b00000000);
+   963                           ;tlc5940.c: 83: serial_send_data(0b00000000);
    964  00011E  0E00               	movlw	0
    965  000120  ECFE  F001         	call	_serial_send_data
    966                           
-   967                           ;tlc5940.c: 77: serial_send_data(0b00000000);
+   967                           ;tlc5940.c: 84: serial_send_data(0b00000000);
    968  000124  0E00               	movlw	0
    969  000126  ECFE  F001         	call	_serial_send_data
    970                           
-   971                           ;tlc5940.c: 78: serial_send_data(0b00000000);
+   971                           ;tlc5940.c: 85: serial_send_data(0b00000000);
    972  00012A  0E00               	movlw	0
    973  00012C  ECFE  F001         	call	_serial_send_data
    974                           
-   975                           ;tlc5940.c: 79: serial_send_data(0b00000000);
+   975                           ;tlc5940.c: 86: serial_send_data(0b00000000);
    976  000130  0E00               	movlw	0
    977  000132  ECFE  F001         	call	_serial_send_data
    978                           
-   979                           ;tlc5940.c: 80: serial_send_data(0b00000000);
+   979                           ;tlc5940.c: 87: serial_send_data(0b00000000);
    980  000136  0E00               	movlw	0
    981  000138  ECFE  F001         	call	_serial_send_data
    982                           
-   983                           ;tlc5940.c: 81: serial_send_data(0b00000000);
+   983                           ;tlc5940.c: 88: serial_send_data(0b00000000);
    984  00013C  0E00               	movlw	0
    985  00013E  ECFE  F001         	call	_serial_send_data
    986                           
-   987                           ;tlc5940.c: 82: serial_send_data(0b00000000);
+   987                           ;tlc5940.c: 89: serial_send_data(0b00000000);
    988  000142  0E00               	movlw	0
    989  000144  ECFE  F001         	call	_serial_send_data
    990                           
-   991                           ;tlc5940.c: 83: serial_send_data(0b00000000);
+   991                           ;tlc5940.c: 90: serial_send_data(0b00000000);
    992  000148  0E00               	movlw	0
    993  00014A  ECFE  F001         	call	_serial_send_data
    994                           
-   995                           ;tlc5940.c: 84: serial_send_data(0b00000000);
+   995                           ;tlc5940.c: 91: serial_send_data(0b00000000);
    996  00014E  0E00               	movlw	0
    997  000150  ECFE  F001         	call	_serial_send_data
    998                           
-   999                           ;tlc5940.c: 85: serial_send_data(0b00000000);
+   999                           ;tlc5940.c: 92: serial_send_data(0b00000000);
   1000  000154  0E00               	movlw	0
   1001  000156  ECFE  F001         	call	_serial_send_data
   1002                           
-  1003                           ;tlc5940.c: 86: serial_send_data(0b00000000);
+  1003                           ;tlc5940.c: 93: serial_send_data(0b00000000);
   1004  00015A  0E00               	movlw	0
   1005  00015C  ECFE  F001         	call	_serial_send_data
   1006                           
-  1007                           ;tlc5940.c: 87: serial_send_data(0b00000000);
+  1007                           ;tlc5940.c: 94: serial_send_data(0b00000000);
   1008  000160  0E00               	movlw	0
   1009  000162  ECFE  F001         	call	_serial_send_data
   1010                           
-  1011                           ;tlc5940.c: 88: serial_send_data(0b00000000);
+  1011                           ;tlc5940.c: 95: serial_send_data(0b00000000);
   1012  000166  0E00               	movlw	0
   1013  000168  ECFE  F001         	call	_serial_send_data
   1014                           
-  1015                           ;tlc5940.c: 89: serial_send_data(0b00000000);
+  1015                           ;tlc5940.c: 96: serial_send_data(0b00000000);
   1016  00016C  0E00               	movlw	0
   1017  00016E  ECFE  F001         	call	_serial_send_data
   1018                           
-  1019                           ;tlc5940.c: 90: serial_send_data(0b00000000);
+  1019                           ;tlc5940.c: 97: serial_send_data(0b00000000);
   1020  000172  0E00               	movlw	0
   1021  000174  ECFE  F001         	call	_serial_send_data
   1022                           
-  1023                           ;tlc5940.c: 91: serial_send_data(0b00000000);
+  1023                           ;tlc5940.c: 98: serial_send_data(0b00000000);
   1024  000178  0E00               	movlw	0
   1025  00017A  ECFE  F001         	call	_serial_send_data
   1026                           
-  1027                           ;tlc5940.c: 92: serial_send_data(0b00000000);
+  1027                           ;tlc5940.c: 99: serial_send_data(0b00000000);
   1028  00017E  0E00               	movlw	0
   1029  000180  ECFE  F001         	call	_serial_send_data
   1030                           
-  1031                           ;tlc5940.c: 94: _delay((unsigned long)((2)*(8000000/4000.0)));
+  1031                           ;tlc5940.c: 101: _delay((unsigned long)((2)*(8000000/4000.0)));
   1032  000184  0E06               	movlw	6
   1033  000186  6E11               	movwf	??_tlc_init& (0+255),c
   1034  000188  0E30               	movlw	48
@@ -1045,10 +1045,10 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
   1039  000190  D7FC               	goto	u177
   1040  000192  D000               	nop2	
   1041                           
-  1042                           ;tlc5940.c: 95: LATDbits.LD0 = 1;
+  1042                           ;tlc5940.c: 102: LATDbits.LD0 = 1;
   1043  000194  808C               	bsf	3980,0,c	;volatile
   1044                           
-  1045                           ;tlc5940.c: 96: _delay((unsigned long)((30)*(8000000/4000.0)));
+  1045                           ;tlc5940.c: 103: _delay((unsigned long)((30)*(8000000/4000.0)));
   1046  000196  0E4E               	movlw	78
   1047  000198  6E11               	movwf	??_tlc_init& (0+255),c
   1048  00019A  0EEB               	movlw	235
@@ -1059,10 +1059,10 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
   1053  0001A2  D7FC               	goto	u187
   1054  0001A4  F000               	nop	
   1055                           
-  1056                           ;tlc5940.c: 97: LATDbits.LD0 = 0;
+  1056                           ;tlc5940.c: 104: LATDbits.LD0 = 0;
   1057  0001A6  908C               	bcf	3980,0,c	;volatile
   1058                           
-  1059                           ;tlc5940.c: 99: serial_send_data(0b10000000);
+  1059                           ;tlc5940.c: 106: serial_send_data(0b10000000);
   1060  0001A8  0E80               	movlw	128
   1061  0001AA  ECFE  F001         	call	_serial_send_data
   1062  0001AE  0012               	return	
@@ -1090,7 +1090,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
   1084                           
   1085 ;; *************** function _serial_send_data *****************
   1086 ;; Defined at:
-  1087 ;;		line 10 in file "tlc5940.c"
+  1087 ;;		line 17 in file "tlc5940.c"
   1088 ;; Parameters:    Size  Location     Type
   1089 ;;  data            1    wreg     unsigned char 
   1090 ;; Auto vars:     Size  Location     Type
@@ -1130,10 +1130,10 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
   1124                           ;serial_send_data@data stored from wreg
   1125  0003FC  6E10               	movwf	serial_send_data@data,c
   1126                           
-  1127                           ;tlc5940.c: 12: SSPBUF = data;
+  1127                           ;tlc5940.c: 19: SSPBUF = data;
   1128  0003FE  C010  FFC9         	movff	serial_send_data@data,4041	;volatile
   1129                           
-  1130                           ;tlc5940.c: 13: _delay((unsigned long)((1)*(8000000/4000.0)));
+  1130                           ;tlc5940.c: 20: _delay((unsigned long)((1)*(8000000/4000.0)));
   1131  000402  0E03               	movlw	3
   1132  000404  6E0F               	movwf	??_serial_send_data& (0+255),c
   1133  000406  0E98               	movlw	152
@@ -1167,7 +1167,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
   1161                           
   1162 ;; *************** function _spi_init *****************
   1163 ;; Defined at:
-  1164 ;;		line 45 in file "main.c"
+  1164 ;;		line 52 in file "main.c"
   1165 ;; Parameters:    Size  Location     Type
   1166 ;;		None
   1167 ;; Auto vars:     Size  Location     Type
@@ -1201,36 +1201,36 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
   1195  000412                     _spi_init:
   1196                           	opt stack 29
   1197                           
-  1198                           ;main.c: 47: SSPSTATbits.SMP = 0;
+  1198                           ;main.c: 54: SSPSTATbits.SMP = 0;
   1199                           
   1200                           ;incstack = 0
   1201  000412  9EC7               	bcf	4039,7,c	;volatile
   1202                           
-  1203                           ;main.c: 48: SSPSTATbits.CKE = 1;
+  1203                           ;main.c: 55: SSPSTATbits.CKE = 1;
   1204  000414  8CC7               	bsf	4039,6,c	;volatile
   1205                           
-  1206                           ;main.c: 49: SSPCON1bits.CKP = 0;
+  1206                           ;main.c: 56: SSPCON1bits.CKP = 0;
   1207  000416  98C6               	bcf	4038,4,c	;volatile
   1208                           
-  1209                           ;main.c: 50: SSPCON1bits.SSPM0 = 0;
+  1209                           ;main.c: 57: SSPCON1bits.SSPM0 = 0;
   1210  000418  90C6               	bcf	4038,0,c	;volatile
   1211                           
-  1212                           ;main.c: 51: SSPCON1bits.SSPM1 = 0;
+  1212                           ;main.c: 58: SSPCON1bits.SSPM1 = 0;
   1213  00041A  92C6               	bcf	4038,1,c	;volatile
   1214                           
-  1215                           ;main.c: 52: SSPCON1bits.SSPM2 = 0;
+  1215                           ;main.c: 59: SSPCON1bits.SSPM2 = 0;
   1216  00041C  94C6               	bcf	4038,2,c	;volatile
   1217                           
-  1218                           ;main.c: 53: SSPCON1bits.SSPM3 = 0;
+  1218                           ;main.c: 60: SSPCON1bits.SSPM3 = 0;
   1219  00041E  96C6               	bcf	4038,3,c	;volatile
   1220                           
-  1221                           ;main.c: 54: SSPCON1bits.SSPEN = 1;
+  1221                           ;main.c: 61: SSPCON1bits.SSPEN = 1;
   1222  000420  8AC6               	bsf	4038,5,c	;volatile
   1223                           
-  1224                           ;main.c: 56: TRISCbits.RC5 = 0;
+  1224                           ;main.c: 63: TRISCbits.RC5 = 0;
   1225  000422  9A94               	bcf	3988,5,c	;volatile
   1226                           
-  1227                           ;main.c: 57: TRISCbits.RC3 = 0;
+  1227                           ;main.c: 64: TRISCbits.RC3 = 0;
   1228  000424  9694               	bcf	3988,3,c	;volatile
   1229  000426  0012               	return	
   1230  000428                     __end_of_spi_init:
@@ -1257,7 +1257,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
   1251                           
   1252 ;; *************** function _delay_sec *****************
   1253 ;; Defined at:
-  1254 ;;		line 21 in file "main.c"
+  1254 ;;		line 28 in file "main.c"
   1255 ;; Parameters:    Size  Location     Type
   1256 ;;		None
   1257 ;; Auto vars:     Size  Location     Type
@@ -1291,7 +1291,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
   1285  000396                     _delay_sec:
   1286                           	opt stack 29
   1287                           
-  1288                           ;main.c: 23: for(int i = 0; i < 50; i++)
+  1288                           ;main.c: 30: for(int i = 0; i < 50; i++)
   1289                           
   1290                           ;incstack = 0
   1291  000396  0E00               	movlw	0
@@ -1307,8 +1307,8 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
   1301  0003AA  B0D8               	btfsc	status,0,c
   1302  0003AC  D00B               	goto	l88
   1303                           
-  1304                           ;main.c: 24: {
-  1305                           ;main.c: 25: _delay((unsigned long)((10)*(8000000/4000.0)));
+  1304                           ;main.c: 31: {
+  1305                           ;main.c: 32: _delay((unsigned long)((10)*(8000000/4000.0)));
   1306  0003AE  0E1A               	movlw	26
   1307  0003B0  6E0F               	movwf	??_delay_sec& (0+255),c
   1308  0003B2  0EF8               	movlw	248
@@ -1347,7 +1347,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
   1341                           
   1342 ;; *************** function _TMR2_init *****************
   1343 ;; Defined at:
-  1344 ;;		line 60 in file "main.c"
+  1344 ;;		line 67 in file "main.c"
   1345 ;; Parameters:    Size  Location     Type
   1346 ;;		None
   1347 ;; Auto vars:     Size  Location     Type
@@ -1381,33 +1381,33 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
   1375  0003C6                     _TMR2_init:
   1376                           	opt stack 29
   1377                           
-  1378                           ;main.c: 63: PR2 = 0b00000100 ;
+  1378                           ;main.c: 70: PR2 = 0b00000100 ;
   1379                           
   1380                           ;incstack = 0
   1381  0003C6  0E04               	movlw	4
   1382  0003C8  6ECB               	movwf	4043,c	;volatile
   1383                           
-  1384                           ;main.c: 64: T2CON = 0b01000101 ;
+  1384                           ;main.c: 71: T2CON = 0b01000101 ;
   1385  0003CA  0E45               	movlw	69
   1386  0003CC  6ECA               	movwf	4042,c	;volatile
   1387                           
-  1388                           ;main.c: 65: CCPR1L = 0b00000010 ;
+  1388                           ;main.c: 72: CCPR1L = 0b00000010 ;
   1389  0003CE  0E02               	movlw	2
   1390  0003D0  6EBE               	movwf	4030,c	;volatile
   1391                           
-  1392                           ;main.c: 66: CCP1CON = 0b00101100 ;
+  1392                           ;main.c: 73: CCP1CON = 0b00101100 ;
   1393  0003D2  0E2C               	movlw	44
   1394  0003D4  6EBD               	movwf	4029,c	;volatile
   1395                           
-  1396                           ;main.c: 67: TRISC = 0b00000000;
+  1396                           ;main.c: 74: TRISC = 0b00000000;
   1397  0003D6  0E00               	movlw	0
   1398  0003D8  6E94               	movwf	3988,c	;volatile
   1399                           
-  1400                           ;main.c: 68: PORTC = 0b00000000;
+  1400                           ;main.c: 75: PORTC = 0b00000000;
   1401  0003DA  0E00               	movlw	0
   1402  0003DC  6E82               	movwf	3970,c	;volatile
   1403                           
-  1404                           ;main.c: 69: T2CONbits.TMR2ON = 0;
+  1404                           ;main.c: 76: T2CONbits.TMR2ON = 0;
   1405  0003DE  94CA               	bcf	4042,2,c	;volatile
   1406  0003E0  0012               	return	
   1407  0003E2                     __end_of_TMR2_init:
@@ -1434,7 +1434,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
   1428                           
   1429 ;; *************** function _blank_pulse *****************
   1430 ;; Defined at:
-  1431 ;;		line 29 in file "main.c"
+  1431 ;;		line 36 in file "main.c"
   1432 ;; Parameters:    Size  Location     Type
   1433 ;;		None
   1434 ;; Auto vars:     Size  Location     Type
@@ -1699,7 +1699,7 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V1.32 build 58300 
-Symbol Table                                                                                   Tue Jun 10 21:10:27 2014
+Symbol Table                                                                                   Thu Jun 12 02:31:37 2014
 
               _SSPSTATbits 000FC7                         l88 03C4               __CFG_CP0$OFF 000000  
              __CFG_CP1$OFF 000000               __CFG_CP2$OFF 000000               __CFG_CP3$OFF 000000  

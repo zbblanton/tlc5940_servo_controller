@@ -1,3 +1,10 @@
+/*
+ * File:   tlc5940.c
+ * Author: Zachary Blanton (zbblanton@gmail.com)
+ *
+ * Created on December 17, 2013, 11:27 PM
+ */
+
 #include "tlc5940.h"
 #include <stdint.h>
 
@@ -20,18 +27,18 @@ void tlc_init()
     tlc_xlat = 0;
     tlc_delay_ms(2);
 
-    serial_send_data(0b11111111);//tlc_servo 0
-    serial_send_data(0b11111111);//tlc_servo 1
-    serial_send_data(0b11111111);//tlc_servo 2
-    serial_send_data(0b11111111);//tlc_servo 3
-    serial_send_data(0b11111111);//tlc_servo 4
-    serial_send_data(0b11111111);//tlc_servo 5
-    serial_send_data(0b11111111);//tlc_servo 6
-    serial_send_data(0b11111111);//tlc_servo 7
-    serial_send_data(0b11111111);//tlc_servo 8
-    serial_send_data(0b11111111);//tlc_servo 9
-    serial_send_data(0b11111111);//tlc_servo 10
-    serial_send_data(0b11111111);//tlc_servo 11
+    tlc_send_data(0b11111111);//tlc_servo 0
+    tlc_send_data(0b11111111);//tlc_servo 1
+    tlc_send_data(0b11111111);//tlc_servo 2
+    tlc_send_data(0b11111111);//tlc_servo 3
+    tlc_send_data(0b11111111);//tlc_servo 4
+    tlc_send_data(0b11111111);//tlc_servo 5
+    tlc_send_data(0b11111111);//tlc_servo 6
+    tlc_send_data(0b11111111);//tlc_servo 7
+    tlc_send_data(0b11111111);//tlc_servo 8
+    tlc_send_data(0b11111111);//tlc_servo 9
+    tlc_send_data(0b11111111);//tlc_servo 10
+    tlc_send_data(0b11111111);//tlc_servo 11
 
     tlc_delay_ms(2);
     tlc_xlat = 1;
@@ -66,37 +73,37 @@ void tlc_init()
     tlc_servo[14] = 0;
     tlc_servo[15] = 235;
 
-    serial_send_data(0b00000000);//tlc_servo 0
-    serial_send_data(0b00000000);//tlc_servo 1
-    serial_send_data(0b00000000);//tlc_servo 2
-    serial_send_data(0b00000000);//tlc_servo 3
-    serial_send_data(0b00000000);//tlc_servo 4
-    serial_send_data(0b00000000);//tlc_servo 5
-    serial_send_data(0b00000000);//tlc_servo 6
-    serial_send_data(0b00000000);//tlc_servo 7
-    serial_send_data(0b00000000);//tlc_servo 8
-    serial_send_data(0b00000000);//tlc_servo 9
-    serial_send_data(0b00000000);//tlc_servo 10
-    serial_send_data(0b00000000);//tlc_servo 11
-    serial_send_data(0b00000000);//tlc_servo 0
-    serial_send_data(0b00000000);//tlc_servo 1
-    serial_send_data(0b00000000);//tlc_servo 2
-    serial_send_data(0b00000000);//tlc_servo 3
-    serial_send_data(0b00000000);//tlc_servo 4
-    serial_send_data(0b00000000);//tlc_servo 5
-    serial_send_data(0b00000000);//tlc_servo 6
-    serial_send_data(0b00000000);//tlc_servo 7
-    serial_send_data(0b00000000);//tlc_servo 8
-    serial_send_data(0b00000000);//tlc_servo 9
-    serial_send_data(0b00000000);//tlc_servo 10
-    serial_send_data(0b00000000);//tlc_servo 11
+    tlc_send_data(0b00000000);//tlc_servo 0
+    tlc_send_data(0b00000000);//tlc_servo 1
+    tlc_send_data(0b00000000);//tlc_servo 2
+    tlc_send_data(0b00000000);//tlc_servo 3
+    tlc_send_data(0b00000000);//tlc_servo 4
+    tlc_send_data(0b00000000);//tlc_servo 5
+    tlc_send_data(0b00000000);//tlc_servo 6
+    tlc_send_data(0b00000000);//tlc_servo 7
+    tlc_send_data(0b00000000);//tlc_servo 8
+    tlc_send_data(0b00000000);//tlc_servo 9
+    tlc_send_data(0b00000000);//tlc_servo 10
+    tlc_send_data(0b00000000);//tlc_servo 11
+    tlc_send_data(0b00000000);//tlc_servo 0
+    tlc_send_data(0b00000000);//tlc_servo 1
+    tlc_send_data(0b00000000);//tlc_servo 2
+    tlc_send_data(0b00000000);//tlc_servo 3
+    tlc_send_data(0b00000000);//tlc_servo 4
+    tlc_send_data(0b00000000);//tlc_servo 5
+    tlc_send_data(0b00000000);//tlc_servo 6
+    tlc_send_data(0b00000000);//tlc_servo 7
+    tlc_send_data(0b00000000);//tlc_servo 8
+    tlc_send_data(0b00000000);//tlc_servo 9
+    tlc_send_data(0b00000000);//tlc_servo 10
+    tlc_send_data(0b00000000);//tlc_servo 11
 
     tlc_delay_ms(2);
     tlc_xlat = 1;
     tlc_delay_ms(30);
     tlc_xlat = 0;
 
-    serial_send_data(0b10000000);//one clock pulse for first grayscale
+    tlc_send_data(0b10000000);//one clock pulse for first grayscale
     //end
 }
 
@@ -112,9 +119,9 @@ void tlc_update()
     char counter = 0;
     for(char i = 0; i < 8; i++)
     {
-        serial_send_data(tlc_servo[i + counter]>>4);
-        serial_send_data(tlc_servo[i + counter]<<4);
-        serial_send_data(tlc_servo[i + (counter + 1)]);
+        tlc_send_data(tlc_servo[i + counter]>>4);
+        tlc_send_data(tlc_servo[i + counter]<<4);
+        tlc_send_data(tlc_servo[i + (counter + 1)]);
         counter++;
     }
 
@@ -165,9 +172,9 @@ void tlc_write(char tlc_servo_number, char value)
     char counter = 0;
     for(char i = 0; i < 8; i++)
     {
-        serial_send_data(tlc_servo[i + counter]>>4);
-        serial_send_data(tlc_servo[i + counter]<<4);
-        serial_send_data(tlc_servo[i + (counter + 1)]);
+        tlc_send_data(tlc_servo[i + counter]>>4);
+        tlc_send_data(tlc_servo[i + counter]<<4);
+        tlc_send_data(tlc_servo[i + (counter + 1)]);
         counter++;
     }
 

@@ -1,3 +1,10 @@
+/*
+ * File:   main.c
+ * Author: Zachary Blanton (zbblanton@gmail.com)
+ *
+ * Created on December 17, 2013, 11:27 PM
+ */
+
 //Microcontroller: PIC18F4520
 //8MHz internal clock
 //Complier: xc8 v1.32

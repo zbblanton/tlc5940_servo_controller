@@ -11,7 +11,7 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$D:\temp_folders\temp\s43g.obj
+$D:\temp_folders\temp\s2mk.obj
 end_init CODE 0 18 18 4 1
 reset_vec CODE 0 0 0 4 1
 idloc IDLOC 0 200000 200000 8 1
@@ -68,189 +68,189 @@ STACK 000080-0005FF 1
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\tlc5940_servo_controller.X.production.obj
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":29 8 intcode CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":70 8 intcode CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":16 1C text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":19 1C text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":20 1E text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":21 20 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":23 30 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":24 36 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":25 3C text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":26 42 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":27 48 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":28 4E text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":29 54 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":30 5A text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":31 60 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":32 66 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":33 6C text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":34 72 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":36 78 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":37 88 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":38 8A text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":39 9A text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":43 9C text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":45 AC text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":46 AE text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":47 B0 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":48 B2 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":52 B4 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":53 B8 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":54 BC text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":55 C0 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":56 C4 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":57 C8 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":58 CC text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":59 D0 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":60 D4 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":61 D8 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":62 DC text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":63 E0 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":64 E4 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":65 E8 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":66 EC text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":67 F0 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":69 F4 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":70 FA text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":71 100 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":72 106 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":73 10C text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":74 112 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":75 118 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":76 11E text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":77 124 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":78 12A text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":79 130 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":80 136 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":81 13C text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":82 142 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":83 148 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":84 14E text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":85 154 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":86 15A text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":87 160 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":88 166 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":89 16C text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":90 172 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":91 178 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":92 17E text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":94 184 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":95 194 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":96 196 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":97 1A6 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":99 1A8 text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":101 1AE text3 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":103 1B0 text1 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":105 1B0 text1 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":107 1C0 text1 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":108 1C2 text1 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":109 1C4 text1 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":110 1C6 text1 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":112 1C8 text1 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":113 1CC text1 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":115 1D2 text1 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":116 1F8 text1 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":117 21E text1 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":118 246 text1 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":113 248 text1 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":121 250 text1 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":122 260 text1 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":123 262 text1 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":124 272 text1 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":125 274 text1 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":126 276 text1 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":36 8 intcode CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":77 8 intcode CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":23 1C text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":26 1C text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":27 1E text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":28 20 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":30 30 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":31 36 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":32 3C text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":33 42 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":34 48 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":35 4E text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":36 54 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":37 5A text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":38 60 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":39 66 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":40 6C text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":41 72 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":43 78 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":44 88 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":45 8A text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":46 9A text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":50 9C text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":52 AC text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":53 AE text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":54 B0 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":55 B2 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":59 B4 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":60 B8 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":61 BC text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":62 C0 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":63 C4 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":64 C8 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":65 CC text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":66 D0 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":67 D4 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":68 D8 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":69 DC text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":70 E0 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":71 E4 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":72 E8 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":73 EC text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":74 F0 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":76 F4 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":77 FA text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":78 100 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":79 106 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":80 10C text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":81 112 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":82 118 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":83 11E text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":84 124 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":85 12A text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":86 130 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":87 136 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":88 13C text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":89 142 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":90 148 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":91 14E text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":92 154 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":93 15A text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":94 160 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":95 166 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":96 16C text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":97 172 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":98 178 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":99 17E text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":101 184 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":102 194 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":103 196 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":104 1A6 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":106 1A8 text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":108 1AE text3 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":110 1B0 text1 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":112 1B0 text1 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":114 1C0 text1 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":115 1C2 text1 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":116 1C4 text1 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":117 1C6 text1 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":119 1C8 text1 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":120 1CC text1 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":122 1D2 text1 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":123 1F8 text1 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":124 21E text1 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":125 246 text1 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":120 248 text1 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":128 250 text1 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":129 260 text1 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":130 262 text1 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":131 272 text1 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":132 274 text1 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":133 276 text1 CODE
 "D:\Program Files (x86)\Microchip\xc8\v1.32\include\pic18f4520.h":7259 278 intcode_body CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":29 278 intcode_body CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":31 2A6 intcode_body CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":33 2AC intcode_body CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":35 2BC intcode_body CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":36 2BE intcode_body CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":37 2C0 intcode_body CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":38 2C2 intcode_body CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":40 2CA intcode_body CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":41 2CE intcode_body CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":43 2D0 intcode_body CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":72 30A text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":75 30A text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":76 30E text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":77 312 text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":78 316 text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":79 31A text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":80 31E text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":81 322 text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":82 326 text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":84 32A text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":85 32E text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":87 336 text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":88 338 text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":89 33A text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":90 33C text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":92 33E text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":95 342 text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":96 346 text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":98 34A text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":101 34C text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":102 34E text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":103 352 text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":104 354 text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":105 358 text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":106 362 text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":107 366 text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":108 36A text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":109 36E text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":110 372 text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":112 376 text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":113 380 text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":114 384 text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":115 388 text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":116 38C text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":117 390 text0 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":21 396 text6 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":23 396 text6 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":25 3AE text6 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":23 3BE text6 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":27 3C4 text6 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":60 3C6 text7 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":63 3C6 text7 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":64 3CA text7 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":65 3CE text7 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":66 3D2 text7 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":67 3D6 text7 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":68 3DA text7 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":69 3DE text7 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":70 3E0 text7 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":138 3E2 text2 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":140 3E4 text2 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":141 3FA text2 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":10 3FC text4 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":12 3FE text4 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":13 402 text4 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":14 410 text4 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":45 412 text5 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":47 412 text5 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":48 414 text5 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":49 416 text5 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":50 418 text5 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":51 41A text5 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":52 41C text5 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":53 41E text5 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":54 420 text5 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":56 422 text5 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":57 424 text5 CODE
-"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":58 426 text5 CODE
-"D:\temp_folders\temp\s43g.":787 428 cinit CODE
-"D:\temp_folders\temp\s43g.":789 428 cinit CODE
-"D:\temp_folders\temp\s43g.":792 428 cinit CODE
-"D:\temp_folders\temp\s43g.":806 428 cinit CODE
-"D:\temp_folders\temp\s43g.":807 42C cinit CODE
-"D:\temp_folders\temp\s43g.":808 42E cinit CODE
-"D:\temp_folders\temp\s43g.":809 42E cinit CODE
-"D:\temp_folders\temp\s43g.":810 430 cinit CODE
-"D:\temp_folders\temp\s43g.":811 432 cinit CODE
-"D:\temp_folders\temp\s43g.":817 434 cinit CODE
-"D:\temp_folders\temp\s43g.":818 434 cinit CODE
-"D:\temp_folders\temp\s43g.":819 436 cinit CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":36 278 intcode_body CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":38 2A6 intcode_body CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":40 2AC intcode_body CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":42 2BC intcode_body CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":43 2BE intcode_body CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":44 2C0 intcode_body CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":45 2C2 intcode_body CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":47 2CA intcode_body CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":48 2CE intcode_body CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":50 2D0 intcode_body CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":79 30A text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":82 30A text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":83 30E text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":84 312 text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":85 316 text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":86 31A text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":87 31E text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":88 322 text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":89 326 text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":91 32A text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":92 32E text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":94 336 text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":95 338 text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":96 33A text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":97 33C text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":99 33E text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":102 342 text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":103 346 text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":105 34A text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":108 34C text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":109 34E text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":110 352 text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":111 354 text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":112 358 text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":113 362 text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":114 366 text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":115 36A text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":116 36E text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":117 372 text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":119 376 text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":120 380 text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":121 384 text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":122 388 text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":123 38C text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":124 390 text0 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":28 396 text6 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":30 396 text6 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":32 3AE text6 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":30 3BE text6 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":34 3C4 text6 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":67 3C6 text7 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":70 3C6 text7 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":71 3CA text7 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":72 3CE text7 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":73 3D2 text7 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":74 3D6 text7 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":75 3DA text7 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":76 3DE text7 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":77 3E0 text7 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":145 3E2 text2 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":147 3E4 text2 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":148 3FA text2 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":17 3FC text4 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":19 3FE text4 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":20 402 text4 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":21 410 text4 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":52 412 text5 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":54 412 text5 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":55 414 text5 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":56 416 text5 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":57 418 text5 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":58 41A text5 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":59 41C text5 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":60 41E text5 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":61 420 text5 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":63 422 text5 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":64 424 text5 CODE
+"D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c":65 426 text5 CODE
+"D:\temp_folders\temp\s2mk.":787 428 cinit CODE
+"D:\temp_folders\temp\s2mk.":789 428 cinit CODE
+"D:\temp_folders\temp\s2mk.":792 428 cinit CODE
+"D:\temp_folders\temp\s2mk.":806 428 cinit CODE
+"D:\temp_folders\temp\s2mk.":807 42C cinit CODE
+"D:\temp_folders\temp\s2mk.":808 42E cinit CODE
+"D:\temp_folders\temp\s2mk.":809 42E cinit CODE
+"D:\temp_folders\temp\s2mk.":810 430 cinit CODE
+"D:\temp_folders\temp\s2mk.":811 432 cinit CODE
+"D:\temp_folders\temp\s2mk.":817 434 cinit CODE
+"D:\temp_folders\temp\s2mk.":818 434 cinit CODE
+"D:\temp_folders\temp\s2mk.":819 436 cinit CODE
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -272,8 +272,8 @@ __CFG_PWRT$OFF 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.pr
 __Lintentry 0 0 ABS 0 intentry dist/default/production\tlc5940_servo_controller.X.production.obj
 delay_sec@i 10 0 COMRAM 1 cstackCOMRAM dist/default/production\tlc5940_servo_controller.X.production.obj
 _main 30A 0 CODE 0 text0 dist/default/production\tlc5940_servo_controller.X.production.obj
-___sp 0 0 STACK 2 stack D:\temp_folders\temp\s43g.obj
-start 18 0 CODE 0 init D:\temp_folders\temp\s43g.obj
+___sp 0 0 STACK 2 stack D:\temp_folders\temp\s2mk.obj
+start 18 0 CODE 0 init D:\temp_folders\temp\s2mk.obj
 _TRISA F92 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
 _TRISB F93 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
 _TRISC F94 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
@@ -350,10 +350,10 @@ __LnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production\tlc5940_servo_controll
 __end_of_blank_pulse 30A 0 CODE 0 intcode_body dist/default/production\tlc5940_servo_controller.X.production.obj
 __Hdata 0 0 ABS 0 data dist/default/production\tlc5940_servo_controller.X.production.obj
 __Ldata 0 0 ABS 0 data dist/default/production\tlc5940_servo_controller.X.production.obj
-stackhi 5FF 0 ABS 0 - D:\temp_folders\temp\s43g.obj
+stackhi 5FF 0 ABS 0 - D:\temp_folders\temp\s2mk.obj
 __Htemp 0 0 COMRAM 1 temp dist/default/production\tlc5940_servo_controller.X.production.obj
 __Ltemp 0 0 COMRAM 1 temp dist/default/production\tlc5940_servo_controller.X.production.obj
-stacklo 80 0 ABS 0 - D:\temp_folders\temp\s43g.obj
+stacklo 80 0 ABS 0 - D:\temp_folders\temp\s2mk.obj
 __Hrbit 0 0 COMRAM 1 rbit dist/default/production\tlc5940_servo_controller.X.production.obj
 __Lrbit 0 0 COMRAM 1 rbit dist/default/production\tlc5940_servo_controller.X.production.obj
 __Hinit 18 0 CODE 0 init dist/default/production\tlc5940_servo_controller.X.production.obj
@@ -459,8 +459,8 @@ __Hcinit 0 0 ABS 0 cinit dist/default/production\tlc5940_servo_controller.X.prod
 __Lcinit 0 0 ABS 0 cinit dist/default/production\tlc5940_servo_controller.X.production.obj
 __end_of_TMR2_init 3E2 0 CODE 0 text7 dist/default/production\tlc5940_servo_controller.X.production.obj
 __pcinit 428 0 CODE 0 cinit dist/default/production\tlc5940_servo_controller.X.production.obj
-__ramtop 600 0 RAM 0 ramtop D:\temp_folders\temp\s43g.obj
-__mediumconst 0 0 MEDIUMCONST 0 mediumconst D:\temp_folders\temp\s43g.obj
+__ramtop 600 0 RAM 0 ramtop D:\temp_folders\temp\s2mk.obj
+__mediumconst 0 0 MEDIUMCONST 0 mediumconst D:\temp_folders\temp\s2mk.obj
 __size_of_delay_sec 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
 __size_of_spi_init 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
 __size_of_main 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
@@ -469,28 +469,28 @@ __Lconst 0 0 CODE 0 const dist/default/production\tlc5940_servo_controller.X.pro
 __size_of_serial_send_data 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
 __end_of_serial_send_data 412 0 CODE 0 text4 dist/default/production\tlc5940_servo_controller.X.production.obj
 tlc_set@tlc_servo_number 10 0 COMRAM 1 cstackCOMRAM dist/default/production\tlc5940_servo_controller.X.production.obj
-___inthi_sp 0 0 STACK 2 stack D:\temp_folders\temp\s43g.obj
+___inthi_sp 0 0 STACK 2 stack D:\temp_folders\temp\s2mk.obj
 __CFG_BOREN$OFF 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
-___intlo_sp 0 0 STACK 2 stack D:\temp_folders\temp\s43g.obj
+___intlo_sp 0 0 STACK 2 stack D:\temp_folders\temp\s2mk.obj
 _INTCONbits FF2 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
 __Hend_init 1C 0 CODE 0 end_init dist/default/production\tlc5940_servo_controller.X.production.obj
 __Lend_init 18 0 CODE 0 end_init dist/default/production\tlc5940_servo_controller.X.production.obj
 __CFG_CP0$OFF 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
-__smallconst 0 0 SMALLCONST 0 smallconst D:\temp_folders\temp\s43g.obj
+__smallconst 0 0 SMALLCONST 0 smallconst D:\temp_folders\temp\s2mk.obj
 __CFG_CP1$OFF 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
 __Hreset_vec 4 0 CODE 0 reset_vec dist/default/production\tlc5940_servo_controller.X.production.obj
 __Lreset_vec 0 0 CODE 0 reset_vec dist/default/production\tlc5940_servo_controller.X.production.obj
 __CFG_CP2$OFF 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
 __CFG_CP3$OFF 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
-__accesstop 80 0 ABS 0 - D:\temp_folders\temp\s43g.obj
+__accesstop 80 0 ABS 0 - D:\temp_folders\temp\s2mk.obj
 __Hintcode_body 0 0 ABS 0 intcode_body dist/default/production\tlc5940_servo_controller.X.production.obj
 __Lintcode_body 0 0 ABS 0 intcode_body dist/default/production\tlc5940_servo_controller.X.production.obj
 __pintcode_body 278 0 CODE 0 intcode_body dist/default/production\tlc5940_servo_controller.X.production.obj
-intlevel0 0 0 CODE 0 text D:\temp_folders\temp\s43g.obj
-intlevel1 0 0 CODE 0 text D:\temp_folders\temp\s43g.obj
+intlevel0 0 0 CODE 0 text D:\temp_folders\temp\s2mk.obj
+intlevel1 0 0 CODE 0 text D:\temp_folders\temp\s2mk.obj
 __size_of_TMR2_init 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
-intlevel2 0 0 CODE 0 text D:\temp_folders\temp\s43g.obj
-intlevel3 0 0 CODE 0 text D:\temp_folders\temp\s43g.obj
+intlevel2 0 0 CODE 0 text D:\temp_folders\temp\s2mk.obj
+intlevel3 0 0 CODE 0 text D:\temp_folders\temp\s2mk.obj
 start_initialization 428 0 CODE 0 cinit dist/default/production\tlc5940_servo_controller.X.production.obj
 __end_of_delay_sec 3C6 0 CODE 0 text6 dist/default/production\tlc5940_servo_controller.X.production.obj
 __CFG_MCLRE$ON 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
