@@ -4038,9 +4038,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 39: {
 "39
 {
-[; ;main.c: 40: if(count >= 222)
+[; ;main.c: 40: if(count >= 125)
 "40
-[e $ ! >= _count -> 222 `i 408  ]
+[e $ ! >= _count -> 125 `i 408  ]
 [; ;main.c: 41: {
 "41
 {
@@ -4124,16 +4124,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 68: {
 [e :U _TMR2_init ]
 [f ]
-[; ;main.c: 70: PR2 = 0b00000100 ;
+[; ;main.c: 70: PR2 = 0b00000100;
 "70
 [e = _PR2 -> -> 4 `i `uc ]
-[; ;main.c: 71: T2CON = 0b01000101 ;
+[; ;main.c: 71: T2CON = 0b01111101;
 "71
-[e = _T2CON -> -> 69 `i `uc ]
-[; ;main.c: 72: CCPR1L = 0b00000010 ;
+[e = _T2CON -> -> 125 `i `uc ]
+[; ;main.c: 72: CCPR1L = 0b00000010;
 "72
 [e = _CCPR1L -> -> 2 `i `uc ]
-[; ;main.c: 73: CCP1CON = 0b00101100 ;
+[; ;main.c: 73: CCP1CON = 0b00101100;
 "73
 [e = _CCP1CON -> -> 44 `i `uc ]
 [; ;main.c: 74: TRISC = 0b00000000;

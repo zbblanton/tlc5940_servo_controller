@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC18 LITE Macro Assembler V1.32 build 58300 
-                                                                                               Thu Jun 12 02:31:37 2014
+                                                                                               Wed Jun 18 03:06:49 2014
 
 Microchip Technology Omniscient Code Generator (Lite mode) build 58300
      1                           	processor	18F4520
@@ -73,11 +73,11 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
     67  0002AA  D012               	goto	i2l93
     68                           
     69                           ;main.c: 39: {
-    70                           ;main.c: 40: if(count >= 222)
+    70                           ;main.c: 40: if(count >= 125)
     71  0002AC  5027               	movf	_count+1,w,c	;volatile
     72  0002AE  0A80               	xorlw	128
     73  0002B0  0F80               	addlw	-128
-    74  0002B2  0EDE               	movlw	222
+    74  0002B2  0E7D               	movlw	125
     75  0002B4  B4D8               	btfsc	status,2,c
     76  0002B6  5C26               	subwf	_count,w,c	;volatile
     77  0002B8  A0D8               	btfss	status,0,c
@@ -1381,21 +1381,21 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
   1375  0003C6                     _TMR2_init:
   1376                           	opt stack 29
   1377                           
-  1378                           ;main.c: 70: PR2 = 0b00000100 ;
+  1378                           ;main.c: 70: PR2 = 0b00000100;
   1379                           
   1380                           ;incstack = 0
   1381  0003C6  0E04               	movlw	4
   1382  0003C8  6ECB               	movwf	4043,c	;volatile
   1383                           
-  1384                           ;main.c: 71: T2CON = 0b01000101 ;
-  1385  0003CA  0E45               	movlw	69
+  1384                           ;main.c: 71: T2CON = 0b01111101;
+  1385  0003CA  0E7D               	movlw	125
   1386  0003CC  6ECA               	movwf	4042,c	;volatile
   1387                           
-  1388                           ;main.c: 72: CCPR1L = 0b00000010 ;
+  1388                           ;main.c: 72: CCPR1L = 0b00000010;
   1389  0003CE  0E02               	movlw	2
   1390  0003D0  6EBE               	movwf	4030,c	;volatile
   1391                           
-  1392                           ;main.c: 73: CCP1CON = 0b00101100 ;
+  1392                           ;main.c: 73: CCP1CON = 0b00101100;
   1393  0003D2  0E2C               	movlw	44
   1394  0003D4  6EBD               	movwf	4029,c	;volatile
   1395                           
@@ -1699,7 +1699,7 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V1.32 build 58300 
-Symbol Table                                                                                   Thu Jun 12 02:31:37 2014
+Symbol Table                                                                                   Wed Jun 18 03:06:49 2014
 
               _SSPSTATbits 000FC7                         l88 03C4               __CFG_CP0$OFF 000000  
              __CFG_CP1$OFF 000000               __CFG_CP2$OFF 000000               __CFG_CP3$OFF 000000  

@@ -5024,7 +5024,7 @@ void interrupt blank_pulse(void)
 {
 if(PIE1bits.TMR2IE && PIR1bits.TMR2IF)
 {
-if(count >= 222)
+if(count >= 125)
 {
 LATDbits.LD2 = 1;
 _delay((unsigned long)((1)*(8000000/4000000.0)));
@@ -5054,10 +5054,10 @@ TRISCbits.RC3 = 0;
 void TMR2_init()
 {
 
-PR2 = 0b00000100 ;
-T2CON = 0b01000101 ;
-CCPR1L = 0b00000010 ;
-CCP1CON = 0b00101100 ;
+PR2 = 0b00000100;
+T2CON = 0b01111101;
+CCPR1L = 0b00000010;
+CCP1CON = 0b00101100;
 TRISC = 0b00000000;
 PORTC = 0b00000000;
 T2CONbits.TMR2ON = 0;

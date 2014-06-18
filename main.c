@@ -37,7 +37,7 @@ void interrupt blank_pulse(void)
 {
     if(PIE1bits.TMR2IE && PIR1bits.TMR2IF)
     {
-        if(count >= 222) //572 520
+        if(count >= 125) //572 520
         {
             tlc_blank = 1;
             tlc_delay_us(1);
@@ -66,11 +66,11 @@ void spi_init()
 
 void TMR2_init()
 {   
-    //Set to 100,000hz with 50% duty cycle. Prescaler is 4. Post scale is 4.
-    PR2 = 0b00000100 ;
-    T2CON = 0b01000101 ;
-    CCPR1L = 0b00000010 ;
-    CCP1CON = 0b00101100 ;
+    //Set to 100,000hz with 50% duty cycle. Prescaler is 4. Post scale is 16.
+    PR2 = 0b00000100;
+    T2CON = 0b01111101;
+    CCPR1L = 0b00000010;
+    CCP1CON = 0b00101100;
     TRISC = 0b00000000;
     PORTC = 0b00000000;
     T2CONbits.TMR2ON = 0; //Turn Timer off
