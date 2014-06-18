@@ -17,7 +17,8 @@ char tlc_servo[16];
 void serial_send_data(char data)
 {
     SSPBUF = data; //Loads data into SSPBUF reg
-    tlc_delay_ms(1);
+    //tlc_delay_ms(1);
+    tlc_delay_us(1); //Testing a much faster delay
 }
 
 void tlc_init()
@@ -27,23 +28,18 @@ void tlc_init()
     tlc_xlat = 0;
     tlc_delay_ms(2);
 
-    tlc_send_data(0b11111111);//tlc_servo 0
-    tlc_send_data(0b11111111);//tlc_servo 1
-    tlc_send_data(0b11111111);//tlc_servo 2
-    tlc_send_data(0b11111111);//tlc_servo 3
-    tlc_send_data(0b11111111);//tlc_servo 4
-    tlc_send_data(0b11111111);//tlc_servo 5
-    tlc_send_data(0b11111111);//tlc_servo 6
-    tlc_send_data(0b11111111);//tlc_servo 7
-    tlc_send_data(0b11111111);//tlc_servo 8
-    tlc_send_data(0b11111111);//tlc_servo 9
-    tlc_send_data(0b11111111);//tlc_servo 10
-    tlc_send_data(0b11111111);//tlc_servo 11
+    //Send initial dot correction data
+    for(char i = 0; i < 12; i++)
+    {
+        tlc_send_data(0b11111111);
+    }
 
-    tlc_delay_ms(2);
+    //Testing faster toggle speeds
+    tlc_delay_us(1);
     tlc_xlat = 1;
-    tlc_delay_ms(30);
+    tlc_delay_us(1);
     tlc_xlat = 0;
+    tlc_delay_us(1);
     //end
 
     //Initialize grayscale
@@ -73,35 +69,18 @@ void tlc_init()
     tlc_servo[14] = 0;
     tlc_servo[15] = 235;
 
-    tlc_send_data(0b00000000);//tlc_servo 0
-    tlc_send_data(0b00000000);//tlc_servo 1
-    tlc_send_data(0b00000000);//tlc_servo 2
-    tlc_send_data(0b00000000);//tlc_servo 3
-    tlc_send_data(0b00000000);//tlc_servo 4
-    tlc_send_data(0b00000000);//tlc_servo 5
-    tlc_send_data(0b00000000);//tlc_servo 6
-    tlc_send_data(0b00000000);//tlc_servo 7
-    tlc_send_data(0b00000000);//tlc_servo 8
-    tlc_send_data(0b00000000);//tlc_servo 9
-    tlc_send_data(0b00000000);//tlc_servo 10
-    tlc_send_data(0b00000000);//tlc_servo 11
-    tlc_send_data(0b00000000);//tlc_servo 0
-    tlc_send_data(0b00000000);//tlc_servo 1
-    tlc_send_data(0b00000000);//tlc_servo 2
-    tlc_send_data(0b00000000);//tlc_servo 3
-    tlc_send_data(0b00000000);//tlc_servo 4
-    tlc_send_data(0b00000000);//tlc_servo 5
-    tlc_send_data(0b00000000);//tlc_servo 6
-    tlc_send_data(0b00000000);//tlc_servo 7
-    tlc_send_data(0b00000000);//tlc_servo 8
-    tlc_send_data(0b00000000);//tlc_servo 9
-    tlc_send_data(0b00000000);//tlc_servo 10
-    tlc_send_data(0b00000000);//tlc_servo 11
+    //Send initial grayscale data
+    for(char i = 0; i < 24; i++)
+    {
+        tlc_send_data(0b00000000);
+    }
 
-    tlc_delay_ms(2);
+    //Testing faster toggle speeds
+    tlc_delay_us(1);
     tlc_xlat = 1;
-    tlc_delay_ms(30);
+    tlc_delay_us(1);
     tlc_xlat = 0;
+    tlc_delay_us(1);
 
     tlc_send_data(0b10000000);//one clock pulse for first grayscale
     //end
@@ -109,7 +88,8 @@ void tlc_init()
 
 void tlc_update()
 {   
-    tlc_delay_ms(2);
+    //tlc_delay_ms(2);
+    tlc_delay_us(1);
 
     T2CONbits.TMR2ON = 0; //Turn off timer
     tlc_vprg = 0; //Grayscale input mode
@@ -125,10 +105,13 @@ void tlc_update()
         counter++;
     }
 
-    tlc_delay_ms(2);
+    //Testing faster toggle speeds
+    tlc_delay_us(1);
     tlc_xlat = 1;
-    tlc_delay_ms(30);
+    tlc_delay_us(1); 
     tlc_xlat = 0;
+    tlc_delay_us(1);
+
     T2CONbits.TMR2ON = 1; //Turn timer back on
 }
 
@@ -162,7 +145,8 @@ void tlc_write(char tlc_servo_number, char value)
     tlc_servo[tlc_servo_number] = value + 55; //Set the servo
 
     //Update the tlc grayscale
-    tlc_delay_ms(2);
+    //tlc_delay_ms(2);
+    tlc_delay_us(1);
 
     T2CONbits.TMR2ON = 0; //Turn off timer
     tlc_vprg = 0; //Grayscale input mode
@@ -178,10 +162,13 @@ void tlc_write(char tlc_servo_number, char value)
         counter++;
     }
 
-    tlc_delay_ms(2);
+    //Testing faster toggle speeds
+    tlc_delay_us(1);
     tlc_xlat = 1;
-    tlc_delay_ms(30);
+    tlc_delay_us(1);
     tlc_xlat = 0;
+    tlc_delay_us(1);
+    
     T2CONbits.TMR2ON = 1; //Turn timer back on
     //end
 }
