@@ -65,7 +65,7 @@ void spi_init()
 }
 
 void TMR2_init()
-{   
+{
     //Set to 100,000hz with 50% duty cycle. Prescaler is 4. Post scale is 16.
     PR2 = 0b00000100;
     T2CON = 0b01111101;
@@ -78,7 +78,6 @@ void TMR2_init()
 
 int main()
 {
-
     TRISD = 0b00000000;
     PORTD = 0b00000000;
     TRISB = 0b00100000;

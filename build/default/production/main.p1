@@ -4157,84 +4157,87 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 80: {
 [e :U _main ]
 [f ]
-[; ;main.c: 82: TRISD = 0b00000000;
-"82
+[; ;main.c: 81: TRISD = 0b00000000;
+"81
 [e = _TRISD -> -> 0 `i `uc ]
-[; ;main.c: 83: PORTD = 0b00000000;
-"83
+[; ;main.c: 82: PORTD = 0b00000000;
+"82
 [e = _PORTD -> -> 0 `i `uc ]
-[; ;main.c: 84: TRISB = 0b00100000;
-"84
+[; ;main.c: 83: TRISB = 0b00100000;
+"83
 [e = _TRISB -> -> 32 `i `uc ]
-[; ;main.c: 85: PORTB = 0b00000000;
-"85
+[; ;main.c: 84: PORTB = 0b00000000;
+"84
 [e = _PORTB -> -> 0 `i `uc ]
-[; ;main.c: 86: TRISA = 0b00001111;
-"86
+[; ;main.c: 85: TRISA = 0b00001111;
+"85
 [e = _TRISA -> -> 15 `i `uc ]
-[; ;main.c: 87: PORTA = 0b00001111;
-"87
+[; ;main.c: 86: PORTA = 0b00001111;
+"86
 [e = _PORTA -> -> 15 `i `uc ]
-[; ;main.c: 88: TRISE = 0b00001000;
-"88
+[; ;main.c: 87: TRISE = 0b00001000;
+"87
 [e = _TRISE -> -> 8 `i `uc ]
-[; ;main.c: 89: PORTE = 0b00000000;
-"89
+[; ;main.c: 88: PORTE = 0b00000000;
+"88
 [e = _PORTE -> -> 0 `i `uc ]
-[; ;main.c: 91: TMR2_init();
-"91
+[; ;main.c: 90: TMR2_init();
+"90
 [e ( _TMR2_init ..  ]
-[; ;main.c: 92: count = 0;
-"92
+[; ;main.c: 91: count = 0;
+"91
 [e = _count -> 0 `i ]
-[; ;main.c: 94: PIE1bits.TMR2IE = 1;
-"94
+[; ;main.c: 93: PIE1bits.TMR2IE = 1;
+"93
 [e = . . _PIE1bits 0 1 -> -> 1 `i `uc ]
-[; ;main.c: 95: INTCONbits.PEIE = 1;
-"95
+[; ;main.c: 94: INTCONbits.PEIE = 1;
+"94
 [e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
-[; ;main.c: 96: INTCONbits.GIE = 1;
-"96
+[; ;main.c: 95: INTCONbits.GIE = 1;
+"95
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-[; ;main.c: 97: T2CONbits.TMR2ON = 0;
-"97
+[; ;main.c: 96: T2CONbits.TMR2ON = 0;
+"96
 [e = . . _T2CONbits 0 1 -> -> 0 `i `uc ]
-[; ;main.c: 99: spi_init();
-"99
+[; ;main.c: 98: spi_init();
+"98
 [e ( _spi_init ..  ]
-[; ;main.c: 102: tlc_init();
-"102
+[; ;main.c: 101: tlc_init();
+"101
 [e ( _tlc_init ..  ]
-[; ;main.c: 103: tlc_update();
-"103
+[; ;main.c: 102: tlc_update();
+"102
 [e ( _tlc_update ..  ]
-[; ;main.c: 105: T2CONbits.TMR2ON = 1;
-"105
+[; ;main.c: 104: T2CONbits.TMR2ON = 1;
+"104
 [e = . . _T2CONbits 0 1 -> -> 1 `i `uc ]
-[; ;main.c: 106: while(1)
-"106
+[; ;main.c: 105: while(1)
+"105
 [e :U 413 ]
-[; ;main.c: 107: {
-"107
+[; ;main.c: 106: {
+"106
 {
-[; ;main.c: 108: LATDbits.LD3 = 1;
-"108
+[; ;main.c: 107: LATDbits.LD3 = 1;
+"107
 [e = . . _LATDbits 4 1 -> -> 1 `i `uc ]
-[; ;main.c: 109: delay_sec();
+[; ;main.c: 108: delay_sec();
+"108
+[e ( _delay_sec ..  ]
+[; ;main.c: 109: LATDbits.LD3 = 0;
 "109
-[e ( _delay_sec ..  ]
-[; ;main.c: 110: LATDbits.LD3 = 0;
-"110
 [e = . . _LATDbits 4 1 -> -> 0 `i `uc ]
-[; ;main.c: 111: delay_sec();
-"111
+[; ;main.c: 110: delay_sec();
+"110
 [e ( _delay_sec ..  ]
-[; ;main.c: 112: tlc_set(0, 0);
-"112
+[; ;main.c: 111: tlc_set(0, 0);
+"111
 [e ( _tlc_set (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
-[; ;main.c: 113: tlc_update();
-"113
+[; ;main.c: 112: tlc_update();
+"112
 [e ( _tlc_update ..  ]
+[; ;main.c: 113: delay_sec();
+"113
+[e ( _delay_sec ..  ]
 [; ;main.c: 114: delay_sec();
 "114
 [e ( _delay_sec ..  ]
@@ -4244,15 +4247,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 116: delay_sec();
 "116
 [e ( _delay_sec ..  ]
-[; ;main.c: 117: delay_sec();
-"117
-[e ( _delay_sec ..  ]
-[; ;main.c: 119: tlc_set(0, 180);
-"119
+[; ;main.c: 118: tlc_set(0, 180);
+"118
 [e ( _tlc_set (2 , -> -> 0 `i `uc -> -> 180 `i `uc ]
-[; ;main.c: 120: tlc_update();
-"120
+[; ;main.c: 119: tlc_update();
+"119
 [e ( _tlc_update ..  ]
+[; ;main.c: 120: delay_sec();
+"120
+[e ( _delay_sec ..  ]
 [; ;main.c: 121: delay_sec();
 "121
 [e ( _delay_sec ..  ]
@@ -4262,17 +4265,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 123: delay_sec();
 "123
 [e ( _delay_sec ..  ]
-[; ;main.c: 124: delay_sec();
 "124
-[e ( _delay_sec ..  ]
-"125
 }
 [e :U 412 ]
-"106
+"105
 [e $U 413  ]
 [e :U 414 ]
+[; ;main.c: 124: }
 [; ;main.c: 125: }
-[; ;main.c: 126: }
-"126
+"125
 [e :UE 411 ]
 }

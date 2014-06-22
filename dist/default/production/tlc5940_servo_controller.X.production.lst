@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC18 LITE Macro Assembler V1.32 build 58300 
-                                                                                               Thu Jun 19 00:14:44 2014
+                                                                                               Sun Jun 22 05:40:46 2014
 
 Microchip Technology Omniscient Code Generator (Lite mode) build 58300
      1                           	processor	18F4520
@@ -313,127 +313,127 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
    307  0001FE                     _main:
    308                           	opt stack 28
    309                           
-   310                           ;main.c: 82: TRISD = 0b00000000;
+   310                           ;main.c: 81: TRISD = 0b00000000;
    311                           
    312                           ;incstack = 0
    313  0001FE  0E00               	movlw	0
    314  000200  6E95               	movwf	3989,c	;volatile
    315                           
-   316                           ;main.c: 83: PORTD = 0b00000000;
+   316                           ;main.c: 82: PORTD = 0b00000000;
    317  000202  0E00               	movlw	0
    318  000204  6E83               	movwf	3971,c	;volatile
    319                           
-   320                           ;main.c: 84: TRISB = 0b00100000;
+   320                           ;main.c: 83: TRISB = 0b00100000;
    321  000206  0E20               	movlw	32
    322  000208  6E93               	movwf	3987,c	;volatile
    323                           
-   324                           ;main.c: 85: PORTB = 0b00000000;
+   324                           ;main.c: 84: PORTB = 0b00000000;
    325  00020A  0E00               	movlw	0
    326  00020C  6E81               	movwf	3969,c	;volatile
    327                           
-   328                           ;main.c: 86: TRISA = 0b00001111;
+   328                           ;main.c: 85: TRISA = 0b00001111;
    329  00020E  0E0F               	movlw	15
    330  000210  6E92               	movwf	3986,c	;volatile
    331                           
-   332                           ;main.c: 87: PORTA = 0b00001111;
+   332                           ;main.c: 86: PORTA = 0b00001111;
    333  000212  0E0F               	movlw	15
    334  000214  6E80               	movwf	3968,c	;volatile
    335                           
-   336                           ;main.c: 88: TRISE = 0b00001000;
+   336                           ;main.c: 87: TRISE = 0b00001000;
    337  000216  0E08               	movlw	8
    338  000218  6E96               	movwf	3990,c	;volatile
    339                           
-   340                           ;main.c: 89: PORTE = 0b00000000;
+   340                           ;main.c: 88: PORTE = 0b00000000;
    341  00021A  0E00               	movlw	0
    342  00021C  6E84               	movwf	3972,c	;volatile
    343                           
-   344                           ;main.c: 91: TMR2_init();
+   344                           ;main.c: 90: TMR2_init();
    345  00021E  EC5D  F001         	call	_TMR2_init	;wreg free
    346                           
-   347                           ;main.c: 92: count = 0;
+   347                           ;main.c: 91: count = 0;
    348  000222  0E00               	movlw	0
    349  000224  6E26               	movwf	_count+1,c	;volatile
    350  000226  0E00               	movlw	0
    351  000228  6E25               	movwf	_count,c	;volatile
    352                           
-   353                           ;main.c: 94: PIE1bits.TMR2IE = 1;
+   353                           ;main.c: 93: PIE1bits.TMR2IE = 1;
    354  00022A  829D               	bsf	3997,1,c	;volatile
    355                           
-   356                           ;main.c: 95: INTCONbits.PEIE = 1;
+   356                           ;main.c: 94: INTCONbits.PEIE = 1;
    357  00022C  8CF2               	bsf	intcon,6,c	;volatile
    358                           
-   359                           ;main.c: 96: INTCONbits.GIE = 1;
+   359                           ;main.c: 95: INTCONbits.GIE = 1;
    360  00022E  8EF2               	bsf	intcon,7,c	;volatile
    361                           
-   362                           ;main.c: 97: T2CONbits.TMR2ON = 0;
+   362                           ;main.c: 96: T2CONbits.TMR2ON = 0;
    363  000230  94CA               	bcf	4042,2,c	;volatile
    364                           
-   365                           ;main.c: 99: spi_init();
+   365                           ;main.c: 98: spi_init();
    366  000232  EC78  F001         	call	_spi_init	;wreg free
    367                           
-   368                           ;main.c: 102: tlc_init();
+   368                           ;main.c: 101: tlc_init();
    369  000236  EC0E  F000         	call	_tlc_init	;wreg free
    370                           
-   371                           ;main.c: 103: tlc_update();
+   371                           ;main.c: 102: tlc_update();
    372  00023A  EC66  F000         	call	_tlc_update	;wreg free
    373                           
-   374                           ;main.c: 105: T2CONbits.TMR2ON = 1;
+   374                           ;main.c: 104: T2CONbits.TMR2ON = 1;
    375  00023E  84CA               	bsf	4042,2,c	;volatile
    376  000240                     l859:
    377                           
-   378                           ;main.c: 107: {
-   379                           ;main.c: 108: LATDbits.LD3 = 1;
+   378                           ;main.c: 106: {
+   379                           ;main.c: 107: LATDbits.LD3 = 1;
    380  000240  868C               	bsf	3980,3,c	;volatile
    381                           
-   382                           ;main.c: 109: delay_sec();
+   382                           ;main.c: 108: delay_sec();
    383  000242  EC45  F001         	call	_delay_sec	;wreg free
    384                           
-   385                           ;main.c: 110: LATDbits.LD3 = 0;
+   385                           ;main.c: 109: LATDbits.LD3 = 0;
    386  000246  968C               	bcf	3980,3,c	;volatile
    387                           
-   388                           ;main.c: 111: delay_sec();
+   388                           ;main.c: 110: delay_sec();
    389  000248  EC45  F001         	call	_delay_sec	;wreg free
    390                           
-   391                           ;main.c: 112: tlc_set(0, 0);
+   391                           ;main.c: 111: tlc_set(0, 0);
    392  00024C  0E00               	movlw	0
    393  00024E  6E0F               	movwf	tlc_set@value,c
    394  000250  0E00               	movlw	0
    395  000252  EC6B  F001         	call	_tlc_set
    396                           
-   397                           ;main.c: 113: tlc_update();
+   397                           ;main.c: 112: tlc_update();
    398  000256  EC66  F000         	call	_tlc_update	;wreg free
    399                           
-   400                           ;main.c: 114: delay_sec();
+   400                           ;main.c: 113: delay_sec();
    401  00025A  EC45  F001         	call	_delay_sec	;wreg free
    402                           
-   403                           ;main.c: 115: delay_sec();
+   403                           ;main.c: 114: delay_sec();
    404  00025E  EC45  F001         	call	_delay_sec	;wreg free
    405                           
-   406                           ;main.c: 116: delay_sec();
+   406                           ;main.c: 115: delay_sec();
    407  000262  EC45  F001         	call	_delay_sec	;wreg free
    408                           
-   409                           ;main.c: 117: delay_sec();
+   409                           ;main.c: 116: delay_sec();
    410  000266  EC45  F001         	call	_delay_sec	;wreg free
    411                           
-   412                           ;main.c: 119: tlc_set(0, 180);
+   412                           ;main.c: 118: tlc_set(0, 180);
    413  00026A  0EB4               	movlw	180
    414  00026C  6E0F               	movwf	tlc_set@value,c
    415  00026E  0E00               	movlw	0
    416  000270  EC6B  F001         	call	_tlc_set
    417                           
-   418                           ;main.c: 120: tlc_update();
+   418                           ;main.c: 119: tlc_update();
    419  000274  EC66  F000         	call	_tlc_update	;wreg free
    420                           
-   421                           ;main.c: 121: delay_sec();
+   421                           ;main.c: 120: delay_sec();
    422  000278  EC45  F001         	call	_delay_sec	;wreg free
    423                           
-   424                           ;main.c: 122: delay_sec();
+   424                           ;main.c: 121: delay_sec();
    425  00027C  EC45  F001         	call	_delay_sec	;wreg free
    426                           
-   427                           ;main.c: 123: delay_sec();
+   427                           ;main.c: 122: delay_sec();
    428  000280  EC45  F001         	call	_delay_sec	;wreg free
    429                           
-   430                           ;main.c: 124: delay_sec();
+   430                           ;main.c: 123: delay_sec();
    431  000284  EC45  F001         	call	_delay_sec	;wreg free
    432  000288  D7DB               	goto	l859
    433  00028A                     __end_of_main:
@@ -1542,7 +1542,7 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V1.32 build 58300 
-Symbol Table                                                                                   Thu Jun 19 00:14:44 2014
+Symbol Table                                                                                   Sun Jun 22 05:40:46 2014
 
               _SSPSTATbits 000FC7                         l92 02B8               __CFG_CP0$OFF 000000  
              __CFG_CP1$OFF 000000               __CFG_CP2$OFF 000000               __CFG_CP3$OFF 000000  
