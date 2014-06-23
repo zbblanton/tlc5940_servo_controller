@@ -1,8 +1,10 @@
-# TLC5940 Servo Controller for PIC Micrcontrollers
+# TLC5940 Servo Controller for PIC Microcontrollers
 
-Verison 1.0 is ready for download. It still lacks some documentation of the functions, but should work on any of the 
-PIC18 series microcontrollers. This verison is only for the brave or impatient souls who can't wait for better documentation.
-Verison 1.1 will have fully documented code and a few great new functions that I think will separate this library from others.
+Version 1.0 is ready for download. It still lacks some documentation of the functions, but should work on any of the 
+PIC18 series microcontrollers. This version is only for the brave or impatient souls who can't wait for better documentation.
+Version 1.1 will have fully documented code and a few great new functions that I think will separate this library from others.
+
+To download the source, go to downloads and click "Download Repository".
 
 This code is developed and tested on the PIC18F4520.
 
