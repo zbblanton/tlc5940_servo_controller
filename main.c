@@ -21,8 +21,6 @@
 
 #pragma config OSC = HS, WDT=OFF, PWRT=OFF, BOREN=OFF, CP0=OFF,CP1=OFF,CP2=OFF,CP3=OFF, MCLRE=ON
 
-#define servo_0 0
-
 volatile int count;
 
 void delay_sec() //actually, half a second
