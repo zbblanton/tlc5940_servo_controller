@@ -4,7 +4,7 @@ Version 1.0 is ready for download. It still lacks some documentation of the func
 PIC18 series microcontrollers. This version is only for the brave or impatient souls who can't wait for better documentation.
 Version 1.1 will have fully documented code and a few great new functions that I think will separate this library from others.
 
-To download the source, go to downloads and click "Download Repository".
+To download the source, go to downloads and click "tlc5940_servo_controller_v1.0.zip".
 
 This code is developed and tested on the PIC18F4520.
 
