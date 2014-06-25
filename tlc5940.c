@@ -21,6 +21,16 @@ void serial_send_data(char data)
     tlc_delay_us(1); //Testing a much faster delay
 }
 
+/**************************************************************************
+Macro       : tlc_init
+
+Description : Set the TLC5940 up for operation.
+
+Arguments   : None.
+
+Remarks     : This function sends the inital dot correction data and the
+initial position data set by the user to the TLC5940. 
+***************************************************************************/
 void tlc_init()
 {
     //Initialize dot correction
@@ -86,6 +96,16 @@ void tlc_init()
     //end
 }
 
+/**************************************************************************
+Macro       : tlc_update
+
+Description : Updates the position on the selected servo.
+
+Arguments   : None.
+
+Remarks     : This function sends the new position data to the TLC5940. It
+turns the timer off and sets the tlc pins and then begins to send the data.
+***************************************************************************/
 void tlc_update()
 {   
     //tlc_delay_ms(2);
@@ -179,4 +199,7 @@ void tlc_write(char tlc_servo_number, char value)
  possibly make a global temp_tlc_servo so that we dont have to reintiaze it
  on every call of the funciton. Have an if statement in the for loop to check
  if new value is different from old, if so then set new value.
+ 
+ Need to add for loop inside of tlc_init to update grayscale data with default
+ user positions.
  */
