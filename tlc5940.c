@@ -172,3 +172,11 @@ void tlc_write(char tlc_servo_number, char value)
     T2CONbits.TMR2ON = 1; //Turn timer back on
     //end
 }
+
+/*
+ Use for loop above as a all in one loop.
+ Use loop to update all channals at once, depending on which i count it is on
+ possibly make a global temp_tlc_servo so that we dont have to reintiaze it
+ on every call of the funciton. Have an if statement in the for loop to check
+ if new value is different from old, if so then set new value.
+ */
