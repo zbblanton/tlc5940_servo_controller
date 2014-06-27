@@ -5003,12 +5003,13 @@ void tlc_set(char channel_number, char value);
 void tlc_write(char channel_number, char value);
 
 
+void tlc_sweep(char num_of_increments);
+
+
 # 20 "main.c"
 #pragma config LVP = OFF
 
 #pragma config OSC = HS, WDT=OFF, PWRT=OFF, BOREN=OFF, CP0=OFF,CP1=OFF,CP2=OFF,CP3=OFF, MCLRE=ON
-
-
 
 volatile int count;
 

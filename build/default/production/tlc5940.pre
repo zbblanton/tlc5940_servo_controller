@@ -5002,6 +5002,9 @@ void tlc_update();
 void tlc_set(char channel_number, char value);
 void tlc_write(char channel_number, char value);
 
+
+void tlc_sweep(char num_of_increments);
+
 # 13 "D:\Program Files (x86)\Microchip\xc8\v1.32\include\stdint.h"
 typedef signed char int8_t;
 
@@ -5094,6 +5097,8 @@ typedef uint16_t uintptr_t;
 
 # 15 "tlc5940.c"
 char tlc_servo[16];
+char tlc_servo_temp[16];
+
 
 void serial_send_data(char data)
 {
@@ -5102,6 +5107,7 @@ SSPBUF = data;
 _delay((unsigned long)((1)*(8000000/4000000.0)));
 }
 
+# 36
 void tlc_init()
 {
 
@@ -5167,6 +5173,7 @@ serial_send_data(0b10000000);
 
 }
 
+# 111
 void tlc_update()
 {
 
@@ -5196,13 +5203,14 @@ _delay((unsigned long)((1)*(8000000/4000000.0)));
 T2CONbits.TMR2ON = 1;
 }
 
-# 128
+# 150
 void tlc_set(char tlc_servo_number, char value)
 {
 tlc_servo[tlc_servo_number] = value + 55;
+
 }
 
-# 143
+# 166
 void tlc_write(char tlc_servo_number, char value)
 {
 tlc_servo[tlc_servo_number] = value + 55;
@@ -5235,3 +5243,62 @@ _delay((unsigned long)((1)*(8000000/4000000.0)));
 T2CONbits.TMR2ON = 1;
 
 }
+
+void tlc_sweep(char num_of_increments)
+{
+
+
+
+
+int j = 0;
+while(j != 16)
+{
+
+j = 0;
+for(int i = 0; i < 16; i++)
+{
+if(tlc_servo_temp[i] != tlc_servo[i])
+{
+if(tlc_servo_temp[i] > tlc_servo[i])
+{
+tlc_servo[i] = tlc_servo[i] + num_of_increments;
+}
+else
+{
+tlc_servo[i] = tlc_servo[i] - num_of_increments;
+}
+}
+else
+{
+j++;
+}
+}
+
+
+_delay((unsigned long)((1)*(8000000/4000000.0)));
+
+T2CONbits.TMR2ON = 0;
+LATDbits.LD1 = 0;
+LATDbits.LD0 = 0;
+LATDbits.LD2 = 0;
+
+char counter = 0;
+for(char i = 0; i < 8; i++)
+{
+serial_send_data(tlc_servo[i + counter]>>4);
+serial_send_data(tlc_servo[i + counter]<<4);
+serial_send_data(tlc_servo[i + (counter + 1)]);
+counter++;
+}
+
+
+_delay((unsigned long)((1)*(8000000/4000000.0)));
+LATDbits.LD0 = 1;
+_delay((unsigned long)((1)*(8000000/4000000.0)));
+LATDbits.LD0 = 0;
+_delay((unsigned long)((1)*(8000000/4000000.0)));
+
+T2CONbits.TMR2ON = 1;
+}
+}
+

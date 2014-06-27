@@ -5,7 +5,7 @@ Linker command line:
 --edf=D:\Program Files (x86)\Microchip\xc8\v1.32\dat\en_msgs.txt -cs \
   -h+dist/default/production\tlc5940_servo_controller.X.production.sym \
   --cmf=dist/default/production\tlc5940_servo_controller.X.production.cmf \
-  -z -Q18F4520 -oD:\temp_folders\temp\s4s0.6 \
+  -z -Q18F4520 -oD:\temp_folders\temp\s3sk.6 \
   -Mdist/default/production/tlc5940_servo_controller.X.production.map -E1 \
   -ver=XC8 -ASTACK=080h-05ffh -pstack=STACK -ACODE=00h-07FFFh \
   -ACONST=00h-07FFFh -ASMALLCONST=0600h-06FFhx122 \
@@ -22,7 +22,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE \
-  D:\temp_folders\temp\s4s0.obj \
+  D:\temp_folders\temp\s3sk.obj \
   dist/default/production\tlc5940_servo_controller.X.production.obj 
 
 Object code version is 3.11
@@ -35,7 +35,7 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-D:\temp_folders\temp\s4s0.obj
+D:\temp_folders\temp\s3sk.obj
                 end_init                             18       18        4        4       0
                 reset_vec                             0        0        4        0       0
                 idloc                            200000   200000        8   200000       0
@@ -50,8 +50,8 @@ dist/default/production\tlc5940_servo_controller.X.production.obj
                 text2                               2D6      2D6       1A        4       0
                 text1                                CC       CC       A0        4       0
                 text0                               1FE      1FE       8C        4       0
-                cstackCOMRAM                          1        1       14        1       1
-                bssCOMRAM                            15       15       12        1       1
+                cstackCOMRAM                         23       23       14        1       1
+                bssCOMRAM                             1        1       22        1       1
                 cinit                               306      306       12        4       0
                 intcode_body                        16C      16C       92        4       0
 
@@ -80,8 +80,8 @@ TOTAL           Name                               Link     Load   Length     Sp
         CLASS   MEDIUMCONST    
 
         CLASS   COMRAM         
-                cstackCOMRAM                          1        1       14         1
-                bssCOMRAM                            15       15       12         1
+                cstackCOMRAM                         23       23       14         1
+                bssCOMRAM                             1        1       22         1
 
         CLASS   ABS1           
 
@@ -118,7 +118,7 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class
 
                 reset_vec                      000000  000004  000004         0       0  CODE    
-                cstackCOMRAM                   000001  000026  000027         1       1  COMRAM  
+                bssCOMRAM                      000001  000036  000037         1       1  COMRAM  
                 intcode                        000008  00031A  000322         4       0  CODE    
                 idloc                          200000  000008  200008    200000       0  IDLOC   
                 config                         300000  00000E  30000E    300000       0  CONFIG  
@@ -133,10 +133,10 @@ UNUSED ADDRESS RANGES
         BANK3            000300-0003FF              100
         BANK4            000400-0004FF              100
         BANK5            000500-0005FF              100
-        BIGRAM           000027-0005FF              5D9
+        BIGRAM           000037-0005FF              5C9
         CODE             000004-000007                4
                          000322-007FFF             7CDE
-        COMRAM           000027-00007F               59
+        COMRAM           000037-00007F               49
         CONST            000004-000007                4
                          000322-007FFF             7CDE
         EEDATA           F00000-F000FF              100
@@ -234,7 +234,7 @@ __Hrparam                  rparam       000000
 __Hsfr                     sfr          000000
 __Hsmallconst              smallconst   000000
 __Hspace_0                 (abs)        30000E
-__Hspace_1                 (abs)        000027
+__Hspace_1                 (abs)        000037
 __Hspace_2                 (abs)        000000
 __Hstack                   stack        000000
 __Hstruct                  struct       000000
@@ -315,7 +315,7 @@ __Ltext5                   text5        000000
 __Ltext6                   text6        000000
 __Ltext7                   text7        000000
 __S0                       (abs)        30000E
-__S1                       (abs)        000027
+__S1                       (abs)        000037
 __S2                       (abs)        000000
 ___inthi_sp                stack        000000
 ___intlo_sp                stack        000000
@@ -334,9 +334,9 @@ __end_of_tlc_set           text2        0002F0
 __end_of_tlc_update        text1        00016C
 __initialization           cinit        000306
 __mediumconst              mediumconst  000000
-__pbssCOMRAM               bssCOMRAM    000015
+__pbssCOMRAM               bssCOMRAM    000001
 __pcinit                   cinit        000306
-__pcstackCOMRAM            cstackCOMRAM 000001
+__pcstackCOMRAM            cstackCOMRAM 000023
 __pintcode                 intcode      000008
 __pintcode_body            intcode_body 00016C
 __ptext0                   text0        0001FE
@@ -359,46 +359,47 @@ __size_of_tlc_set          (abs)        000000
 __size_of_tlc_update       (abs)        000000
 __smallconst               smallconst   000000
 _blank_pulse               intcode      000008
-_count                     bssCOMRAM    000025
+_count                     bssCOMRAM    000021
 _delay_sec                 text6        00028A
 _main                      text0        0001FE
 _serial_send_data          text4        000318
 _spi_init                  text5        0002F0
 _tlc_init                  text3        00001C
-_tlc_servo                 bssCOMRAM    000015
+_tlc_servo                 bssCOMRAM    000001
+_tlc_servo_temp            bssCOMRAM    000011
 _tlc_set                   text2        0002D6
 _tlc_update                text1        0000CC
-delay_sec@i                cstackCOMRAM 000010
+delay_sec@i                cstackCOMRAM 000032
 end_of_initialization      cinit        000312
 int_func                   intcode_body 00016C
 intlevel0                  text         000000
 intlevel1                  text         000000
 intlevel2                  text         000000
 intlevel3                  text         000000
-serial_send_data@data      cstackCOMRAM 00000F
+serial_send_data@data      cstackCOMRAM 000031
 stackhi                    (abs)        0005FF
 stacklo                    (abs)        000080
 start                      init         000018
 start_initialization       cinit        000306
-tlc_init@i                 cstackCOMRAM 000011
-tlc_init@i_158             cstackCOMRAM 000012
-tlc_set@tlc_servo_number   cstackCOMRAM 000010
-tlc_set@value              cstackCOMRAM 00000F
-tlc_update@counter         cstackCOMRAM 000013
-tlc_update@i               cstackCOMRAM 000014
+tlc_init@i                 cstackCOMRAM 000033
+tlc_init@i_159             cstackCOMRAM 000034
+tlc_set@tlc_servo_number   cstackCOMRAM 000032
+tlc_set@value              cstackCOMRAM 000031
+tlc_update@counter         cstackCOMRAM 000035
+tlc_update@i               cstackCOMRAM 000036
 
 
 FUNCTION INFORMATION:
 
  *************** function _main *****************
  Defined at:
-		line 79 in file "main.c"
+		line 77 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
 		None
  Return value:  Size  Location     Type
-                  2  105[COMRAM] int 
+                  2  121[COMRAM] int 
  Registers used:
 		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
  Tracked objects:
@@ -426,7 +427,7 @@ Total ram usage:        0 bytes
 
  *************** function _tlc_update *****************
  Defined at:
-		line 89 in file "tlc5940.c"
+		line 111 in file "tlc5940.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -457,7 +458,7 @@ Total ram usage:        5 bytes
 
  *************** function _tlc_set *****************
  Defined at:
-		line 128 in file "tlc5940.c"
+		line 150 in file "tlc5940.c"
  Parameters:    Size  Location     Type
   tlc_servo_nu    1    wreg     unsigned char 
   value           1   14[COMRAM] unsigned char 
@@ -488,7 +489,7 @@ Total ram usage:        2 bytes
 
  *************** function _tlc_init *****************
  Defined at:
-		line 24 in file "tlc5940.c"
+		line 36 in file "tlc5940.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -519,7 +520,7 @@ Total ram usage:        3 bytes
 
  *************** function _serial_send_data *****************
  Defined at:
-		line 17 in file "tlc5940.c"
+		line 19 in file "tlc5940.c"
  Parameters:    Size  Location     Type
   data            1    wreg     unsigned char 
  Auto vars:     Size  Location     Type
@@ -546,12 +547,13 @@ Total ram usage:        1 bytes
 		_tlc_init
 		_tlc_update
 		_tlc_write
+		_tlc_sweep
  This function uses a non-reentrant model
 
 
  *************** function _spi_init *****************
  Defined at:
-		line 52 in file "main.c"
+		line 50 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -581,7 +583,7 @@ Total ram usage:        0 bytes
 
  *************** function _delay_sec *****************
  Defined at:
-		line 28 in file "main.c"
+		line 26 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -611,7 +613,7 @@ Total ram usage:        3 bytes
 
  *************** function _TMR2_init *****************
  Defined at:
-		line 67 in file "main.c"
+		line 65 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -641,7 +643,7 @@ Total ram usage:        0 bytes
 
  *************** function _blank_pulse *****************
  Defined at:
-		line 36 in file "main.c"
+		line 34 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type

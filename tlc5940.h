@@ -33,6 +33,9 @@ void tlc_update();
 void tlc_set(char channel_number, char value);
 void tlc_write(char channel_number, char value);
 
+//Version 1.1 functions in development
+void tlc_sweep(char num_of_increments);
+
 //Future functions
 //void tlc_sweep(char channel_number, char sweep_type, int num_of_increment);
 //void tlc_start();

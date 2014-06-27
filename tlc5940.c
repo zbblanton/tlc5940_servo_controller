@@ -13,6 +13,8 @@
 #define __delay_ms(x) _delay((unsigned long)((x)*(_XTAL_FREQ/4000.0)))
 
 char tlc_servo[16];
+char tlc_servo_temp[16];
+
 
 void serial_send_data(char data)
 {
@@ -148,6 +150,7 @@ Remarks     : This function ONLY updates the selected servo position variable,
 void tlc_set(char tlc_servo_number, char value) //Value between 0 and 180
 {
     tlc_servo[tlc_servo_number] = value + 55;
+    //tlc_servo_temp[tlc_servo_number] = value + 55;
 }
 
 /**************************************************************************
@@ -191,6 +194,64 @@ void tlc_write(char tlc_servo_number, char value)
     
     T2CONbits.TMR2ON = 1; //Turn timer back on
     //end
+}
+
+void tlc_sweep(char num_of_increments)
+{
+    //NEED TO GO CHANGE FUNCTIONS TO REFLECT TEMP SERVO POS INSTEAD.
+
+   //tlc_servo[tlc_servo_number] = value + 55; //Set the servo
+
+    int j = 0;
+    while(j != 16) //Means all servo positions are equal to temp positions.
+    {
+        //Add checks to make sure value is not over 180 or below 0.
+        j = 0;
+        for(int i = 0; i < 16; i++)
+        {
+            if(tlc_servo_temp[i] != tlc_servo[i])
+            {
+                if(tlc_servo_temp[i] > tlc_servo[i]) //Greater than
+                {
+                    tlc_servo[i] = tlc_servo[i] + num_of_increments;
+                }
+                else //Must be less than
+                {
+                    tlc_servo[i] = tlc_servo[i] - num_of_increments;
+                }
+            }
+            else //Means its equal
+            {
+                j++;
+            }
+        }
+
+        //Update the tlc grayscale
+        tlc_delay_us(1);
+
+        T2CONbits.TMR2ON = 0; //Turn off timer
+        tlc_vprg = 0; //Grayscale input mode
+        tlc_xlat = 0;
+        tlc_blank = 0;
+
+        char counter = 0;
+        for(char i = 0; i < 8; i++)
+        {
+            tlc_send_data(tlc_servo[i + counter]>>4);
+            tlc_send_data(tlc_servo[i + counter]<<4);
+            tlc_send_data(tlc_servo[i + (counter + 1)]);
+            counter++;
+        }
+
+        //Testing faster toggle speeds
+        tlc_delay_us(1);
+        tlc_xlat = 1;
+        tlc_delay_us(1);
+        tlc_xlat = 0;
+        tlc_delay_us(1);
+
+        T2CONbits.TMR2ON = 1; //Turn timer back on
+    }
 }
 
 /*
