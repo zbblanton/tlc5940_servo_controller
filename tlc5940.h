@@ -26,6 +26,9 @@
 //Change to whatever your serial write function name is.
 #define tlc_send_data serial_send_data
 
+char tlc_servo[16];
+char tlc_servo_temp[16];
+
 void serial_init();
 void serial_send_data(char data);
 void tlc_init();

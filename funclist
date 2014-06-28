@@ -1,11 +1,12 @@
-_tlc_init: CODE, 28 0 176
-_blank_pulse: CODE, 8 0 502
-_main: CODE, 510 0 140
-_tlc_set: CODE, 726 0 26
-__initialization: CODE, 774 0 12
-_tlc_update: CODE, 204 0 160
-_spi_init: CODE, 752 0 22
-_TMR2_init: CODE, 698 0 28
-_serial_send_data: CODE, 792 0 10
-_delay_sec: CODE, 650 0 48
-Total: 1124
+_tlc_init: CODE, 402 0 176
+_blank_pulse: CODE, 8 0 872
+_tlc_sweep: CODE, 28 0 374
+_main: CODE, 880 0 124
+_tlc_set: CODE, 1080 0 26
+__initialization: CODE, 1128 0 12
+_tlc_update: CODE, 578 0 156
+_spi_init: CODE, 1106 0 22
+_TMR2_init: CODE, 1052 0 28
+_serial_send_data: CODE, 1146 0 10
+_delay_sec: CODE, 1004 0 48
+Total: 1848

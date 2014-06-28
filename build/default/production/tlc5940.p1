@@ -3805,13 +3805,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 147: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 149: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 151: extern __nonreentrant void _delay3(unsigned char);
-[; ;tlc5940.h: 29: void serial_init();
-[; ;tlc5940.h: 30: void serial_send_data(char data);
-[; ;tlc5940.h: 31: void tlc_init();
-[; ;tlc5940.h: 32: void tlc_update();
-[; ;tlc5940.h: 33: void tlc_set(char channel_number, char value);
-[; ;tlc5940.h: 34: void tlc_write(char channel_number, char value);
-[; ;tlc5940.h: 37: void tlc_sweep(char num_of_increments);
+"29 tlc5940.h
+[v _tlc_servo `uc ~T0 @X0 -> 16 `i e ]
+[; ;tlc5940.h: 29: char tlc_servo[16];
+"30
+[v _tlc_servo_temp `uc ~T0 @X0 -> 16 `i e ]
+[; ;tlc5940.h: 30: char tlc_servo_temp[16];
+[; ;tlc5940.h: 32: void serial_init();
+[; ;tlc5940.h: 33: void serial_send_data(char data);
+[; ;tlc5940.h: 34: void tlc_init();
+[; ;tlc5940.h: 35: void tlc_update();
+[; ;tlc5940.h: 36: void tlc_set(char channel_number, char value);
+[; ;tlc5940.h: 37: void tlc_write(char channel_number, char value);
+[; ;tlc5940.h: 40: void tlc_sweep(char num_of_increments);
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -3840,13 +3846,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 205: typedef uint32_t uintmax_t;
 [; ;stdint.h: 210: typedef int16_t intptr_t;
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
-"15 tlc5940.c
-[v _tlc_servo `uc ~T0 @X0 -> 16 `i e ]
-[; ;tlc5940.c: 15: char tlc_servo[16];
-"16
-[v _tlc_servo_temp `uc ~T0 @X0 -> 16 `i e ]
-[; ;tlc5940.c: 16: char tlc_servo_temp[16];
-"19
+"19 tlc5940.c
 [v _serial_send_data `(v ~T0 @X0 1 ef1`uc ]
 "20
 {
@@ -3982,9 +3982,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tlc5940.c: 81: tlc_servo[14] = 0;
 "81
 [e = *U + &U _tlc_servo * -> -> -> 14 `i `ui `ux -> -> # *U &U _tlc_servo `ui `ux -> -> 0 `i `uc ]
-[; ;tlc5940.c: 82: tlc_servo[15] = 235;
+[; ;tlc5940.c: 82: tlc_servo[15] = 0;
 "82
-[e = *U + &U _tlc_servo * -> -> -> 15 `i `ui `ux -> -> # *U &U _tlc_servo `ui `ux -> -> 235 `i `uc ]
+[e = *U + &U _tlc_servo * -> -> -> 15 `i `ui `ux -> -> # *U &U _tlc_servo `ui `ux -> -> 0 `i `uc ]
 [; ;tlc5940.c: 85: for(char i = 0; i < 24; i++)
 "85
 {
@@ -4041,9 +4041,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tlc5940.c: 114: _delay((unsigned long)((1)*(8000000/4000000.0)));
 "114
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
-[; ;tlc5940.c: 116: T2CONbits.TMR2ON = 0;
-"116
-[e = . . _T2CONbits 0 1 -> -> 0 `i `uc ]
 [; ;tlc5940.c: 117: LATDbits.LD1 = 0;
 "117
 [e = . . _LATDbits 2 1 -> -> 0 `i `uc ]
@@ -4104,9 +4101,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tlc5940.c: 135: _delay((unsigned long)((1)*(8000000/4000000.0)));
 "135
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
-[; ;tlc5940.c: 137: T2CONbits.TMR2ON = 1;
-"137
-[e = . . _T2CONbits 0 1 -> -> 1 `i `uc ]
 [; ;tlc5940.c: 138: }
 "138
 [e :UE 410 ]
@@ -4148,9 +4142,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tlc5940.c: 172: _delay((unsigned long)((1)*(8000000/4000000.0)));
 "172
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
-[; ;tlc5940.c: 174: T2CONbits.TMR2ON = 0;
-"174
-[e = . . _T2CONbits 0 1 -> -> 0 `i `uc ]
 [; ;tlc5940.c: 175: LATDbits.LD1 = 0;
 "175
 [e = . . _LATDbits 2 1 -> -> 0 `i `uc ]
@@ -4211,9 +4202,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tlc5940.c: 193: _delay((unsigned long)((1)*(8000000/4000000.0)));
 "193
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
-[; ;tlc5940.c: 195: T2CONbits.TMR2ON = 1;
-"195
-[e = . . _T2CONbits 0 1 -> -> 1 `i `uc ]
 [; ;tlc5940.c: 197: }
 "197
 [e :UE 415 ]
@@ -4315,9 +4303,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tlc5940.c: 230: _delay((unsigned long)((1)*(8000000/4000000.0)));
 "230
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
-[; ;tlc5940.c: 232: T2CONbits.TMR2ON = 0;
-"232
-[e = . . _T2CONbits 0 1 -> -> 0 `i `uc ]
 [; ;tlc5940.c: 233: LATDbits.LD1 = 0;
 "233
 [e = . . _LATDbits 2 1 -> -> 0 `i `uc ]
@@ -4378,17 +4363,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tlc5940.c: 251: _delay((unsigned long)((1)*(8000000/4000000.0)));
 "251
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
-[; ;tlc5940.c: 253: T2CONbits.TMR2ON = 1;
-"253
-[e = . . _T2CONbits 0 1 -> -> 1 `i `uc ]
-"254
+[; ;tlc5940.c: 255: _delay((unsigned long)((50)*(8000000/4000.0)));
+"255
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"256
 }
 [e :U 420 ]
 "206
 [e $ != _j -> 16 `i 421  ]
 [e :U 422 ]
-[; ;tlc5940.c: 254: }
-[; ;tlc5940.c: 255: }
-"255
+[; ;tlc5940.c: 256: }
+[; ;tlc5940.c: 257: }
+"257
 [e :UE 419 ]
 }

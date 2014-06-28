@@ -4995,6 +4995,9 @@ extern __nonreentrant void _delaywdt(unsigned long);
 extern __nonreentrant void _delay3(unsigned char);
 
 # 29 "tlc5940.h"
+char tlc_servo[16];
+char tlc_servo_temp[16];
+
 void serial_init();
 void serial_send_data(char data);
 void tlc_init();
@@ -5095,11 +5098,7 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 
-# 15 "tlc5940.c"
-char tlc_servo[16];
-char tlc_servo_temp[16];
-
-
+# 19 "tlc5940.c"
 void serial_send_data(char data)
 {
 SSPBUF = data;
@@ -5154,7 +5153,7 @@ tlc_servo[11] = 0;
 tlc_servo[12] = 0;
 tlc_servo[13] = 0;
 tlc_servo[14] = 0;
-tlc_servo[15] = 235;
+tlc_servo[15] = 0;
 
 
 for(char i = 0; i < 24; i++)
@@ -5179,7 +5178,7 @@ void tlc_update()
 
 _delay((unsigned long)((1)*(8000000/4000000.0)));
 
-T2CONbits.TMR2ON = 0;
+
 LATDbits.LD1 = 0;
 LATDbits.LD0 = 0;
 LATDbits.LD2 = 0;
@@ -5200,7 +5199,7 @@ _delay((unsigned long)((1)*(8000000/4000000.0)));
 LATDbits.LD0 = 0;
 _delay((unsigned long)((1)*(8000000/4000000.0)));
 
-T2CONbits.TMR2ON = 1;
+
 }
 
 # 150
@@ -5219,7 +5218,7 @@ tlc_servo[tlc_servo_number] = value + 55;
 
 _delay((unsigned long)((1)*(8000000/4000000.0)));
 
-T2CONbits.TMR2ON = 0;
+
 LATDbits.LD1 = 0;
 LATDbits.LD0 = 0;
 LATDbits.LD2 = 0;
@@ -5240,7 +5239,7 @@ _delay((unsigned long)((1)*(8000000/4000000.0)));
 LATDbits.LD0 = 0;
 _delay((unsigned long)((1)*(8000000/4000000.0)));
 
-T2CONbits.TMR2ON = 1;
+
 
 }
 
@@ -5277,7 +5276,7 @@ j++;
 
 _delay((unsigned long)((1)*(8000000/4000000.0)));
 
-T2CONbits.TMR2ON = 0;
+
 LATDbits.LD1 = 0;
 LATDbits.LD0 = 0;
 LATDbits.LD2 = 0;
@@ -5298,7 +5297,9 @@ _delay((unsigned long)((1)*(8000000/4000000.0)));
 LATDbits.LD0 = 0;
 _delay((unsigned long)((1)*(8000000/4000000.0)));
 
-T2CONbits.TMR2ON = 1;
+
+
+_delay((unsigned long)((50)*(8000000/4000.0)));
 }
 }
 

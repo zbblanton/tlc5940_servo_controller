@@ -4995,6 +4995,9 @@ extern __nonreentrant void _delaywdt(unsigned long);
 extern __nonreentrant void _delay3(unsigned char);
 
 # 29 "tlc5940.h"
+char tlc_servo[16];
+char tlc_servo_temp[16];
+
 void serial_init();
 void serial_send_data(char data);
 void tlc_init();
@@ -5096,18 +5099,22 @@ LATDbits.LD3 = 1;
 delay_sec();
 LATDbits.LD3 = 0;
 delay_sec();
-tlc_set(0, 0);
+
+
+tlc_set(0, 180);
 tlc_update();
+
 delay_sec();
 delay_sec();
 delay_sec();
 delay_sec();
 
-tlc_set(0, 180);
-tlc_update();
+
+
+tlc_servo_temp[0] = 130;
+tlc_sweep(2);
 delay_sec();
-delay_sec();
-delay_sec();
-delay_sec();
+
+# 140
 }
 }

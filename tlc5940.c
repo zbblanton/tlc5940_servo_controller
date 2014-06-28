@@ -12,8 +12,8 @@
 #define __delay_us(x) _delay((unsigned long)((x)*(_XTAL_FREQ/4000000.0)))
 #define __delay_ms(x) _delay((unsigned long)((x)*(_XTAL_FREQ/4000.0)))
 
-char tlc_servo[16];
-char tlc_servo_temp[16];
+//char tlc_servo[16];
+//char tlc_servo_temp[16];
 
 
 void serial_send_data(char data)
@@ -79,7 +79,7 @@ void tlc_init()
     tlc_servo[12] = 0;
     tlc_servo[13] = 0;
     tlc_servo[14] = 0;
-    tlc_servo[15] = 235;
+    tlc_servo[15] = 0;
 
     //Send initial grayscale data
     for(char i = 0; i < 24; i++)
@@ -113,7 +113,7 @@ void tlc_update()
     //tlc_delay_ms(2);
     tlc_delay_us(1);
 
-    T2CONbits.TMR2ON = 0; //Turn off timer
+    //T2CONbits.TMR2ON = 0; //Turn off timer
     tlc_vprg = 0; //Grayscale input mode
     tlc_xlat = 0;
     tlc_blank = 0;
@@ -134,7 +134,7 @@ void tlc_update()
     tlc_xlat = 0;
     tlc_delay_us(1);
 
-    T2CONbits.TMR2ON = 1; //Turn timer back on
+    //T2CONbits.TMR2ON = 1; //Turn timer back on
 }
 
 /**************************************************************************
@@ -171,7 +171,7 @@ void tlc_write(char tlc_servo_number, char value)
     //tlc_delay_ms(2);
     tlc_delay_us(1);
 
-    T2CONbits.TMR2ON = 0; //Turn off timer
+    //T2CONbits.TMR2ON = 0; //Turn off timer
     tlc_vprg = 0; //Grayscale input mode
     tlc_xlat = 0;
     tlc_blank = 0;
@@ -192,7 +192,7 @@ void tlc_write(char tlc_servo_number, char value)
     tlc_xlat = 0;
     tlc_delay_us(1);
     
-    T2CONbits.TMR2ON = 1; //Turn timer back on
+    //T2CONbits.TMR2ON = 1; //Turn timer back on
     //end
 }
 
@@ -229,7 +229,7 @@ void tlc_sweep(char num_of_increments)
         //Update the tlc grayscale
         tlc_delay_us(1);
 
-        T2CONbits.TMR2ON = 0; //Turn off timer
+        //T2CONbits.TMR2ON = 0; //Turn off timer
         tlc_vprg = 0; //Grayscale input mode
         tlc_xlat = 0;
         tlc_blank = 0;
@@ -250,7 +250,9 @@ void tlc_sweep(char num_of_increments)
         tlc_xlat = 0;
         tlc_delay_us(1);
 
-        T2CONbits.TMR2ON = 1; //Turn timer back on
+        //T2CONbits.TMR2ON = 1; //Turn timer back on
+
+        tlc_delay_ms(50);
     }
 }
 
@@ -263,4 +265,7 @@ void tlc_sweep(char num_of_increments)
  
  Need to add for loop inside of tlc_init to update grayscale data with default
  user positions.
+
+ Need to make increments of 2 to work instead of just 5, then add different
+ speeds.
  */

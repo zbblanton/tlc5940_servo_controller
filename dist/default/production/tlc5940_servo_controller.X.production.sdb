@@ -400,14 +400,14 @@
 [v _INTCONbits INTCONbits `VES595  1 e 1 @4082 ]
 "24 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c
 [v _count count `VEi  1 e 2 0 ]
-"15 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c
+"29 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.h
 [v _tlc_servo tlc_servo `[16]uc  1 e 16 0 ]
-"16
+"30
 [v _tlc_servo_temp tlc_servo_temp `[16]uc  1 e 16 0 ]
 "77 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c
 [v _main main `(i  1 e 2 0 ]
 {
-"123
+"141
 } 0
 "111 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c
 [v _tlc_update tlc_update `(v  1 e 0 0 ]
@@ -417,6 +417,24 @@
 "121
 [v tlc_update@counter counter `uc  1 a 1 18 ]
 "138
+} 0
+"199
+[v _tlc_sweep tlc_sweep `(v  1 e 0 0 ]
+{
+[v tlc_sweep@num_of_increments num_of_increments `uc  1 a 1 wreg ]
+"238
+[v tlc_sweep@i_176 i `uc  1 a 1 22 ]
+"210
+[v tlc_sweep@i i `i  1 a 2 23 ]
+"237
+[v tlc_sweep@counter counter `uc  1 a 1 21 ]
+"205
+[v tlc_sweep@j j `i  1 a 2 18 ]
+"199
+[v tlc_sweep@num_of_increments num_of_increments `uc  1 a 1 wreg ]
+"205
+[v tlc_sweep@num_of_increments num_of_increments `uc  1 a 1 20 ]
+"257
 } 0
 "150
 [v _tlc_set tlc_set `(v  1 e 0 0 ]

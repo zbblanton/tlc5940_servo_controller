@@ -106,18 +106,36 @@ int main()
         delay_sec();
         LATDbits.LD3 = 0;
         delay_sec();
-        tlc_set(0, 0);
+
+        //test code        
+        tlc_set(0, 180);
         tlc_update();
+
         delay_sec();
         delay_sec();
         delay_sec();
         delay_sec();
 
-        tlc_set(0, 180);
-        tlc_update();
-        delay_sec();
-        delay_sec();
-        delay_sec();
-        delay_sec();
+        //tlc_set(0, 180);
+        //tlc_update();
+        tlc_servo_temp[0] = 130;
+        tlc_sweep(2);
+                delay_sec();
+        //end
+
+
+//        tlc_set(0, 0);
+//        tlc_update();
+//        delay_sec();
+//        delay_sec();
+//        delay_sec();
+//        delay_sec();
+//
+//        tlc_set(0, 180);
+//        tlc_update();
+//        delay_sec();
+//        delay_sec();
+//        delay_sec();
+//        delay_sec();
     }
 }

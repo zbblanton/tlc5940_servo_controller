@@ -207,12 +207,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S357 . . . . . . ]
 "6999
 [v _INTCONbits `VS357 ~T0 @X0 0 e@4082 ]
-"31 tlc5940.h
+"34 tlc5940.h
 [v _tlc_init `(v ~T0 @X0 0 ef ]
-"32
+"35
 [v _tlc_update `(v ~T0 @X0 0 ef ]
-"33
+"36
 [v _tlc_set `(v ~T0 @X0 0 ef2`uc`uc ]
+"40
+[v _tlc_sweep `(v ~T0 @X0 0 ef1`uc ]
 [; ;htc.h: 21: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 24: extern void __builtin_software_breakpoint(void);
 [; ;pic18f4520.h: 47: extern volatile unsigned char PORTA @ 0xF80;
@@ -3967,13 +3969,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 147: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 149: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 151: extern __nonreentrant void _delay3(unsigned char);
-[; ;tlc5940.h: 29: void serial_init();
-[; ;tlc5940.h: 30: void serial_send_data(char data);
-[; ;tlc5940.h: 31: void tlc_init();
-[; ;tlc5940.h: 32: void tlc_update();
-[; ;tlc5940.h: 33: void tlc_set(char channel_number, char value);
-[; ;tlc5940.h: 34: void tlc_write(char channel_number, char value);
-[; ;tlc5940.h: 37: void tlc_sweep(char num_of_increments);
+"29 tlc5940.h
+[v _tlc_servo `uc ~T0 @X0 -> 16 `i e ]
+[; ;tlc5940.h: 29: char tlc_servo[16];
+"30
+[v _tlc_servo_temp `uc ~T0 @X0 -> 16 `i e ]
+[; ;tlc5940.h: 30: char tlc_servo_temp[16];
+[; ;tlc5940.h: 32: void serial_init();
+[; ;tlc5940.h: 33: void serial_send_data(char data);
+[; ;tlc5940.h: 34: void tlc_init();
+[; ;tlc5940.h: 35: void tlc_update();
+[; ;tlc5940.h: 36: void tlc_set(char channel_number, char value);
+[; ;tlc5940.h: 37: void tlc_write(char channel_number, char value);
+[; ;tlc5940.h: 40: void tlc_sweep(char num_of_increments);
 "20 main.c
 [p x LVP=OFF ]
 "22
@@ -4024,9 +4032,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "32
 [e :UE 402 ]
 }
-[v F4159 `(v ~T0 @X0 1 tf ]
+[v F4161 `(v ~T0 @X0 1 tf ]
 "34
-[v _blank_pulse `IF4159 ~T0 @X0 1 e ]
+[v _blank_pulse `IF4161 ~T0 @X0 1 e ]
 "35
 {
 [; ;main.c: 34: void interrupt blank_pulse(void)
@@ -4230,50 +4238,41 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 108: delay_sec();
 "108
 [e ( _delay_sec ..  ]
-[; ;main.c: 109: tlc_set(0, 0);
-"109
-[e ( _tlc_set (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
-[; ;main.c: 110: tlc_update();
-"110
-[e ( _tlc_update ..  ]
-[; ;main.c: 111: delay_sec();
+[; ;main.c: 111: tlc_set(0, 180);
 "111
-[e ( _delay_sec ..  ]
-[; ;main.c: 112: delay_sec();
+[e ( _tlc_set (2 , -> -> 0 `i `uc -> -> 180 `i `uc ]
+[; ;main.c: 112: tlc_update();
 "112
-[e ( _delay_sec ..  ]
-[; ;main.c: 113: delay_sec();
-"113
-[e ( _delay_sec ..  ]
+[e ( _tlc_update ..  ]
 [; ;main.c: 114: delay_sec();
 "114
 [e ( _delay_sec ..  ]
-[; ;main.c: 116: tlc_set(0, 180);
+[; ;main.c: 115: delay_sec();
+"115
+[e ( _delay_sec ..  ]
+[; ;main.c: 116: delay_sec();
 "116
-[e ( _tlc_set (2 , -> -> 0 `i `uc -> -> 180 `i `uc ]
-[; ;main.c: 117: tlc_update();
+[e ( _delay_sec ..  ]
+[; ;main.c: 117: delay_sec();
 "117
-[e ( _tlc_update ..  ]
-[; ;main.c: 118: delay_sec();
-"118
 [e ( _delay_sec ..  ]
-[; ;main.c: 119: delay_sec();
-"119
-[e ( _delay_sec ..  ]
-[; ;main.c: 120: delay_sec();
-"120
-[e ( _delay_sec ..  ]
-[; ;main.c: 121: delay_sec();
+[; ;main.c: 121: tlc_servo_temp[0] = 130;
 "121
-[e ( _delay_sec ..  ]
+[e = *U + &U _tlc_servo_temp * -> -> -> 0 `i `ui `ux -> -> # *U &U _tlc_servo_temp `ui `ux -> -> 130 `i `uc ]
+[; ;main.c: 122: tlc_sweep(2);
 "122
+[e ( _tlc_sweep (1 -> -> 2 `i `uc ]
+[; ;main.c: 123: delay_sec();
+"123
+[e ( _delay_sec ..  ]
+"140
 }
 [e :U 412 ]
 "103
 [e $U 413  ]
 [e :U 414 ]
-[; ;main.c: 122: }
-[; ;main.c: 123: }
-"123
+[; ;main.c: 140: }
+[; ;main.c: 141: }
+"141
 [e :UE 411 ]
 }
