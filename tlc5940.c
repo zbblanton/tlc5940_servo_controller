@@ -16,11 +16,43 @@
 //char tlc_servo_temp[16];
 
 
-void serial_send_data(char data)
+void tlc_spi_init()
+{
+    SSPSTATbits.SMP = 0; //Input data sampled at middle of data output time
+    SSPSTATbits.CKE = 1; //Transmit on transition from active to Idle clock state
+    SSPCON1bits.CKP = 0; //Idle state for clock is a low level
+    SSPCON1bits.SSPM0 = 0;//Sets SPI in master mode and sets clock to FOSC/4
+    SSPCON1bits.SSPM1 = 0;
+    SSPCON1bits.SSPM2 = 0;
+    SSPCON1bits.SSPM3 = 0;
+    SSPCON1bits.SSPEN = 1; //Enables the serial port
+
+    tlc_spi_output = 0; //Set SDO to ouput
+    tlc_spi_clock = 0; //Set SCK to output
+}
+
+void tlc_spi_send_data(char data)
 {
     SSPBUF = data; //Loads data into SSPBUF reg
     //tlc_delay_ms(1);
-    tlc_delay_us(1); //Testing a much faster delay
+    tlc_delay_us(2); //Testing a much faster delay
+}
+
+void tlc_TMR2_init()
+{
+    //Set to 100,000hz with 50% duty cycle. Prescaler is 4. Post scale is 16.
+    PR2 = 0b00000100;
+    T2CON = 0b01111101;
+    CCPR1L = 0b00000010;
+    CCP1CON = 0b00101100;
+    TRISC = 0b00000000;
+    PORTC = 0b00000000;
+
+    PIE1bits.TMR2IE = 1;
+    INTCONbits.PEIE = 1;
+    INTCONbits.GIE = 1;
+
+    T2CONbits.TMR2ON = 0; //Turn Timer off
 }
 
 /**************************************************************************
@@ -64,7 +96,9 @@ void tlc_init()
 
     //Initialize the default servo position
     //Change values to your desired default servo position
-    tlc_servo[0] = 235;
+    //Be sure to add 55 to the value, ex default position is
+    //180 degrees then the value should be 235
+    tlc_servo[0] = 0;
     tlc_servo[1] = 0;
     tlc_servo[2] = 0;
     tlc_servo[3] = 0;
@@ -77,18 +111,28 @@ void tlc_init()
     tlc_servo[10] = 0;
     tlc_servo[11] = 0;
     tlc_servo[12] = 0;
-    tlc_servo[13] = 0;
-    tlc_servo[14] = 0;
-    tlc_servo[15] = 0;
+    tlc_servo[13] = 145;
+    tlc_servo[14] = 185;
+    tlc_servo[15] = 230;
 
-    //Send initial grayscale data
-    for(char i = 0; i < 24; i++)
+    //Copy initial servo positions to temp
+    for(int i = 0; i < 16; i++)
     {
-        tlc_send_data(0b00000000);
+        tlc_servo_temp[i] = tlc_servo[i];
+    }
+
+    //Send default servo positions.
+    char counter = 0;
+    for(char i = 15; i > 7; i--)
+    {
+        tlc_send_data(tlc_servo[i - counter]>>4);
+        tlc_send_data(tlc_servo[i - counter]<<4);
+        tlc_send_data(tlc_servo[i - (counter + 1)]);
+        counter++;
     }
 
     //Testing faster toggle speeds
-    tlc_delay_us(1);
+    tlc_delay_us(3);
     tlc_xlat = 1;
     tlc_delay_us(1);
     tlc_xlat = 0;
@@ -96,6 +140,8 @@ void tlc_init()
 
     tlc_send_data(0b10000000);//one clock pulse for first grayscale
     //end
+
+    T2CONbits.TMR2ON = 1;
 }
 
 /**************************************************************************
@@ -119,11 +165,11 @@ void tlc_update()
     tlc_blank = 0;
 
     char counter = 0;
-    for(char i = 0; i < 8; i++)
+    for(char i = 15; i > 7; i--)
     {
-        tlc_send_data(tlc_servo[i + counter]>>4);
-        tlc_send_data(tlc_servo[i + counter]<<4);
-        tlc_send_data(tlc_servo[i + (counter + 1)]);
+        tlc_send_data(tlc_servo[i - counter]>>4);
+        tlc_send_data(tlc_servo[i - counter]<<4);
+        tlc_send_data(tlc_servo[i - (counter + 1)]);
         counter++;
     }
 
@@ -150,7 +196,7 @@ Remarks     : This function ONLY updates the selected servo position variable,
 void tlc_set(char tlc_servo_number, char value) //Value between 0 and 180
 {
     tlc_servo[tlc_servo_number] = value + 55;
-    //tlc_servo_temp[tlc_servo_number] = value + 55;
+    tlc_servo_temp[tlc_servo_number] = value + 55;
 }
 
 /**************************************************************************
@@ -166,6 +212,7 @@ Remarks     : This is different from tlc_set. This function sets the servo
 void tlc_write(char tlc_servo_number, char value)
 {
     tlc_servo[tlc_servo_number] = value + 55; //Set the servo
+    tlc_servo_temp[tlc_servo_number] = value + 55;
 
     //Update the tlc grayscale
     //tlc_delay_ms(2);
@@ -177,11 +224,11 @@ void tlc_write(char tlc_servo_number, char value)
     tlc_blank = 0;
 
     char counter = 0;
-    for(char i = 0; i < 8; i++)
+    for(char i = 15; i > 7; i--)
     {
-        tlc_send_data(tlc_servo[i + counter]>>4);
-        tlc_send_data(tlc_servo[i + counter]<<4);
-        tlc_send_data(tlc_servo[i + (counter + 1)]);
+        tlc_send_data(tlc_servo[i - counter]>>4);
+        tlc_send_data(tlc_servo[i - counter]<<4);
+        tlc_send_data(tlc_servo[i - (counter + 1)]);
         counter++;
     }
 
@@ -196,12 +243,13 @@ void tlc_write(char tlc_servo_number, char value)
     //end
 }
 
-void tlc_sweep(char num_of_increments)
+void tlc_sweep_set(char tlc_servo_number, char value) //Value between 0 and 180
 {
-    //NEED TO GO CHANGE FUNCTIONS TO REFLECT TEMP SERVO POS INSTEAD.
+    tlc_servo_temp[tlc_servo_number] = value + 55;
+}
 
-   //tlc_servo[tlc_servo_number] = value + 55; //Set the servo
-
+void tlc_sweep_update(char num_of_increments)
+{
     int j = 0;
     while(j != 16) //Means all servo positions are equal to temp positions.
     {
@@ -235,11 +283,11 @@ void tlc_sweep(char num_of_increments)
         tlc_blank = 0;
 
         char counter = 0;
-        for(char i = 0; i < 8; i++)
+        for(char i = 15; i > 7; i--)
         {
-            tlc_send_data(tlc_servo[i + counter]>>4);
-            tlc_send_data(tlc_servo[i + counter]<<4);
-            tlc_send_data(tlc_servo[i + (counter + 1)]);
+            tlc_send_data(tlc_servo[i - counter]>>4);
+            tlc_send_data(tlc_servo[i - counter]<<4);
+            tlc_send_data(tlc_servo[i - (counter + 1)]);
             counter++;
         }
 
@@ -257,14 +305,7 @@ void tlc_sweep(char num_of_increments)
 }
 
 /*
- Use for loop above as a all in one loop.
- Use loop to update all channals at once, depending on which i count it is on
- possibly make a global temp_tlc_servo so that we dont have to reintiaze it
- on every call of the funciton. Have an if statement in the for loop to check
- if new value is different from old, if so then set new value.
- 
- Need to add for loop inside of tlc_init to update grayscale data with default
- user positions.
+ TODO!!
 
  Need to make increments of 2 to work instead of just 5, then add different
  speeds.

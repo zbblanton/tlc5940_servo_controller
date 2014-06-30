@@ -47,33 +47,6 @@ void interrupt blank_pulse(void)
     }
 }
 
-void spi_init()
-{
-    SSPSTATbits.SMP = 0; //Input data sampled at middle of data output time
-    SSPSTATbits.CKE = 1; //Transmit on transition from active to Idle clock state
-    SSPCON1bits.CKP = 0; //Idle state for clock is a low level
-    SSPCON1bits.SSPM0 = 0;//Sets SPI in master mode and sets clock to FOSC/4
-    SSPCON1bits.SSPM1 = 0;
-    SSPCON1bits.SSPM2 = 0;
-    SSPCON1bits.SSPM3 = 0;
-    SSPCON1bits.SSPEN = 1; //Enables the serial port
-
-    TRISCbits.RC5 = 0; //Set SDO to ouput
-    TRISCbits.RC3 = 0; //Set SCK to output
-}
-
-void TMR2_init()
-{
-    //Set to 100,000hz with 50% duty cycle. Prescaler is 4. Post scale is 16.
-    PR2 = 0b00000100;
-    T2CON = 0b01111101;
-    CCPR1L = 0b00000010;
-    CCP1CON = 0b00101100;
-    TRISC = 0b00000000;
-    PORTC = 0b00000000;
-    T2CONbits.TMR2ON = 0; //Turn Timer off
-}
-
 int main()
 {
     TRISD = 0b00000000;
@@ -85,21 +58,11 @@ int main()
     TRISE = 0b00001000;
     PORTE = 0b00000000;
 
-    TMR2_init();
     count = 0;
-
-    PIE1bits.TMR2IE = 1;
-    INTCONbits.PEIE = 1;
-    INTCONbits.GIE = 1;
-    T2CONbits.TMR2ON = 0; //Turn Timer on
-
-    spi_init();
-    //init_dot_correction();
-    //init_grayscale();
+    tlc_TMR2_init();
+    tlc_spi_init();
     tlc_init();
-    tlc_update();
 
-    T2CONbits.TMR2ON = 1; //Turn Timer on
     while(1)
     {
         LATDbits.LD3 = 1;
@@ -107,8 +70,10 @@ int main()
         LATDbits.LD3 = 0;
         delay_sec();
 
-        //test code        
-        tlc_set(0, 180);
+        //test code
+        tlc_set(15, 175);
+        tlc_set(14, 130);
+        tlc_set(13, 90);
         tlc_update();
 
         delay_sec();
@@ -116,26 +81,30 @@ int main()
         delay_sec();
         delay_sec();
 
-        //tlc_set(0, 180);
-        //tlc_update();
-        tlc_servo_temp[0] = 130;
-        tlc_sweep(2);
-                delay_sec();
+        //test code
+        tlc_set(15, 175);
+        tlc_set(14, 115);
+        tlc_set(13, 110);
+        tlc_update();
+
+        delay_sec();
+        delay_sec();
+        delay_sec();
+        delay_sec();
+
+        tlc_sweep_set(15,160);
+        tlc_sweep_set(14,100);
+        tlc_sweep_set(13,30);
+        tlc_sweep_update(5);
+
+        delay_sec();
+        delay_sec();
+        delay_sec();
+        delay_sec();
+
+        tlc_write(14, 125);
+        delay_sec();
+        delay_sec();
         //end
-
-
-//        tlc_set(0, 0);
-//        tlc_update();
-//        delay_sec();
-//        delay_sec();
-//        delay_sec();
-//        delay_sec();
-//
-//        tlc_set(0, 180);
-//        tlc_update();
-//        delay_sec();
-//        delay_sec();
-//        delay_sec();
-//        delay_sec();
     }
 }

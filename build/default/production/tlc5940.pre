@@ -4994,19 +4994,21 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 29 "tlc5940.h"
+# 31 "tlc5940.h"
 char tlc_servo[16];
 char tlc_servo_temp[16];
 
-void serial_init();
-void serial_send_data(char data);
+void tlc_spi_init();
+void tlc_spi_send_data(char data);
+void tlc_TMR2_init();
 void tlc_init();
 void tlc_update();
 void tlc_set(char channel_number, char value);
 void tlc_write(char channel_number, char value);
 
 
-void tlc_sweep(char num_of_increments);
+void tlc_sweep_set(char channel_number, char value);
+void tlc_sweep_update(char num_of_increments);
 
 # 13 "D:\Program Files (x86)\Microchip\xc8\v1.32\include\stdint.h"
 typedef signed char int8_t;
@@ -5099,14 +5101,46 @@ typedef int16_t intptr_t;
 typedef uint16_t uintptr_t;
 
 # 19 "tlc5940.c"
-void serial_send_data(char data)
+void tlc_spi_init()
+{
+SSPSTATbits.SMP = 0;
+SSPSTATbits.CKE = 1;
+SSPCON1bits.CKP = 0;
+SSPCON1bits.SSPM0 = 0;
+SSPCON1bits.SSPM1 = 0;
+SSPCON1bits.SSPM2 = 0;
+SSPCON1bits.SSPM3 = 0;
+SSPCON1bits.SSPEN = 1;
+
+TRISCbits.RC5 = 0;
+TRISCbits.RC3 = 0;
+}
+
+void tlc_spi_send_data(char data)
 {
 SSPBUF = data;
 
-_delay((unsigned long)((1)*(8000000/4000000.0)));
+_delay((unsigned long)((2)*(8000000/4000000.0)));
 }
 
-# 36
+void tlc_TMR2_init()
+{
+
+PR2 = 0b00000100;
+T2CON = 0b01111101;
+CCPR1L = 0b00000010;
+CCP1CON = 0b00101100;
+TRISC = 0b00000000;
+PORTC = 0b00000000;
+
+PIE1bits.TMR2IE = 1;
+INTCONbits.PEIE = 1;
+INTCONbits.GIE = 1;
+
+T2CONbits.TMR2ON = 0;
+}
+
+# 68
 void tlc_init()
 {
 
@@ -5117,7 +5151,7 @@ _delay((unsigned long)((2)*(8000000/4000.0)));
 
 for(char i = 0; i < 12; i++)
 {
-serial_send_data(0b11111111);
+tlc_spi_send_data(0b11111111);
 }
 
 
@@ -5136,9 +5170,8 @@ LATDbits.LD1 = 0;
 LATDbits.LD0 = 0;
 LATDbits.LD2 = 0;
 
-
-
-tlc_servo[0] = 235;
+# 101
+tlc_servo[0] = 0;
 tlc_servo[1] = 0;
 tlc_servo[2] = 0;
 tlc_servo[3] = 0;
@@ -5151,28 +5184,40 @@ tlc_servo[9] = 0;
 tlc_servo[10] = 0;
 tlc_servo[11] = 0;
 tlc_servo[12] = 0;
-tlc_servo[13] = 0;
-tlc_servo[14] = 0;
-tlc_servo[15] = 0;
+tlc_servo[13] = 145;
+tlc_servo[14] = 185;
+tlc_servo[15] = 230;
 
 
-for(char i = 0; i < 24; i++)
+for(int i = 0; i < 16; i++)
 {
-serial_send_data(0b00000000);
+tlc_servo_temp[i] = tlc_servo[i];
 }
 
 
-_delay((unsigned long)((1)*(8000000/4000000.0)));
+char counter = 0;
+for(char i = 15; i > 7; i--)
+{
+tlc_spi_send_data(tlc_servo[i - counter]>>4);
+tlc_spi_send_data(tlc_servo[i - counter]<<4);
+tlc_spi_send_data(tlc_servo[i - (counter + 1)]);
+counter++;
+}
+
+
+_delay((unsigned long)((3)*(8000000/4000000.0)));
 LATDbits.LD0 = 1;
 _delay((unsigned long)((1)*(8000000/4000000.0)));
 LATDbits.LD0 = 0;
 _delay((unsigned long)((1)*(8000000/4000000.0)));
 
-serial_send_data(0b10000000);
+tlc_spi_send_data(0b10000000);
 
+
+T2CONbits.TMR2ON = 1;
 }
 
-# 111
+# 157
 void tlc_update()
 {
 
@@ -5184,11 +5229,11 @@ LATDbits.LD0 = 0;
 LATDbits.LD2 = 0;
 
 char counter = 0;
-for(char i = 0; i < 8; i++)
+for(char i = 15; i > 7; i--)
 {
-serial_send_data(tlc_servo[i + counter]>>4);
-serial_send_data(tlc_servo[i + counter]<<4);
-serial_send_data(tlc_servo[i + (counter + 1)]);
+tlc_spi_send_data(tlc_servo[i - counter]>>4);
+tlc_spi_send_data(tlc_servo[i - counter]<<4);
+tlc_spi_send_data(tlc_servo[i - (counter + 1)]);
 counter++;
 }
 
@@ -5202,17 +5247,18 @@ _delay((unsigned long)((1)*(8000000/4000000.0)));
 
 }
 
-# 150
+# 196
 void tlc_set(char tlc_servo_number, char value)
 {
 tlc_servo[tlc_servo_number] = value + 55;
-
+tlc_servo_temp[tlc_servo_number] = value + 55;
 }
 
-# 166
+# 212
 void tlc_write(char tlc_servo_number, char value)
 {
 tlc_servo[tlc_servo_number] = value + 55;
+tlc_servo_temp[tlc_servo_number] = value + 55;
 
 
 
@@ -5224,11 +5270,11 @@ LATDbits.LD0 = 0;
 LATDbits.LD2 = 0;
 
 char counter = 0;
-for(char i = 0; i < 8; i++)
+for(char i = 15; i > 7; i--)
 {
-serial_send_data(tlc_servo[i + counter]>>4);
-serial_send_data(tlc_servo[i + counter]<<4);
-serial_send_data(tlc_servo[i + (counter + 1)]);
+tlc_spi_send_data(tlc_servo[i - counter]>>4);
+tlc_spi_send_data(tlc_servo[i - counter]<<4);
+tlc_spi_send_data(tlc_servo[i - (counter + 1)]);
 counter++;
 }
 
@@ -5243,12 +5289,13 @@ _delay((unsigned long)((1)*(8000000/4000000.0)));
 
 }
 
-void tlc_sweep(char num_of_increments)
+void tlc_sweep_set(char tlc_servo_number, char value)
 {
+tlc_servo_temp[tlc_servo_number] = value + 55;
+}
 
-
-
-
+void tlc_sweep_update(char num_of_increments)
+{
 int j = 0;
 while(j != 16)
 {
@@ -5282,11 +5329,11 @@ LATDbits.LD0 = 0;
 LATDbits.LD2 = 0;
 
 char counter = 0;
-for(char i = 0; i < 8; i++)
+for(char i = 15; i > 7; i--)
 {
-serial_send_data(tlc_servo[i + counter]>>4);
-serial_send_data(tlc_servo[i + counter]<<4);
-serial_send_data(tlc_servo[i + (counter + 1)]);
+tlc_spi_send_data(tlc_servo[i - counter]>>4);
+tlc_spi_send_data(tlc_servo[i - counter]<<4);
+tlc_spi_send_data(tlc_servo[i - (counter + 1)]);
 counter++;
 }
 

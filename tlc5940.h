@@ -22,25 +22,28 @@
 #define tlc_delay_ms __delay_ms
 #define tlc_delay_us __delay_us
 
-//Custom serial write function name.
+//Custom serial functions name.
 //Change to whatever your serial write function name is.
-#define tlc_send_data serial_send_data
+#define tlc_spi_output TRISCbits.RC5
+#define tlc_spi_clock TRISCbits.RC3
+#define tlc_send_data tlc_spi_send_data
 
 char tlc_servo[16];
 char tlc_servo_temp[16];
 
-void serial_init();
-void serial_send_data(char data);
+void tlc_spi_init();
+void tlc_spi_send_data(char data);
+void tlc_TMR2_init();
 void tlc_init();
 void tlc_update();
 void tlc_set(char channel_number, char value);
 void tlc_write(char channel_number, char value);
 
 //Version 1.1 functions in development
-void tlc_sweep(char num_of_increments);
+void tlc_sweep_set(char channel_number, char value);
+void tlc_sweep_update(char num_of_increments);
 
-//Future functions
-//void tlc_sweep(char channel_number, char sweep_type, int num_of_increment);
+//Possible future functions
 //void tlc_start();
 //void tlc_stop();
 
