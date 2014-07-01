@@ -83,7 +83,7 @@ int main()
         tlc_sweep_set(15,160);
         tlc_sweep_set(14,100);
         tlc_sweep_set(13,30);
-        tlc_sweep_update(5);
+        tlc_sweep_update(2);
 
         delay_sec();
         delay_sec();

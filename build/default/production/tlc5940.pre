@@ -5009,99 +5009,10 @@ void tlc_write(char channel_number, char value);
 
 
 void tlc_sweep_set(char channel_number, char value);
-void tlc_sweep_update(char num_of_increments);
+void tlc_sweep_update(int speed);
+void tlc_sweep_delay(int count);
 
-# 13 "D:\Program Files (x86)\Microchip\xc8\v1.32\include\stdint.h"
-typedef signed char int8_t;
-
-# 20
-typedef signed int int16_t;
-
-# 28
-typedef signed short long int int24_t;
-
-# 36
-typedef signed long int int32_t;
-
-# 43
-typedef unsigned char uint8_t;
-
-# 49
-typedef unsigned int uint16_t;
-
-# 56
-typedef unsigned short long int uint24_t;
-
-# 63
-typedef unsigned long int uint32_t;
-
-# 71
-typedef signed char int_least8_t;
-
-# 78
-typedef signed int int_least16_t;
-
-# 90
-typedef signed short long int int_least24_t;
-
-# 98
-typedef signed long int int_least32_t;
-
-# 105
-typedef unsigned char uint_least8_t;
-
-# 111
-typedef unsigned int uint_least16_t;
-
-# 121
-typedef unsigned short long int uint_least24_t;
-
-# 128
-typedef unsigned long int uint_least32_t;
-
-# 137
-typedef signed char int_fast8_t;
-
-# 144
-typedef signed int int_fast16_t;
-
-# 156
-typedef signed short long int int_fast24_t;
-
-# 164
-typedef signed long int int_fast32_t;
-
-# 171
-typedef unsigned char uint_fast8_t;
-
-# 177
-typedef unsigned int uint_fast16_t;
-
-# 187
-typedef unsigned short long int uint_fast24_t;
-
-# 194
-typedef unsigned long int uint_fast32_t;
-
-# 200
-typedef int32_t intmax_t;
-
-
-
-
-typedef uint32_t uintmax_t;
-
-
-
-
-typedef int16_t intptr_t;
-
-
-
-
-typedef uint16_t uintptr_t;
-
-# 19 "tlc5940.c"
+# 25 "tlc5940.c"
 void tlc_spi_init()
 {
 SSPSTATbits.SMP = 0;
@@ -5139,7 +5050,7 @@ INTCONbits.GIE = 1;
 T2CONbits.TMR2ON = 0;
 }
 
-# 66
+# 72
 void tlc_init()
 {
 
@@ -5177,7 +5088,7 @@ LATDbits.LD1 = 0;
 LATDbits.LD0 = 0;
 LATDbits.LD2 = 0;
 
-# 107
+# 113
 tlc_servo[0] = 0;
 tlc_servo[1] = 0;
 tlc_servo[2] = 0;
@@ -5224,7 +5135,7 @@ tlc_spi_send_data(0b10000000);
 T2CONbits.TMR2ON = 1;
 }
 
-# 163
+# 169
 void tlc_update()
 {
 
@@ -5254,14 +5165,14 @@ _delay((unsigned long)((1)*(8000000/4000000.0)));
 
 }
 
-# 202
+# 208
 void tlc_set(char tlc_servo_number, char value)
 {
 tlc_servo[tlc_servo_number] = value + 55;
 tlc_servo_temp[tlc_servo_number] = value + 55;
 }
 
-# 218
+# 224
 void tlc_write(char tlc_servo_number, char value)
 {
 tlc_servo[tlc_servo_number] = value + 55;
@@ -5296,13 +5207,37 @@ _delay((unsigned long)((1)*(8000000/4000000.0)));
 
 }
 
+
+void tlc_sweep_delay(int count)
+{
+while(count != 0)
+{
+_delay((unsigned long)((1)*(8000000/4000.0)));
+count--;
+}
+}
+
 void tlc_sweep_set(char tlc_servo_number, char value)
 {
 tlc_servo_temp[tlc_servo_number] = value + 55;
 }
 
-void tlc_sweep_update(char num_of_increments)
+void tlc_sweep_update(int speed)
 {
+
+if(speed <= 1)
+{
+speed = 100;
+}
+else if(speed == 2)
+{
+speed = 50;
+}
+else if(speed >= 3)
+{
+speed = 10;
+}
+
 int j = 0;
 while(j != 16)
 {
@@ -5314,11 +5249,11 @@ if(tlc_servo_temp[i] != tlc_servo[i])
 {
 if(tlc_servo_temp[i] > tlc_servo[i])
 {
-tlc_servo[i] = tlc_servo[i] + num_of_increments;
+tlc_servo[i] = tlc_servo[i] + 5;
 }
 else
 {
-tlc_servo[i] = tlc_servo[i] - num_of_increments;
+tlc_servo[i] = tlc_servo[i] - 5;
 }
 }
 else
@@ -5352,8 +5287,7 @@ LATDbits.LD0 = 0;
 _delay((unsigned long)((1)*(8000000/4000000.0)));
 
 
-
-_delay((unsigned long)((50)*(8000000/4000.0)));
+tlc_sweep_delay(speed);
 }
 }
 

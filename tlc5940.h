@@ -50,7 +50,8 @@ void tlc_write(char channel_number, char value);
 
 //Version 1.1 functions in development
 void tlc_sweep_set(char channel_number, char value);
-void tlc_sweep_update(char num_of_increments);
+void tlc_sweep_update(int speed);
+void tlc_sweep_delay(int count);
 
 //Possible future functions
 //void tlc_start();

@@ -6,11 +6,17 @@
  */
 
 #include "tlc5940.h"
-#include <stdint.h>
 
+#ifndef _XTAL_FREQ
 #define _XTAL_FREQ 8000000
+#endif
+#ifndef __delay_us(x)
 #define __delay_us(x) _delay((unsigned long)((x)*(_XTAL_FREQ/4000000.0)))
+#endif
+#ifndef __delay_ms(x)
 #define __delay_ms(x) _delay((unsigned long)((x)*(_XTAL_FREQ/4000.0)))
+#endif
+
 
 //char tlc_servo[16];
 //char tlc_servo_temp[16];
@@ -249,13 +255,37 @@ void tlc_write(char tlc_servo_number, char value)
     //end
 }
 
+//Nasty temp delay function until I have a better solution
+void tlc_sweep_delay(int count)
+{
+    while(count != 0)
+    {
+        tlc_delay_ms(1);
+        count--;
+    }
+}
+
 void tlc_sweep_set(char tlc_servo_number, char value) //Value between 0 and 180
 {
     tlc_servo_temp[tlc_servo_number] = value + 55;
 }
 
-void tlc_sweep_update(char num_of_increments)
+void tlc_sweep_update(int speed) //1 slow, 2 medium, 3 fast
 {
+    //Nasty temp if statements for variable delay until better solution
+    if(speed <= 1)
+    {
+        speed = 100;
+    }
+    else if(speed == 2)
+    {
+        speed = 50;
+    }
+    else if(speed >= 3)
+    {
+        speed = 10;
+    }
+
     int j = 0;
     while(j != 16) //Means all servo positions are equal to temp positions.
     {
@@ -267,11 +297,11 @@ void tlc_sweep_update(char num_of_increments)
             {
                 if(tlc_servo_temp[i] > tlc_servo[i]) //Greater than
                 {
-                    tlc_servo[i] = tlc_servo[i] + num_of_increments;
+                    tlc_servo[i] = tlc_servo[i] + 5;
                 }
                 else //Must be less than
                 {
-                    tlc_servo[i] = tlc_servo[i] - num_of_increments;
+                    tlc_servo[i] = tlc_servo[i] - 5;
                 }
             }
             else //Means its equal
@@ -305,8 +335,7 @@ void tlc_sweep_update(char num_of_increments)
         tlc_delay_us(1);
 
         //T2CONbits.TMR2ON = 1; //Turn timer back on
-
-        tlc_delay_ms(50);
+        tlc_sweep_delay(speed);
     }
 }
 

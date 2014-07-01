@@ -131,23 +131,25 @@
 [v _tlc_interrupt_blank tlc_interrupt_blank `II(v  1 e 0 0 ]
 "48
 [v _main main `(i  1 e 2 0 ]
-"19 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c
+"25 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c
 [v _tlc_spi_init tlc_spi_init `(v  1 e 0 0 ]
-"34
-[v _tlc_spi_send_data tlc_spi_send_data `(v  1 e 0 0 ]
 "40
+[v _tlc_spi_send_data tlc_spi_send_data `(v  1 e 0 0 ]
+"46
 [v _tlc_pwm_init tlc_pwm_init `(v  1 e 0 0 ]
-"66
+"72
 [v _tlc_init tlc_init `(v  1 e 0 0 ]
-"163
+"169
 [v _tlc_update tlc_update `(v  1 e 0 0 ]
-"202
+"208
 [v _tlc_set tlc_set `(v  1 e 0 0 ]
-"218
+"224
 [v _tlc_write tlc_write `(v  1 e 0 0 ]
-"252
+"259
+[v _tlc_sweep_delay tlc_sweep_delay `(v  1 e 0 0 ]
+"268
 [v _tlc_sweep_set tlc_sweep_set `(v  1 e 0 0 ]
-"257
+"273
 [v _tlc_sweep_update tlc_sweep_update `(v  1 e 0 0 ]
 [s S461 . 1 `uc 1 LATD0 1 0 :1:0 
 `uc 1 LATD1 1 0 :1:1 
@@ -393,99 +395,102 @@
 {
 "98
 } 0
-"218 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c
+"224 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c
 [v _tlc_write tlc_write `(v  1 e 0 0 ]
 {
 [v tlc_write@tlc_servo_number tlc_servo_number `uc  1 a 1 wreg ]
-"233
+"239
 [v tlc_write@i i `uc  1 a 1 23 ]
-"232
+"238
 [v tlc_write@counter counter `uc  1 a 1 22 ]
-"218
+"224
 [v tlc_write@tlc_servo_number tlc_servo_number `uc  1 a 1 wreg ]
 [v tlc_write@value value `uc  1 p 1 15 ]
-"220
+"226
 [v tlc_write@tlc_servo_number tlc_servo_number `uc  1 a 1 21 ]
-"250
+"256
 } 0
-"163
+"169
 [v _tlc_update tlc_update `(v  1 e 0 0 ]
 {
-"174
+"180
 [v tlc_update@i i `uc  1 a 1 21 ]
-"173
+"179
 [v tlc_update@counter counter `uc  1 a 1 20 ]
-"190
+"196
 } 0
-"257
+"273
 [v _tlc_sweep_update tlc_sweep_update `(v  1 e 0 0 ]
 {
-[v tlc_sweep_update@num_of_increments num_of_increments `uc  1 a 1 wreg ]
-"292
-[v tlc_sweep_update@i_625 i `uc  1 a 1 24 ]
-"264
-[v tlc_sweep_update@i i `i  1 a 2 25 ]
-"291
-[v tlc_sweep_update@counter counter `uc  1 a 1 23 ]
-"259
-[v tlc_sweep_update@j j `i  1 a 2 20 ]
-"257
-[v tlc_sweep_update@num_of_increments num_of_increments `uc  1 a 1 wreg ]
-"259
-[v tlc_sweep_update@num_of_increments num_of_increments `uc  1 a 1 22 ]
-"311
+"322
+[v tlc_sweep_update@i_627 i `uc  1 a 1 27 ]
+"294
+[v tlc_sweep_update@i i `i  1 a 2 28 ]
+"321
+[v tlc_sweep_update@counter counter `uc  1 a 1 26 ]
+"289
+[v tlc_sweep_update@j j `i  1 a 2 24 ]
+"273
+[v tlc_sweep_update@speed speed `i  1 p 2 17 ]
+"340
 } 0
-"252
+"259
+[v _tlc_sweep_delay tlc_sweep_delay `(v  1 e 0 0 ]
+{
+[v tlc_sweep_delay@count count `i  1 p 2 14 ]
+"266
+} 0
+"268
 [v _tlc_sweep_set tlc_sweep_set `(v  1 e 0 0 ]
 {
 [v tlc_sweep_set@tlc_servo_number tlc_servo_number `uc  1 a 1 wreg ]
 [v tlc_sweep_set@tlc_servo_number tlc_servo_number `uc  1 a 1 wreg ]
 [v tlc_sweep_set@value value `uc  1 p 1 14 ]
-"254
+"270
 [v tlc_sweep_set@tlc_servo_number tlc_servo_number `uc  1 a 1 15 ]
-"255
+"271
 } 0
-"19
+"25
 [v _tlc_spi_init tlc_spi_init `(v  1 e 0 0 ]
 {
-"32
+"38
 } 0
-"202
+"208
 [v _tlc_set tlc_set `(v  1 e 0 0 ]
 {
 [v tlc_set@tlc_servo_number tlc_servo_number `uc  1 a 1 wreg ]
 [v tlc_set@tlc_servo_number tlc_servo_number `uc  1 a 1 wreg ]
 [v tlc_set@value value `uc  1 p 1 14 ]
-"204
+"210
 [v tlc_set@tlc_servo_number tlc_servo_number `uc  1 a 1 15 ]
-"206
+"212
 } 0
-"40
+"46
 [v _tlc_pwm_init tlc_pwm_init `(v  1 e 0 0 ]
 {
-"54
+"60
 } 0
-"66
+"72
 [v _tlc_init tlc_init `(v  1 e 0 0 ]
 {
-"132
+"138
 [v tlc_init@i_605 i `uc  1 a 1 24 ]
-"125
-[v tlc_init@i_603 i `i  1 a 2 22 ]
-"82
-[v tlc_init@i i `uc  1 a 1 20 ]
 "131
+[v tlc_init@i_603 i `i  1 a 2 22 ]
+"88
+[v tlc_init@i i `uc  1 a 1 20 ]
+"137
 [v tlc_init@counter counter `uc  1 a 1 21 ]
-"151
+"157
 } 0
-"34
+"40
 [v _tlc_spi_send_data tlc_spi_send_data `(v  1 e 0 0 ]
 {
 [v tlc_spi_send_data@data data `uc  1 a 1 wreg ]
 [v tlc_spi_send_data@data data `uc  1 a 1 wreg ]
-"36
+"42
 [v tlc_spi_send_data@data data `uc  1 a 1 14 ]
-"38
+"44
 } 0
 "24 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c
 [v _delay_sec delay_sec `(v  1 e 0 0 ]

@@ -77,7 +77,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "52
 [v _tlc_sweep_set `(v ~T0 @X0 0 ef2`uc`uc ]
 "53
-[v _tlc_sweep_update `(v ~T0 @X0 0 ef1`uc ]
+[v _tlc_sweep_update `(v ~T0 @X0 0 ef1`i ]
 "49
 [v _tlc_write `(v ~T0 @X0 0 ef2`uc`uc ]
 [; ;htc.h: 21: extern const char __xc8_OPTIM_SPEED;
@@ -3851,7 +3851,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tlc5940.h: 48: void tlc_set(char channel_number, char value);
 [; ;tlc5940.h: 49: void tlc_write(char channel_number, char value);
 [; ;tlc5940.h: 52: void tlc_sweep_set(char channel_number, char value);
-[; ;tlc5940.h: 53: void tlc_sweep_update(char num_of_increments);
+[; ;tlc5940.h: 53: void tlc_sweep_update(int speed);
+[; ;tlc5940.h: 54: void tlc_sweep_delay(int count);
 "20 main.c
 [p x LVP=OFF ]
 "22
@@ -3899,9 +3900,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "30
 [e :UE 402 ]
 }
-[v F4165 `(v ~T0 @X0 1 tf ]
+[v F4167 `(v ~T0 @X0 1 tf ]
 "32
-[v _tlc_interrupt_blank `IF4165 ~T0 @X0 1 e ]
+[v _tlc_interrupt_blank `IF4167 ~T0 @X0 1 e ]
 "33
 {
 [; ;main.c: 32: void interrupt tlc_interrupt_blank(void)
@@ -4042,9 +4043,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 85: tlc_sweep_set(13,30);
 "85
 [e ( _tlc_sweep_set (2 , -> -> 13 `i `uc -> -> 30 `i `uc ]
-[; ;main.c: 86: tlc_sweep_update(5);
+[; ;main.c: 86: tlc_sweep_update(2);
 "86
-[e ( _tlc_sweep_update (1 -> -> 5 `i `uc ]
+[e ( _tlc_sweep_update (1 -> 2 `i ]
 [; ;main.c: 88: delay_sec();
 "88
 [e ( _delay_sec ..  ]

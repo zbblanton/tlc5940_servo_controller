@@ -1,14 +1,15 @@
-_tlc_init: CODE, 446 0 414
-_main: CODE, 1306 0 196
-_tlc_pwm_init: CODE, 1744 0 28
-_tlc_sweep_update: CODE, 28 0 418
-_tlc_set: CODE, 1648 0 48
-_tlc_sweep_set: CODE, 1772 0 26
-__initialization: CODE, 1820 0 12
-_tlc_update: CODE, 1106 0 200
-_tlc_spi_init: CODE, 1798 0 22
-_tlc_spi_send_data: CODE, 1838 0 12
-_tlc_interrupt_blank: CODE, 8 0 1640
-_delay_sec: CODE, 1696 0 48
-_tlc_write: CODE, 860 0 246
-Total: 3310
+_tlc_init: CODE, 506 0 414
+_main: CODE, 1166 0 202
+_tlc_pwm_init: CODE, 1842 0 28
+_tlc_sweep_update: CODE, 28 0 478
+_tlc_set: CODE, 1714 0 48
+_tlc_sweep_set: CODE, 1870 0 26
+__initialization: CODE, 1918 0 12
+_tlc_update: CODE, 1368 0 200
+_tlc_spi_init: CODE, 1896 0 22
+_tlc_spi_send_data: CODE, 1936 0 12
+_tlc_sweep_delay: CODE, 1810 0 32
+_tlc_interrupt_blank: CODE, 8 0 1706
+_delay_sec: CODE, 1762 0 48
+_tlc_write: CODE, 920 0 246
+Total: 3474

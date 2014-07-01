@@ -5009,7 +5009,8 @@ void tlc_write(char channel_number, char value);
 
 
 void tlc_sweep_set(char channel_number, char value);
-void tlc_sweep_update(char num_of_increments);
+void tlc_sweep_update(int speed);
+void tlc_sweep_delay(int count);
 
 
 # 20 "main.c"
@@ -5079,7 +5080,7 @@ delay_sec();
 tlc_sweep_set(15,160);
 tlc_sweep_set(14,100);
 tlc_sweep_set(13,30);
-tlc_sweep_update(5);
+tlc_sweep_update(2);
 
 delay_sec();
 delay_sec();
