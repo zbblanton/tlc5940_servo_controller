@@ -12,9 +12,14 @@
 
 //Custom pin names.
 //Change the assignment pins to the pins you use.
-#define tlc_xlat LATDbits.LD0
-#define tlc_vprg LATDbits.LD1
-#define tlc_blank LATDbits.LD2
+#define tlc_xlat_pin LATDbits.LD0
+#define tlc_vprg_pin LATDbits.LD1
+#define tlc_blank_pin LATDbits.LD2
+
+//Also be sure to change the TRIS bits for the same pins.
+#define tlc_xlat_io TRISDbits.RD0
+#define tlc_vprg_io TRISDbits.RD1
+#define tlc_blank_io TRISDbits.RD2
 
 //Custom delay function name.
 //Change to whatever your delay function name is.
@@ -22,19 +27,33 @@
 #define tlc_delay_ms __delay_ms
 #define tlc_delay_us __delay_us
 
-//Custom serial write function name.
+//Custom serial functions name.
 //Change to whatever your serial write function name is.
-#define tlc_send_data serial_send_data
+#define tlc_spi_output_pin TRISCbits.RC5
+#define tlc_spi_clock_pin TRISCbits.RC3
+#define tlc_send_data tlc_spi_send_data
 
-void serial_init();
-void serial_send_data(char data);
+//Custom Timer 2 pin names
+#define tlc_pwm_io TRISCbits.RC2
+
+char tlc_servo[16]; //Holds current servo position
+char tlc_servo_temp[16]; //Holds new servo position
+int tlc_interrupt_counter; //Counter for the interupt
+
+void tlc_spi_init();
+void tlc_spi_send_data(char data);
+void tlc_pwm_init();
 void tlc_init();
 void tlc_update();
 void tlc_set(char channel_number, char value);
 void tlc_write(char channel_number, char value);
 
-//Future functions
-//void tlc_sweep(char channel_number, char sweep_type, int num_of_increment);
+//Version 1.1 functions in development
+void tlc_sweep_set(char channel_number, char value);
+void tlc_sweep_update(int speed);
+void tlc_sweep_delay(int count);
+
+//Possible future functions
 //void tlc_start();
 //void tlc_stop();
 

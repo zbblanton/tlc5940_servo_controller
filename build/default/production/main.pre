@@ -4994,23 +4994,29 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 29 "tlc5940.h"
-void serial_init();
-void serial_send_data(char data);
+# 39 "tlc5940.h"
+char tlc_servo[16];
+char tlc_servo_temp[16];
+int tlc_interrupt_counter;
+
+void tlc_spi_init();
+void tlc_spi_send_data(char data);
+void tlc_pwm_init();
 void tlc_init();
 void tlc_update();
 void tlc_set(char channel_number, char value);
 void tlc_write(char channel_number, char value);
 
 
+void tlc_sweep_set(char channel_number, char value);
+void tlc_sweep_update(int speed);
+void tlc_sweep_delay(int count);
+
+
 # 20 "main.c"
 #pragma config LVP = OFF
 
 #pragma config OSC = HS, WDT=OFF, PWRT=OFF, BOREN=OFF, CP0=OFF,CP1=OFF,CP2=OFF,CP3=OFF, MCLRE=ON
-
-
-
-volatile int count;
 
 void delay_sec()
 {
@@ -5020,93 +5026,70 @@ _delay((unsigned long)((10)*(8000000/4000.0)));
 }
 }
 
-void interrupt blank_pulse(void)
+void interrupt tlc_interrupt_blank(void)
 {
 if(PIE1bits.TMR2IE && PIR1bits.TMR2IF)
 {
-if(count >= 125)
+if(tlc_interrupt_counter >= 125)
 {
 LATDbits.LD2 = 1;
 _delay((unsigned long)((1)*(8000000/4000000.0)));
 LATDbits.LD2 = 0;
-count = 0;
+tlc_interrupt_counter = 0;
 }
-count++;
+tlc_interrupt_counter++;
 PIR1bits.TMR2IF = 0;
 }
 }
 
-void spi_init()
-{
-SSPSTATbits.SMP = 0;
-SSPSTATbits.CKE = 1;
-SSPCON1bits.CKP = 0;
-SSPCON1bits.SSPM0 = 0;
-SSPCON1bits.SSPM1 = 0;
-SSPCON1bits.SSPM2 = 0;
-SSPCON1bits.SSPM3 = 0;
-SSPCON1bits.SSPEN = 1;
-
-TRISCbits.RC5 = 0;
-TRISCbits.RC3 = 0;
-}
-
-void TMR2_init()
-{
-
-PR2 = 0b00000100;
-T2CON = 0b01111101;
-CCPR1L = 0b00000010;
-CCP1CON = 0b00101100;
-TRISC = 0b00000000;
-PORTC = 0b00000000;
-T2CONbits.TMR2ON = 0;
-}
-
 int main()
 {
-TRISD = 0b00000000;
-PORTD = 0b00000000;
-TRISB = 0b00100000;
-PORTB = 0b00000000;
-TRISA = 0b00001111;
-PORTA = 0b00001111;
-TRISE = 0b00001000;
-PORTE = 0b00000000;
-
-TMR2_init();
-count = 0;
-
-PIE1bits.TMR2IE = 1;
-INTCONbits.PEIE = 1;
-INTCONbits.GIE = 1;
-T2CONbits.TMR2ON = 0;
-
-spi_init();
-
-
+tlc_pwm_init();
+tlc_spi_init();
 tlc_init();
-tlc_update();
 
-T2CONbits.TMR2ON = 1;
 while(1)
 {
 LATDbits.LD3 = 1;
 delay_sec();
 LATDbits.LD3 = 0;
 delay_sec();
-tlc_set(0, 0);
+
+
+tlc_set(15, 175);
+tlc_set(14, 130);
+tlc_set(13, 90);
 tlc_update();
+
 delay_sec();
 delay_sec();
 delay_sec();
 delay_sec();
 
-tlc_set(0, 180);
+
+tlc_set(15, 175);
+tlc_set(14, 115);
+tlc_set(13, 110);
 tlc_update();
+
 delay_sec();
 delay_sec();
 delay_sec();
 delay_sec();
+
+tlc_sweep_set(15,160);
+tlc_sweep_set(14,100);
+tlc_sweep_set(13,30);
+tlc_sweep_update(2);
+
+delay_sec();
+delay_sec();
+delay_sec();
+delay_sec();
+
+tlc_write(14, 125);
+delay_sec();
+delay_sec();
+
 }
 }
