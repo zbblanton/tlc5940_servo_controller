@@ -21,8 +21,6 @@
 
 #pragma config OSC = HS, WDT=OFF, PWRT=OFF, BOREN=OFF, CP0=OFF,CP1=OFF,CP2=OFF,CP3=OFF, MCLRE=ON
 
-volatile int count;
-
 void delay_sec() //actually, half a second
 {
     for(int i = 0; i < 50; i++)
@@ -31,35 +29,25 @@ void delay_sec() //actually, half a second
     }
 }
 
-void interrupt blank_pulse(void)
+void interrupt tlc_interrupt_blank(void)
 {
     if(PIE1bits.TMR2IE && PIR1bits.TMR2IF)
     {
-        if(count >= 125) //572 520
+        if(tlc_interrupt_counter >= 125) //572 520
         {
-            tlc_blank = 1;
+            tlc_blank_pin = 1;
             tlc_delay_us(1);
-            tlc_blank = 0;
-            count = 0; //Reset count
+            tlc_blank_pin = 0;
+            tlc_interrupt_counter = 0; //Reset count
         }
-        count++;
+        tlc_interrupt_counter++;
         PIR1bits.TMR2IF = 0;
     }
 }
 
 int main()
 {
-    TRISD = 0b00000000;
-    PORTD = 0b00000000;
-    TRISB = 0b00100000;
-    PORTB = 0b00000000;
-    TRISA = 0b00001111;
-    PORTA = 0b00001111;
-    TRISE = 0b00001000;
-    PORTE = 0b00000000;
-
-    count = 0;
-    tlc_TMR2_init();
+    tlc_pwm_init();
     tlc_spi_init();
     tlc_init();
 

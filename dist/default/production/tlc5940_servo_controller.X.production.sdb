@@ -125,41 +125,31 @@
 [v ___asftsub __asftsub `(f  1 e 3 0 ]
 "6 D:\Program Files (x86)\Microchip\xc8\v1.32\sources\pic18\aslmul.c
 [v ___aslmul __aslmul `(ul  1 e 4 0 ]
-"26 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c
+"24 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c
 [v _delay_sec delay_sec `(v  1 e 0 0 ]
-"34
-[v _blank_pulse blank_pulse `II(v  1 e 0 0 ]
-"50
+"32
+[v _tlc_interrupt_blank tlc_interrupt_blank `II(v  1 e 0 0 ]
+"48
 [v _main main `(i  1 e 2 0 ]
 "19 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c
 [v _tlc_spi_init tlc_spi_init `(v  1 e 0 0 ]
 "34
 [v _tlc_spi_send_data tlc_spi_send_data `(v  1 e 0 0 ]
-"41
-[v _tlc_TMR2_init tlc_TMR2_init `(v  1 e 0 0 ]
-"68
+"40
+[v _tlc_pwm_init tlc_pwm_init `(v  1 e 0 0 ]
+"66
 [v _tlc_init tlc_init `(v  1 e 0 0 ]
-"157
+"163
 [v _tlc_update tlc_update `(v  1 e 0 0 ]
-"196
+"202
 [v _tlc_set tlc_set `(v  1 e 0 0 ]
-"212
+"218
 [v _tlc_write tlc_write `(v  1 e 0 0 ]
-"246
+"252
 [v _tlc_sweep_set tlc_sweep_set `(v  1 e 0 0 ]
-"251
+"257
 [v _tlc_sweep_update tlc_sweep_update `(v  1 e 0 0 ]
-"47 D:\Program Files (x86)\Microchip\xc8\v1.32\include\pic18f4520.h
-[v _PORTA PORTA `VEuc  1 e 1 @3968 ]
-"267
-[v _PORTB PORTB `VEuc  1 e 1 @3969 ]
-"445
-[v _PORTC PORTC `VEuc  1 e 1 @3970 ]
-"629
-[v _PORTD PORTD `VEuc  1 e 1 @3971 ]
-"770
-[v _PORTE PORTE `VEuc  1 e 1 @3972 ]
-[s S423 . 1 `uc 1 LATD0 1 0 :1:0 
+[s S461 . 1 `uc 1 LATD0 1 0 :1:0 
 `uc 1 LATD1 1 0 :1:1 
 `uc 1 LATD2 1 0 :1:2 
 `uc 1 LATD3 1 0 :1:3 
@@ -168,38 +158,32 @@
 `uc 1 LATD6 1 0 :1:6 
 `uc 1 LATD7 1 0 :1:7 
 ]
-"1542
-[s S432 . 1 `uc 1 LD0 1 0 :1:0 
+"1542 D:\Program Files (x86)\Microchip\xc8\v1.32\include\pic18f4520.h
+[s S470 . 1 `uc 1 LD0 1 0 :1:0 
 ]
-[s S434 . 1 `uc 1 . 1 0 :1:0 
+[s S472 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 LD1 1 0 :1:1 
 ]
-[s S437 . 1 `uc 1 . 1 0 :2:0 
+[s S475 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 LD2 1 0 :1:2 
 ]
-[s S440 . 1 `uc 1 . 1 0 :3:0 
+[s S478 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 LD3 1 0 :1:3 
 ]
-[s S443 . 1 `uc 1 . 1 0 :4:0 
+[s S481 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 LD4 1 0 :1:4 
 ]
-[s S446 . 1 `uc 1 . 1 0 :5:0 
+[s S484 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 LD5 1 0 :1:5 
 ]
-[s S449 . 1 `uc 1 . 1 0 :6:0 
+[s S487 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 LD6 1 0 :1:6 
 ]
-[s S452 . 1 `uc 1 . 1 0 :7:0 
+[s S490 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 LD7 1 0 :1:7 
 ]
-[u S455 . 1 `S423 1 . 1 0 `S432 1 . 1 0 `S434 1 . 1 0 `S437 1 . 1 0 `S440 1 . 1 0 `S443 1 . 1 0 `S446 1 . 1 0 `S449 1 . 1 0 `S452 1 . 1 0 ]
-[v _LATDbits LATDbits `VES455  1 e 1 @3980 ]
-"1728
-[v _TRISA TRISA `VEuc  1 e 1 @3986 ]
-"1949
-[v _TRISB TRISB `VEuc  1 e 1 @3987 ]
-"2170
-[v _TRISC TRISC `VEuc  1 e 1 @3988 ]
+[u S493 . 1 `S461 1 . 1 0 `S470 1 . 1 0 `S472 1 . 1 0 `S475 1 . 1 0 `S478 1 . 1 0 `S481 1 . 1 0 `S484 1 . 1 0 `S487 1 . 1 0 `S490 1 . 1 0 ]
+[v _LATDbits LATDbits `VES493  1 e 1 @3980 ]
 [s S207 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
@@ -221,11 +205,9 @@
 ]
 [u S225 . 1 `S207 1 . 1 0 `S216 1 . 1 0 ]
 [v _TRISCbits TRISCbits `VES225  1 e 1 @3988 ]
-"2391
-[v _TRISD TRISD `VEuc  1 e 1 @3989 ]
-"2612
-[v _TRISE TRISE `VEuc  1 e 1 @3990 ]
-[s S260 . 1 `uc 1 TMR1IE 1 0 :1:0 
+"2423
+[v _TRISDbits TRISDbits `VES225  1 e 1 @3989 ]
+[s S258 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 CCP1IE 1 0 :1:2 
 `uc 1 SSPIE 1 0 :1:3 
@@ -235,16 +217,16 @@
 `uc 1 PSPIE 1 0 :1:7 
 ]
 "2864
-[s S269 . 1 `uc 1 . 1 0 :5:0 
+[s S267 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 RC1IE 1 0 :1:5 
 ]
-[s S272 . 1 `uc 1 . 1 0 :4:0 
+[s S270 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 TX1IE 1 0 :1:4 
 ]
-[u S275 . 1 `S260 1 . 1 0 `S269 1 . 1 0 `S272 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES275  1 e 1 @3997 ]
+[u S273 . 1 `S258 1 . 1 0 `S267 1 . 1 0 `S270 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES273  1 e 1 @3997 ]
 "2943
-[v _PIR1bits PIR1bits `VES275  1 e 1 @3998 ]
+[v _PIR1bits PIR1bits `VES273  1 e 1 @3998 ]
 "4776
 [v _CCP1CON CCP1CON `VEuc  1 e 1 @4029 ]
 "4878
@@ -334,12 +316,12 @@
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @4041 ]
 "5604
 [v _T2CON T2CON `VEuc  1 e 1 @4042 ]
-[s S382 . 1 `uc 1 T2CKPS 1 0 :2:0 
+[s S380 . 1 `uc 1 T2CKPS 1 0 :2:0 
 `uc 1 TMR2ON 1 0 :1:2 
 `uc 1 T2OUTPS 1 0 :4:3 
 ]
 "5632
-[s S386 . 1 `uc 1 T2CKPS0 1 0 :1:0 
+[s S384 . 1 `uc 1 T2CKPS0 1 0 :1:0 
 `uc 1 T2CKPS1 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 T2OUTPS0 1 0 :1:3 
@@ -347,17 +329,17 @@
 `uc 1 T2OUTPS2 1 0 :1:5 
 `uc 1 T2OUTPS3 1 0 :1:6 
 ]
-[s S394 . 1 `uc 1 . 1 0 :3:0 
+[s S392 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 TOUTPS0 1 0 :1:3 
 `uc 1 TOUTPS1 1 0 :1:4 
 `uc 1 TOUTPS2 1 0 :1:5 
 `uc 1 TOUTPS3 1 0 :1:6 
 ]
-[u S400 . 1 `S382 1 . 1 0 `S386 1 . 1 0 `S394 1 . 1 0 ]
-[v _T2CONbits T2CONbits `VES400  1 e 1 @4042 ]
+[u S398 . 1 `S380 1 . 1 0 `S384 1 . 1 0 `S392 1 . 1 0 ]
+[v _T2CONbits T2CONbits `VES398  1 e 1 @4042 ]
 "5701
 [v _PR2 PR2 `VEuc  1 e 1 @4043 ]
-[s S295 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S293 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -367,7 +349,7 @@
 `uc 1 GIE_GIEH 1 0 :1:7 
 ]
 "6999
-[s S304 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S302 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -376,7 +358,7 @@
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S313 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S311 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -385,7 +367,7 @@
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[s S322 . 1 `uc 1 . 1 0 :1:0 
+[s S320 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 INT0F 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -394,102 +376,107 @@
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S331 . 1 `uc 1 . 1 0 :6:0 
+[s S329 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[u S335 . 1 `S295 1 . 1 0 `S304 1 . 1 0 `S313 1 . 1 0 `S322 1 . 1 0 `S331 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES335  1 e 1 @4082 ]
-"24 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c
-[v _count count `VEi  1 e 2 0 ]
-"31 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.h
+[u S333 . 1 `S293 1 . 1 0 `S302 1 . 1 0 `S311 1 . 1 0 `S320 1 . 1 0 `S329 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES333  1 e 1 @4082 ]
+"39 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.h
 [v _tlc_servo tlc_servo `[16]uc  1 e 16 0 ]
-"32
+"40
 [v _tlc_servo_temp tlc_servo_temp `[16]uc  1 e 16 0 ]
-"50 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c
+"41
+[v _tlc_interrupt_counter tlc_interrupt_counter `i  1 e 2 0 ]
+"48 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c
 [v _main main `(i  1 e 2 0 ]
 {
-"110
+"98
 } 0
-"212 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c
+"218 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c
 [v _tlc_write tlc_write `(v  1 e 0 0 ]
 {
 [v tlc_write@tlc_servo_number tlc_servo_number `uc  1 a 1 wreg ]
-"227
+"233
 [v tlc_write@i i `uc  1 a 1 23 ]
-"226
+"232
 [v tlc_write@counter counter `uc  1 a 1 22 ]
-"212
+"218
 [v tlc_write@tlc_servo_number tlc_servo_number `uc  1 a 1 wreg ]
 [v tlc_write@value value `uc  1 p 1 15 ]
-"214
+"220
 [v tlc_write@tlc_servo_number tlc_servo_number `uc  1 a 1 21 ]
-"244
+"250
 } 0
-"157
+"163
 [v _tlc_update tlc_update `(v  1 e 0 0 ]
 {
-"168
+"174
 [v tlc_update@i i `uc  1 a 1 21 ]
-"167
+"173
 [v tlc_update@counter counter `uc  1 a 1 20 ]
-"184
+"190
 } 0
-"251
+"257
 [v _tlc_sweep_update tlc_sweep_update `(v  1 e 0 0 ]
 {
 [v tlc_sweep_update@num_of_increments num_of_increments `uc  1 a 1 wreg ]
-"286
-[v tlc_sweep_update@i_578 i `uc  1 a 1 24 ]
-"258
+"292
+[v tlc_sweep_update@i_625 i `uc  1 a 1 24 ]
+"264
 [v tlc_sweep_update@i i `i  1 a 2 25 ]
-"285
+"291
 [v tlc_sweep_update@counter counter `uc  1 a 1 23 ]
-"253
+"259
 [v tlc_sweep_update@j j `i  1 a 2 20 ]
-"251
+"257
 [v tlc_sweep_update@num_of_increments num_of_increments `uc  1 a 1 wreg ]
-"253
+"259
 [v tlc_sweep_update@num_of_increments num_of_increments `uc  1 a 1 22 ]
-"305
+"311
 } 0
-"246
+"252
 [v _tlc_sweep_set tlc_sweep_set `(v  1 e 0 0 ]
 {
 [v tlc_sweep_set@tlc_servo_number tlc_servo_number `uc  1 a 1 wreg ]
 [v tlc_sweep_set@tlc_servo_number tlc_servo_number `uc  1 a 1 wreg ]
 [v tlc_sweep_set@value value `uc  1 p 1 14 ]
-"248
+"254
 [v tlc_sweep_set@tlc_servo_number tlc_servo_number `uc  1 a 1 15 ]
-"249
+"255
 } 0
 "19
 [v _tlc_spi_init tlc_spi_init `(v  1 e 0 0 ]
 {
 "32
 } 0
-"196
+"202
 [v _tlc_set tlc_set `(v  1 e 0 0 ]
 {
 [v tlc_set@tlc_servo_number tlc_servo_number `uc  1 a 1 wreg ]
 [v tlc_set@tlc_servo_number tlc_servo_number `uc  1 a 1 wreg ]
 [v tlc_set@value value `uc  1 p 1 14 ]
-"198
+"204
 [v tlc_set@tlc_servo_number tlc_servo_number `uc  1 a 1 15 ]
-"200
+"206
 } 0
-"68
+"40
+[v _tlc_pwm_init tlc_pwm_init `(v  1 e 0 0 ]
+{
+"54
+} 0
+"66
 [v _tlc_init tlc_init `(v  1 e 0 0 ]
 {
-"126
-[v tlc_init@i_558 i `uc  1 a 1 24 ]
-"119
-[v tlc_init@i_556 i `i  1 a 2 22 ]
-"76
-[v tlc_init@i i `uc  1 a 1 20 ]
+"132
+[v tlc_init@i_605 i `uc  1 a 1 24 ]
 "125
+[v tlc_init@i_603 i `i  1 a 2 22 ]
+"82
+[v tlc_init@i i `uc  1 a 1 20 ]
+"131
 [v tlc_init@counter counter `uc  1 a 1 21 ]
-"145
+"151
 } 0
 "34
 [v _tlc_spi_send_data tlc_spi_send_data `(v  1 e 0 0 ]
@@ -498,22 +485,17 @@
 [v tlc_spi_send_data@data data `uc  1 a 1 wreg ]
 "36
 [v tlc_spi_send_data@data data `uc  1 a 1 14 ]
-"39
+"38
 } 0
-"41
-[v _tlc_TMR2_init tlc_TMR2_init `(v  1 e 0 0 ]
-{
-"56
-} 0
-"26 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c
+"24 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c
 [v _delay_sec delay_sec `(v  1 e 0 0 ]
 {
-"28
+"26
 [v delay_sec@i i `i  1 a 2 15 ]
-"32
+"30
 } 0
-"34
-[v _blank_pulse blank_pulse `II(v  1 e 0 0 ]
+"32
+[v _tlc_interrupt_blank tlc_interrupt_blank `II(v  1 e 0 0 ]
 {
-"48
+"46
 } 0

@@ -64,37 +64,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 "1542
 [v _LATDbits `VS89 ~T0 @X0 0 e@3980 ]
 [p mainexit ]
-"2391
-[v _TRISD `Vuc ~T0 @X0 0 e@3989 ]
-"629
-[v _PORTD `Vuc ~T0 @X0 0 e@3971 ]
-"1949
-[v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
-"267
-[v _PORTB `Vuc ~T0 @X0 0 e@3969 ]
-"1728
-[v _TRISA `Vuc ~T0 @X0 0 e@3986 ]
-"47
-[v _PORTA `Vuc ~T0 @X0 0 e@3968 ]
-"2612
-[v _TRISE `Vuc ~T0 @X0 0 e@3990 ]
-"770
-[v _PORTE `Vuc ~T0 @X0 0 e@3972 ]
-"36 tlc5940.h
-[v _tlc_TMR2_init `(v ~T0 @X0 0 ef ]
-"34
-[v _tlc_spi_init `(v ~T0 @X0 0 ef ]
-"37
-[v _tlc_init `(v ~T0 @X0 0 ef ]
-"39
-[v _tlc_set `(v ~T0 @X0 0 ef2`uc`uc ]
-"38
-[v _tlc_update `(v ~T0 @X0 0 ef ]
+"45 tlc5940.h
+[v _tlc_pwm_init `(v ~T0 @X0 0 ef ]
 "43
+[v _tlc_spi_init `(v ~T0 @X0 0 ef ]
+"46
+[v _tlc_init `(v ~T0 @X0 0 ef ]
+"48
+[v _tlc_set `(v ~T0 @X0 0 ef2`uc`uc ]
+"47
+[v _tlc_update `(v ~T0 @X0 0 ef ]
+"52
 [v _tlc_sweep_set `(v ~T0 @X0 0 ef2`uc`uc ]
-"44
+"53
 [v _tlc_sweep_update `(v ~T0 @X0 0 ef1`uc ]
-"40
+"49
 [v _tlc_write `(v ~T0 @X0 0 ef2`uc`uc ]
 [; ;htc.h: 21: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 24: extern void __builtin_software_breakpoint(void);
@@ -3850,21 +3834,24 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 147: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 149: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 151: extern __nonreentrant void _delay3(unsigned char);
-"31 tlc5940.h
+"39 tlc5940.h
 [v _tlc_servo `uc ~T0 @X0 -> 16 `i e ]
-[; ;tlc5940.h: 31: char tlc_servo[16];
-"32
+[; ;tlc5940.h: 39: char tlc_servo[16];
+"40
 [v _tlc_servo_temp `uc ~T0 @X0 -> 16 `i e ]
-[; ;tlc5940.h: 32: char tlc_servo_temp[16];
-[; ;tlc5940.h: 34: void tlc_spi_init();
-[; ;tlc5940.h: 35: void tlc_spi_send_data(char data);
-[; ;tlc5940.h: 36: void tlc_TMR2_init();
-[; ;tlc5940.h: 37: void tlc_init();
-[; ;tlc5940.h: 38: void tlc_update();
-[; ;tlc5940.h: 39: void tlc_set(char channel_number, char value);
-[; ;tlc5940.h: 40: void tlc_write(char channel_number, char value);
-[; ;tlc5940.h: 43: void tlc_sweep_set(char channel_number, char value);
-[; ;tlc5940.h: 44: void tlc_sweep_update(char num_of_increments);
+[; ;tlc5940.h: 40: char tlc_servo_temp[16];
+"41
+[v _tlc_interrupt_counter `i ~T0 @X0 1 e ]
+[; ;tlc5940.h: 41: int tlc_interrupt_counter;
+[; ;tlc5940.h: 43: void tlc_spi_init();
+[; ;tlc5940.h: 44: void tlc_spi_send_data(char data);
+[; ;tlc5940.h: 45: void tlc_pwm_init();
+[; ;tlc5940.h: 46: void tlc_init();
+[; ;tlc5940.h: 47: void tlc_update();
+[; ;tlc5940.h: 48: void tlc_set(char channel_number, char value);
+[; ;tlc5940.h: 49: void tlc_write(char channel_number, char value);
+[; ;tlc5940.h: 52: void tlc_sweep_set(char channel_number, char value);
+[; ;tlc5940.h: 53: void tlc_sweep_update(char num_of_increments);
 "20 main.c
 [p x LVP=OFF ]
 "22
@@ -3878,168 +3865,165 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p x CP3=OFF ]
 [p x MCLRE=ON ]
 "24
-[v _count `Vi ~T0 @X0 1 e ]
-[; ;main.c: 24: volatile int count;
-"26
 [v _delay_sec `(v ~T0 @X0 1 ef ]
-"27
+"25
 {
-[; ;main.c: 26: void delay_sec()
-[; ;main.c: 27: {
+[; ;main.c: 24: void delay_sec()
+[; ;main.c: 25: {
 [e :U _delay_sec ]
 [f ]
-[; ;main.c: 28: for(int i = 0; i < 50; i++)
-"28
+[; ;main.c: 26: for(int i = 0; i < 50; i++)
+"26
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
 [e $ < _i -> 50 `i 403  ]
 [e $U 404  ]
-"29
+"27
 [e :U 403 ]
-[; ;main.c: 29: {
+[; ;main.c: 27: {
 {
-[; ;main.c: 30: _delay((unsigned long)((10)*(8000000/4000.0)));
-"30
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"31
-}
+[; ;main.c: 28: _delay((unsigned long)((10)*(8000000/4000.0)));
 "28
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"29
+}
+"26
 [e ++ _i -> 1 `i ]
 [e $ < _i -> 50 `i 403  ]
 [e :U 404 ]
-"31
+"29
 }
-[; ;main.c: 31: }
-[; ;main.c: 32: }
-"32
+[; ;main.c: 29: }
+[; ;main.c: 30: }
+"30
 [e :UE 402 ]
 }
 [v F4165 `(v ~T0 @X0 1 tf ]
+"32
+[v _tlc_interrupt_blank `IF4165 ~T0 @X0 1 e ]
+"33
+{
+[; ;main.c: 32: void interrupt tlc_interrupt_blank(void)
+[; ;main.c: 33: {
+[e :U _tlc_interrupt_blank ]
+[f ]
+[; ;main.c: 34: if(PIE1bits.TMR2IE && PIR1bits.TMR2IF)
 "34
-[v _blank_pulse `IF4165 ~T0 @X0 1 e ]
+[e $ ! && != -> . . _PIE1bits 0 1 `i -> -> -> 0 `i `Vuc `i != -> . . _PIR1bits 0 1 `i -> -> -> 0 `i `Vuc `i 407  ]
+[; ;main.c: 35: {
 "35
 {
-[; ;main.c: 34: void interrupt blank_pulse(void)
-[; ;main.c: 35: {
-[e :U _blank_pulse ]
-[f ]
-[; ;main.c: 36: if(PIE1bits.TMR2IE && PIR1bits.TMR2IF)
+[; ;main.c: 36: if(tlc_interrupt_counter >= 125)
 "36
-[e $ ! && != -> . . _PIE1bits 0 1 `i -> -> -> 0 `i `Vuc `i != -> . . _PIR1bits 0 1 `i -> -> -> 0 `i `Vuc `i 407  ]
+[e $ ! >= _tlc_interrupt_counter -> 125 `i 408  ]
 [; ;main.c: 37: {
 "37
 {
-[; ;main.c: 38: if(count >= 125)
+[; ;main.c: 38: LATDbits.LD2 = 1;
 "38
-[e $ ! >= _count -> 125 `i 408  ]
-[; ;main.c: 39: {
-"39
-{
-[; ;main.c: 40: LATDbits.LD2 = 1;
-"40
 [e = . . _LATDbits 3 1 -> -> 1 `i `uc ]
-[; ;main.c: 41: _delay((unsigned long)((1)*(8000000/4000000.0)));
-"41
+[; ;main.c: 39: _delay((unsigned long)((1)*(8000000/4000000.0)));
+"39
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 42: LATDbits.LD2 = 0;
-"42
+[; ;main.c: 40: LATDbits.LD2 = 0;
+"40
 [e = . . _LATDbits 3 1 -> -> 0 `i `uc ]
-[; ;main.c: 43: count = 0;
-"43
-[e = _count -> 0 `i ]
-"44
+[; ;main.c: 41: tlc_interrupt_counter = 0;
+"41
+[e = _tlc_interrupt_counter -> 0 `i ]
+"42
 }
 [e :U 408 ]
-[; ;main.c: 44: }
-[; ;main.c: 45: count++;
-"45
-[e ++ _count -> 1 `i ]
-[; ;main.c: 46: PIR1bits.TMR2IF = 0;
-"46
+[; ;main.c: 42: }
+[; ;main.c: 43: tlc_interrupt_counter++;
+"43
+[e ++ _tlc_interrupt_counter -> 1 `i ]
+[; ;main.c: 44: PIR1bits.TMR2IF = 0;
+"44
 [e = . . _PIR1bits 0 1 -> -> 0 `i `uc ]
-"47
+"45
 }
 [e :U 407 ]
-[; ;main.c: 47: }
-[; ;main.c: 48: }
-"48
+[; ;main.c: 45: }
+[; ;main.c: 46: }
+"46
 [e :UE 406 ]
 }
-"50
+"48
 [v _main `(i ~T0 @X0 1 ef ]
-"51
+"49
 {
-[; ;main.c: 50: int main()
-[; ;main.c: 51: {
+[; ;main.c: 48: int main()
+[; ;main.c: 49: {
 [e :U _main ]
 [f ]
-[; ;main.c: 52: TRISD = 0b00000000;
-"52
-[e = _TRISD -> -> 0 `i `uc ]
-[; ;main.c: 53: PORTD = 0b00000000;
-"53
-[e = _PORTD -> -> 0 `i `uc ]
-[; ;main.c: 54: TRISB = 0b00100000;
-"54
-[e = _TRISB -> -> 32 `i `uc ]
-[; ;main.c: 55: PORTB = 0b00000000;
-"55
-[e = _PORTB -> -> 0 `i `uc ]
-[; ;main.c: 56: TRISA = 0b00001111;
-"56
-[e = _TRISA -> -> 15 `i `uc ]
-[; ;main.c: 57: PORTA = 0b00001111;
-"57
-[e = _PORTA -> -> 15 `i `uc ]
-[; ;main.c: 58: TRISE = 0b00001000;
-"58
-[e = _TRISE -> -> 8 `i `uc ]
-[; ;main.c: 59: PORTE = 0b00000000;
-"59
-[e = _PORTE -> -> 0 `i `uc ]
-[; ;main.c: 61: count = 0;
-"61
-[e = _count -> 0 `i ]
-[; ;main.c: 62: tlc_TMR2_init();
-"62
-[e ( _tlc_TMR2_init ..  ]
-[; ;main.c: 63: tlc_spi_init();
-"63
+[; ;main.c: 50: tlc_pwm_init();
+"50
+[e ( _tlc_pwm_init ..  ]
+[; ;main.c: 51: tlc_spi_init();
+"51
 [e ( _tlc_spi_init ..  ]
-[; ;main.c: 64: tlc_init();
-"64
+[; ;main.c: 52: tlc_init();
+"52
 [e ( _tlc_init ..  ]
-[; ;main.c: 66: while(1)
-"66
+[; ;main.c: 54: while(1)
+"54
 [e :U 411 ]
-[; ;main.c: 67: {
-"67
+[; ;main.c: 55: {
+"55
 {
-[; ;main.c: 68: LATDbits.LD3 = 1;
-"68
+[; ;main.c: 56: LATDbits.LD3 = 1;
+"56
 [e = . . _LATDbits 4 1 -> -> 1 `i `uc ]
+[; ;main.c: 57: delay_sec();
+"57
+[e ( _delay_sec ..  ]
+[; ;main.c: 58: LATDbits.LD3 = 0;
+"58
+[e = . . _LATDbits 4 1 -> -> 0 `i `uc ]
+[; ;main.c: 59: delay_sec();
+"59
+[e ( _delay_sec ..  ]
+[; ;main.c: 62: tlc_set(15, 175);
+"62
+[e ( _tlc_set (2 , -> -> 15 `i `uc -> -> 175 `i `uc ]
+[; ;main.c: 63: tlc_set(14, 130);
+"63
+[e ( _tlc_set (2 , -> -> 14 `i `uc -> -> 130 `i `uc ]
+[; ;main.c: 64: tlc_set(13, 90);
+"64
+[e ( _tlc_set (2 , -> -> 13 `i `uc -> -> 90 `i `uc ]
+[; ;main.c: 65: tlc_update();
+"65
+[e ( _tlc_update ..  ]
+[; ;main.c: 67: delay_sec();
+"67
+[e ( _delay_sec ..  ]
+[; ;main.c: 68: delay_sec();
+"68
+[e ( _delay_sec ..  ]
 [; ;main.c: 69: delay_sec();
 "69
 [e ( _delay_sec ..  ]
-[; ;main.c: 70: LATDbits.LD3 = 0;
+[; ;main.c: 70: delay_sec();
 "70
-[e = . . _LATDbits 4 1 -> -> 0 `i `uc ]
-[; ;main.c: 71: delay_sec();
-"71
 [e ( _delay_sec ..  ]
-[; ;main.c: 74: tlc_set(15, 175);
-"74
+[; ;main.c: 73: tlc_set(15, 175);
+"73
 [e ( _tlc_set (2 , -> -> 15 `i `uc -> -> 175 `i `uc ]
-[; ;main.c: 75: tlc_set(14, 130);
+[; ;main.c: 74: tlc_set(14, 115);
+"74
+[e ( _tlc_set (2 , -> -> 14 `i `uc -> -> 115 `i `uc ]
+[; ;main.c: 75: tlc_set(13, 110);
 "75
-[e ( _tlc_set (2 , -> -> 14 `i `uc -> -> 130 `i `uc ]
-[; ;main.c: 76: tlc_set(13, 90);
+[e ( _tlc_set (2 , -> -> 13 `i `uc -> -> 110 `i `uc ]
+[; ;main.c: 76: tlc_update();
 "76
-[e ( _tlc_set (2 , -> -> 13 `i `uc -> -> 90 `i `uc ]
-[; ;main.c: 77: tlc_update();
-"77
 [e ( _tlc_update ..  ]
+[; ;main.c: 78: delay_sec();
+"78
+[e ( _delay_sec ..  ]
 [; ;main.c: 79: delay_sec();
 "79
 [e ( _delay_sec ..  ]
@@ -4049,74 +4033,47 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 81: delay_sec();
 "81
 [e ( _delay_sec ..  ]
-[; ;main.c: 82: delay_sec();
-"82
-[e ( _delay_sec ..  ]
-[; ;main.c: 85: tlc_set(15, 175);
+[; ;main.c: 83: tlc_sweep_set(15,160);
+"83
+[e ( _tlc_sweep_set (2 , -> -> 15 `i `uc -> -> 160 `i `uc ]
+[; ;main.c: 84: tlc_sweep_set(14,100);
+"84
+[e ( _tlc_sweep_set (2 , -> -> 14 `i `uc -> -> 100 `i `uc ]
+[; ;main.c: 85: tlc_sweep_set(13,30);
 "85
-[e ( _tlc_set (2 , -> -> 15 `i `uc -> -> 175 `i `uc ]
-[; ;main.c: 86: tlc_set(14, 115);
+[e ( _tlc_sweep_set (2 , -> -> 13 `i `uc -> -> 30 `i `uc ]
+[; ;main.c: 86: tlc_sweep_update(5);
 "86
-[e ( _tlc_set (2 , -> -> 14 `i `uc -> -> 115 `i `uc ]
-[; ;main.c: 87: tlc_set(13, 110);
-"87
-[e ( _tlc_set (2 , -> -> 13 `i `uc -> -> 110 `i `uc ]
-[; ;main.c: 88: tlc_update();
+[e ( _tlc_sweep_update (1 -> -> 5 `i `uc ]
+[; ;main.c: 88: delay_sec();
 "88
-[e ( _tlc_update ..  ]
+[e ( _delay_sec ..  ]
+[; ;main.c: 89: delay_sec();
+"89
+[e ( _delay_sec ..  ]
 [; ;main.c: 90: delay_sec();
 "90
 [e ( _delay_sec ..  ]
 [; ;main.c: 91: delay_sec();
 "91
 [e ( _delay_sec ..  ]
-[; ;main.c: 92: delay_sec();
-"92
-[e ( _delay_sec ..  ]
-[; ;main.c: 93: delay_sec();
+[; ;main.c: 93: tlc_write(14, 125);
 "93
-[e ( _delay_sec ..  ]
-[; ;main.c: 95: tlc_sweep_set(15,160);
-"95
-[e ( _tlc_sweep_set (2 , -> -> 15 `i `uc -> -> 160 `i `uc ]
-[; ;main.c: 96: tlc_sweep_set(14,100);
-"96
-[e ( _tlc_sweep_set (2 , -> -> 14 `i `uc -> -> 100 `i `uc ]
-[; ;main.c: 97: tlc_sweep_set(13,30);
-"97
-[e ( _tlc_sweep_set (2 , -> -> 13 `i `uc -> -> 30 `i `uc ]
-[; ;main.c: 98: tlc_sweep_update(5);
-"98
-[e ( _tlc_sweep_update (1 -> -> 5 `i `uc ]
-[; ;main.c: 100: delay_sec();
-"100
-[e ( _delay_sec ..  ]
-[; ;main.c: 101: delay_sec();
-"101
-[e ( _delay_sec ..  ]
-[; ;main.c: 102: delay_sec();
-"102
-[e ( _delay_sec ..  ]
-[; ;main.c: 103: delay_sec();
-"103
-[e ( _delay_sec ..  ]
-[; ;main.c: 105: tlc_write(14, 125);
-"105
 [e ( _tlc_write (2 , -> -> 14 `i `uc -> -> 125 `i `uc ]
-[; ;main.c: 106: delay_sec();
-"106
+[; ;main.c: 94: delay_sec();
+"94
 [e ( _delay_sec ..  ]
-[; ;main.c: 107: delay_sec();
-"107
+[; ;main.c: 95: delay_sec();
+"95
 [e ( _delay_sec ..  ]
-"109
+"97
 }
 [e :U 410 ]
-"66
+"54
 [e $U 411  ]
 [e :U 412 ]
-[; ;main.c: 109: }
-[; ;main.c: 110: }
-"110
+[; ;main.c: 97: }
+[; ;main.c: 98: }
+"98
 [e :UE 409 ]
 }

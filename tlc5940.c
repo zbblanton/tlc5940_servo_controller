@@ -27,26 +27,24 @@ void tlc_spi_init()
     SSPCON1bits.SSPM3 = 0;
     SSPCON1bits.SSPEN = 1; //Enables the serial port
 
-    tlc_spi_output = 0; //Set SDO to ouput
-    tlc_spi_clock = 0; //Set SCK to output
+    tlc_spi_output_pin = 0; //Set SDO to ouput
+    tlc_spi_clock_pin = 0; //Set SCK to output
 }
 
 void tlc_spi_send_data(char data)
 {
     SSPBUF = data; //Loads data into SSPBUF reg
-    //tlc_delay_ms(1);
     tlc_delay_us(2); //Testing a much faster delay
 }
 
-void tlc_TMR2_init()
+void tlc_pwm_init()
 {
     //Set to 100,000hz with 50% duty cycle. Prescaler is 4. Post scale is 16.
     PR2 = 0b00000100;
     T2CON = 0b01111101;
     CCPR1L = 0b00000010;
     CCP1CON = 0b00101100;
-    TRISC = 0b00000000;
-    PORTC = 0b00000000;
+    tlc_pwm_io = 0;
 
     PIE1bits.TMR2IE = 1;
     INTCONbits.PEIE = 1;
@@ -67,9 +65,17 @@ initial position data set by the user to the TLC5940.
 ***************************************************************************/
 void tlc_init()
 {
+    //Initialize interrupt counter
+    tlc_interrupt_counter = 0;
+
+    //Set the pins to output
+    tlc_xlat_io = 0;
+    tlc_vprg_io = 0;
+    tlc_blank_io = 0;
+
     //Initialize dot correction
-    tlc_vprg = 1; //Dot correction input mode
-    tlc_xlat = 0;
+    tlc_vprg_pin = 1; //Dot correction input mode
+    tlc_xlat_pin = 0;
     tlc_delay_ms(2);
 
     //Send initial dot correction data
@@ -80,9 +86,9 @@ void tlc_init()
 
     //Testing faster toggle speeds
     tlc_delay_us(1);
-    tlc_xlat = 1;
+    tlc_xlat_pin = 1;
     tlc_delay_us(1);
-    tlc_xlat = 0;
+    tlc_xlat_pin = 0;
     tlc_delay_us(1);
     //end
 
@@ -90,9 +96,9 @@ void tlc_init()
     tlc_delay_ms(2);
 
     T2CONbits.TMR2ON = 0; //Turn off timer
-    tlc_vprg = 0; //Grayscale input mode
-    tlc_xlat = 0;
-    tlc_blank = 0;
+    tlc_vprg_pin = 0; //Grayscale input mode
+    tlc_xlat_pin = 0;
+    tlc_blank_pin = 0;
 
     //Initialize the default servo position
     //Change values to your desired default servo position
@@ -133,9 +139,9 @@ void tlc_init()
 
     //Testing faster toggle speeds
     tlc_delay_us(3);
-    tlc_xlat = 1;
+    tlc_xlat_pin = 1;
     tlc_delay_us(1);
-    tlc_xlat = 0;
+    tlc_xlat_pin = 0;
     tlc_delay_us(1);
 
     tlc_send_data(0b10000000);//one clock pulse for first grayscale
@@ -160,9 +166,9 @@ void tlc_update()
     tlc_delay_us(1);
 
     //T2CONbits.TMR2ON = 0; //Turn off timer
-    tlc_vprg = 0; //Grayscale input mode
-    tlc_xlat = 0;
-    tlc_blank = 0;
+    tlc_vprg_pin = 0; //Grayscale input mode
+    tlc_xlat_pin = 0;
+    tlc_blank_pin = 0;
 
     char counter = 0;
     for(char i = 15; i > 7; i--)
@@ -175,9 +181,9 @@ void tlc_update()
 
     //Testing faster toggle speeds
     tlc_delay_us(1);
-    tlc_xlat = 1;
+    tlc_xlat_pin = 1;
     tlc_delay_us(1); 
-    tlc_xlat = 0;
+    tlc_xlat_pin = 0;
     tlc_delay_us(1);
 
     //T2CONbits.TMR2ON = 1; //Turn timer back on
@@ -219,9 +225,9 @@ void tlc_write(char tlc_servo_number, char value)
     tlc_delay_us(1);
 
     //T2CONbits.TMR2ON = 0; //Turn off timer
-    tlc_vprg = 0; //Grayscale input mode
-    tlc_xlat = 0;
-    tlc_blank = 0;
+    tlc_vprg_pin = 0; //Grayscale input mode
+    tlc_xlat_pin = 0;
+    tlc_blank_pin = 0;
 
     char counter = 0;
     for(char i = 15; i > 7; i--)
@@ -234,9 +240,9 @@ void tlc_write(char tlc_servo_number, char value)
 
     //Testing faster toggle speeds
     tlc_delay_us(1);
-    tlc_xlat = 1;
+    tlc_xlat_pin = 1;
     tlc_delay_us(1);
-    tlc_xlat = 0;
+    tlc_xlat_pin = 0;
     tlc_delay_us(1);
     
     //T2CONbits.TMR2ON = 1; //Turn timer back on
@@ -278,9 +284,9 @@ void tlc_sweep_update(char num_of_increments)
         tlc_delay_us(1);
 
         //T2CONbits.TMR2ON = 0; //Turn off timer
-        tlc_vprg = 0; //Grayscale input mode
-        tlc_xlat = 0;
-        tlc_blank = 0;
+        tlc_vprg_pin = 0; //Grayscale input mode
+        tlc_xlat_pin = 0;
+        tlc_blank_pin = 0;
 
         char counter = 0;
         for(char i = 15; i > 7; i--)
@@ -293,9 +299,9 @@ void tlc_sweep_update(char num_of_increments)
 
         //Testing faster toggle speeds
         tlc_delay_us(1);
-        tlc_xlat = 1;
+        tlc_xlat_pin = 1;
         tlc_delay_us(1);
-        tlc_xlat = 0;
+        tlc_xlat_pin = 0;
         tlc_delay_us(1);
 
         //T2CONbits.TMR2ON = 1; //Turn timer back on

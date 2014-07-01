@@ -4994,13 +4994,14 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 31 "tlc5940.h"
+# 39 "tlc5940.h"
 char tlc_servo[16];
 char tlc_servo_temp[16];
+int tlc_interrupt_counter;
 
 void tlc_spi_init();
 void tlc_spi_send_data(char data);
-void tlc_TMR2_init();
+void tlc_pwm_init();
 void tlc_init();
 void tlc_update();
 void tlc_set(char channel_number, char value);
@@ -5119,19 +5120,17 @@ TRISCbits.RC3 = 0;
 void tlc_spi_send_data(char data)
 {
 SSPBUF = data;
-
 _delay((unsigned long)((2)*(8000000/4000000.0)));
 }
 
-void tlc_TMR2_init()
+void tlc_pwm_init()
 {
 
 PR2 = 0b00000100;
 T2CON = 0b01111101;
 CCPR1L = 0b00000010;
 CCP1CON = 0b00101100;
-TRISC = 0b00000000;
-PORTC = 0b00000000;
+TRISCbits.RC2 = 0;
 
 PIE1bits.TMR2IE = 1;
 INTCONbits.PEIE = 1;
@@ -5140,9 +5139,17 @@ INTCONbits.GIE = 1;
 T2CONbits.TMR2ON = 0;
 }
 
-# 68
+# 66
 void tlc_init()
 {
+
+tlc_interrupt_counter = 0;
+
+
+TRISDbits.RD0 = 0;
+TRISDbits.RD1 = 0;
+TRISDbits.RD2 = 0;
+
 
 LATDbits.LD1 = 1;
 LATDbits.LD0 = 0;
@@ -5170,7 +5177,7 @@ LATDbits.LD1 = 0;
 LATDbits.LD0 = 0;
 LATDbits.LD2 = 0;
 
-# 101
+# 107
 tlc_servo[0] = 0;
 tlc_servo[1] = 0;
 tlc_servo[2] = 0;
@@ -5217,7 +5224,7 @@ tlc_spi_send_data(0b10000000);
 T2CONbits.TMR2ON = 1;
 }
 
-# 157
+# 163
 void tlc_update()
 {
 
@@ -5247,14 +5254,14 @@ _delay((unsigned long)((1)*(8000000/4000000.0)));
 
 }
 
-# 196
+# 202
 void tlc_set(char tlc_servo_number, char value)
 {
 tlc_servo[tlc_servo_number] = value + 55;
 tlc_servo_temp[tlc_servo_number] = value + 55;
 }
 
-# 212
+# 218
 void tlc_write(char tlc_servo_number, char value)
 {
 tlc_servo[tlc_servo_number] = value + 55;

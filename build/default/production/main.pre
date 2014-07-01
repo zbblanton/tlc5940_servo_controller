@@ -4994,13 +4994,14 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 31 "tlc5940.h"
+# 39 "tlc5940.h"
 char tlc_servo[16];
 char tlc_servo_temp[16];
+int tlc_interrupt_counter;
 
 void tlc_spi_init();
 void tlc_spi_send_data(char data);
-void tlc_TMR2_init();
+void tlc_pwm_init();
 void tlc_init();
 void tlc_update();
 void tlc_set(char channel_number, char value);
@@ -5016,8 +5017,6 @@ void tlc_sweep_update(char num_of_increments);
 
 #pragma config OSC = HS, WDT=OFF, PWRT=OFF, BOREN=OFF, CP0=OFF,CP1=OFF,CP2=OFF,CP3=OFF, MCLRE=ON
 
-volatile int count;
-
 void delay_sec()
 {
 for(int i = 0; i < 50; i++)
@@ -5026,35 +5025,25 @@ _delay((unsigned long)((10)*(8000000/4000.0)));
 }
 }
 
-void interrupt blank_pulse(void)
+void interrupt tlc_interrupt_blank(void)
 {
 if(PIE1bits.TMR2IE && PIR1bits.TMR2IF)
 {
-if(count >= 125)
+if(tlc_interrupt_counter >= 125)
 {
 LATDbits.LD2 = 1;
 _delay((unsigned long)((1)*(8000000/4000000.0)));
 LATDbits.LD2 = 0;
-count = 0;
+tlc_interrupt_counter = 0;
 }
-count++;
+tlc_interrupt_counter++;
 PIR1bits.TMR2IF = 0;
 }
 }
 
 int main()
 {
-TRISD = 0b00000000;
-PORTD = 0b00000000;
-TRISB = 0b00100000;
-PORTB = 0b00000000;
-TRISA = 0b00001111;
-PORTA = 0b00001111;
-TRISE = 0b00001000;
-PORTE = 0b00000000;
-
-count = 0;
-tlc_TMR2_init();
+tlc_pwm_init();
 tlc_spi_init();
 tlc_init();
 
