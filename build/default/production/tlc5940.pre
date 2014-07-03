@@ -5004,11 +5004,11 @@ void tlc_spi_send_data(char data);
 void tlc_pwm_init();
 void tlc_init();
 void tlc_update();
-void tlc_set(char channel_number, char value);
-void tlc_write(char channel_number, char value);
+void tlc_set(char channel_number, int value);
+void tlc_write(char channel_number, int value);
 
 
-void tlc_sweep_set(char channel_number, char value);
+void tlc_sweep_set(char channel_number, int value);
 void tlc_sweep_update(int speed);
 void tlc_sweep_delay(int count);
 
@@ -5088,31 +5088,17 @@ LATDbits.LD1 = 0;
 LATDbits.LD0 = 0;
 LATDbits.LD2 = 0;
 
-# 113
-tlc_servo[0] = 0;
-tlc_servo[1] = 0;
-tlc_servo[2] = 0;
-tlc_servo[3] = 0;
-tlc_servo[4] = 0;
-tlc_servo[5] = 0;
-tlc_servo[6] = 0;
-tlc_servo[7] = 0;
-tlc_servo[8] = 0;
-tlc_servo[9] = 0;
-tlc_servo[10] = 0;
-tlc_servo[11] = 0;
-tlc_servo[12] = 0;
-tlc_servo[13] = 145;
-tlc_servo[14] = 185;
-tlc_servo[15] = 230;
-
 
 for(int i = 0; i < 16; i++)
 {
+if(tlc_servo[i] != 0)
+{
+tlc_servo[i] = 0;
+}
 tlc_servo_temp[i] = tlc_servo[i];
 }
 
-
+# 126
 char counter = 0;
 for(char i = 15; i > 7; i--)
 {
@@ -5135,7 +5121,7 @@ tlc_spi_send_data(0b10000000);
 T2CONbits.TMR2ON = 1;
 }
 
-# 169
+# 158
 void tlc_update()
 {
 
@@ -5165,18 +5151,34 @@ _delay((unsigned long)((1)*(8000000/4000000.0)));
 
 }
 
-# 208
-void tlc_set(char tlc_servo_number, char value)
+# 197
+void tlc_set(char tlc_servo_number, int value)
+{
+if(value == -1 || value < -1 || value > 180)
+{
+tlc_servo[tlc_servo_number] = 0;
+tlc_servo_temp[tlc_servo_number] = 0;
+}
+else
 {
 tlc_servo[tlc_servo_number] = value + 55;
 tlc_servo_temp[tlc_servo_number] = value + 55;
 }
+}
 
-# 224
-void tlc_write(char tlc_servo_number, char value)
+# 221
+void tlc_write(char tlc_servo_number, int value)
+{
+if(value == -1 || value < -1 || value > 180)
+{
+tlc_servo[tlc_servo_number] = 0;
+tlc_servo_temp[tlc_servo_number] = 0;
+}
+else
 {
 tlc_servo[tlc_servo_number] = value + 55;
 tlc_servo_temp[tlc_servo_number] = value + 55;
+}
 
 
 
@@ -5217,9 +5219,16 @@ count--;
 }
 }
 
-void tlc_sweep_set(char tlc_servo_number, char value)
+void tlc_sweep_set(char tlc_servo_number, int value)
+{
+if(value == -1 || value < -1 || value > 180)
+{
+tlc_servo_temp[tlc_servo_number] = 0;
+}
+else
 {
 tlc_servo_temp[tlc_servo_number] = value + 55;
+}
 }
 
 void tlc_sweep_update(int speed)

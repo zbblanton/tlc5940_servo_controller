@@ -93,6 +93,15 @@ int main()
         tlc_write(14, 125);
         delay_sec();
         delay_sec();
+
+        tlc_set(15, -1);
+        tlc_set(14, -1);
+        tlc_set(13, -1);
+        tlc_update();
+        delay_sec();
+        delay_sec();
+        delay_sec();
+        delay_sec();
         //end
     }
 }

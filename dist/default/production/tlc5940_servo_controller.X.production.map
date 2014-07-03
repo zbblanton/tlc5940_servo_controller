@@ -5,7 +5,7 @@ Linker command line:
 --edf=D:\Program Files (x86)\Microchip\xc8\v1.32\dat\en_msgs.txt -cs \
   -h+dist/default/production\tlc5940_servo_controller.X.production.sym \
   --cmf=dist/default/production\tlc5940_servo_controller.X.production.cmf \
-  -z -Q18F4520 -oD:\temp_folders\temp\s3fc.6 \
+  -z -Q18F4520 -oD:\temp_folders\temp\s5no.6 \
   -Mdist/default/production/tlc5940_servo_controller.X.production.map -E1 \
   -ver=XC8 -ASTACK=080h-05ffh -pstack=STACK -ACODE=00h-07FFFh \
   -ACONST=00h-07FFFh -ASMALLCONST=0600h-06FFhx122 \
@@ -22,7 +22,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE \
-  D:\temp_folders\temp\s3fc.obj \
+  D:\temp_folders\temp\s5no.obj \
   dist/default/production\tlc5940_servo_controller.X.production.obj 
 
 Object code version is 3.11
@@ -35,29 +35,29 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-D:\temp_folders\temp\s3fc.obj
+D:\temp_folders\temp\s5no.obj
                 end_init                             18       18        4        4       0
                 reset_vec                             0        0        4        0       0
                 idloc                            200000   200000        8   200000       0
                 config                           300000   300000        E   300000       0
 dist/default/production\tlc5940_servo_controller.X.production.obj
                 intcode                               8        8       10        4       0
-                text11                              6E2      6E2       30        4       0
-                text10                              790      790        C        4       0
-                text9                               1FA      1FA      19E        4       0
-                text8                               732      732       1C        4       0
-                text7                               6B2      6B2       30        4       0
-                text6                               768      768       16        4       0
-                text5                               74E      74E       1A        4       0
-                text4                               712      712       20        4       0
+                text11                              820      820       30        4       0
+                text10                              8B4      8B4        C        4       0
+                text9                               1FA      1FA      180        4       0
+                text8                               870      870       1C        4       0
+                text7                               746      746       82        4       0
+                text6                               88C      88C       16        4       0
+                text5                               7C8      7C8       58        4       0
+                text4                               850      850       20        4       0
                 text3                                1C       1C      1DE        4       0
-                text2                               558      558       C8        4       0
-                text1                               398      398       F6        4       0
-                text0                               48E      48E       CA        4       0
+                text2                               5EC      5EC       C8        4       0
+                text1                               37A      37A      148        4       0
+                text0                               4C2      4C2      12A        4       0
                 cstackCOMRAM                         23       23       1E        1       1
                 bssCOMRAM                             1        1       22        1       1
-                cinit                               77E      77E       12        4       0
-                intcode_body                        620      620       92        4       0
+                cinit                               8A2      8A2       12        4       0
+                intcode_body                        6B4      6B4       92        4       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   STACK          
@@ -66,20 +66,20 @@ TOTAL           Name                               Link     Load   Length     Sp
                 end_init                             18       18        4         0
                 intcode                               8        8       10         0
                 reset_vec                             0        0        4         0
-                text11                              6E2      6E2       30         0
-                text10                              790      790        C         0
-                text9                               1FA      1FA      19E         0
-                text8                               732      732       1C         0
-                text7                               6B2      6B2       30         0
-                text6                               768      768       16         0
-                text5                               74E      74E       1A         0
-                text4                               712      712       20         0
+                text11                              820      820       30         0
+                text10                              8B4      8B4        C         0
+                text9                               1FA      1FA      180         0
+                text8                               870      870       1C         0
+                text7                               746      746       82         0
+                text6                               88C      88C       16         0
+                text5                               7C8      7C8       58         0
+                text4                               850      850       20         0
                 text3                                1C       1C      1DE         0
-                text2                               558      558       C8         0
-                text1                               398      398       F6         0
-                text0                               48E      48E       CA         0
-                cinit                               77E      77E       12         0
-                intcode_body                        620      620       92         0
+                text2                               5EC      5EC       C8         0
+                text1                               37A      37A      148         0
+                text0                               4C2      4C2      12A         0
+                cinit                               8A2      8A2       12         0
+                intcode_body                        6B4      6B4       92         0
 
         CLASS   CONST          
 
@@ -127,7 +127,7 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
 
                 reset_vec                      000000  000004  000004         0       0  CODE    
                 bssCOMRAM                      000001  000040  000041         1       1  COMRAM  
-                intcode                        000008  000794  00079C         4       0  CODE    
+                intcode                        000008  0008B8  0008C0         4       0  CODE    
                 idloc                          200000  000008  200008    200000       0  IDLOC   
                 config                         300000  00000E  30000E    300000       0  CONFIG  
 
@@ -143,15 +143,15 @@ UNUSED ADDRESS RANGES
         BANK5            000500-0005FF              100
         BIGRAM           000041-0005FF              5BF
         CODE             000004-000007                4
-                         00079C-007FFF             7864
+                         0008C0-007FFF             7740
         COMRAM           000041-00007F               3F
         CONST            000004-000007                4
-                         00079C-007FFF             7864
+                         0008C0-007FFF             7740
         EEDATA           F00000-F000FF              100
-        MEDIUMCONST      00079C-007FFF             7864
+        MEDIUMCONST      0008C0-007FFF             7740
         RAM              000080-0005FF              100
         SFR              000F80-000FFF               80
-        SMALLCONST       00079C-007FFF              100
+        SMALLCONST       0008C0-007FFF              100
         STACK            000080-0005FF              580
 
                                   Symbol Table
@@ -328,38 +328,38 @@ ___intlo_sp                    stack        000000
 ___sp                          stack        000000
 __accesstop                    (abs)        000080
 __activetblptr                 (abs)        000000
-__end_of__initialization       cinit        00078A
-__end_of_delay_sec             text11       000712
-__end_of_main                  text0        000558
-__end_of_tlc_init              text9        000398
-__end_of_tlc_interrupt_blank   intcode_body 0006B2
-__end_of_tlc_pwm_init          text8        00074E
-__end_of_tlc_set               text7        0006E2
-__end_of_tlc_spi_init          text6        00077E
-__end_of_tlc_spi_send_data     text10       00079C
-__end_of_tlc_sweep_delay       text4        000732
-__end_of_tlc_sweep_set         text5        000768
+__end_of__initialization       cinit        0008AE
+__end_of_delay_sec             text11       000850
+__end_of_main                  text0        0005EC
+__end_of_tlc_init              text9        00037A
+__end_of_tlc_interrupt_blank   intcode_body 000746
+__end_of_tlc_pwm_init          text8        00088C
+__end_of_tlc_set               text7        0007C8
+__end_of_tlc_spi_init          text6        0008A2
+__end_of_tlc_spi_send_data     text10       0008C0
+__end_of_tlc_sweep_delay       text4        000870
+__end_of_tlc_sweep_set         text5        000820
 __end_of_tlc_sweep_update      text3        0001FA
-__end_of_tlc_update            text2        000620
-__end_of_tlc_write             text1        00048E
-__initialization               cinit        00077E
+__end_of_tlc_update            text2        0006B4
+__end_of_tlc_write             text1        0004C2
+__initialization               cinit        0008A2
 __mediumconst                  mediumconst  000000
 __pbssCOMRAM                   bssCOMRAM    000001
-__pcinit                       cinit        00077E
+__pcinit                       cinit        0008A2
 __pcstackCOMRAM                cstackCOMRAM 000023
 __pintcode                     intcode      000008
-__pintcode_body                intcode_body 000620
-__ptext0                       text0        00048E
-__ptext1                       text1        000398
-__ptext10                      text10       000790
-__ptext11                      text11       0006E2
-__ptext2                       text2        000558
+__pintcode_body                intcode_body 0006B4
+__ptext0                       text0        0004C2
+__ptext1                       text1        00037A
+__ptext10                      text10       0008B4
+__ptext11                      text11       000820
+__ptext2                       text2        0005EC
 __ptext3                       text3        00001C
-__ptext4                       text4        000712
-__ptext5                       text5        00074E
-__ptext6                       text6        000768
-__ptext7                       text7        0006B2
-__ptext8                       text8        000732
+__ptext4                       text4        000850
+__ptext5                       text5        0007C8
+__ptext6                       text6        00088C
+__ptext7                       text7        000746
+__ptext8                       text8        000870
 __ptext9                       text9        0001FA
 __ramtop                       ramtop       000600
 __size_of_delay_sec            (abs)        000000
@@ -376,25 +376,25 @@ __size_of_tlc_sweep_update     (abs)        000000
 __size_of_tlc_update           (abs)        000000
 __size_of_tlc_write            (abs)        000000
 __smallconst                   smallconst   000000
-_delay_sec                     text11       0006E2
-_main                          text0        00048E
+_delay_sec                     text11       000820
+_main                          text0        0004C2
 _tlc_init                      text9        0001FA
 _tlc_interrupt_blank           intcode      000008
 _tlc_interrupt_counter         bssCOMRAM    000021
-_tlc_pwm_init                  text8        000732
+_tlc_pwm_init                  text8        000870
 _tlc_servo                     bssCOMRAM    000001
 _tlc_servo_temp                bssCOMRAM    000011
-_tlc_set                       text7        0006B2
-_tlc_spi_init                  text6        000768
-_tlc_spi_send_data             text10       000790
-_tlc_sweep_delay               text4        000712
-_tlc_sweep_set                 text5        00074E
+_tlc_set                       text7        000746
+_tlc_spi_init                  text6        00088C
+_tlc_spi_send_data             text10       0008B4
+_tlc_sweep_delay               text4        000850
+_tlc_sweep_set                 text5        0007C8
 _tlc_sweep_update              text3        00001C
-_tlc_update                    text2        000558
-_tlc_write                     text1        000398
+_tlc_update                    text2        0005EC
+_tlc_write                     text1        00037A
 delay_sec@i                    cstackCOMRAM 000032
-end_of_initialization          cinit        00078A
-int_func                       intcode_body 000620
+end_of_initialization          cinit        0008AE
+int_func                       intcode_body 0006B4
 intlevel0                      text         000000
 intlevel1                      text         000000
 intlevel2                      text         000000
@@ -402,16 +402,16 @@ intlevel3                      text         000000
 stackhi                        (abs)        0005FF
 stacklo                        (abs)        000080
 start                          init         000018
-start_initialization           cinit        00077E
+start_initialization           cinit        0008A2
 tlc_init@counter               cstackCOMRAM 000038
 tlc_init@i                     cstackCOMRAM 000037
-tlc_init@i_603                 cstackCOMRAM 000039
-tlc_init@i_605                 cstackCOMRAM 00003B
-tlc_set@tlc_servo_number       cstackCOMRAM 000032
+tlc_init@i_603                 cstackCOMRAM 00003A
+tlc_init@i_605                 cstackCOMRAM 000039
+tlc_set@tlc_servo_number       cstackCOMRAM 000033
 tlc_set@value                  cstackCOMRAM 000031
 tlc_spi_send_data@data         cstackCOMRAM 000031
 tlc_sweep_delay@count          cstackCOMRAM 000031
-tlc_sweep_set@tlc_servo_number cstackCOMRAM 000032
+tlc_sweep_set@tlc_servo_number cstackCOMRAM 000033
 tlc_sweep_set@value            cstackCOMRAM 000031
 tlc_sweep_update@counter       cstackCOMRAM 00003D
 tlc_sweep_update@i             cstackCOMRAM 00003F
@@ -421,8 +421,8 @@ tlc_sweep_update@speed         cstackCOMRAM 000034
 tlc_update@counter             cstackCOMRAM 000037
 tlc_update@i                   cstackCOMRAM 000038
 tlc_write@counter              cstackCOMRAM 000039
-tlc_write@i                    cstackCOMRAM 00003A
-tlc_write@tlc_servo_number     cstackCOMRAM 000038
+tlc_write@i                    cstackCOMRAM 00003B
+tlc_write@tlc_servo_number     cstackCOMRAM 00003A
 tlc_write@value                cstackCOMRAM 000032
 
 
@@ -436,7 +436,7 @@ FUNCTION INFORMATION:
  Auto vars:     Size  Location     Type
 		None
  Return value:  Size  Location     Type
-                  2  135[COMRAM] int 
+                  2  148[COMRAM] int 
  Registers used:
 		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
  Tracked objects:
@@ -467,13 +467,13 @@ Total ram usage:        0 bytes
 
  *************** function _tlc_write *****************
  Defined at:
-		line 224 in file "tlc5940.c"
+		line 221 in file "tlc5940.c"
  Parameters:    Size  Location     Type
   tlc_servo_nu    1    wreg     unsigned char 
-  value           1   15[COMRAM] unsigned char 
+  value           2   15[COMRAM] int 
  Auto vars:     Size  Location     Type
-  tlc_servo_nu    1   21[COMRAM] unsigned char 
-  i               1   23[COMRAM] unsigned char 
+  tlc_servo_nu    1   23[COMRAM] unsigned char 
+  i               1   24[COMRAM] unsigned char 
   counter         1   22[COMRAM] unsigned char 
  Return value:  Size  Location     Type
 		None               void
@@ -484,11 +484,11 @@ Total ram usage:        0 bytes
 		On exit  : 
 		Unchanged: 
  Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-      Params:         1       0       0       0       0       0       0
+      Params:         2       0       0       0       0       0       0
       Locals:         3       0       0       0       0       0       0
       Temps:          5       0       0       0       0       0       0
-      Totals:         9       0       0       0       0       0       0
-Total ram usage:        9 bytes
+      Totals:        10       0       0       0       0       0       0
+Total ram usage:       10 bytes
  Hardware stack levels used:    1
  Hardware stack levels required when called:    2
  This function calls:
@@ -500,7 +500,7 @@ Total ram usage:        9 bytes
 
  *************** function _tlc_update *****************
  Defined at:
-		line 169 in file "tlc5940.c"
+		line 158 in file "tlc5940.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -531,7 +531,7 @@ Total ram usage:        7 bytes
 
  *************** function _tlc_sweep_update *****************
  Defined at:
-		line 273 in file "tlc5940.c"
+		line 285 in file "tlc5940.c"
  Parameters:    Size  Location     Type
   speed           2   17[COMRAM] int 
  Auto vars:     Size  Location     Type
@@ -565,7 +565,7 @@ Total ram usage:       13 bytes
 
  *************** function _tlc_sweep_delay *****************
  Defined at:
-		line 259 in file "tlc5940.c"
+		line 264 in file "tlc5940.c"
  Parameters:    Size  Location     Type
   count           2   14[COMRAM] int 
  Auto vars:     Size  Location     Type
@@ -595,12 +595,12 @@ Total ram usage:        3 bytes
 
  *************** function _tlc_sweep_set *****************
  Defined at:
-		line 268 in file "tlc5940.c"
+		line 273 in file "tlc5940.c"
  Parameters:    Size  Location     Type
   tlc_servo_nu    1    wreg     unsigned char 
-  value           1   14[COMRAM] unsigned char 
+  value           2   14[COMRAM] int 
  Auto vars:     Size  Location     Type
-  tlc_servo_nu    1   15[COMRAM] unsigned char 
+  tlc_servo_nu    1   16[COMRAM] unsigned char 
  Return value:  Size  Location     Type
 		None               void
  Registers used:
@@ -610,11 +610,11 @@ Total ram usage:        3 bytes
 		On exit  : 
 		Unchanged: 
  Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-      Params:         1       0       0       0       0       0       0
+      Params:         2       0       0       0       0       0       0
       Locals:         1       0       0       0       0       0       0
       Temps:          0       0       0       0       0       0       0
-      Totals:         2       0       0       0       0       0       0
-Total ram usage:        2 bytes
+      Totals:         3       0       0       0       0       0       0
+Total ram usage:        3 bytes
  Hardware stack levels used:    1
  Hardware stack levels required when called:    1
  This function calls:
@@ -656,12 +656,12 @@ Total ram usage:        0 bytes
 
  *************** function _tlc_set *****************
  Defined at:
-		line 208 in file "tlc5940.c"
+		line 197 in file "tlc5940.c"
  Parameters:    Size  Location     Type
   tlc_servo_nu    1    wreg     unsigned char 
-  value           1   14[COMRAM] unsigned char 
+  value           2   14[COMRAM] int 
  Auto vars:     Size  Location     Type
-  tlc_servo_nu    1   15[COMRAM] unsigned char 
+  tlc_servo_nu    1   16[COMRAM] unsigned char 
  Return value:  Size  Location     Type
 		None               void
  Registers used:
@@ -671,11 +671,11 @@ Total ram usage:        0 bytes
 		On exit  : 
 		Unchanged: 
  Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-      Params:         1       0       0       0       0       0       0
+      Params:         2       0       0       0       0       0       0
       Locals:         1       0       0       0       0       0       0
       Temps:          0       0       0       0       0       0       0
-      Totals:         2       0       0       0       0       0       0
-Total ram usage:        2 bytes
+      Totals:         3       0       0       0       0       0       0
+Total ram usage:        3 bytes
  Hardware stack levels used:    1
  Hardware stack levels required when called:    1
  This function calls:
@@ -721,8 +721,8 @@ Total ram usage:        0 bytes
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
-  i               1   24[COMRAM] unsigned char 
-  i               2   22[COMRAM] int 
+  i               1   22[COMRAM] unsigned char 
+  i               2   23[COMRAM] int 
   i               1   20[COMRAM] unsigned char 
   counter         1   21[COMRAM] unsigned char 
  Return value:  Size  Location     Type
@@ -845,28 +845,28 @@ MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 shared
-		__initializatio		CODE           	077E	0000	12
+		__initializatio		CODE           	08A2	0000	12
 
 shared estimated size: 12
 
 tlc5940.c
-		_tlc_init      		CODE           	01FA	0000	414
-		_tlc_pwm_init  		CODE           	0732	0000	28
+		_tlc_init      		CODE           	01FA	0000	384
+		_tlc_pwm_init  		CODE           	0870	0000	28
 		_tlc_sweep_upda		CODE           	001C	0000	478
-		_tlc_set       		CODE           	06B2	0000	48
-		_tlc_sweep_set 		CODE           	074E	0000	26
-		_tlc_update    		CODE           	0558	0000	200
-		_tlc_spi_init  		CODE           	0768	0000	22
-		_tlc_spi_send_d		CODE           	0790	0000	12
-		_tlc_sweep_dela		CODE           	0712	0000	32
-		_tlc_write     		CODE           	0398	0000	246
+		_tlc_set       		CODE           	0746	0000	130
+		_tlc_sweep_set 		CODE           	07C8	0000	88
+		_tlc_update    		CODE           	05EC	0000	200
+		_tlc_spi_init  		CODE           	088C	0000	22
+		_tlc_spi_send_d		CODE           	08B4	0000	12
+		_tlc_sweep_dela		CODE           	0850	0000	32
+		_tlc_write     		CODE           	037A	0000	328
 
-tlc5940.c estimated size: 1506
+tlc5940.c estimated size: 1702
 
 main.c
-		_main          		CODE           	048E	0000	202
-		_tlc_interrupt_		CODE           	0008	0000	1706
-		_delay_sec     		CODE           	06E2	0000	48
+		_main          		CODE           	04C2	0000	298
+		_tlc_interrupt_		CODE           	0008	0000	1854
+		_delay_sec     		CODE           	0820	0000	48
 
-main.c estimated size: 1956
+main.c estimated size: 2200
 

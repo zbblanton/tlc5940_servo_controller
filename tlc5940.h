@@ -29,8 +29,8 @@
 
 //Custom serial functions name.
 //Change to whatever your serial write function name is.
-#define tlc_spi_output_pin TRISCbits.RC5
-#define tlc_spi_clock_pin TRISCbits.RC3
+#define tlc_spi_output_io TRISCbits.RC5
+#define tlc_spi_clock_io TRISCbits.RC3
 #define tlc_send_data tlc_spi_send_data
 
 //Custom Timer 2 pin names
@@ -45,11 +45,11 @@ void tlc_spi_send_data(char data);
 void tlc_pwm_init();
 void tlc_init();
 void tlc_update();
-void tlc_set(char channel_number, char value);
-void tlc_write(char channel_number, char value);
+void tlc_set(char channel_number, int value);
+void tlc_write(char channel_number, int value);
 
 //Version 1.1 functions in development
-void tlc_sweep_set(char channel_number, char value);
+void tlc_sweep_set(char channel_number, int value);
 void tlc_sweep_update(int speed);
 void tlc_sweep_delay(int count);
 

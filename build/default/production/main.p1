@@ -71,15 +71,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 "46
 [v _tlc_init `(v ~T0 @X0 0 ef ]
 "48
-[v _tlc_set `(v ~T0 @X0 0 ef2`uc`uc ]
+[v _tlc_set `(v ~T0 @X0 0 ef2`uc`i ]
 "47
 [v _tlc_update `(v ~T0 @X0 0 ef ]
 "52
-[v _tlc_sweep_set `(v ~T0 @X0 0 ef2`uc`uc ]
+[v _tlc_sweep_set `(v ~T0 @X0 0 ef2`uc`i ]
 "53
 [v _tlc_sweep_update `(v ~T0 @X0 0 ef1`i ]
 "49
-[v _tlc_write `(v ~T0 @X0 0 ef2`uc`uc ]
+[v _tlc_write `(v ~T0 @X0 0 ef2`uc`i ]
 [; ;htc.h: 21: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 24: extern void __builtin_software_breakpoint(void);
 [; ;pic18f4520.h: 47: extern volatile unsigned char PORTA @ 0xF80;
@@ -3848,9 +3848,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tlc5940.h: 45: void tlc_pwm_init();
 [; ;tlc5940.h: 46: void tlc_init();
 [; ;tlc5940.h: 47: void tlc_update();
-[; ;tlc5940.h: 48: void tlc_set(char channel_number, char value);
-[; ;tlc5940.h: 49: void tlc_write(char channel_number, char value);
-[; ;tlc5940.h: 52: void tlc_sweep_set(char channel_number, char value);
+[; ;tlc5940.h: 48: void tlc_set(char channel_number, int value);
+[; ;tlc5940.h: 49: void tlc_write(char channel_number, int value);
+[; ;tlc5940.h: 52: void tlc_sweep_set(char channel_number, int value);
 [; ;tlc5940.h: 53: void tlc_sweep_update(int speed);
 [; ;tlc5940.h: 54: void tlc_sweep_delay(int count);
 "20 main.c
@@ -3988,13 +3988,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _delay_sec ..  ]
 [; ;main.c: 62: tlc_set(15, 175);
 "62
-[e ( _tlc_set (2 , -> -> 15 `i `uc -> -> 175 `i `uc ]
+[e ( _tlc_set (2 , -> -> 15 `i `uc -> 175 `i ]
 [; ;main.c: 63: tlc_set(14, 130);
 "63
-[e ( _tlc_set (2 , -> -> 14 `i `uc -> -> 130 `i `uc ]
+[e ( _tlc_set (2 , -> -> 14 `i `uc -> 130 `i ]
 [; ;main.c: 64: tlc_set(13, 90);
 "64
-[e ( _tlc_set (2 , -> -> 13 `i `uc -> -> 90 `i `uc ]
+[e ( _tlc_set (2 , -> -> 13 `i `uc -> 90 `i ]
 [; ;main.c: 65: tlc_update();
 "65
 [e ( _tlc_update ..  ]
@@ -4012,13 +4012,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _delay_sec ..  ]
 [; ;main.c: 73: tlc_set(15, 175);
 "73
-[e ( _tlc_set (2 , -> -> 15 `i `uc -> -> 175 `i `uc ]
+[e ( _tlc_set (2 , -> -> 15 `i `uc -> 175 `i ]
 [; ;main.c: 74: tlc_set(14, 115);
 "74
-[e ( _tlc_set (2 , -> -> 14 `i `uc -> -> 115 `i `uc ]
+[e ( _tlc_set (2 , -> -> 14 `i `uc -> 115 `i ]
 [; ;main.c: 75: tlc_set(13, 110);
 "75
-[e ( _tlc_set (2 , -> -> 13 `i `uc -> -> 110 `i `uc ]
+[e ( _tlc_set (2 , -> -> 13 `i `uc -> 110 `i ]
 [; ;main.c: 76: tlc_update();
 "76
 [e ( _tlc_update ..  ]
@@ -4036,13 +4036,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _delay_sec ..  ]
 [; ;main.c: 83: tlc_sweep_set(15,160);
 "83
-[e ( _tlc_sweep_set (2 , -> -> 15 `i `uc -> -> 160 `i `uc ]
+[e ( _tlc_sweep_set (2 , -> -> 15 `i `uc -> 160 `i ]
 [; ;main.c: 84: tlc_sweep_set(14,100);
 "84
-[e ( _tlc_sweep_set (2 , -> -> 14 `i `uc -> -> 100 `i `uc ]
+[e ( _tlc_sweep_set (2 , -> -> 14 `i `uc -> 100 `i ]
 [; ;main.c: 85: tlc_sweep_set(13,30);
 "85
-[e ( _tlc_sweep_set (2 , -> -> 13 `i `uc -> -> 30 `i `uc ]
+[e ( _tlc_sweep_set (2 , -> -> 13 `i `uc -> 30 `i ]
 [; ;main.c: 86: tlc_sweep_update(2);
 "86
 [e ( _tlc_sweep_update (1 -> 2 `i ]
@@ -4060,21 +4060,45 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _delay_sec ..  ]
 [; ;main.c: 93: tlc_write(14, 125);
 "93
-[e ( _tlc_write (2 , -> -> 14 `i `uc -> -> 125 `i `uc ]
+[e ( _tlc_write (2 , -> -> 14 `i `uc -> 125 `i ]
 [; ;main.c: 94: delay_sec();
 "94
 [e ( _delay_sec ..  ]
 [; ;main.c: 95: delay_sec();
 "95
 [e ( _delay_sec ..  ]
+[; ;main.c: 97: tlc_set(15, -1);
 "97
+[e ( _tlc_set (2 , -> -> 15 `i `uc -U -> 1 `i ]
+[; ;main.c: 98: tlc_set(14, -1);
+"98
+[e ( _tlc_set (2 , -> -> 14 `i `uc -U -> 1 `i ]
+[; ;main.c: 99: tlc_set(13, -1);
+"99
+[e ( _tlc_set (2 , -> -> 13 `i `uc -U -> 1 `i ]
+[; ;main.c: 100: tlc_update();
+"100
+[e ( _tlc_update ..  ]
+[; ;main.c: 101: delay_sec();
+"101
+[e ( _delay_sec ..  ]
+[; ;main.c: 102: delay_sec();
+"102
+[e ( _delay_sec ..  ]
+[; ;main.c: 103: delay_sec();
+"103
+[e ( _delay_sec ..  ]
+[; ;main.c: 104: delay_sec();
+"104
+[e ( _delay_sec ..  ]
+"106
 }
 [e :U 410 ]
 "54
 [e $U 411  ]
 [e :U 412 ]
-[; ;main.c: 97: }
-[; ;main.c: 98: }
-"98
+[; ;main.c: 106: }
+[; ;main.c: 107: }
+"107
 [e :UE 409 ]
 }

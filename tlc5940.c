@@ -33,8 +33,8 @@ void tlc_spi_init()
     SSPCON1bits.SSPM3 = 0;
     SSPCON1bits.SSPEN = 1; //Enables the serial port
 
-    tlc_spi_output_pin = 0; //Set SDO to ouput
-    tlc_spi_clock_pin = 0; //Set SCK to output
+    tlc_spi_output_io = 0; //Set SDO to ouput
+    tlc_spi_clock_io = 0; //Set SCK to output
 }
 
 void tlc_spi_send_data(char data)
@@ -107,31 +107,20 @@ void tlc_init()
     tlc_blank_pin = 0;
 
     //Initialize the default servo position
-    //Change values to your desired default servo position
-    //Be sure to add 55 to the value, ex default position is
-    //180 degrees then the value should be 235
-    tlc_servo[0] = 0;
-    tlc_servo[1] = 0;
-    tlc_servo[2] = 0;
-    tlc_servo[3] = 0;
-    tlc_servo[4] = 0;
-    tlc_servo[5] = 0;
-    tlc_servo[6] = 0;
-    tlc_servo[7] = 0;
-    tlc_servo[8] = 0;
-    tlc_servo[9] = 0;
-    tlc_servo[10] = 0;
-    tlc_servo[11] = 0;
-    tlc_servo[12] = 0;
-    tlc_servo[13] = 145;
-    tlc_servo[14] = 185;
-    tlc_servo[15] = 230;
-
-    //Copy initial servo positions to temp
     for(int i = 0; i < 16; i++)
     {
+        if(tlc_servo[i] != 0)
+        {
+            tlc_servo[i] = 0;
+        }
         tlc_servo_temp[i] = tlc_servo[i];
     }
+
+    //Copy initial servo positions to temp
+//    for(int i = 0; i < 16; i++)
+//    {
+//        tlc_servo_temp[i] = tlc_servo[i];
+//    }
 
     //Send default servo positions.
     char counter = 0;
@@ -205,10 +194,18 @@ Arguments   : char tlc_servo_number, char value
 Remarks     : This function ONLY updates the selected servo position variable,
  it does NOT update the tlc5940.
 ***************************************************************************/
-void tlc_set(char tlc_servo_number, char value) //Value between 0 and 180
+void tlc_set(char tlc_servo_number, int value) //Value between 0 and 180
 {
-    tlc_servo[tlc_servo_number] = value + 55;
-    tlc_servo_temp[tlc_servo_number] = value + 55;
+    if(value == -1 || value < -1 || value > 180)
+    {
+        tlc_servo[tlc_servo_number] = 0;
+        tlc_servo_temp[tlc_servo_number] = 0;
+    }
+    else
+    {
+        tlc_servo[tlc_servo_number] = value + 55;
+        tlc_servo_temp[tlc_servo_number] = value + 55;
+    }
 }
 
 /**************************************************************************
@@ -221,10 +218,18 @@ Arguments   : char tlc_servo_number, char value
 Remarks     : This is different from tlc_set. This function sets the servo
  position and then automatically updates the tlc with the new information.
 ***************************************************************************/
-void tlc_write(char tlc_servo_number, char value)
+void tlc_write(char tlc_servo_number, int value)
 {
-    tlc_servo[tlc_servo_number] = value + 55; //Set the servo
-    tlc_servo_temp[tlc_servo_number] = value + 55;
+    if(value == -1 || value < -1 || value > 180)
+    {
+        tlc_servo[tlc_servo_number] = 0;
+        tlc_servo_temp[tlc_servo_number] = 0;
+    }
+    else
+    {
+        tlc_servo[tlc_servo_number] = value + 55;
+        tlc_servo_temp[tlc_servo_number] = value + 55;
+    }
 
     //Update the tlc grayscale
     //tlc_delay_ms(2);
@@ -265,9 +270,16 @@ void tlc_sweep_delay(int count)
     }
 }
 
-void tlc_sweep_set(char tlc_servo_number, char value) //Value between 0 and 180
+void tlc_sweep_set(char tlc_servo_number, int value) //Value between 0 and 180
 {
-    tlc_servo_temp[tlc_servo_number] = value + 55;
+    if(value == -1 || value < -1 || value > 180)
+    {
+        tlc_servo_temp[tlc_servo_number] = 0;
+    }
+    else
+    {
+        tlc_servo_temp[tlc_servo_number] = value + 55;
+    }
 }
 
 void tlc_sweep_update(int speed) //1 slow, 2 medium, 3 fast

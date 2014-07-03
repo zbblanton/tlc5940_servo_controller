@@ -5004,11 +5004,11 @@ void tlc_spi_send_data(char data);
 void tlc_pwm_init();
 void tlc_init();
 void tlc_update();
-void tlc_set(char channel_number, char value);
-void tlc_write(char channel_number, char value);
+void tlc_set(char channel_number, int value);
+void tlc_write(char channel_number, int value);
 
 
-void tlc_sweep_set(char channel_number, char value);
+void tlc_sweep_set(char channel_number, int value);
 void tlc_sweep_update(int speed);
 void tlc_sweep_delay(int count);
 
@@ -5088,6 +5088,15 @@ delay_sec();
 delay_sec();
 
 tlc_write(14, 125);
+delay_sec();
+delay_sec();
+
+tlc_set(15, -1);
+tlc_set(14, -1);
+tlc_set(13, -1);
+tlc_update();
+delay_sec();
+delay_sec();
 delay_sec();
 delay_sec();
 

@@ -139,17 +139,17 @@
 [v _tlc_pwm_init tlc_pwm_init `(v  1 e 0 0 ]
 "72
 [v _tlc_init tlc_init `(v  1 e 0 0 ]
-"169
+"158
 [v _tlc_update tlc_update `(v  1 e 0 0 ]
-"208
+"197
 [v _tlc_set tlc_set `(v  1 e 0 0 ]
-"224
+"221
 [v _tlc_write tlc_write `(v  1 e 0 0 ]
-"259
+"264
 [v _tlc_sweep_delay tlc_sweep_delay `(v  1 e 0 0 ]
-"268
-[v _tlc_sweep_set tlc_sweep_set `(v  1 e 0 0 ]
 "273
+[v _tlc_sweep_set tlc_sweep_set `(v  1 e 0 0 ]
+"285
 [v _tlc_sweep_update tlc_sweep_update `(v  1 e 0 0 ]
 [s S461 . 1 `uc 1 LATD0 1 0 :1:0 
 `uc 1 LATD1 1 0 :1:1 
@@ -393,77 +393,77 @@
 "48 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\main.c
 [v _main main `(i  1 e 2 0 ]
 {
-"98
+"107
 } 0
-"224 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c
+"221 D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c
 [v _tlc_write tlc_write `(v  1 e 0 0 ]
 {
 [v tlc_write@tlc_servo_number tlc_servo_number `uc  1 a 1 wreg ]
-"239
-[v tlc_write@i i `uc  1 a 1 23 ]
-"238
+"244
+[v tlc_write@i i `uc  1 a 1 24 ]
+"243
 [v tlc_write@counter counter `uc  1 a 1 22 ]
-"224
+"221
 [v tlc_write@tlc_servo_number tlc_servo_number `uc  1 a 1 wreg ]
-[v tlc_write@value value `uc  1 p 1 15 ]
-"226
-[v tlc_write@tlc_servo_number tlc_servo_number `uc  1 a 1 21 ]
-"256
+[v tlc_write@value value `i  1 p 2 15 ]
+"223
+[v tlc_write@tlc_servo_number tlc_servo_number `uc  1 a 1 23 ]
+"261
 } 0
-"169
+"158
 [v _tlc_update tlc_update `(v  1 e 0 0 ]
 {
-"180
+"169
 [v tlc_update@i i `uc  1 a 1 21 ]
-"179
+"168
 [v tlc_update@counter counter `uc  1 a 1 20 ]
-"196
+"185
 } 0
-"273
+"285
 [v _tlc_sweep_update tlc_sweep_update `(v  1 e 0 0 ]
 {
-"322
+"334
 [v tlc_sweep_update@i_627 i `uc  1 a 1 27 ]
-"294
+"306
 [v tlc_sweep_update@i i `i  1 a 2 28 ]
-"321
+"333
 [v tlc_sweep_update@counter counter `uc  1 a 1 26 ]
-"289
+"301
 [v tlc_sweep_update@j j `i  1 a 2 24 ]
-"273
+"285
 [v tlc_sweep_update@speed speed `i  1 p 2 17 ]
-"340
+"352
 } 0
-"259
+"264
 [v _tlc_sweep_delay tlc_sweep_delay `(v  1 e 0 0 ]
 {
 [v tlc_sweep_delay@count count `i  1 p 2 14 ]
-"266
+"271
 } 0
-"268
+"273
 [v _tlc_sweep_set tlc_sweep_set `(v  1 e 0 0 ]
 {
 [v tlc_sweep_set@tlc_servo_number tlc_servo_number `uc  1 a 1 wreg ]
 [v tlc_sweep_set@tlc_servo_number tlc_servo_number `uc  1 a 1 wreg ]
-[v tlc_sweep_set@value value `uc  1 p 1 14 ]
-"270
-[v tlc_sweep_set@tlc_servo_number tlc_servo_number `uc  1 a 1 15 ]
-"271
+[v tlc_sweep_set@value value `i  1 p 2 14 ]
+"275
+[v tlc_sweep_set@tlc_servo_number tlc_servo_number `uc  1 a 1 16 ]
+"283
 } 0
 "25
 [v _tlc_spi_init tlc_spi_init `(v  1 e 0 0 ]
 {
 "38
 } 0
-"208
+"197
 [v _tlc_set tlc_set `(v  1 e 0 0 ]
 {
 [v tlc_set@tlc_servo_number tlc_servo_number `uc  1 a 1 wreg ]
 [v tlc_set@tlc_servo_number tlc_servo_number `uc  1 a 1 wreg ]
-[v tlc_set@value value `uc  1 p 1 14 ]
-"210
-[v tlc_set@tlc_servo_number tlc_servo_number `uc  1 a 1 15 ]
-"212
+[v tlc_set@value value `i  1 p 2 14 ]
+"199
+[v tlc_set@tlc_servo_number tlc_servo_number `uc  1 a 1 16 ]
+"209
 } 0
 "46
 [v _tlc_pwm_init tlc_pwm_init `(v  1 e 0 0 ]
@@ -473,15 +473,15 @@
 "72
 [v _tlc_init tlc_init `(v  1 e 0 0 ]
 {
-"138
-[v tlc_init@i_605 i `uc  1 a 1 24 ]
-"131
-[v tlc_init@i_603 i `i  1 a 2 22 ]
+"127
+[v tlc_init@i_605 i `uc  1 a 1 22 ]
+"110
+[v tlc_init@i_603 i `i  1 a 2 23 ]
 "88
 [v tlc_init@i i `uc  1 a 1 20 ]
-"137
+"126
 [v tlc_init@counter counter `uc  1 a 1 21 ]
-"157
+"146
 } 0
 "40
 [v _tlc_spi_send_data tlc_spi_send_data `(v  1 e 0 0 ]
