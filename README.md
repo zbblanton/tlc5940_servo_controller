@@ -102,7 +102,9 @@ https://www.youtube.com/watch?v=2360H5ts2hE
 One last thing is that if you want to turn a servo off then you can use -1 as the servo position. As of now the only supported ways to turn servos off is one at a time with tlc_write or more than one with tlc_set and tlc_update, this doesn't work for the sweep function.  So for example you if you want to turn servo 2 off then you would use this code:
 ```
 tlc_write(2, -1);
+```
 or this code:
+```
 tlc_set(2, -1);
 tlc_update();
 ```
