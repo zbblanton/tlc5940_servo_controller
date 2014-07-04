@@ -18,6 +18,8 @@ All the legal stuff can be found in the datasheet:
 
 #Tutorial
 
+This is pretty much a rough draft, there is still more to be added and I'm sure tons of grammatical errors.
+
 Here is what I'm going to call the "cost". This is the requirements thats it going to take to embed this into your project.
 Cost:
 - 3 general I/O pins.
