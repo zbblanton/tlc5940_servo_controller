@@ -11,7 +11,7 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$D:\temp_folders\temp\s5no.obj
+$D:\temp_folders\temp\s5hk.obj
 end_init CODE 0 18 18 4 1
 reset_vec CODE 0 0 0 4 1
 idloc IDLOC 0 200000 200000 8 1
@@ -296,18 +296,18 @@ $dist/default/production\tlc5940_servo_controller.X.production.obj
 "D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":36 89C text6 CODE
 "D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":37 89E text6 CODE
 "D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":38 8A0 text6 CODE
-"D:\temp_folders\temp\s5no.":776 8A2 cinit CODE
-"D:\temp_folders\temp\s5no.":778 8A2 cinit CODE
-"D:\temp_folders\temp\s5no.":781 8A2 cinit CODE
-"D:\temp_folders\temp\s5no.":798 8A2 cinit CODE
-"D:\temp_folders\temp\s5no.":799 8A6 cinit CODE
-"D:\temp_folders\temp\s5no.":800 8A8 cinit CODE
-"D:\temp_folders\temp\s5no.":801 8A8 cinit CODE
-"D:\temp_folders\temp\s5no.":802 8AA cinit CODE
-"D:\temp_folders\temp\s5no.":803 8AC cinit CODE
-"D:\temp_folders\temp\s5no.":809 8AE cinit CODE
-"D:\temp_folders\temp\s5no.":810 8AE cinit CODE
-"D:\temp_folders\temp\s5no.":811 8B0 cinit CODE
+"D:\temp_folders\temp\s5hk.":776 8A2 cinit CODE
+"D:\temp_folders\temp\s5hk.":778 8A2 cinit CODE
+"D:\temp_folders\temp\s5hk.":781 8A2 cinit CODE
+"D:\temp_folders\temp\s5hk.":798 8A2 cinit CODE
+"D:\temp_folders\temp\s5hk.":799 8A6 cinit CODE
+"D:\temp_folders\temp\s5hk.":800 8A8 cinit CODE
+"D:\temp_folders\temp\s5hk.":801 8A8 cinit CODE
+"D:\temp_folders\temp\s5hk.":802 8AA cinit CODE
+"D:\temp_folders\temp\s5hk.":803 8AC cinit CODE
+"D:\temp_folders\temp\s5hk.":809 8AE cinit CODE
+"D:\temp_folders\temp\s5hk.":810 8AE cinit CODE
+"D:\temp_folders\temp\s5hk.":811 8B0 cinit CODE
 "D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":40 8B4 text10 CODE
 "D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":42 8B6 text10 CODE
 "D:\Google Drive\Sync\Dropbox\Microchip\Projects\tlc5940_servo_controller.X\tlc5940.c":43 8BA text10 CODE
@@ -336,8 +336,8 @@ delay_sec@i 32 0 COMRAM 1 cstackCOMRAM dist/default/production\tlc5940_servo_con
 tlc_init@i 37 0 COMRAM 1 cstackCOMRAM dist/default/production\tlc5940_servo_controller.X.production.obj
 _main 4C2 0 CODE 0 text0 dist/default/production\tlc5940_servo_controller.X.production.obj
 _tlc_spi_init 88C 0 CODE 0 text6 dist/default/production\tlc5940_servo_controller.X.production.obj
-___sp 0 0 STACK 2 stack D:\temp_folders\temp\s5no.obj
-start 18 0 CODE 0 init D:\temp_folders\temp\s5no.obj
+___sp 0 0 STACK 2 stack D:\temp_folders\temp\s5hk.obj
+start 18 0 CODE 0 init D:\temp_folders\temp\s5hk.obj
 _tlc_pwm_init 870 0 CODE 0 text8 dist/default/production\tlc5940_servo_controller.X.production.obj
 tlc_write@i 3B 0 COMRAM 1 cstackCOMRAM dist/default/production\tlc5940_servo_controller.X.production.obj
 __Hirdata 0 0 CODE 0 irdata dist/default/production\tlc5940_servo_controller.X.production.obj
@@ -409,11 +409,11 @@ __LnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production\tlc5940_servo_controll
 tlc_sweep_update@i_627 3E 0 COMRAM 1 cstackCOMRAM dist/default/production\tlc5940_servo_controller.X.production.obj
 __Hdata 0 0 ABS 0 data dist/default/production\tlc5940_servo_controller.X.production.obj
 __Ldata 0 0 ABS 0 data dist/default/production\tlc5940_servo_controller.X.production.obj
-stackhi 5FF 0 ABS 0 - D:\temp_folders\temp\s5no.obj
+stackhi 5FF 0 ABS 0 - D:\temp_folders\temp\s5hk.obj
 _tlc_write 37A 0 CODE 0 text1 dist/default/production\tlc5940_servo_controller.X.production.obj
 __Htemp 0 0 COMRAM 1 temp dist/default/production\tlc5940_servo_controller.X.production.obj
 __Ltemp 0 0 COMRAM 1 temp dist/default/production\tlc5940_servo_controller.X.production.obj
-stacklo 80 0 ABS 0 - D:\temp_folders\temp\s5no.obj
+stacklo 80 0 ABS 0 - D:\temp_folders\temp\s5hk.obj
 __Hrbit 0 0 COMRAM 1 rbit dist/default/production\tlc5940_servo_controller.X.production.obj
 __Lrbit 0 0 COMRAM 1 rbit dist/default/production\tlc5940_servo_controller.X.production.obj
 __Hinit 18 0 CODE 0 init dist/default/production\tlc5940_servo_controller.X.production.obj
@@ -536,8 +536,8 @@ _tlc_set 746 0 CODE 0 text7 dist/default/production\tlc5940_servo_controller.X.p
 __Hcinit 0 0 ABS 0 cinit dist/default/production\tlc5940_servo_controller.X.production.obj
 __Lcinit 0 0 ABS 0 cinit dist/default/production\tlc5940_servo_controller.X.production.obj
 __pcinit 8A2 0 CODE 0 cinit dist/default/production\tlc5940_servo_controller.X.production.obj
-__ramtop 600 0 RAM 0 ramtop D:\temp_folders\temp\s5no.obj
-__mediumconst 0 0 MEDIUMCONST 0 mediumconst D:\temp_folders\temp\s5no.obj
+__ramtop 600 0 RAM 0 ramtop D:\temp_folders\temp\s5hk.obj
+__mediumconst 0 0 MEDIUMCONST 0 mediumconst D:\temp_folders\temp\s5hk.obj
 __size_of_delay_sec 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
 __size_of_main 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
 __Hconst 0 0 CODE 0 const dist/default/production\tlc5940_servo_controller.X.production.obj
@@ -553,16 +553,16 @@ __Htext11 0 0 ABS 0 text11 dist/default/production\tlc5940_servo_controller.X.pr
 __Ltext11 0 0 ABS 0 text11 dist/default/production\tlc5940_servo_controller.X.production.obj
 __ptext11 820 0 CODE 0 text11 dist/default/production\tlc5940_servo_controller.X.production.obj
 tlc_set@tlc_servo_number 33 0 COMRAM 1 cstackCOMRAM dist/default/production\tlc5940_servo_controller.X.production.obj
-___inthi_sp 0 0 STACK 2 stack D:\temp_folders\temp\s5no.obj
+___inthi_sp 0 0 STACK 2 stack D:\temp_folders\temp\s5hk.obj
 __CFG_BOREN$OFF 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
-___intlo_sp 0 0 STACK 2 stack D:\temp_folders\temp\s5no.obj
+___intlo_sp 0 0 STACK 2 stack D:\temp_folders\temp\s5hk.obj
 __size_of_tlc_sweep_delay 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
 _INTCONbits FF2 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
 __Hend_init 1C 0 CODE 0 end_init dist/default/production\tlc5940_servo_controller.X.production.obj
 __Lend_init 18 0 CODE 0 end_init dist/default/production\tlc5940_servo_controller.X.production.obj
 tlc_sweep_update@counter 3D 0 COMRAM 1 cstackCOMRAM dist/default/production\tlc5940_servo_controller.X.production.obj
 __CFG_CP0$OFF 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
-__smallconst 0 0 SMALLCONST 0 smallconst D:\temp_folders\temp\s5no.obj
+__smallconst 0 0 SMALLCONST 0 smallconst D:\temp_folders\temp\s5hk.obj
 __CFG_CP1$OFF 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
 __Hreset_vec 4 0 CODE 0 reset_vec dist/default/production\tlc5940_servo_controller.X.production.obj
 __end_of_tlc_spi_send_data 8C0 0 CODE 0 text10 dist/default/production\tlc5940_servo_controller.X.production.obj
@@ -570,14 +570,14 @@ __Lreset_vec 0 0 CODE 0 reset_vec dist/default/production\tlc5940_servo_controll
 __CFG_CP2$OFF 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
 __CFG_CP3$OFF 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
 __size_of_tlc_sweep_update 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
-__accesstop 80 0 ABS 0 - D:\temp_folders\temp\s5no.obj
+__accesstop 80 0 ABS 0 - D:\temp_folders\temp\s5hk.obj
 __Hintcode_body 0 0 ABS 0 intcode_body dist/default/production\tlc5940_servo_controller.X.production.obj
 __Lintcode_body 0 0 ABS 0 intcode_body dist/default/production\tlc5940_servo_controller.X.production.obj
 __pintcode_body 6B4 0 CODE 0 intcode_body dist/default/production\tlc5940_servo_controller.X.production.obj
-intlevel0 0 0 CODE 0 text D:\temp_folders\temp\s5no.obj
-intlevel1 0 0 CODE 0 text D:\temp_folders\temp\s5no.obj
-intlevel2 0 0 CODE 0 text D:\temp_folders\temp\s5no.obj
-intlevel3 0 0 CODE 0 text D:\temp_folders\temp\s5no.obj
+intlevel0 0 0 CODE 0 text D:\temp_folders\temp\s5hk.obj
+intlevel1 0 0 CODE 0 text D:\temp_folders\temp\s5hk.obj
+intlevel2 0 0 CODE 0 text D:\temp_folders\temp\s5hk.obj
+intlevel3 0 0 CODE 0 text D:\temp_folders\temp\s5hk.obj
 __size_of_tlc_sweep_set 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj
 __end_of_tlc_sweep_delay 870 0 CODE 0 text4 dist/default/production\tlc5940_servo_controller.X.production.obj
 __size_of_tlc_spi_init 0 0 ABS 0 - dist/default/production\tlc5940_servo_controller.X.production.obj

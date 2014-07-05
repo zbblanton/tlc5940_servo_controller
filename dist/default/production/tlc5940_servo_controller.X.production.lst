@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC18 LITE Macro Assembler V1.32 build 58300 
-                                                                                               Thu Jul 03 03:14:16 2014
+                                                                                               Sat Jul 05 05:39:22 2014
 
 Microchip Technology Omniscient Code Generator (Lite mode) build 58300
      1                           	processor	18F4520
@@ -2752,7 +2752,7 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V1.32 build 58300 
-Symbol Table                                                                                   Thu Jul 03 03:14:16 2014
+Symbol Table                                                                                   Sat Jul 05 05:39:22 2014
 
            ??_tlc_sweep_update 0036                    _SSPSTATbits 000FC7                             l52 0362  
                            l57 06A8                             l73 04B6                             l91 0062  
