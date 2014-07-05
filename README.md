@@ -6,8 +6,7 @@ Version 1.1 will have fully documented code and a few great new functions that I
 
 To download the source, go to downloads and click "tlc5940_servo_controller_v1.0.zip".
 
-I should be able to release version 1.1 by the end of this week, so around 7/5/2014. This verison should be fully documented
-and I will then be able to release a full tutorial on how to wire the TLC5940 up and how to use the functions.
+Version 1.1 code is ready but I have not released the source files into a nice zip folder. You can however just download the repo. I'll have the zip file up in just a few days.
 
 This code is developed and tested on the PIC18F4520.
 
@@ -20,12 +19,26 @@ All the legal stuff can be found in the datasheet:
 
 This is pretty much a rough draft, there is still more to be added and I'm sure tons of grammatical errors.
 
-Here is what I'm going to call the "cost". This is the requirements thats it going to take to embed this into your project.
+As of now this is only made for an 8MHz clock. This is due to interrupt timing for our grayscale clock. Although to make it work will just be a matter of changing some code with calculations so I will try to get an equation up soon.
+
+Here is what I'm going to call the "cost". This is the hardware requirements that's it going to take to embed this into your project.
 Cost:
 - 3 general I/O pins.
 - The use of timer 2.
 - 1 PWM pin.
-- Use of SPI so 2 more pins, three if you need to do Chip Selects. (This isn't on the TLC5940 but i'll try to explain this later)
+- Use of SPI so 2 more pins, three if you need to do Chip Selects. (This isn't on the TLC5940 but i'll try to explain this another time)
+-NOT gate for each servo.
+-1k Resistor
+
+Here is the schematic of my current tlc5940 setup. This schematic uses all the default pins in the code.
+![](http://i.imgur.com/UHxN4j8.png)
+For a bigger resolution:
+[http://i.imgur.com/UHxN4j8.png](http://i.imgur.com/UHxN4j8.png)
+
+Notice that there are NOT gates on each servo. This is because we have to inverse the PWM waves coming into the 
+servos, there may be a software fix for this but have not tried anything yet. Any regular NOT gate should work.
+Like a 7404 IC for example. I also didn't include the wiring for power. The TLC5940 just needs a 5V supply. I'd also
+like to point out that my servos are on their own power supply, you can google and find out why that's easier. 
 
 Initial setup before using the TLC5940. 
 ---
@@ -40,8 +53,6 @@ The TLC5940 needs three control pins. By default they are pins 0, 1, and 2 on PO
 #define tlc_vprg_io TRISDbits.RD1
 #define tlc_blank_io TRISDbits.RD2
 ```
-Here is the schematic of my current tlc5940 setup. This schematic uses all the default pins in the code.
-![](http://i.imgur.com/UHxN4j8.png)
 
 We now need to set the initial servo positions of the servos you're going to use. To do this we use the function tlc_set(servo channel number, degree).
 For example to set channel 0 servo position to 140 degrees we call the function below:
@@ -110,3 +121,6 @@ or this code:
 tlc_set(2, -1);
 tlc_update();
 ```
+
+
+I am not responsible for anything that happens if you use this code, tutorial, and/or schematic.
