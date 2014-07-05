@@ -41,7 +41,7 @@ The TLC5940 needs three control pins. By default they are pins 0, 1, and 2 on PO
 #define tlc_blank_io TRISDbits.RD2
 ```
 Here is the schematic of my current tlc5940 setup. This schematic uses all the default pins in the code.
-PICTURE OF SCHEMATIC
+![](http://i.imgur.com/UHxN4j8.png)
 
 We now need to set the initial servo positions of the servos you're going to use. To do this we use the function tlc_set(servo channel number, degree).
 For example to set channel 0 servo position to 140 degrees we call the function below:
