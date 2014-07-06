@@ -1,12 +1,8 @@
 # TLC5940 Servo Controller for PIC Microcontrollers
 
-Version 1.0 is ready for download. It still lacks some documentation of the functions, but should work on any of the 
-PIC18 series microcontrollers. This version is only for the brave or impatient souls who can't wait for better documentation.
-Version 1.1 will have fully documented code and a few great new functions that I think will separate this library from others.
+Version 1.1 is ready for download. It should work on any of the PIC18 series microcontrollers. This only supports a clock speed of 8MHz at the time, more on this in the tutorial below. 
 
-To download the source, go to downloads and click "tlc5940_servo_controller_v1.0.zip".
-
-Version 1.1 code is ready but I have not released the source files into a nice zip folder. You can however just download the repo. I'll have the zip file up in just a few days.
+To download the source, go to downloads and click "tlc5940_servo_controller_v1.1.zip".
 
 This code is developed and tested on the PIC18F4520.
 
@@ -123,5 +119,6 @@ tlc_set(2, -1);
 tlc_update();
 ```
 
+If this controller actually gets used then I will be sure to keep it updated and try to tackle any issues people are having. Also I'm open to any help on better code and new ideas.
 
 I am not responsible for anything that happens if you use this code, tutorial, and/or schematic.
