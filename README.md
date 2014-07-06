@@ -19,16 +19,17 @@ All the legal stuff can be found in the datasheet:
 
 This is pretty much a rough draft, there is still more to be added and I'm sure tons of grammatical errors.
 
-As of now this is only made for an 8MHz clock. This is due to interrupt timing for our grayscale clock. Although to make it work will just be a matter of changing some code with calculations so I will try to get an equation up soon.
+As of now this is only made for an 8MHz clock. This is due to interrupt timing for our grayscale clock. Although to make it work for other clock speeds will just be a matter of changing some code with calculations so I will try to get an equation up soon.
 
 Here is what I'm going to call the "cost". This is the hardware requirements that's it going to take to embed this into your project.
 Cost:
+
 - 3 general I/O pins.
 - The use of timer 2.
 - 1 PWM pin.
 - Use of SPI so 2 more pins, three if you need to do Chip Selects. (This isn't on the TLC5940 but i'll try to explain this another time)
--NOT gate for each servo.
--1k Resistor
+- NOT gate for each servo.
+- 1k Resistor
 
 Here is the schematic of my current tlc5940 setup. This schematic uses all the default pins in the code.
 ![](http://i.imgur.com/UHxN4j8.png)
