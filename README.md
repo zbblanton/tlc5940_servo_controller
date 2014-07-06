@@ -4,7 +4,7 @@ Version 1.1 is ready for download. It should work on any of the PIC18 series mic
 
 To download the source, go to downloads and click "tlc5940_servo_controller_v1.1.zip".
 
-This code is developed and tested on the PIC18F4520.
+This code is developed and tested on the PIC18F4520 with the XC8 v1.32 compiler.
 
 ![](http://i.imgur.com/F2dGZP9.png)
 
