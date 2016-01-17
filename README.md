@@ -13,8 +13,6 @@ All the legal stuff can be found in the datasheet:
 
 #Tutorial
 
-This is pretty much a rough draft, there is still more to be added and I'm sure tons of grammatical errors.
-
 As of now this is only made for an 8MHz clock. This is due to interrupt timing for our grayscale clock. Although to make it work for other clock speeds will just be a matter of changing some code with calculations so I will try to get an equation up soon.
 
 Here is what I'm going to call the "cost". This is the hardware requirements that's it going to take to embed this into your project.
