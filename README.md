@@ -8,9 +8,6 @@ This code is developed and tested on the PIC18F4520 with the XC8 v1.32 compiler.
 
 ![](http://i.imgur.com/F2dGZP9.png)
 
-All the legal stuff can be found in the datasheet:
-[http://www.ti.com/lit/ds/symlink/tlc5940.pdf](http://www.ti.com/lit/ds/symlink/tlc5940.pdf)
-
 #Tutorial
 
 As of now this is only made for an 8MHz clock. This is due to interrupt timing for our grayscale clock. Although to make it work for other clock speeds will just be a matter of changing some code with calculations so I will try to get an equation up soon.
